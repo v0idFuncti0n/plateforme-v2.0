@@ -116,33 +116,7 @@ Header
                 </a></div>
 
             <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="show-entries">
-                                <span>Show</span>
-                                <select>
-                                    <option>5</option>
-                                    <option>10</option>
-                                    <option>15</option>
-                                    <option>20</option>
-                                </select>
-                                <span>entries</span>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="search-box">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-                                    <input type="text" class="form-control" placeholder="Search&hellip;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="myTable">
                     <thead>
                     <tr>
                         <th>#</th>
@@ -154,8 +128,10 @@ Header
                     </thead>
                     <tbody>
                     <?php
-                        $tests = DB::table('test')->where('professeur_id', '=', $prof->professeur_id)->get();
-                        $key = 0;
+                    use App\Matiere;
+                    use App\Matiere_prof;
+                    $tests = DB::table('test')->where('professeur_id', '=', $prof->professeur_id)->get();
+                    $key = 0;
                     ?>
                     @foreach($tests as $test)
                         @php
@@ -169,7 +145,7 @@ Header
                         <tr>
                             <td>{{++$key}}</td>
                             <td>{{$test->nom}}</td>
-                            <td><a href="/reponses/{{$test->test_id}}">reponses</a></td>
+                            <td><a href="/reponses/{{$test->test_id}}"><button type="button" class="btn btn-primary">Reponses</button></a></td>
                             <td>
                                 <div style="text-align:center;">
 
@@ -221,20 +197,12 @@ Header
                     @endforeach
                     </tbody>
                 </table>
-                <div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#">Previous</a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                    </ul>
-                </div>
+
             </div>
     </section><!-- #portfolio -->
+    <?php
+    if(isset($test)){
+        ?>
     <section id="service">
 
         <div class="modal1">
@@ -286,16 +254,18 @@ Header
                         <p>vous pouvez sélectioner vos ancienne questions </p>
                     </label>
                     <div class="contentse">
-                        <?php $matiere_idd = $test->matiere_id; ?>
-                        <?php $professeur_idd = $test->professeur_id; ?>
-                        <?php $testss = DB::table('test')->where('matiere_id', $matiere_idd)->where('professeur_id', $professeur_idd)->get();?>
+
                         @php
-                            $count = 0;
-                            foreach ($testss as $t){
-                            $countqcm = \App\QCM::query()->where('test_id','=',$t->test_id)->count();
-                            $countbin = \App\binaire::query()->where('test_id','=',$t->test_id)->count();
-                            $counttext = \App\Text_libre::query()->where('test_id','=',$t->test_id)->count();
-                            $count = $countqcm + $countbin + $counttext;
+
+                                $matiere_idd = $test->matiere_id;
+                                $professeur_idd = $test->professeur_id;
+                                $testss = DB::table('test')->where('matiere_id', $matiere_idd)->where('professeur_id', $professeur_idd)->get();
+                                $count = 0;
+                                foreach ($testss as $t){
+                                $countqcm = \App\QCM::query()->where('test_id','=',$t->test_id)->count();
+                                $countbin = \App\binaire::query()->where('test_id','=',$t->test_id)->count();
+                                $counttext = \App\Text_libre::query()->where('test_id','=',$t->test_id)->count();
+                                $count = $countqcm + $countbin + $counttext;
                         }
                         @endphp
                         <br>
@@ -375,7 +345,7 @@ Header
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="test_id" id="test_id">
-                        <label >
+                        <label>
                             Nom de test.
                             <input class="form-control" type="text" pattern=".[a-zA-Z0-9]{1,255}"
                                    title="aucun caractère spécial n'est autorisé 1 - 255 max" name="nom" id="nom"
@@ -415,8 +385,7 @@ Header
                             Matiere
                             <?php
 
-                            use App\Matiere;
-                            use App\Matiere_prof;
+
                             $id = [];
                             $i = 0;
                             $mtrs = DB::table('matiere_prof')->where('professeur_id', $prof->professeur_id)->get();?>
@@ -499,7 +468,20 @@ Header
             </div>
         </div>
     </div>
+    <?php }?>
 </main>
+
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+    $('#myTable').DataTable({
+        responsive: true
+    });
+</script>
+
 <script>
     $('#exampleModal-edit').on('show.bs.modal', function (event) {
 
