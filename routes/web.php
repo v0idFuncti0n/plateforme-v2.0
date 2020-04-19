@@ -108,3 +108,28 @@ Route::get('/manager-test/{prof_id}',function ($prof){
     return view('profauth.test')->with('prof', $p);
 })->name('manager-test')->middleware('professeur');
 
+Route::post('/test/forceDelete/{test_id}','TestController@forceDelete');
+Route::get('/create-test-restore','TestController@indexRestore');
+Route::post('/create-test-restore','TestController@restoreTest')->name("test.restore");
+Route::post('/create-test-forcedelete','TestController@forceDeleteMass')->name("test.forceDelete");
+
+Route::post('/qcm/forceDelete','QCMController@forceDelete');
+Route::get('/create-qcm-restore','QCMController@indexRestore');
+Route::post('/create-qcm-restore','QCMController@restoreQCM')->name("qcm.restore");
+Route::post('/create-qcm-forcedelete','QCMController@forceDeleteMass')->name("qcm.forceDelete");
+
+Route::post('/bin/forceDelete','BinaireController@forceDelete');
+Route::get('/create-bin-restore','BinaireController@indexRestore');
+Route::post('/create-bin-restore','BinaireController@restoreBin')->name("bin.restore");
+Route::post('/create-bin-forcedelete','BinaireController@forceDeleteMass')->name("bin.forceDelete");
+
+Route::post('/text-libre/forceDelete','Text_libreController@forceDelete');
+Route::get('/create-text-libre-restore','Text_libreController@indexRestore');
+Route::post('/create-text-libre-restore','Text_libreController@restoreTextLibre')->name("text-libre.restore");
+Route::post('/create-text-libre-forcedelete','Text_libreController@forceDeleteMass')->name("text-libre.forceDelete");
+
+
+Route::post('/option/forceDelete','OptionController@forceDelete');
+Route::get('/option-restore','OptionController@indexRestore');
+Route::post('/option-restore','OptionController@restoreOption')->name("option.restore");
+Route::post('/option-forcedelete','OptionController@forceDeleteMass')->name("option.forceDelete");

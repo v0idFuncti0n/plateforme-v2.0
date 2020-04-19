@@ -3,12 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class binaire extends Model
 {
+    use SoftDeletes;
     protected $table="binaire";
     protected $fillable=['test_id','question_text','note','difficulty'];
     protected $primaryKey='binaire_id';
+    protected $dates = ['deleted_at'];
 
     /**
      * @param array $row
@@ -28,5 +31,18 @@ class binaire extends Model
     }
     public function test(){
         return $this->belongsTo('App\Test','test_id','test_id');
+    }
+
+    public static function boot ()
+    {
+        parent::boot();
+
+        self::deleting(function (binaire $b) {
+
+            foreach ($b->options as $o)
+            {
+                $o->delete();
+            }
+        });
     }
 }

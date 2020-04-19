@@ -13,8 +13,9 @@
     <link href="{{asset( 'create-binaire/css/style.css' )}}" rel="stylesheet">
 
     <!-- Google Fonts -->
-    <link href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700')}}"
-          rel="stylesheet">
+    <link
+        href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700')}}"
+        rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
     <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')}}"></script>
@@ -26,7 +27,8 @@
 
     <!-- Main Stylesheet File -->
 
-    <link rel="stylesheet" href="{{asset('http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css')}}">
+    <link rel="stylesheet"
+          href="{{asset('http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css')}}">
     <!-- level-->
     <link rel="stylesheet" href="{{asset('create-binaire/css/form.css')}}">
 
@@ -36,9 +38,11 @@
 
     <link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
 
-    <link href="{{asset('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900')}}" rel="stylesheet">
+    <link href="{{asset('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900')}}"
+          rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
+    <link rel="stylesheet"
+          href="{{asset('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('create-binaire/css/themes/bars-movie.css')}}">
 
@@ -48,6 +52,134 @@
       Author: BootstrapMade.com
       License: https://bootstrapmade.com/license/
     ======================================================= -->
+    <style>
+        $green: #2ecc71;
+        $red: #e74c3c;
+        $blue: #3498db;
+        $yellow: #f1c40f;
+        $purple: #8e44ad;
+        $turquoise: #1abc9c;
+
+
+        h1 {
+            color: $yellow;
+            font-size: 4rem;
+            text-transform: uppercase;
+            display: block;
+            width: 100%;
+            text-align: center;
+
+        @media screen and (max-width: 600px) {
+            font-size: 3rem;
+        }
+        }
+
+        p {
+            color: $yellow;
+            font-size: 1.2rem;
+        // text-transform: uppercase;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+
+        // Basic Button Style
+           .btn {
+               box-sizing: border-box;
+               appearance: none;
+               background-color: transparent;
+               border: 2px solid $red;
+               border-radius: 0.6em;
+               color: $red;
+               cursor: pointer;
+               display: flex;
+               align-self: center;
+               font-size: 1rem;
+               font-weight: 400;
+               line-height: 1;
+               margin: 20px;
+               padding: 1.2em 2.8em;
+               text-decoration: none;
+               text-align: center;
+               text-transform: uppercase;
+               font-family: 'Montserrat', sans-serif;
+               font-weight: 700;
+
+        &:hover,
+        &:focus {
+             color: #fff;
+             outline: 0;
+         }
+        }
+
+        //BUTTON 1
+        .first {
+            transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+        &:hover {
+             box-shadow: 0 0 40px 40px $red inset;
+         }
+        }
+
+        //BUTTON 2
+        .second {
+            border-radius: 3em;
+            border-color: $turquoise;
+            color: #fff;
+        background: {
+            image: linear-gradient(to right,
+            transparentize($turquoise, 0.4),
+            transparentize($turquoise, 0.4) 5%,
+            $turquoise 5%,
+            $turquoise 10%,
+            transparentize($turquoise, 0.4) 10%,
+            transparentize($turquoise, 0.4) 15%,
+            $turquoise 15%,
+            $turquoise 20%,
+            transparentize($turquoise, 0.4) 20%,
+            transparentize($turquoise, 0.4) 25%,
+            $turquoise 25%,
+            $turquoise 30%,
+            transparentize($turquoise, 0.4) 30%,
+            transparentize($turquoise, 0.4) 35%,
+            $turquoise 35%,
+            $turquoise 40%,
+            transparentize($turquoise, 0.4) 40%,
+            transparentize($turquoise, 0.4) 45%,
+            $turquoise 45%,
+            $turquoise 50%,
+            transparentize($turquoise, 0.4) 50%,
+            transparentize($turquoise, 0.4) 55%,
+            $turquoise 55%,
+            $turquoise 60%,
+            transparentize($turquoise, 0.4) 60%,
+            transparentize($turquoise, 0.4) 65%,
+            $turquoise 65%,
+            $turquoise 70%,
+            transparentize($turquoise, 0.4) 70%,
+            transparentize($turquoise, 0.4) 75%,
+            $turquoise 75%,
+            $turquoise 80%,
+            transparentize($turquoise, 0.4) 80%,
+            transparentize($turquoise, 0.4) 85%,
+            $turquoise 85%,
+            $turquoise 90%,
+            transparentize($turquoise, 0.4) 90%,
+            transparentize($turquoise, 0.4) 95%,
+            $turquoise 95%,
+            $turquoise 100%);
+            position: 0 0;
+            size: 100%;
+        }
+        transition: background 300ms ease-in-out;
+
+        &:hover {
+             background-position: 100px;
+         }
+        }
+
+    </style>
+    <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 </head>
 
 <body>
@@ -141,7 +273,8 @@ Header
             <section id="services">
                 <div class="container wow fadeIn">
                     <div class="section-header">
-
+                        <a class="btn btn-success" title="restaurer"
+                           data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
                     </div>
 
 
@@ -150,14 +283,16 @@ Header
                             <form action="{{action('BinaireController@store1')}}" method="post">
                                 @csrf
                                 <div class="form-row">
-                                    <div class="name" >Question</div>
+                                    <div class="name">Question</div>
                                     <div class="value">
                                         <div class="input-group" style="display: flex">
-                                            <textarea class="textarea--style-6" name="question" style="width:75%; margin-right: 30px"
+                                            <textarea class="textarea--style-6" name="question"
+                                                      style="width:75%; margin-right: 30px"
                                                       placeholder=""></textarea>
                                             <div>
-                                            <div style="margin-bottom: 30px;"  >
-                                                    <input type="radio" id="control_01" name="choice" value="vrai" checked>
+                                                <div style="margin-bottom: 30px;">
+                                                    <input type="radio" id="control_01" name="choice" value="vrai"
+                                                           checked>
                                                     <label for="control_01" class="labelradio">
                                                         <h2 style=" font-size: 18px;font-weight: bold">Vrai</h2>
                                                     </label>
@@ -173,10 +308,10 @@ Header
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="name" >Difficulté</div>
+                                    <div class="name">Difficulté</div>
                                     <div class="value">
-                                        <div class="input-group" >
-                                            <select id="example-movie" name="difficulty" autocomplete="off" >
+                                        <div class="input-group">
+                                            <select id="example-movie" name="difficulty" autocomplete="off">
                                                 <option value="1">Trés facile</option>
                                                 <option value="2">Facile</option>
                                                 <option value="3" selected="selected">Moyenne</option>
@@ -193,9 +328,10 @@ Header
                                     <div class="name">Note</div>
                                     <div class="value">
                                         <div class="input-group">
-                                    <input type="hidden" name="test_id" value="{{$test->test_id}}">
-                                    <input type="number" style="height: 32px;width: 355px" class="input--style-6" id="note" style="color:black;" name="note" >
-                                </div>
+                                            <input type="hidden" name="test_id" value="{{$test->test_id}}">
+                                            <input type="number" style="height: 32px;width: 355px"
+                                                   class="input--style-6" id="note" style="color:black;" name="note">
+                                        </div>
                                     </div>
                                 </div>
                                 <br>
@@ -203,166 +339,209 @@ Header
                                 <input type="submit" name="submit" id="submit" style="width: 17rem; margin-left:7rem; "
                                        class="btn btn-info" value="Ajouter et enregistrer"/>
                                 <input type="hidden" name="test_id" value="{{$test->test_id}}">
-                                <input type="submit" class="btn btn-success" style="width: 17rem" value="Ajouter et quitter">
+                                <input type="submit" class="btn btn-success" style="width: 17rem"
+                                       value="Ajouter et quitter">
 
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
                     <h2 class="mb-1" style=" margin-top: 10rem">Table des questions</h2>
 
                     @php
                         //  use \App
                             $binaires = App\binaire::OrderBy('binaire_id','asc')->where('test_id',$test->test_id)->get(); @endphp
-                <div class="table-wrapper" style="width: 100rem;">
-                    <table class="table table-bordered" id="myTable">
-                        <thead>
-                        <tr>
-                            <th class="exclude">#</th>
-                            <th>question text</th>
-                            <th>note</th>
-                            <th>difficultes</th>
-                            <th>id test</th>
-                            <th class="exclude">Action</th>
-                        </tr>
-                        <tbody>
-                        @foreach($binaires as $key=>$binaire)
+                    <div class="table-wrapper" style="width: 100rem;">
+                        <table class="table table-bordered" id="myTable">
+                            <thead>
                             <tr>
-                                <td class="exclude">{{++$key}}</td>
-                                <td>{{$binaire->question_text}}</td>
-                                <td>{{$binaire->note}}</td>
-                                <td>{{$binaire->difficulty}}</td>
-                                <td>{{$binaire->test_id}}</td>
-                                <td class="exclude">
-                                    <a data-binaire_id="{{$binaire->binaire_id}}"
-                                       data-question_text="{{$binaire->question_text}}"
-                                       data-note="{{$binaire->note}}"
-                                       data-difficulty="{{$binaire->difficulty}}"
-                                       data-test_id="{{$binaire->test_id}}" data-toggle="modal"
-                                       data-target="#exampleModal-edit" class="edit" title="modifier" href=""><i class="material-icons">&#xE254;</i></a>
-                                    <a data-binaire_id="{{$binaire->binaire_id}}"
-                                       data-toggle="modal"
-                                       data-target="#exampleModal-delete" class="delete" title="supprimer" href=""><i class="material-icons">&#xE872;</i></a>
-
-                                    <a href="option12/binaire/{{$binaire->binaire_id}}" class="option" title="Les options">
-                                        <i class="material-icons">list</i></a>
-                                </td>
+                                <th class="exclude">#</th>
+                                <th>question text</th>
+                                <th>note</th>
+                                <th>difficultes</th>
+                                <th>id test</th>
+                                <th class="exclude">Action</th>
                             </tr>
+                            <tbody>
+                            @foreach($binaires as $key=>$binaire)
+                                <tr>
+                                    <td class="exclude">{{++$key}}</td>
+                                    <td>{{$binaire->question_text}}</td>
+                                    <td>{{$binaire->note}}</td>
+                                    <td>{{$binaire->difficulty}}</td>
+                                    <td>{{$binaire->test_id}}</td>
+                                    <td class="exclude">
+                                        <a data-binaire_id="{{$binaire->binaire_id}}"
+                                           data-question_text="{{$binaire->question_text}}"
+                                           data-note="{{$binaire->note}}"
+                                           data-difficulty="{{$binaire->difficulty}}"
+                                           data-test_id="{{$binaire->test_id}}" data-toggle="modal"
+                                           data-target="#exampleModal-edit" class="edit" title="modifier" href=""><i
+                                                class="material-icons">&#xE254;</i></a>
+                                        <a data-binaire_id="{{$binaire->binaire_id}}"
+                                           data-toggle="modal"
+                                           data-target="#exampleModal-delete" class="delete" title="supprimer"
+                                           href=""><i class="material-icons">&#xE872;</i></a>
+
+                                        <a href="option12/binaire/{{$binaire->binaire_id}}" class="option"
+                                           title="Les options">
+                                            <i class="material-icons">list</i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Modal edit -->
+                <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form action="{{route('create-binaire.update','binaire_id')}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="form-group">
+
+                                        <label for="" style="color:#c21db7;">question text</label>
+
+                                        <input type="text" style="color:black;" id="question_text" name="question_text"
+                                               class="form-control"
+                                               placeholder="question">
+                                    </div>
+                                    <input type="hidden" style="color:black;" name="binaire_id" id="binaire_id">
+                                    <br>
+                                    <div class="form-group">
+
+                                        <label for="" style="color:#c21db7;">difficultes </label>
+
+
+                                        <select name="difficulty" id="difficulty" style="height: 34px;"
+                                                class="form-control">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                    <br>
+
+                                    <div class="form-group">
+
+                                        <label for="" style="color:#c21db7;">note</label>
+
+                                        <input type="text" id="note" style="color:black;" name="note"
+                                               class="form-control" placeholder="note">
+                                    </div>
+                                    <br>
+
+                                    <div class="form-group">
+
+
+                                        <label for="" style="color:#c21db7;">id test</label>
+
+                                        <input type="number" style="color:black;" id="test_id" name="test_id"
+                                               class="form-control"
+                                               placeholder="test id">
+                                    </div>
+                                    <br>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer
+                                        </button>
+
+                                        <button type="submit" class="btn btn-success">modifier</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal delete -->
+                <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form action="{{route('create-binaire.destroy','binaire_id')}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <input type="hidden" name="binaire_id" id="binaire_id">
+                                    <p class="text-center" width="50px" style="font-weight: normal"> vous ete sûre que
+                                        vous voulez supprimer cette question</p>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close
+                                        </button>
+                                        <button type="submit" class="btn btn-danger">supprimer</button>
+                                        </form>
+                                        <form action="{{action("BinaireController@forceDelete")}}" method="POST">
+                                            @csrf
+                                            <input required type="hidden" name="force_question_id"
+                                                   id="force_question_id" >
+                                            <button type="submit" class="btn btn-danger">forcer la suppression</button>
+                                        </form>
+                                    </div>
+
+                            </div>
+                        </div>
+                    </div>
+            </section><!-- #services -->
+
+
+        </div>
+        <!-- Modal Restore -->
+        <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Restaurer</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @php
+                            $bins = \App\binaire::onlyTrashed()->get();
+                        @endphp
+                        <form id="form" action="{{route("bin.restore")}}" method="POST">
+                            @csrf
+                            @foreach($bins as $bin)
+                                <label style="font-size: 15px" class="switcher">{{$bin->question_text}}
+                                <input type="checkbox" name="questions[{{$bin->binaire_id}}]" value="{{$bin->binaire_id}}"/>
+                                    <div class="switcher__indicator"></div>
+                                </label>
                         @endforeach
-                        </tbody>
-
-                        </thead>
-
-                    </table>
-                </div>
-        </div>
-
-        <!-- Modal edit -->
-        <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
-             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
-                    <div class="modal-body">
-
-                        <form action="{{route('create-binaire.update','binaire_id')}}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <div class="form-group">
-
-                                <label for="" style="color:#c21db7;">question text</label>
-
-                                <input type="text" style="color:black;" id="question_text" name="question_text" class="form-control"
-                                       placeholder="question">
-                            </div>
-                            <input type="hidden" style="color:black;" name="binaire_id" id="binaire_id">
-                            <br>
-                            <div class="form-group">
-
-                                <label for="" style="color:#c21db7;">difficultes </label>
-
-
-                                <select name="difficulty" id="difficulty" style="height: 34px;" class="form-control">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                            </div>
-                            <br>
-
-                            <div class="form-group">
-
-                                <label for="" style="color:#c21db7;">note</label>
-
-                                <input type="text" id="note" style="color:black;" name="note"
-                                       class="form-control" placeholder="note">
-                            </div>
-                            <br>
-
-                            <div class="form-group">
-
-
-                                <label for="" style="color:#c21db7;">id test</label>
-
-                                <input type="number" style="color:black;" id="test_id" name="test_id"
-                                       class="form-control"
-                                       placeholder="test id">
-                            </div>
-                            <br>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-
-                        <button type="submit" class="btn btn-success">modifier</button>
+                        <button type="button" id="restore" class="btn btn-success">Restore</button>
+                        <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                        </form>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
-        </div>
-        <!-- Modal delete -->
-        <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
-             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-
-                        <form action="{{route('create-binaire.destroy','binaire_id')}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-
-                            <input type="hidden" name="binaire_id" id="binaire_id">
-                            <p class="text-center" width="50px" style="font-weight: normal"> vous ete sûre que vous voulez supprimer cette question</p>
-
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-
-                        <button type="submit" class="btn btn-danger">supprimer</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-
-
-        </div>
-        </div>
-    </section><!-- #services -->
-
-
-
     </div>
 
     </div>
@@ -371,6 +550,20 @@ Header
 <!--==========================
   Footer
 ============================-->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.12.0/js/mdb.min.js"></script>
+<script>
+    $("#restore").click(function() {
+        $("#form").attr("action", "{{route("bin.restore")}}");
+        $("form").submit();
+    });
+    $("#force-delete").click(function() {
+        $("#form").attr("action", "{{route("bin.forceDelete")}}");
+        $("form").submit();
+    });
+
+</script>
+
 <script>
 
 
@@ -381,7 +574,7 @@ Header
         var note = button.data('note')
         var difficulty = button.data('difficulty')
         var test_id = button.data('test_id')
-        var binaire_id =  button.data('binaire_id')
+        var binaire_id = button.data('binaire_id')
 
 
         var modal = $(this)
@@ -400,6 +593,7 @@ Header
         var button = $(event.relatedTarget)
 
         var binaire_id = button.data('binaire_id')
+        var force_test_id = binaire_id;
 
 
         var modal = $(this)
@@ -407,18 +601,17 @@ Header
         modal.find('.modal-title').text('supprimer');
 
         modal.find('.modal-body #binaire_id').val(binaire_id);
+        modal.find('.modal-footer #force_question_id').val(force_test_id);
     });
 
 </script>
-
-
-
 
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 <!-- JavaScript Libraries -->
 <script src="{{asset('create-binaire/lib/jquery/jquery.min.js')}}"></script>
+
 <script src="{{asset('create-binaire/lib/jquery/jquery-migrate.min.js')}}"></script>
 <script src="{{asset('create-binaire/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('create-binaire/lib/easing/easing.min.js')}}"></script>

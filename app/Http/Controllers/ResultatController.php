@@ -152,7 +152,7 @@ class ResultatController extends Controller
             return view('resultat1.index', ['somme' => $somme, 'vrai' => $vrai, 'faux' => $faux, 'session' => $request->session_id]);
         } else {
             session()->flush();
-            return route("session.index");
+            return redirect()->route("session.index");
         }
     }
 

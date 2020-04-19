@@ -48,6 +48,183 @@
       Author: BootstrapMade.com
       License: https://bootstrapmade.com/license/
     ======================================================= -->
+    <style>
+        $
+        green: #2ecc71
+
+        ;
+        $
+        red: #e74c3c
+
+        ;
+        $
+        blue: #3498db
+
+        ;
+        $
+        yellow: #f1c40f
+
+        ;
+        $
+        purple: #8e44ad
+
+        ;
+        $
+        turquoise: #1abc9c
+
+        ;
+
+
+        h1 {
+            color: $ yellow;
+            font-size: 4rem;
+            text-transform: uppercase;
+            display: block;
+            width: 100%;
+            text-align: center;
+
+        @media screen and (max-width: 600px) {
+            font-size:
+
+        3rem
+
+        ;
+        }
+
+        }
+
+        p {
+            color: $ yellow;
+            font-size: 1.2rem;
+        / / text-transform: uppercase;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+
+        /
+        /
+        Basic Button Style
+        .btn {
+            box-sizing: border-box;
+            appearance: none;
+            background-color: transparent;
+            border: 2px solid $ red;
+            border-radius: 0.6em;
+            color: $ red;
+            cursor: pointer;
+            display: flex;
+            align-self: center;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1;
+            margin: 20px;
+            padding: 1.2em 2.8em;
+            text-decoration: none;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+
+        &
+        :hover,
+
+        &
+        :focus {
+            color: #fff;
+            outline: 0;
+        }
+
+        }
+
+        /
+        /
+        BUTTON
+
+        1
+        .first {
+            transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+
+        &
+        :hover {
+            box-shadow: 0 0 40px 40px $ red inset;
+        }
+
+        }
+
+        /
+        /
+        BUTTON
+
+        2
+        .second {
+            border-radius: 3em;
+            border-color: $ turquoise;
+            color: #fff;
+
+        background: {
+            image: linear-gradient(to right,
+            transparentize($ turquoise, 0.4),
+            transparentize($ turquoise, 0.4) 5%,
+            $ turquoise 5%,
+            $ turquoise 10%,
+            transparentize($ turquoise, 0.4) 10%,
+            transparentize($ turquoise, 0.4) 15%,
+            $ turquoise 15%,
+            $ turquoise 20%,
+            transparentize($ turquoise, 0.4) 20%,
+            transparentize($ turquoise, 0.4) 25%,
+            $ turquoise 25%,
+            $ turquoise 30%,
+            transparentize($ turquoise, 0.4) 30%,
+            transparentize($ turquoise, 0.4) 35%,
+            $ turquoise 35%,
+            $ turquoise 40%,
+            transparentize($ turquoise, 0.4) 40%,
+            transparentize($ turquoise, 0.4) 45%,
+            $ turquoise 45%,
+            $ turquoise 50%,
+            transparentize($ turquoise, 0.4) 50%,
+            transparentize($ turquoise, 0.4) 55%,
+            $ turquoise 55%,
+            $ turquoise 60%,
+            transparentize($ turquoise, 0.4) 60%,
+            transparentize($ turquoise, 0.4) 65%,
+            $ turquoise 65%,
+            $ turquoise 70%,
+            transparentize($ turquoise, 0.4) 70%,
+            transparentize($ turquoise, 0.4) 75%,
+            $ turquoise 75%,
+            $ turquoise 80%,
+            transparentize($ turquoise, 0.4) 80%,
+            transparentize($ turquoise, 0.4) 85%,
+            $ turquoise 85%,
+            $ turquoise 90%,
+            transparentize($ turquoise, 0.4) 90%,
+            transparentize($ turquoise, 0.4) 95%,
+            $ turquoise 95%,
+            $ turquoise 100%);
+            position: 0 0;
+            size: 100%;
+        }
+
+        transition: background
+
+        300
+        ms ease-in-out
+
+        ;
+
+        &
+        :hover {
+            background-position: 100px;
+        }
+
+        }
+
+    </style>
+    <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 </head>
 
 <body>
@@ -142,7 +319,8 @@ Header
             <section id="services">
                 <div class="container wow fadeIn">
                     <div class="section-header">
-
+                        <a class="btn btn-success" title="restaurer"
+                           data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
                     </div>
 
 
@@ -154,8 +332,8 @@ Header
                                 <div class="form-row">
                                     <div class="name" style="height: 1.25rem;line-height: 0rem;">Difficulté</div>
                                     <div class="value">
-                                        <div class="input-group" >
-                                            <select id="example-movie" name="difficulty" autocomplete="off" >
+                                        <div class="input-group">
+                                            <select id="example-movie" name="difficulty" autocomplete="off">
                                                 <option value="1">Trés facile</option>
                                                 <option value="2">Facile</option>
                                                 <option value="3" selected="selected">Moyenne</option>
@@ -172,7 +350,7 @@ Header
                                     <div class="name">Note</div>
                                     <div class="value">
                                         <div class="input-group">
-                                            <input type="number" name="note" >
+                                            <input type="number" name="note">
 
                                         </div>
                                     </div>
@@ -255,10 +433,14 @@ Header
                                             class="material-icons">&#xE254;</i></a>
                                     <a data-question_id="{{$qcm->question_id}}"
                                        data-toggle="modal"
-                                       data-target="#exampleModal-delete" class="delete" title="supprimer"><button><i
-                                            class="material-icons">&#xE872;</i></button></a>
-                                    <a href="option/qcm/{{$qcm->question_id}}" class="option" title="Les options"><button><i
-                                            class="material-icons">list</i></button></a>
+                                       data-target="#exampleModal-delete" class="delete" title="supprimer">
+                                        <button><i
+                                                class="material-icons">&#xE872;</i></button>
+                                    </a>
+                                    <a href="option/qcm/{{$qcm->question_id}}" class="option" title="Les options">
+                                        <button><i
+                                                class="material-icons">list</i></button>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -362,12 +544,54 @@ Header
 
                         <input type="hidden" name="question_id" id="question_id">
                         <p class="text-center" width="50px"> vous ete sûre que vous voulez supprimer cette question</p>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+
                     <button type="submit" class="btn btn-danger">supprimer</button>
+                    </form>
+                    <form action="{{action("QCMController@forceDelete")}}" method="POST">
+                        @csrf
+                        <input required type="hidden" name="force_question_id" id="force_question_id">
+                        <button type="submit" class="btn btn-danger">forcer la suppression</button>
+                    </form>
                 </div>
-                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Restore -->
+    <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Restaurer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @php
+                        $qcms = \App\QCM::onlyTrashed()->get();
+                    @endphp
+                    <form action="{{route("qcm.restore")}}" method="POST">
+                        @csrf
+                        @foreach($qcms as $qcm)
+                            <label style="font-size: 15px" class="switcher">{{$qcm->question_text}}
+                                <input type="checkbox" name="questions[{{$qcm->question_id}}]"
+                                       value="{{$qcm->question_id}}"/>
+                                <div class="switcher__indicator"></div>
+                            </label>
+                    @endforeach
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="restore" class="btn btn-success">Restore</button>
+                    <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -394,8 +618,7 @@ Header
         var note = button.data('note')
         var difficulty = button.data('difficulty')
         var test_id = button.data('test_id')
-        var question_id =  button.data('question_id')
-
+        var question_id = button.data('question_id')
 
         var modal = $(this)
 
@@ -413,12 +636,26 @@ Header
         var button = $(event.relatedTarget)
 
         var question_id = button.data('question_id')
+        var force_question_id = question_id;
 
         var modal = $(this)
 
         modal.find('.modal-title').text('supprimer');
 
         modal.find('.modal-body #question_id').val(question_id);
+        modal.find('.modal-footer #force_question_id').val(force_question_id);
+    });
+
+</script>
+
+<script>
+    $("#restore").click(function () {
+        $("#form").attr("action", "{{route("qcm.restore")}}");
+        $("form").submit();
+    });
+    $("#force-delete").click(function () {
+        $("#form").attr("action", "{{route("qcm.forceDelete")}}");
+        $("form").submit();
     });
 
 </script>

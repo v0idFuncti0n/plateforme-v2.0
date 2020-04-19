@@ -147,4 +147,40 @@ class BinaireController extends Controller
         $deletebinaire->delete();
         return redirect()->back();
     }
+
+    public function forceDelete(Request $request)
+    {
+        $test = binaire::query()->where('binaire_id', $request->force_question_id)->first();
+        $test->forceDelete();
+        return redirect()->back();
+    }
+
+    public function restoreBin(Request $request)
+    {
+        $question_ids = $request->questions;
+        if (!is_null($question_ids)) {
+            foreach ($question_ids as $question_id) {
+                binaire::withTrashed()->find($question_id)->restore();
+
+            }
+        }
+        return redirect()->back();
+    }
+
+    public function indexRestore()
+    {
+        return view('create-qcm.restore');
+    }
+
+    public function forceDeleteMass(Request $request)
+    {
+        $question_ids = $request->questions;
+        if (!is_null($question_ids)) {
+            foreach ($question_ids as $question_id) {
+                binaire::withTrashed()->find($question_id)->forceDelete();
+
+            }
+        }
+        return redirect()->back();
+    }
 }

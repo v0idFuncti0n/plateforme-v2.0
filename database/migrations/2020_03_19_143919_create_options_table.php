@@ -21,6 +21,7 @@ class CreateOptionsTable extends Migration
             $table->integer('point');
             $table->unsignedBigInteger('question_id')->nullable();
             $table->unsignedBigInteger('binaire_id')->nullable();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('question_id')->references('question_id')->on('qcm')->onDelete('cascade');

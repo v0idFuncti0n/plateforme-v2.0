@@ -105,4 +105,40 @@ class Text_libreController extends Controller
         $deletetextlibre->delete();
         return redirect()->back();
     }
+
+    public function forceDelete(Request $request)
+    {
+        $test = Text_libre::query()->where('question_id', $request->force_question_id)->first();
+        $test->forceDelete();
+        return redirect()->back();
+    }
+
+    public function restoreTextLibre(Request $request)
+    {
+        $question_ids = $request->questions;
+        if (!is_null($question_ids)) {
+            foreach ($question_ids as $question_id) {
+                Text_libre::withTrashed()->find($question_id)->restore();
+
+            }
+        }
+        return redirect()->back();
+    }
+
+    public function indexRestore()
+    {
+        return view('create-text-libre.restore');
+    }
+
+    public function forceDeleteMass(Request $request)
+    {
+        $question_ids = $request->questions;
+        if (!is_null($question_ids)) {
+            foreach ($question_ids as $question_id) {
+                Text_libre::withTrashed()->find($question_id)->forceDelete();
+
+            }
+        }
+        return redirect()->back();
+    }
 }

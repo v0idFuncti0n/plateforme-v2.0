@@ -132,6 +132,7 @@ class question extends Controller
         $type=$request->type;
         $test=test::find($request->test_id);
 
+
         $test2['test2'] =DB::table('test')->where('test_id','<>',$request->test_id)->where('matiere_id',$test->matiere_id)->where('professeur_id',$test->professeur_id)->get();
         $i=0;
         foreach($test2['test2'] as $test){

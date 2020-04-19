@@ -3,14 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class Option extends Model implements ToModel, WithHeadingRow
 {
+    use SoftDeletes;
     protected $table="option";
     protected $fillable=['option_text','point','question_id','binaire_id'];
     protected $primaryKey='option_id';
+    protected $dates = ['deleted_at'];
     //
     /**
      * @param array $row

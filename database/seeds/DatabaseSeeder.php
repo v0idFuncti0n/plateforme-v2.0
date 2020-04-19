@@ -16,6 +16,16 @@ class DatabaseSeeder extends Seeder
     {
         $faker = Faker::create();
         // $this->call(UsersTableSeeder::class);
+        DB::table('admin')->insert([
+            'cin' => 'IAHD',
+            'nom' => 'admin',
+            'prenom' => 'admin',
+            'username' => 'admin',
+            'email_address' => 'admin@admin.com',
+            'password' => 'admin',
+        ]);
+
+
         DB::table('departement')->insert(
             [
                 'nom' => 'Informatique',
@@ -24,6 +34,32 @@ class DatabaseSeeder extends Seeder
                 'date_fin' => \Carbon\Carbon::create('2020', '10', '3'),
             ]
         );
+        DB::table('module')->insert([
+            'nom_module' => 'Programming',
+
+        ]);
+
+        DB::table('matiere')->insert([
+            'nom_matiere' => 'C',
+            'volume_horaire' => 90,
+            'module_id' => 1,
+        ]);
+
+        DB::table('professeur')->insert([
+            'departement_id' => 1,
+            'cin' => 'CD502',
+            'nom' => 'prof',
+            'prenom' => 'prof',
+            'username' => 'prof',
+            'email' => 'prof@email.com',
+            'password' => 'prof',
+            'grade' => 2,
+        ]);
+
+        DB::table('matiere_prof')->insert([
+            'matiere_id' => 1,
+            'professeur_id' => 1,
+        ]);
 
         DB::table('filiere')->insert([
             'departement_id' => 1,

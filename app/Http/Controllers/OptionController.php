@@ -23,12 +23,14 @@ class OptionController extends Controller
 
     public function index1($binaire_id)
     {
-        $options['options']=DB::table('option')->where('binaire_id', $binaire_id)->get();
+        //$options['options']=DB::table('option')->where('binaire_id', $binaire_id)->get();
+        $options['options'] = Option::query()->where('binaire_id', $binaire_id)->get();
       return view('option.index',compact('options'));
     }
     public function index2($question_id)
     {
-        $options['options']=DB::table('option')->where('question_id', $question_id)->get();
+        //$options['options']=DB::table('option')->where('question_id', $question_id)->get();
+        $options['options'] = Option::query()->where('question_id', $question_id)->get();
         return view('option.indexQCM',compact('options'));
     }
 
@@ -120,13 +122,47 @@ class OptionController extends Controller
      */
     public function destroy(Request $option)
     {
-        $delete = $option->all();
-        $deleteoption = option::find($option->option_id);
+        $deleteoption = option::where('option_id',$option->option_id)->first();
         $deleteoption->delete();
         return redirect()->back();
     }
 
     public function import(Request $request){
 
+    }
+
+    public function forceDelete(Request $request)
+    {
+        $test = Option::query()->where('option_id', $request->force_option_id)->first();
+        $test->forceDelete();
+        return redirect()->back();
+    }
+
+    public function restoreOption(Request $request)
+    {
+        $option_ids = $request->options;
+        if (!is_null($option_ids)) {
+            foreach ($option_ids as $option_id) {
+                Option::withTrashed()->find($option_id)->restore();
+
+            }
+        }
+        return redirect()->back();
+    }
+
+    public function indexRestore()
+    {
+        return view('option.restore');
+    }
+
+    public function forceDeleteMass(Request $request)
+    {
+        $option_ids = $request->options;
+        if (!is_null($option_ids)) {
+            foreach ($option_ids as $option_id) {
+                Option::withTrashed()->find($option_id)->forceDelete();
+            }
+        }
+        return redirect()->back();
     }
 }

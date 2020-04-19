@@ -19,7 +19,7 @@ class CreateTestsTable extends Migration
             $table->double('note');
             $table->string('duree');
             $table->string('salle');
-            $table->date('date');
+            $table->dateTime('date');
             $table->string('discription');
             $table->unsignedBigInteger('matiere_id');
             $table->unsignedBigInteger('professeur_id');
@@ -29,6 +29,7 @@ class CreateTestsTable extends Migration
             $table->integer('d4');
             $table->integer('d5');
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('professeur_id')->references('professeur_id')->on('professeur')->onDelete('cascade');
             $table->foreign('matiere_id')->references('matiere_id')->on('matiere')->onDelete('cascade');
 

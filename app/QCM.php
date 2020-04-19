@@ -5,12 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class QCM extends Model implements ToModel, WithHeadingRow
 {
+    use SoftDeletes;
+
     protected $table="qcm";
     protected $fillable=['test_id','question_text','note','difficulty'];
     protected $primaryKey='question_id';
+    protected $dates = ['deleted_at'];
 
     /**
      * @param array $row
@@ -34,5 +38,20 @@ class QCM extends Model implements ToModel, WithHeadingRow
     }
     public function test(){
         return $this->belongsTo('App\Test','test_id','test_id');
+    }
+
+
+    public static function boot ()
+    {
+        parent::boot();
+
+        self::deleting(function (QCM $q) {
+
+            foreach ($q->options as $o)
+            {
+                $o->delete();
+            }
+
+        });
     }
 }

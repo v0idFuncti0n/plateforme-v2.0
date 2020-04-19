@@ -194,7 +194,7 @@ class TestController extends Controller
         $deletetest = Test::find($test->test_id);
         $profid = Professeur::findOrFail($deletetest->professeur_id)->first();
         $deletetest->delete();
-        return redirect()->route('create-test.index', $profid);
+        return redirect()->back();
     }
 
     public function import(Request $request)
@@ -315,5 +315,43 @@ class TestController extends Controller
         return redirect()->back();
     }
 
+    public function forceDelete($test_id)
+    {
+        $test = Test::query()->where('test_id', $test_id)->first();
+        $test->forceDelete();
+        return redirect()->back();
+    }
 
+    public function restoreTest(Request $request)
+    {
+        $test_ids = $request->tests;
+        //$test_ids = array_values($request->tests);
+        //return $test_ids;
+        if (!is_null($test_ids)) {
+            foreach ($test_ids as $test_id) {
+                Test::withTrashed()->find($test_id)->restore();
+                //echo $test_id. " ";
+            }
+        }
+        return redirect()->back();
+    }
+
+    public function indexRestore()
+    {
+        return view('create-test.restore');
+    }
+
+    public function forceDeleteMass(Request $request)
+    {
+        $test_ids = $request->tests;
+        //$test_ids = array_values($request->tests);
+        //return $test_ids;
+        if (!is_null($test_ids)) {
+            foreach ($test_ids as $test_id) {
+                Test::withTrashed()->find($test_id)->forceDelete();
+                //echo $test_id. " ";
+            }
+        }
+        return redirect()->back();
+    }
 }

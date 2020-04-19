@@ -869,7 +869,7 @@ for ($b = 0; $b < $j; $b++) {
                                         @elseif($page === ($cou-1))
                                             <a class="btn-back">back</a>
                                             <input type="hidden" name="test_id" value="{{$test1}}">
-                                            <a class="btn-last" href="javascript:$('form').submit()">Submit</a>
+                                            <button class="btn-last" type="button" onclick="getHTML();">Submit</button>
                                         @else
                                             <a class="btn-back">back</a>
                                             <a class="btn-next">next</a>
@@ -906,7 +906,7 @@ for ($b = 0; $b < $j; $b++) {
                                             @elseif($page === ($cou-1))
                                                 <a class="btn-back" >back</a>
                                                 <input type="hidden" name="test_id" value="{{$test1}}">
-                                                <a class="btn-last" href="javascript:$('form').submit()">Submit</a>
+                                                <button class="btn-last" type="submit" onclick="getHTML()">Submit</button>
                                             @else
                                                 <a class="btn-back" >back</a>
                                                 <a class="btn-next" >next</a>
@@ -931,9 +931,9 @@ for ($b = 0; $b < $j; $b++) {
 </div>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 <script>
-    window.addEventListener("beforeunload", function (event) {
+    /*window.addEventListener("beforeunload", function (event) {
         event.returnValue = "Your custom message.";
-    });
+    });*/
 </script>
 <script>
     var container = [];
@@ -975,6 +975,7 @@ for ($b = 0; $b < $j; $b++) {
         $j++;
     @endphp
     @endwhile
+
     function getHTML() {
         var element = document.querySelectorAll(".ql-editor");
         var i = 0;
@@ -984,9 +985,10 @@ for ($b = 0; $b < $j; $b++) {
             i++;
         }
         var form = document.getElementById("form"); // get form by ID
-        form.onsubmit = function () { // onsubmit do this first
+        form.onsubmit = function () {// onsubmit do this first
             return true; // submit form
         }
+
     }
 
 </script>

@@ -48,6 +48,135 @@
       Author: BootstrapMade.com
       License: https://bootstrapmade.com/license/
       ======================================================= -->
+
+    <style>
+        $green: #2ecc71;
+        $red: #e74c3c;
+        $blue: #3498db;
+        $yellow: #f1c40f;
+        $purple: #8e44ad;
+        $turquoise: #1abc9c;
+
+
+        h1 {
+            color: $yellow;
+            font-size: 4rem;
+            text-transform: uppercase;
+            display: block;
+            width: 100%;
+            text-align: center;
+
+        @media screen and (max-width: 600px) {
+            font-size: 3rem;
+        }
+        }
+
+        p {
+            color: $yellow;
+            font-size: 1.2rem;
+        // text-transform: uppercase;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+
+        // Basic Button Style
+           .btn {
+               box-sizing: border-box;
+               appearance: none;
+               background-color: transparent;
+               border: 2px solid $red;
+               border-radius: 0.6em;
+               color: $red;
+               cursor: pointer;
+               display: flex;
+               align-self: center;
+               font-size: 1rem;
+               font-weight: 400;
+               line-height: 1;
+               margin: 20px;
+               padding: 1.2em 2.8em;
+               text-decoration: none;
+               text-align: center;
+               text-transform: uppercase;
+               font-family: 'Montserrat', sans-serif;
+               font-weight: 700;
+
+        &:hover,
+        &:focus {
+             color: #fff;
+             outline: 0;
+         }
+        }
+
+        //BUTTON 1
+        .first {
+            transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+        &:hover {
+             box-shadow: 0 0 40px 40px $red inset;
+         }
+        }
+
+        //BUTTON 2
+        .second {
+            border-radius: 3em;
+            border-color: $turquoise;
+            color: #fff;
+        background: {
+            image: linear-gradient(to right,
+            transparentize($turquoise, 0.4),
+            transparentize($turquoise, 0.4) 5%,
+            $turquoise 5%,
+            $turquoise 10%,
+            transparentize($turquoise, 0.4) 10%,
+            transparentize($turquoise, 0.4) 15%,
+            $turquoise 15%,
+            $turquoise 20%,
+            transparentize($turquoise, 0.4) 20%,
+            transparentize($turquoise, 0.4) 25%,
+            $turquoise 25%,
+            $turquoise 30%,
+            transparentize($turquoise, 0.4) 30%,
+            transparentize($turquoise, 0.4) 35%,
+            $turquoise 35%,
+            $turquoise 40%,
+            transparentize($turquoise, 0.4) 40%,
+            transparentize($turquoise, 0.4) 45%,
+            $turquoise 45%,
+            $turquoise 50%,
+            transparentize($turquoise, 0.4) 50%,
+            transparentize($turquoise, 0.4) 55%,
+            $turquoise 55%,
+            $turquoise 60%,
+            transparentize($turquoise, 0.4) 60%,
+            transparentize($turquoise, 0.4) 65%,
+            $turquoise 65%,
+            $turquoise 70%,
+            transparentize($turquoise, 0.4) 70%,
+            transparentize($turquoise, 0.4) 75%,
+            $turquoise 75%,
+            $turquoise 80%,
+            transparentize($turquoise, 0.4) 80%,
+            transparentize($turquoise, 0.4) 85%,
+            $turquoise 85%,
+            $turquoise 90%,
+            transparentize($turquoise, 0.4) 90%,
+            transparentize($turquoise, 0.4) 95%,
+            $turquoise 95%,
+            $turquoise 100%);
+            position: 0 0;
+            size: 100%;
+        }
+        transition: background 300ms ease-in-out;
+
+        &:hover {
+             background-position: 100px;
+         }
+        }
+
+    </style>
+    <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 </head>
 
 <body>
@@ -113,7 +242,10 @@ Header
             </div>
             <div style="text-align: center"><a href="{{route("create-test.index",$prof->professeur_id)}}">
                     <button class="btn btn-primary"><i class="fa fa-plus"></i></button>
-                </a></div>
+                </a>
+                <a class="btn btn-success" title="restaurer"
+                   data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
+            </div>
 
             <div class="table-wrapper">
                 <table class="table table-bordered" id="myTable">
@@ -130,7 +262,8 @@ Header
                     <?php
                     use App\Matiere;
                     use App\Matiere_prof;
-                    $tests = DB::table('test')->where('professeur_id', '=', $prof->professeur_id)->get();
+                    //$tests = DB::table('test')->where('professeur_id', '=', $prof->professeur_id)->get();
+                    $tests = App\Test::withoutTrashed()->get();
                     $key = 0;
                     ?>
                     @foreach($tests as $test)
@@ -145,7 +278,9 @@ Header
                         <tr>
                             <td>{{++$key}}</td>
                             <td>{{$test->nom}}</td>
-                            <td><a href="/reponses/{{$test->test_id}}"><button type="button" class="btn btn-primary">Reponses</button></a></td>
+                            <td><a href="/reponses/{{$test->test_id}}">
+                                    <button type="button" class="btn btn-primary">Reponses</button>
+                                </a></td>
                             <td>
                                 <div style="text-align:center;">
 
@@ -192,6 +327,8 @@ Header
                                 <a href="{{route('note.pdf',$test->test_id)}}" class="view" title="exporter les notes"
                                    data-toggle="tooltip"><i
                                         class="material-icons">input</i></a>
+
+
                             </td>
                         </tr>
                     @endforeach
@@ -202,7 +339,7 @@ Header
     </section><!-- #portfolio -->
     <?php
     if(isset($test)){
-        ?>
+    ?>
     <section id="service">
 
         <div class="modal1">
@@ -217,6 +354,7 @@ Header
                         <div class="contental">
                             <form action="{{action('question@RandomStoring')}}" method="POST">
                                 @csrf
+                                <input type="hidden" name="test_id" id="test_id" value="{{$test->test_id}}">
                                 <div class="form__group field " style="margin-left: 150px">
                                     <input type="number" class="form__field" placeholder="question" name="nombre"
                                            id='nombre' min="1"/>
@@ -257,16 +395,16 @@ Header
 
                         @php
 
-                                $matiere_idd = $test->matiere_id;
-                                $professeur_idd = $test->professeur_id;
-                                $testss = DB::table('test')->where('matiere_id', $matiere_idd)->where('professeur_id', $professeur_idd)->get();
-                                $count = 0;
-                                foreach ($testss as $t){
-                                $countqcm = \App\QCM::query()->where('test_id','=',$t->test_id)->count();
-                                $countbin = \App\binaire::query()->where('test_id','=',$t->test_id)->count();
-                                $counttext = \App\Text_libre::query()->where('test_id','=',$t->test_id)->count();
-                                $count = $countqcm + $countbin + $counttext;
-                        }
+                            $matiere_idd = $test->matiere_id;
+                            $professeur_idd = $test->professeur_id;
+                            $testss = DB::table('test')->where('matiere_id', $matiere_idd)->where('professeur_id', $professeur_idd)->get();
+                            $count = 0;
+                            foreach ($testss as $t){
+                            $countqcm = \App\QCM::query()->where('test_id','=',$t->test_id)->count();
+                            $countbin = \App\binaire::query()->where('test_id','=',$t->test_id)->count();
+                            $counttext = \App\Text_libre::query()->where('test_id','=',$t->test_id)->count();
+                            $count = $countqcm + $countbin + $counttext;
+                    }
                         @endphp
                         <br>
                         <a href="/select-question/{{$test->test_id}}">
@@ -377,15 +515,13 @@ Header
                         <br>
                         <label>
                             Date
-                            <input type="date" name="date" id="date"
+                            <input type="datetime-local" name="date" id="date"
                                    class="form-control" required>
                         </label>
                         <br>
                         <label>
                             Matiere
                             <?php
-
-
                             $id = [];
                             $i = 0;
                             $mtrs = DB::table('matiere_prof')->where('professeur_id', $prof->professeur_id)->get();?>
@@ -463,24 +599,53 @@ Header
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
                     <button type="submit" class="btn btn-danger">supprimer</button>
+                    </form>
+                    <form action="{{action("TestController@forceDelete",['test_id'=>$test->test_id])}}" method="POST">
+                        @csrf
+                        <input required type="hidden" name="force_test_id" id="force_test_id">
+                        <button type="submit" class="btn btn-danger">forcer la suppression</button>
+                    </form>
                 </div>
-                </form>
+
             </div>
         </div>
     </div>
-    <?php }?>
+<?php }?>
+<!-- Modal Restore -->
+    <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Restaurer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @php
+                        $tests = \App\Test::onlyTrashed()->get();
+                    @endphp
+                    <form action="{{route("test.restore")}}" method="POST">
+                        @csrf
+                        @foreach($tests as $test)
+                            <label style="font-size: 15px" class="switcher">
+                                {{$test->nom}}
+                                <input type="checkbox" name="tests[{{$test->test_id}}]" value="{{$test->test_id}}"/>
+                                <div class="switcher__indicator"></div>
+                            </label>
+                    @endforeach
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="restore" class="btn btn-success">Restore</button>
+                    <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 
-<script type="text/javascript"
-        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#myTable').DataTable();
-    });
-    $('#myTable').DataTable({
-        responsive: true
-    });
-</script>
 
 <script>
     $('#exampleModal-edit').on('show.bs.modal', function (event) {
@@ -493,7 +658,7 @@ Header
         var salle = button.data('salle')
         var date = button.data('date')
         var discription = button.data('discription')
-        var matier_id = button.data('matier_id')
+        var matiere_id = button.data('matiere_id')
         var d1 = button.data('d1')
         var d2 = button.data('d2')
         var d3 = button.data('d3')
@@ -515,6 +680,7 @@ Header
         modal.find('.modal-body #d3').val(d3);
         modal.find('.modal-body #d4').val(d4);
         modal.find('.modal-body #d5').val(d5);
+        modal.find('.modal-body #matiere_id').val(matiere_id);
     });
 
     $('#exampleModal-delete').on('show.bs.modal', function (event) {
@@ -522,12 +688,17 @@ Header
         var button = $(event.relatedTarget)
 
         var test_id = button.data('test_id')
+        var force_test_id = test_id;
 
-        var modal = $(this)
+
+        var modal = $(this);
 
         modal.find('.modal-title').text('delete STUDENT INFORMATION');
 
         modal.find('.modal-body #test_id').val(test_id);
+        modal.find('.modal-footer #force_test_id').val(force_test_id);
+        //alert(document.getElementById('force_test_id').value);
+
     });
 </script>
 <script>
@@ -671,3 +842,26 @@ Header
 
 
 </script>
+
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+    $('#myTable').DataTable({
+        responsive: true
+    });
+</script>
+<script>
+    $("#restore").click(function () {
+        $(this).closest("form").attr("action", "{{route("test.restore")}}");
+        $("form").submit();
+    });
+    $("#force-delete").click(function () {
+        $(this).closest("form").attr("action", "{{route("test.forceDelete")}}");
+        $("form").submit();
+    });
+</script>
+
+
