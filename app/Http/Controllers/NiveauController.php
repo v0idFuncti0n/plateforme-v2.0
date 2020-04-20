@@ -29,7 +29,11 @@ class NiveauController extends Controller
     {
         //
     }
-
+    public function restore(Request $request){
+  
+        niveau::withTrashed()->whereIn('niveau_id',(array_values($request->input('niveau'))) )->restore();
+      return redirect()->back();
+  }
     /**
      * Store a newly created resource in storage.
      *
@@ -93,10 +97,16 @@ class NiveauController extends Controller
      */
     public function destroy(Request $niveau)
     {
-        $delete = $niveau->all();
-        $deleteniveau = Niveau::findOrfail($niveau->niveau_id);
-        $deleteniveau->delete();
-        return redirect()->route('niveau.index');
+      
+
+        if($niveau->but=='no'){ 
+            $delete = $niveau->all();
+            $deleteniveau = Niveau::findOrfail($niveau->niveau_id);
+            $deleteniveau->delete();
+            return redirect()->route('niveau.index');}
+            if($niveau->but=='dif'){ 
+                niveau::find($niveau->niveau_id)->forceDelete();
+                return redirect()->route('niveau.index');}
     }
 
     public function import(Request $request){

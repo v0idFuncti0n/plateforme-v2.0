@@ -66,6 +66,12 @@ class EtudiantController extends Controller
         //
     }
 
+    public function restore(Request $request){
+  
+        etudiant::withTrashed()->whereIn('etudiant_id',(array_values($request->input('etd'))) )->restore();
+      return redirect()->back();
+  }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -112,10 +118,17 @@ class EtudiantController extends Controller
     public function destroy(Request $etudiant)
     {
         //
-        $delete = $etudiant->all();
-        $deleteetudiant = Etudiant::findOrfail($etudiant->id);
-        $deleteetudiant->delete();
-        return redirect()->route('etudiant.index');
+      
+
+
+        if($etudiant->but=='no'){ 
+            $delete = $etudiant->all();
+            $deleteetudiant = Etudiant::findOrfail($etudiant->id);
+            $deleteetudiant->delete();
+            return redirect()->route('etudiant.index');}
+            if($etudiant->but=='dif'){ 
+                etudiant::find($etudiant->id)->forceDelete();
+                return redirect()->route('etudiant.index');}
     }
     public function import(Request $request){
         Excel::import(new Etudiant,request()->file('file'));

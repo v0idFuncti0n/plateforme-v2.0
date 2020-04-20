@@ -52,7 +52,14 @@ class DepartementController extends Controller
         departement::create($departement);
         return redirect()->route('departement.index');
     }
-
+    public function remove(Request $request){
+       departement::find($request->departement_id)->forceDelete();
+    }
+public function restore(Request $request){
+  
+      departement::withTrashed()->whereIn('departement_id',(array_values($request->input('dep'))) )->restore();
+    return redirect()->back();
+}
     /**
      * Display the specified resource.
      *
@@ -123,11 +130,14 @@ class DepartementController extends Controller
      */
     public function destroy(Request $departement)
     {
-
+if($departement->but=='no'){ 
         $delete = $departement->all();
         $deletedepartement = Departement::findOrfail($departement->departement_id);
         $deletedepartement->delete();
-        return redirect()->route('departement.index');
+        return redirect()->route('departement.index');}
+        if($departement->but=='dif'){ 
+            departement::find($departement->departement_id)->forceDelete();
+            return redirect()->route('departement.index');}
     }
 
     public function import(Request $request){

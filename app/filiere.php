@@ -5,9 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class filiere extends Model implements ToModel, WithHeadingRow
 {
+    use SoftDeletes;
+
     protected $table = "filiere";
 
     protected $fillable = ['nom', 'coordinateur', 'datedebut', 'datefin', 'departement_id'];
@@ -36,5 +39,9 @@ class filiere extends Model implements ToModel, WithHeadingRow
 
     public function module(){
         return $this->belongsToMany('App\Module','filiere_module','filiere_id','module_id');
+    }
+    public function departement()
+    {
+        return $this->belongsTo('App\Departement','departement_id');
     }
 }

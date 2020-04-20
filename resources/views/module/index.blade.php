@@ -40,6 +40,7 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
 
+    <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 
 </head>
 
@@ -232,6 +233,7 @@
                     </div>
 
                 </div>
+                <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
                 <!-- Modal add -->
                 <div class="modal fade-right" id="exampleModal" tabindex="-1" role="dialog"
@@ -353,15 +355,64 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                                <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
 
-                                <button type="submit" class="btn btn-danger">supprimer</button>
-                            </div>
+                                <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
+                                             </div>
                             </form>
                         </div>
                     </div>
                 </div>
+            
+            
+            
+                  <!-- restore data -->
+                 
+                  <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                 <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
+                         </div>
+                         <div class="modal-body">
+
+                         <form action="{{action('ModuleController@restore')}}" method="POST">
+                                 @csrf
+                               <?php $modules['modules'] = App\module::onlyTrashed()->get();?>
+                            
+                           @foreach($modules['modules'] as $module)
+
+                                 <label class="switcher" style="margin-left:10px;">
+                                <input name="module[]" type="checkbox" value="{{$module->module_id}}"/>
+                                     <div class="switcher__indicator"></div>
+                                     <span style="font-size: 15px; color:black;">{{$module->nom_module}}</span>
+                                 </label><br>
+                                 <br>
+
+                            @endforeach
+
+ 
+
+                         </div>
+                         <div class="modal-footer">
+                             <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+
+                             <button type="submit" class="btn btn-danger">restaurer</button>
+                         </div>
+                         </form>
+                     </div>
+                 </div>
+             </div>
+            
+            
+            
             </div>
+
+
         </div>
         <div>
 

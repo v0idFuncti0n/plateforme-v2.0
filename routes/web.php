@@ -52,6 +52,13 @@ Route::get ('result','ResultatController@test');
 Route::get('test','TestController@index1');
 Route::Resource('create-qcm','QCMController');
 Route::get('create-question1/{test_id}','question@index2');
+Route::Post('restore','DepartementController@restore');
+Route::Post('restorefiliere','FiliereController@restore');
+Route::Post('restoreEtudiant','EtudiantController@restore');
+Route::Post('restoreNiveau','NiveauController@restore');
+Route::Post('restoreProfesseur','ProfesseurController@restore');
+Route::Post('restoreModule','ModuleController@restore');
+Route::Post('restoreMatiere','MatiereController@restore');
 
 Route::Resource('create-question','question');
 Route::Resource('create-binaire','BinaireController');
@@ -62,6 +69,7 @@ Route::get('create-qcm','QCMController@index1');
 Route::get('create-qcm','QCMController@index1');
 Route::get('select-question/{test_id}','question@select');
 Route::Post('StoreSelected','question@StoreSelected');
+Route::Post('rmv','departementController@remove');
 
 Route::get('/session_pdf/{test}','TestController@export_pdf')->name('test.pdf');
 Route::get('/note_pdf/{test}','TestController@note_export_pdf')->name('note.pdf');

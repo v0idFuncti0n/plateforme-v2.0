@@ -39,6 +39,7 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
 
+    <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 
 </head>
 
@@ -225,6 +226,7 @@
                                                     <a data-departement_id="{{$departement->departement_id}}"
                                                        data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
+                                                     
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -277,7 +279,8 @@
                     </div>
 
                 </div>
-
+                <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
+                
                 <!-- Modal add -->
                 <div class="modal fade-right" id="exampleModal" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -427,14 +430,60 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                                <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
 
-                                <button type="submit" class="btn btn-danger">supprimer</button>
-                            </div>
+                                <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
+                                             </div>
                             </form>
+                           
                         </div>
                     </div>
                 </div>
+
+
+
+
+                  <!-- restore data -->
+                 
+                  <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                 <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
+                         </div>
+                         <div class="modal-body">
+
+                         <form action="{{action('DepartementController@restore')}}" method="POST">
+                                 @csrf
+                               <?php $deps['deps'] = App\departement::onlyTrashed()->get();?>
+                            
+                           @foreach($deps['deps'] as $departemen)
+
+                                 <label class="switcher" style="margin-left:10px;">
+                                <input name="dep[]" type="checkbox" value="{{$departemen->departement_id}}"/>
+                                     <div class="switcher__indicator"></div>
+                                     <span style="font-size: 15px; color:black;">{{$departemen->nom}}</span>
+                                 </label><br>
+                                 <br>
+
+                            @endforeach
+
+ 
+
+                         </div>
+                         <div class="modal-footer">
+                             <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+
+                             <button type="submit" class="btn btn-danger">restaurer</button>
+                         </div>
+                         </form>
+                     </div>
+                 </div>
+             </div>
 
 
             </div>
@@ -464,6 +513,16 @@
         modal.find('.modal-body #date_fin').val(date_fin);
         modal.find('.modal-body #departement_id').val(departement_id);
     });
+
+
+
+    $('#exampleModal-restore').on('show.bs.modal', function (event) {
+        var modal = $(this)
+
+
+});
+
+
 
 
     $('#exampleModal-delete').on('show.bs.modal', function (event) {
