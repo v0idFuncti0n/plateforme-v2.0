@@ -288,6 +288,10 @@ Header
     <!--==========================
       Services Section
     ============================-->
+    <div class="section-header">
+        <a class="btn btn-success" title="restaurer"
+           data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
+    </div>
     <div class="container d-flex align-items-stretch" style="margin-left: 0rem;">
         <nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">
             <div class="p-4">
@@ -455,6 +459,7 @@ Header
             </div>
         </div>
     </div>
+</main>
 
     <!-- Modal Restore -->
     <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
@@ -474,7 +479,7 @@ Header
                     <form id="form" action="{{route("option.restore")}}" method="POST">
                         @csrf
                         @foreach($options as $option)
-                            <label class="switcher" style="font-size: 15px">
+                            <label class="switcher">
                                 {{$option->option_text}}
                                 <input type="checkbox" name="options[{{$option->option_id}}]"
                                        value="{{$option->option_id}}"/>

@@ -305,40 +305,39 @@ Header
             </div>
         </div>
     </div>
-    <!-- Modal Restore -->
-    <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Restaurer</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    @php
-                        $text_libres = \App\Text_libre::onlyTrashed()->get();
-                    @endphp
-                    <form id="form" action="{{route("text-libre.restore")}}" method="POST">
-                        @csrf
-                        @foreach($text_libres as $text_libre)
-                            <label for="questions[{{$text_libre->question_id}}]">{{$text_libre->question_text}}</label>
-                            <input type="checkbox" name="questions[{{$text_libre->question_id}}]" value="{{$text_libre->question_id}}"/>
-                        @endforeach
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="restore" class="btn btn-success">Restore</button>
-                    <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
 
     </section><!-- #services -->
-
+        <!-- Modal Restore -->
+        <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Restaurer</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @php
+                            $text_libres = \App\Text_libre::onlyTrashed()->get();
+                        @endphp
+                        <form id="form" action="{{route("text-libre.restore")}}" method="POST">
+                            @csrf
+                            @foreach($text_libres as $text_libre)
+                                <label for="questions[{{$text_libre->question_id}}]">{{$text_libre->question_text}}</label>
+                                <input type="checkbox" name="questions[{{$text_libre->question_id}}]" value="{{$text_libre->question_id}}"/>
+                        @endforeach
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="restore" class="btn btn-success">Restore</button>
+                        <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 

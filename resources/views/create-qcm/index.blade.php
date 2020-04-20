@@ -543,6 +543,10 @@ Header
         </div>
     </div>
 
+
+    </div>
+
+    </section><!-- #services -->
     <!-- Modal Restore -->
     <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -577,10 +581,6 @@ Header
             </div>
         </div>
     </div>
-    </div>
-
-    </section><!-- #services -->
-
 
     </div>
 
@@ -592,6 +592,7 @@ Header
 <!--==========================
   Footer
 ============================-->
+
 <script>
     $('#exampleModal-edit').on('show.bs.modal', function (event) {
 

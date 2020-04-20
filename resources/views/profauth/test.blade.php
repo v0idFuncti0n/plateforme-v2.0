@@ -231,12 +231,6 @@ Header
                         <div class="col-sm-4">
                             <div class="show-entries">
                                 <span>Show</span>
-                                <select>
-                                    <option>5</option>
-                                    <option>10</option>
-                                    <option>15</option>
-                                    <option>20</option>
-                                </select>
                                 <span>entries</span>
                             </div>
                         </div>
@@ -245,14 +239,13 @@ Header
                         <div class="col-sm-4">
                             <div class="search-box">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-                                    <input type="text" class="form-control" placeholder="Search&hellip;">
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered">
+                <table id="myTable" class="table table-bordered">
                     <thead>
                     <tr>
                         <th>#</th>
@@ -334,18 +327,6 @@ Header
                     @endforeach
                     </tbody>
                 </table>
-                <div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#">Previous</a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </section><!-- #portfolio -->
@@ -669,7 +650,6 @@ Header
         </div>
         </div>
     </div>
-    <?php }?>
 </main>
 
 
