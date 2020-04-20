@@ -40,7 +40,6 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
 
-    <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 
 </head>
 
@@ -222,7 +221,7 @@
                                                        data-volume_horaire="{{$matiere->volume_horaire}}"
                                                        data-toggle="modal"
                                                        data-target="#exampleModal-edit" type="button"
-                                                       class="btn btn-warning btn-sm">modifier</a>
+                                                       class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
                                                     <a data-matiere_id="{{$matiere->matiere_id}}" data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
                                                 </td>
@@ -239,7 +238,6 @@
                     </div>
 
                 </div>
-                <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
                 <!-- Modal add -->
                 <div class="modal fade-right" id="exampleModal" tabindex="-1" role="dialog"
@@ -277,10 +275,11 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <br>
                                     <div class="form-group">
                                         <label for="professeur_id" style="color:#c21db7;">Professeur</label>
                                         <?php $professeur = \App\Professeur::all()?>
-                                        <select name="professeur_id" size="1">
+                                        <select name="professeur_id" id="professeur_id" class="form-control" size="3">
                                             @foreach($professeur as $p)
                                                 <option value={{$p->professeur_id}}>{{$p->nom}}</option>
                                             @endforeach
@@ -389,61 +388,57 @@
 
                             </div>
                             <div class="modal-footer">
-                                
+
                                 <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
 
                                 <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
-                                             </div>
                             </div>
                             </form>
                         </div>
                     </div>
                 </div>
 
-                
+                    <!-- restore data -->
 
-                  <!-- restore data -->
-                 
-                  <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
-                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                 <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-                     <div class="modal-content">
-                         <div class="modal-header">
-                             <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                 <span aria-hidden="true">&times;</span>
-                             </button>
-                         </div>
-                         <div class="modal-body">
+                    <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
 
-                         <form action="{{action('MatiereController@restore')}}" method="POST">
-                                 @csrf
-                               <?php $matieres['matieres'] = App\matiere::onlyTrashed()->get();?>
-                            
-                           @foreach($matieres['matieres'] as $matiere)
+                                    <form action="{{action('MatiereController@restore')}}" method="POST">
+                                        @csrf
+                                        <?php $matieres['matieres'] = App\matiere::onlyTrashed()->get();?>
 
-                                 <label class="switcher" style="margin-left:10px;">
-                                <input name="matiere[]" type="checkbox" value="{{$matiere->matiere_id}}"/>
-                                     <div class="switcher__indicator"></div>
-                                     <span style="font-size: 15px; color:black;">{{$matiere->nom_matiere}}</span>
-                                 </label><br>
-                                 <br>
+                                        @foreach($matieres['matieres'] as $matiere)
 
-                            @endforeach
+                                            <label class="switcher" style="margin-left:10px;">
+                                                <input name="matiere[]" type="checkbox" value="{{$matiere->matiere_id}}"/>
+                                                <div class="switcher__indicator"></div>
+                                                <span style="font-size: 15px; color:black;">{{$matiere->nom_matiere}}</span>
+                                            </label><br>
+                                            <br>
 
- 
+                                    @endforeach
 
-                         </div>
-                         <div class="modal-footer">
-                             <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
-                             <button type="submit" class="btn btn-danger">restaurer</button>
-                         </div>
-                         </form>
-                     </div>
-                 </div>
-             </div>
 
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+
+                                    <button type="submit" class="btn btn-danger">restaurer</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
 
             </div>
@@ -483,7 +478,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('delete STUDENT INFORMATION');
+        modal.find('.modal-title').text('Supprimer matiére');
 
         modal.find('.modal-body #matiere_id').val(matiere_id);
     });

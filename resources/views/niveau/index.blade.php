@@ -39,9 +39,17 @@
     <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
-
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 
+    <style>
+        input[type="file"]{
+            height:40px;
+        }
+
+        input[type="file"]::-webkit-file-upload-button{
+            height:40px;
+        }
+    </style>
 </head>
 
 <body class="dark-edition">
@@ -225,7 +233,7 @@
                     </div>
 
                 </div>
-                
+
                 <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
                 <!-- Modal add -->
@@ -279,7 +287,7 @@
                                     @method('PUT')
                                     <div class="form-group">
 
-                                        <label for="">nom</label>
+                                        <label for="nom" style="color:#c21db7;">nom</label>
 
                                         <input required type="text" style="color:black;" id="nom" name="nom" class="form-control"
                                                pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" placeholder="nom de niveau">
@@ -331,49 +339,47 @@
                     </div>
                 </div>
 
+                <!-- restore data -->
 
-                  <!-- restore data -->
-                 
-                  <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
-                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                 <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-                     <div class="modal-content">
-                         <div class="modal-header">
-                             <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                 <span aria-hidden="true">&times;</span>
-                             </button>
-                         </div>
-                         <div class="modal-body">
+                <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
 
-                         <form action="{{action('NiveauController@restore')}}" method="POST">
-                                 @csrf
-                               <?php $niveaux['niveaux'] = App\niveau::onlyTrashed()->get();?>
-                            
-                           @foreach($niveaux['niveaux'] as $niveau)
+                                <form action="{{action('NiveauController@restore')}}" method="POST">
+                                    @csrf
+                                    <?php $niveaux['niveaux'] = App\niveau::onlyTrashed()->get();?>
 
-                                 <label class="switcher" style="margin-left:10px;">
-                                <input name="niveau[]" type="checkbox" value="{{$niveau->niveau_id}}"/>
-                                     <div class="switcher__indicator"></div>
-                                     <span style="font-size: 15px; color:black;">{{$niveau->nom}}</span>
-                                 </label><br>
-                                 <br>
+                                    @foreach($niveaux['niveaux'] as $niveau)
 
-                            @endforeach
+                                        <label class="switcher" style="margin-left:10px;">
+                                            <input name="niveau[]" type="checkbox" value="{{$niveau->niveau_id}}"/>
+                                            <div class="switcher__indicator"></div>
+                                            <span style="font-size: 15px; color:black;">{{$niveau->nom}}</span>
+                                        </label><br>
+                                        <br>
 
- 
+                                @endforeach
 
-                         </div>
-                         <div class="modal-footer">
-                             <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
-                             <button type="submit" class="btn btn-danger">restaurer</button>
-                         </div>
-                         </form>
-                     </div>
-                 </div>
-             </div>
 
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+
+                                <button type="submit" class="btn btn-danger">restaurer</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 

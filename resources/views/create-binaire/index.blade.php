@@ -59,36 +59,18 @@ Header
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="/create-binaire/img/logo.png" alt="" title=""/></a>
+            <a href="#hero"><img src="{{asset('img/logo.png')}}" alt="" title=""/></a>
             <!-- Uncomment below if you prefer to use a text logo -->
             <!--<h1><a href="#hero">Regna</a></h1>-->
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#hero">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#team">Team</a></li>
-                <li class="menu-has-children"><a href="">Drop Down</a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="menu-has-children"><a href="#">Drop Down 2</a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                        <li><a href="#">Drop Down 5</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li ><a href="test" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Déconnexion</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
@@ -107,11 +89,11 @@ Header
       Services Section
     ============================-->
     <div class="container d-flex align-items-stretch" style="margin-left: 0rem;">
-        <nav id="sidebar" class="img" style="background-image: url(/public/create-binaire/images/stu.jpg);">
+        <nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">
             <div class="p-4">
                 <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
                 <ul class="list-unstyled components mb-5">
-                    <li class="active">
+                    <li >
                         <a href="index.html"><span class="fa fa-home mr-3"></span> Acceuil</a>
                     </li>
                     <li>
@@ -194,16 +176,16 @@ Header
                                     <div class="value">
                                         <div class="input-group">
                                     <input type="hidden" name="test_id" value="{{$test->test_id}}">
-                                    <input type="number" style="height: 32px;width: 355px" class="input--style-6" id="note" style="color:black;" name="note" >
+                                    <input type="number" style="height: 32px;width: 355px;color:black;" class="input--style-6" id="note"  name="note" >
                                 </div>
                                     </div>
                                 </div>
                                 <br>
                                 <br>
                                 <input type="submit" name="submit" id="submit" style="width: 17rem; margin-left:7rem; "
-                                       class="btn btn-info" value="Ajouter et enregistrer"/>
+                                       class="btn btn-info" value="Enregistrer et Ajouter"/>
                                 <input type="hidden" name="test_id" value="{{$test->test_id}}">
-                                <input type="submit" class="btn btn-success" style="width: 17rem" value="Ajouter et quitter">
+                                <input type="submit" class="btn btn-success" style="width: 17rem" value="Enregistrer et quitter">
 
 
                         </form>
@@ -274,8 +256,7 @@ Header
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-
-                                <label for="" style="color:#c21db7;">question text</label>
+                                <label for="question_text" style="color:#c21db7;">question text</label>
 
                                 <input type="text" style="color:black;" id="question_text" name="question_text" class="form-control"
                                        placeholder="question">
@@ -344,7 +325,7 @@ Header
                             @method('DELETE')
 
                             <input type="hidden" name="binaire_id" id="binaire_id">
-                            <p class="text-center" width="50px" style="font-weight: normal"> vous ete sûre que vous voulez supprimer cette question</p>
+                            <p class="text-center" width="50px" > vous ete sûre que vous voulez supprimer cette question</p>
 
 
                     <div class="modal-footer">

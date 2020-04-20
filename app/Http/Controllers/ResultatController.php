@@ -151,7 +151,8 @@ class ResultatController extends Controller
             Resultat::query()->create($r);
             return view('resultat1.index', ['somme' => $somme, 'vrai' => $vrai, 'faux' => $faux, 'session' => $request->session_id]);
         } else {
-            return redirect()->back();
+            session()->flush();
+            return route("session.index");
         }
     }
 

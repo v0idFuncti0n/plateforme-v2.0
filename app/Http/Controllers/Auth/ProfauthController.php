@@ -41,13 +41,9 @@ class ProfauthController extends Controller
                 $request->session()->put('p_username', $username);
                 $request->session()->put('p_password', $password);
                 $request->session()->put('p_id', $professeurPass->professeur_id);
-                $tests = Test::query()->where('professeur_id',$professeurPass->professeur_id)->count();
-                if($tests > 0) {
-                    return view('accueilProf.index')->with('prof', $professeurPass);
+                //$tests = Test::query()->where('professeur_id',$professeurPass->professeur_id)->count();
+                return view('accueilProf.index')->with('prof', $professeurPass);
                    // return view('profauth.test')->with('prof', $professeurPass);
-                }else{
-                    return view('create-test.index')->with(['p'=>$professeurPass]);
-                }
             } else {
                 $error = "le nom d'utilisateur ou le mot de passe sont incorrects";
                 return redirect()->route('profauth.login')->with('error',$error);

@@ -43,6 +43,7 @@
 
     <link href="{{asset('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900')}}"
           rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css')}}">
 
@@ -186,41 +187,22 @@ Header
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="/img/logo.png" alt="" title=""/></a>
+            <a href="#hero"><img src="{{asset('img/logo.png')}}" alt="" title=""/></a>
             <!-- Uncomment below if you prefer to use a text logo -->
             <!--<h1><a href="#hero">Regna</a></h1>-->
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#hero">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#team">Team</a></li>
-                <li class="menu-has-children"><a href="">Drop Down</a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="menu-has-children"><a href="#">Drop Down 2</a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                        <li><a href="#">Drop Down 5</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li ><a href="test" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Déconnexion</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
 </header><!-- #header -->
-
 <!--==========================
   Hero Section
 ============================-->
@@ -234,27 +216,27 @@ Header
       Services Section
     ============================-->
     <div class="container d-flex align-items-stretch" style="margin-left: 0rem;">
-        <nav id="sidebar" class="img" style="background-image: url(/public/images/stu.jpg);">
-            <div class="p-4">
-                <h1><a class="logo">Services</a></h1>
+        <nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">
+            <div class="p-4" style="margin-left: -7px;margin-top: 13px;">
+                <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
                 <ul class="list-unstyled components mb-5">
-                    <li class="active">
+                    <li >
                         <a href="index.html"><span class="fa fa-home mr-3"></span> Acceuil</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-user mr-3"></span> Création des test</a>
+                        <a href="#"><span class="fa fa-plus-square-o mr-3"></span> Création des test</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-plane mr-3"></span> table des test</a>
+                        <a href="#"><span class="fa fa-table mr-3"></span> table des test</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> création question qcm</a>
+                        <a href="#"><span class="fa fa-list mr-3"></span> création question qcm</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-cogs mr-3"></span> Création question binaire </a>
+                        <a href="#"><span class="fa fa-question mr-3"></span> Création question binaire </a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-paper-plane mr-3"></span> Création question text </a>
+                        <a href="#"><span class="fa fa-file-text-o mr-3"></span> Création question text </a>
                     </li>
 
                     </li>
@@ -262,10 +244,9 @@ Header
 
             </div>
         </nav>
-
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5 pt-5">
-            <h2 class="mb-4">Création des questions</h2>
+            <h2 class="mb-4" style="font-size: 30px;font-weight:500;">Sélection des questions </h2>
             <section id="services">
                 <div class="container wow fadeIn">
                     <div class="section-header">

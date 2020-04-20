@@ -40,6 +40,15 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
 
+    <style>
+        input[type="file"]{
+            height:40px;
+        }
+
+        input[type="file"]::-webkit-file-upload-button{
+            height:40px;
+        }
+    </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 
 </head>
@@ -304,10 +313,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="niveau_id" style="color:#c21db7;">Niveau</label>
+                                        <br>
                                         <?php
 
                                         use App\filiere;use App\Niveau;$niveaux = Niveau::all();
-                                        echo "<select size='1' name=niveau_id>";
+                                        echo "<select size='3' id='niveau_id' class='form-control' name=niveau_id>";
                                         foreach($niveaux as $n){
                                             $niveau_id =$n->niveau_id;
                                             echo "<option value=$niveau_id>$n->nom</option>";
@@ -317,10 +327,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="filiere_id" style="color:#c21db7;">Filiere</label>
+                                        <br>
                                         <?php
 
                                         $filieres = filiere::all();
-                                        echo "<select size='1' name=filiere_id>";
+                                        echo "<select  size='3' id='filiere_id' class='form-control'  name=filiere_id>";
                                         foreach($filieres as $f){
                                             $id_filiere=$f->filiere_id;
                                             echo "<option value=$id_filiere>$f->nom</option>";
@@ -376,6 +387,7 @@
                         </div>
                     </div>
                 </div>
+                </div>
 
 
                 <!-- Modal edit -->
@@ -426,10 +438,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="niveau_id" style="color:#c21db7;">Niveau</label>
+                                        <br>
                                         <?php
 
                                         $niveaux = Niveau::all();
-                                        echo "<select size='1' name=niveau_id>";
+                                        echo "<select size='3' id='niveau_id' class='form-control' name=niveau_id>";
                                         foreach($niveaux as $n){
                                             $niveau_id =$n->niveau_id;
                                             echo "<option value=$niveau_id>$n->nom</option>";
@@ -439,10 +452,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="filiere_id" style="color:#c21db7;">Filiere</label>
+                                        <br>
                                         <?php
 
                                         $filieres = filiere::all();
-                                        echo "<select size='1' name=filiere_id>";
+                                        echo "<select size='3' id='filiere_id' class='form-control' name=filiere_id>";
                                         foreach($filieres as $f){
                                             $id_filiere=$f->filiere_id;
                                             echo "<option value=$id_filiere>$f->nom</option>";
@@ -509,9 +523,9 @@
 
                             </div>
                             <div class="modal-footer">
-                                
+
                                     <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
-    
+
                                     <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
                                                  </div>
                             </form>
@@ -523,7 +537,7 @@
 
 
                  <!-- restore data -->
-                 
+
          <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
@@ -539,7 +553,7 @@
                 <form action="{{action('EtudiantController@restore')}}" method="POST">
                         @csrf
                       <?php $etds['etds'] = App\etudiant::onlyTrashed()->get();?>
-                   
+
                   @foreach($etds['etds'] as $etudiant)
 
                         <label class="switcher" style="margin-left:10px;">

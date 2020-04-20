@@ -59,41 +59,22 @@ Header
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="/img/logo.png" alt="" title=""></img></a>
+            <a href="#hero"><img src="{{asset('img/logo.png')}}" alt="" title=""/></a>
             <!-- Uncomment below if you prefer to use a text logo -->
             <!--<h1><a href="#hero">Regna</a></h1>-->
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#hero">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#team">Team</a></li>
-                <li class="menu-has-children"><a href="">Drop Down</a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="menu-has-children"><a href="#">Drop Down 2</a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                        <li><a href="#">Drop Down 5</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li ><a href="test" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Déconnexion</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
 </header><!-- #header -->
-
 <!--==========================
   Hero Section
 ============================-->
@@ -109,25 +90,25 @@ Header
     <div class="container d-flex align-items-stretch" style="margin-left: 0rem;">
         <nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">
             <div class="p-4">
-                <h1><a class="logo">Services</a></h1>
+                <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
                 <ul class="list-unstyled components mb-5">
-                    <li>
+                    <li >
                         <a href="index.html"><span class="fa fa-home mr-3"></span> Acceuil</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-user mr-3"></span> Création des test</a>
+                        <a href="#"><span class="fa fa-plus-square-o mr-3"></span> Création des test</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-plane mr-3"></span> table des test</a>
+                        <a href="#"><span class="fa fa-table mr-3"></span> table des test</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> création question qcm</a>
+                        <a href="#"><span class="fa fa-list mr-3"></span> création question qcm</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-cogs mr-3"></span> Création question binaire </a>
+                        <a href="#"><span class="fa fa-question mr-3"></span> Création question binaire </a>
                     </li>
-                    <li class="active">
-                        <a href="#"><span class="fa fa-paper-plane mr-3"></span> Création question text </a>
+                    <li>
+                        <a href="#"><span class="fa fa-file-text-o mr-3"></span> Création question text </a>
                     </li>
 
                     </li>
@@ -148,6 +129,16 @@ Header
                             <form action="{{action('Text_libreController@store')}}" method="POST">
                                 @csrf
                                 <input type="hidden" name="test_id" value="{{$test['test_id']}}">
+
+                                <div class="form-row">
+                                    <div class="name">Question</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                             <textarea class="textarea--style-6" name="question_text" style="width:75%; margin-right: 30px"
+                                                       placeholder=""></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-row">
                                     <div class="name" style="height: 1.25rem;line-height: 0rem;">Difficulté</div>
                                     <div class="value">
@@ -163,31 +154,23 @@ Header
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="name">Question</div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <input required pattern=".{1,255}" title="le nombre maximum de caractères 1 - 2048" type="text"
-                                                   name="question_text">
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class=" form-row ">
 
                                     <div class="name">Note</div>
                                     <div class="value">
-                                        <input required type="number" name="note" min="1">
+                                        <input style="width: 355px;" required type="number" name="note" min="1">
                                     </div>
                                 </div>
                                 <br>
                                 <br>
                                 <input type="submit" name="submit" id="submit" style="width: 17rem; margin-left:7rem; "
                                        class="btn btn-info" value="Ajouter et enregistrer"/>
-                        </div>
                         </form>
+                        </div>
                     </div>
-                </div>
-                <div class="table-wrapper" style="width: 100rem; margin-top: 3.125rem">
+                    <h2 class="mb-1" style=" margin-top: 10rem">Table des questions</h2>
+
+                    <div class="table-wrapper" style="width: 100rem; margin-top: 3.125rem">
                     <table class="table table-bordered" id="myTable">
                         <thead>
                         <tr>
@@ -229,7 +212,6 @@ Header
                     </table>
                 </div>
         </div>
-    </div>
 
 
     <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
@@ -248,34 +230,42 @@ Header
                         @method('PUT')
                         <input type="hidden" name="test_id" id="test_id1" value="">
                         <input type="hidden" name="question_id" id="question_id1" value="">
-                        <label>
-                            Question :
-                            <input type="text" name="question_text" id="question_text" pattern=".{1,255}"
-                                   title="le nombre maximum de caractères 1 - 2048">
-                        </label>
+                        <div class="form-group">
+
+                        <label for="question_text" style="color:#c21db7;">
+                            Question : </label>
+
+                        <textarea class="form-control" rows="3" style="color: black" name="question_text" id="question_text" ></textarea>
+                        </div>
+                            <br>
+                        <div class="form-group">
+
+                        <label for="note" style="color:#c21db7;">
+                            Note : </label>
+
+                        <input type="number" name="note" id="note" min="1" class="form-control" style="color: black">
+                        </div>
                         <br>
-                        <label>
-                            Note :
-                            <input type="number" name="note" id="note" min="1">
-                        </label>
-                        <br>
-                        <label>
-                            Difficulty :
-                            <select required name="difficulty">
+                        <div class="form-group">
+                        <label for="question_text" style="color:#c21db7;">
+                            Difficulty : </label>
+
+                        <select required name="difficulty" size="1" class="form-control" style="color: black">
                                 <option value="1">trés facile</option>
                                 <option value="2">facile</option>
                                 <option value="3">moyenne</option>
                                 <option value="4">difficile</option>
                                 <option value="5">très difficile</option>
                             </select>
-                        </label>
-                </div>
+                        </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
                     <button type="submit" class="btn btn-success">modifier</button>
                 </div>
                 </form>
             </div>
+            </div>
+
         </div>
     </div>
     <!-- Modal delete -->
@@ -295,20 +285,20 @@ Header
                         @csrf
                         @method('DELETE')
                         <input required type="hidden" name="question_id" id="question_id">
-                        <p class="text-center" width="50px"> vous ete sûre que vous voulez supprimer ce
+                        <p class="text-center" style="font-weight: bold" width="50px"> vous ete sûre que vous voulez supprimer ce
                             matiere</p>
-                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
                     <button type="submit" class="btn btn-danger">supprimer</button>
                 </div>
                 </form>
+                </div>
+
             </div>
         </div>
     </div>
 
-    </div>
     </section><!-- #services -->
 
 
@@ -335,7 +325,7 @@ Header
         document.getElementById('question_id1').value = question_id;
         var modal = $(this)
 
-        modal.find('.modal-title').text('EDIT STUDENT INFORMATION');
+        modal.find('.modal-title').text('Modifier question');
         modal.find('.modal-body #question_id').val(question_id);
         modal.find('.modal-body #question_text').val(question_text);
         modal.find('.modal-body #note').val(note);
@@ -350,7 +340,7 @@ Header
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('delete STUDENT INFORMATION');
+        modal.find('.modal-title').text('Supprimer question');
 
         modal.find('.modal-body #question_id').val(question_id);
     });

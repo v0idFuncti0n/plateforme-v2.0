@@ -38,7 +38,15 @@
     <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
+    <style>
+        input[type="file"]{
+            height:40px;
+        }
 
+        input[type="file"]::-webkit-file-upload-button{
+            height:40px;
+        }
+    </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 
 </head>
@@ -227,7 +235,7 @@
                                                        data-departement_id="{{$filiere->departement_id}}"
                                                        data-toggle="modal"
                                                        data-target="#exampleModal-edit" type="button"
-                                                       class="btn btn-warning btn-sm">modifier</a>
+                                                       class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
                                                     <a data-filiere_id="{{$filiere->filiere_id}}" data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
                                                 </td>
@@ -252,7 +260,7 @@
                     <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Ajouter filiére</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -295,9 +303,10 @@
 
                                     <div class="form-group">
 
-                                        <label for="" style="color:#c21db7;"> id departemeent</label>
+                                        <label for="nom_dep" style="color:#c21db7;"> id departemeent  </label>
 
-                                        <select name="nom_dep" size="1">
+
+                                        <select name="nom_dep" size="3" id="nom_dep" class="form-control">
                                             <?php
                                             use App\departement;
                                             $departements = departement::all();
@@ -308,15 +317,17 @@
                                             }
                                             ?>
                                         </select>
-
+                                    </div>
+                                    <br>
                                         <div class="form-group">
                                             <label for="niveau_id" style="color:#c21db7;">niveau</label>
                                             <?php $niveau = \App\Niveau::all()?>
-                                            <select name="niveau_id" size="1">
+                                            <select name="niveau_id" size="3" id="niveau_id" class="form-control" >
                                                 @foreach($niveau as $n)
                                                     <option value="{{$n->niveau_id}}">{{$n->nom}}</option>
                                                 @endforeach
                                             </select>
+
                                         </div>
                                     </div>
                             </div>
@@ -384,9 +395,9 @@
 
                                     <div class="form-group">
 
-                                        <label for="" style="color:#c21db7;"> id departemeent</label>
+                                        <label for="nom_dep" style="color:#c21db7;"> id departemeent</label>
 
-                                        <select name="nom_dep" size="1">
+                                        <select name="nom_dep" size="3" id="nom_dep" class="form-control">
                                             <?php
 
                                             $departements = Departement::all();
@@ -397,11 +408,12 @@
                                             }
                                             ?>
                                         </select>
-
+                                    </div>
+                                    <br>
                                         <div class="form-group">
                                             <label for="niveau_id" style="color:#c21db7;">niveau</label>
                                             <?php $niveau = \App\Niveau::all()?>
-                                            <select name="niveau_id" size="2">
+                                            <select name="niveau_id" size="3" id="niveau_id" class="form-control">
                                                 @foreach($niveau as $n)
                                                     <option value="{{$n->niveau_id}}">{{$n->nom}}</option>
                                                 @endforeach
@@ -448,54 +460,53 @@
                                 <button type="submit" name = "but" value="dif"class="btn btn-warning" >supdif</button>
 
                                 <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
-                                             </div>
+                            </div>
                             </form>
                         </div>
                     </div>
                 </div>
-         <!-- restore data -->
-                 
-         <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+
+        <!-- restore data -->
+
+        <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form action="{{action('FiliereController@restore')}}" method="POST">
+                            @csrf
+                            <?php $fils['fils'] = App\filiere::onlyTrashed()->get();?>
+
+                            @foreach($fils['fils'] as $filiere)
+
+                                <label class="switcher" style="margin-left:10px;">
+                                    <input name="fil[]" type="checkbox" value="{{$filiere->filiere_id}}"/>
+                                    <div class="switcher__indicator"></div>
+                                    <span style="font-size: 15px; color:black;">{{$filiere->nom}}</span>
+                                </label><br>
+                                <br>
+
+                        @endforeach
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+
+                        <button type="submit" class="btn btn-danger">restaurer</button>
+                    </div>
+                    </form>
                 </div>
-                <div class="modal-body">
-
-                <form action="{{action('FiliereController@restore')}}" method="POST">
-                        @csrf
-                      <?php $fils['fils'] = App\filiere::onlyTrashed()->get();?>
-                   
-                  @foreach($fils['fils'] as $filiere)
-
-                        <label class="switcher" style="margin-left:10px;">
-                       <input name="fil[]" type="checkbox" value="{{$filiere->filiere_id}}"/>
-                            <div class="switcher__indicator"></div>
-                            <span style="font-size: 15px; color:black;">{{$filiere->nom}}</span>
-                        </label><br>
-                        <br>
-
-                   @endforeach
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-
-                    <button type="submit" class="btn btn-danger">restaurer</button>
-                </div>
-                </form>
             </div>
         </div>
-    </div>
-
-
             </div>
 
         </div>
@@ -570,9 +581,9 @@
 <script src="../assets/js/material-dashboard.js?v=2.1.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js"></script>
-<script>
-    <
-    /html>
+
+
+    </html>
 
 
 

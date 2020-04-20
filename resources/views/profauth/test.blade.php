@@ -25,7 +25,7 @@
     <link href="/managetest/lib/animate/animate.min.css" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
-    <link href="/managetest/css/style.css" rel="stylesheet">
+    <link href="{{asset("/managetest/css/style.css")}}" rel="stylesheet">
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -35,11 +35,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,700'>
-    <link rel='stylesheet prefetch'
-          href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
-    <link rel="stylesheet" href="/managetest/css/stylemodal.css">
+
+    <link rel="stylesheet" href="{{asset("/managetest/css/stylemodal.css")}}">
     <link rel="stylesheet" href="/managetest/css/stylechoice.css">
 
     <!-- =======================================================
@@ -59,41 +56,22 @@ Header
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="/managetest/img/logo.png" alt="" title=""/></img></a>
+            <a href="#hero"><img src="{{asset('img/logo.png')}}" alt="" title=""/></a>
             <!-- Uncomment below if you prefer to use a text logo -->
             <!--<h1><a href="#hero">Regna</a></h1>-->
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#hero">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#team">Team</a></li>
-                <li class="menu-has-children"><a href="">Drop Down</a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="menu-has-children"><a href="#">Drop Down 2</a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                        <li><a href="#">Drop Down 5</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li class="menu-active"><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Déconnexion</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
 </header><!-- #header -->
-
 <!--==========================
   Hero Section
   ============================-->
@@ -111,7 +89,7 @@ Header
             <div class="section-header">
                 <h3 class="section-title">manage test</h3>
             </div>
-            <div style="text-align: center"><a href="{{route("create-test.index",$prof->professeur_id)}}">
+            <div style="text-align: center" title="Créer test"><a href="{{route("create-test.index",$prof->professeur_id)}}">
                     <button class="btn btn-primary"><i class="fa fa-plus"></i></button>
                 </a></div>
 
@@ -147,9 +125,9 @@ Header
                     <tr>
                         <th>#</th>
                         <th>Nom de test<i class="fa fa-sort"></i></th>
-                        <th>Reponse</th>
+                        <th>Liste d'étudiant</th>
                         <th>Activer session</th>
-                        <th style="width: 150px;">Actions</th>
+                        <th style="width: 180px;">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -169,7 +147,7 @@ Header
                         <tr>
                             <td>{{++$key}}</td>
                             <td>{{$test->nom}}</td>
-                            <td><a href="/reponses/{{$test->test_id}}">reponses</a></td>
+                            <td><a href="/reponses/{{$test->test_id}}" style="font-weight: bold;color: #5cb85c">Vers la liste</a></td>
                             <td>
                                 <div style="text-align:center;">
 
@@ -187,9 +165,9 @@ Header
                                 </div>
                             </td>
                             <td>
-                                <a data-test_id="{{$test->test_id}}" onclick="teleport({{$test->test_id}})"
+                                <a  data-test_id="{{$test->test_id}}" onclick="teleport({{$test->test_id}})"
                                    class="view modal-button"
-                                   title="ajouter question" data-toggle="tooltip"><i
+                                   title="ajouter question"  data-toggle="tooltip" ><i
                                         class="material-icons">note_add</i></a>
                                 <a data-test_id="{{$test->test_id}}"
                                    data-nom="{{$test->nom}}"
@@ -205,17 +183,17 @@ Header
                                    data-d3="{{$test->d3}}"
                                    data-d4="{{$test->d4}}"
                                    data-d5="{{$test->d5}}"
-                                   class="edit" title="modifier" data-toggle="modal"
+                                   class="edit" title="modifier" href="" data-toggle="modal"
                                    data-target="#exampleModal-edit"><i
                                         class="material-icons">&#xE254;</i></a>
-                                <a data-test_id="{{$test->test_id}}" class="delete" title="supprimer"
+                                <a data-test_id="{{$test->test_id}}" class="delete" title="supprimer" href=""
                                    data-target="#exampleModal-delete" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
-                                <a href="{{route('test.pdf',$test->test_id)}}" class="view" title="exporter session"
+                                <a href="{{route('test.pdf',$test->test_id)}}" class="" title="exporter session"
                                    data-toggle="tooltip"><i
-                                        class="material-icons">input</i></a>
-                                <a href="{{route('note.pdf',$test->test_id)}}" class="view" title="exporter les notes"
+                                        class="material-icons" style="color:#5cb85c">save_alt</i></a>
+                                <a href="{{route('note.pdf',$test->test_id)}}" class="" title="exporter les notes"
                                    data-toggle="tooltip"><i
-                                        class="material-icons">input</i></a>
+                                        class="material-icons" style="color:black">save</i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -234,12 +212,13 @@ Header
                     </ul>
                 </div>
             </div>
+        </div>
     </section><!-- #portfolio -->
     <section id="service">
 
         <div class="modal1">
-            <div class="modal-container">
-                <div class="modal-left">
+            <div class="modal1-container">
+                <div class="modal1-left">
                     <div class="input-block">
                         <input type="radio" id="al" class="sty" name="select" value="1">
                         <label for="al" class="stl">
@@ -305,20 +284,12 @@ Header
                         <br>
                         <br>
 
-                        <div class="switch2" style="margin-left: 175px">
-                            <input name="switch2" id="one2" type="radio" checked/>
-                            <label for="one2" class="switch__label2">QCM</label>
-                            <input name="switch2" id="two2" type="radio"/>
-                            <label for="two2" class="switch__label2">Binaire</label>
-                            <input name="switch2" id="three2" type="radio"/>
-                            <label for="three2" class="switch__label2">Text</label>
-                            <div class="switch__indicator2"/>
-                        </div>
+
 
 
                     </div>
                 </div>
-            </div>
+
             <div class="input-block">
                 <input type="radio" id="cr" class="sty" name="select" value="3">
                 <label for="cr" class="stl">
@@ -344,7 +315,7 @@ Header
                 </div>
             </div>
         </div>
-        <div class="modal-buttons">
+        <div class="modal1-buttons">
             <button class="input-button">Enregistrer</button>
         </div>
         </div>
@@ -375,45 +346,54 @@ Header
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="test_id" id="test_id">
-                        <label >
-                            Nom de test.
-                            <input class="form-control" type="text" pattern=".[a-zA-Z0-9]{1,255}"
+                        <div class="form-group">
+                        <label for="nom" style="color:#c21db7;">Nom de test.</label>
+
+                            <input class="form-control"  style="color:black;" type="text" pattern=".[a-zA-Z0-9]{1,255}"
                                    title="aucun caractère spécial n'est autorisé 1 - 255 max" name="nom" id="nom"
                                    required>
-                        </label>
+                        </div>
                         <br>
-                        <label>
-                            Discription
-                            <textarea rows="8" cols="33" name="discription" id="discription" class="form-control"
+                        <div class="form-group">
+                        <label for="discription" style="color:#c21db7;">Discription </label>
+
+                            <textarea rows="5" cols="33"  style="color:black;" name="discription" id="discription" class="form-control"
                                       required></textarea>
-                        </label>
+                        </div>
                         <br>
-                        <label>
-                            Note
-                            <input type="number" name="note" id="note" class="form-control" min="1" required>
-                        </label>
+                        <div class="form-group">
+                        <label for="note" style="color:#c21db7;"> Note </label>
+
+                        <input type="number" style="color:black;" name="note" id="note" class="form-control" min="1" required>
+                        </div>
                         <br>
-                        <label>
-                            Duree(minute)
-                            <input type="number" name="duree" id="duree" class="form-control" min="1" required>
-                        </label>
+                        <div class="form-group">
+                        <label for="duree" style="color:#c21db7;">
+                            Duree(minute) </label>
+                            <input type="number" style="color:black;" name="duree" id="duree" class="form-control" min="1" required>
+                        </div>
                         <br>
-                        <label>
-                            Salle
-                            <input pattern="[a-zA-Z0-9]{1,255}"
+                        <div class="form-group">
+                        <label for="salle" style="color:#c21db7;">
+                            Salle</label>
+                            <input pattern="[a-zA-Z0-9]{1,255}" style="color:black;"
                                    title="aucun caractère spécial n'est autorisé 1 - 255 max"
                                    type="text" name="salle" id="salle" class="form-control" required>
-                        </label>
+
+                        </div>
                         <br>
-                        <label>
-                            Date
-                            <input type="date" name="date" id="date"
+                        <div class="form-group">
+                        <label for="date" style="color:#c21db7;">
+                            Date</label>
+                            <input type="date" name="date" id="date" style="color:black;"
                                    class="form-control" required>
-                        </label>
+                        </div>
                         <br>
-                        <label>
-                            Matiere
-                            <?php
+                        <div class="form-group">
+                        <label for="matiere_id" style="color:#c21db7;">
+                            Matiere   </label>
+
+                        <?php
 
                             use App\Matiere;
                             use App\Matiere_prof;
@@ -427,40 +407,48 @@ Header
                             @endforeach
                             <?php   $matiere = DB::table('matiere')->whereIn('matiere_id', $id)->get();?>
 
-                            <select class="form-control" size="1" style='width: 235px;' name="matiere_id">
+                            <select class="form-control" size="1" style='color:black;'id="matiere_id" name="matiere_id">
                                 @foreach ($matiere as $m)
                                     <?php $matiere_id = intval($m->matiere_id);?>
                                     <option value="{{$matiere_id}}">{{$m->nom_matiere}}</option>
                                 @endforeach
                             </select>
-                        </label>
+                        </div>
                         <br>
-                        <label>
-                            Difficulté 1
-                            <input type="number" name="d1" id="d1" class="form-control" min="0" required>
-                        </label>
+                        <div class="form-group">
+                            <label for="d1" style="color:#c21db7;">
+                            Difficulté 1   </label>
+
+                            <input type="number" style="color:black;" name="d1" id="d1" class="form-control" min="0" required>
+                        </div>
                         <br>
-                        <label>
-                            Difficulté 2
-                            <input type="number" name="d2" id="d2" class="form-control" min="0" required>
-                        </label>
+                        <div class="form-group">
+                            <label for="d2" style="color:#c21db7;">
+                            Difficulté 2     </label>
+                            <input type="number" style="color:black;" name="d2" id="d2" class="form-control" min="0" required>
+                        </div>
+                            <br>
+                        <div class="form-group">
+                            <label for="d3" style="color:#c21db7;">
+                            Difficulté 3     </label>
+                            <input type="number"  style="color:black;" name="d3" id="d3" class="form-control" min="0" required>
+                        </div>
                         <br>
-                        <label>
-                            Difficulté 3
-                            <input type="number" name="d3" id="d3" class="form-control" min="0" required>
-                        </label>
+                        <div class="form-group">
+                            <label for="d4" style="color:#c21db7;">
+                            Difficulté 4   </label>
+
+                            <input type="number"  style="color:black;" name="d4" id="d4" class="form-control" min="0" required>
+
+                        </div>
                         <br>
-                        <label>
-                            Difficulté 4
-                            <input type="number" name="d4" id="d4" class="form-control" min="0" required>
-                        </label>
+                        <div class="form-group">
+                            <label for="d5" style="color:#c21db7;">
+                            Difficulté 5     </label>
+
+                                <input type="number" name="d5" id="d5"  style="color:black;" class="form-control" min="0" required>
+                        </div>
                         <br>
-                        <label>
-                            Difficulté 5
-                            <input type="number" name="d5" id="d5" class="form-control" min="0" required>
-                        </label>
-                        <br>
-                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
                     <button type="submit" class="btn btn-success">modifier</button>
@@ -469,10 +457,11 @@ Header
             </div>
         </div>
     </div>
+    </div>
 
     <!-- Modal delete -->
     <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
+         aria-labelledby="exampleModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -487,9 +476,9 @@ Header
                         @csrf
                         @method('DELETE')
                         <input required type="hidden" name="test_id" id="test_id">
-                        <p class="text-center" width="50px"> vous etes sûre que vous voulez supprimer ce
+                        <p  class="text-center" > vous etes sûre que vous voulez supprimer ce
                             matiere</p>
-                </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
@@ -497,6 +486,7 @@ Header
                 </div>
                 </form>
             </div>
+        </div>
         </div>
     </div>
 </main>
@@ -520,7 +510,7 @@ Header
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('EDIT STUDENT INFORMATION');
+        modal.find('.modal-title').text('Modifier test');
         modal.find('.modal-body #test_id').val(test_id);
         modal.find('.modal-body #nom').val(nom);
         modal.find('.modal-body #note').val(note);
@@ -543,7 +533,7 @@ Header
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('delete STUDENT INFORMATION');
+        modal.find('.modal-title').text('Supprimer test');
 
         modal.find('.modal-body #test_id').val(test_id);
     });
@@ -648,7 +638,7 @@ Header
 <!-- Template Main Javascript File -->
 <script src="/managetest/js/main.js"></script>
 
-<script src="/managetest/js/scriptmodal.js"></script>
+<script src="{{asset("/managetest/js/scriptmodal.js")}}"></script>
 
 </body>
 </html>
