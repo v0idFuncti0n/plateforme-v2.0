@@ -52,6 +52,12 @@ class ProfesseurController extends Controller
         return redirect()->route('professeur.index');
     }
 
+    public function restore(Request $request){
+  
+       Professeur::withTrashed()->whereIn('professeur_id',(array_values($request->input('prof'))) )->restore();
+      return redirect()->back();
+  }
+
     /**
      * Display the specified resource.
      *
@@ -108,11 +114,13 @@ class ProfesseurController extends Controller
      */
     public function destroy(Request $professeur)
     {
-
-        $delete = $professeur->all();
-        $deleteprofesseur = Professeur::findOrfail($professeur->professeur_id);
-        $deleteprofesseur->delete();
-        return redirect()->route('professeur.index');
+    if($professeur->but=='no'){ 
+            $deleteprofesseur = Professeur::findOrfail($professeur->professeur_id);
+            $deleteprofesseur->delete();
+            return redirect()->route('professeur.index');}
+            if($professeur->but=='dif'){ 
+                professeur::find($professeur->professeur_id)->forceDelete();
+                return redirect()->route('professeur.index');}
     }
 
     public function import(Request $request){

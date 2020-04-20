@@ -30,7 +30,11 @@ class ModuleController extends Controller
     {
         //
     }
-
+    public function restore(Request $request){
+  
+        module::withTrashed()->whereIn('module_id',(array_values($request->input('module'))) )->restore();
+      return redirect()->back();
+  }
     /**
      * Store a newly created resource in storage.
      *
@@ -99,10 +103,17 @@ class ModuleController extends Controller
      */
     public function destroy(Request $module)
     {
-        $delete = $module->all();
-        $deletemodule = Module::findOrfail($module->module_id);
-        $deletemodule->delete();
-        return redirect()->route('module.index');
+
+
+
+        if($module->but=='no'){ 
+            $delete = $module->all();
+            $deletemodule = Module::findOrfail($module->module_id);
+            $deletemodule->delete();
+            return redirect()->route('module.index');}
+            if($module->but=='dif'){ 
+                module::find($module->module_id)->forceDelete();
+                return redirect()->route('module.index');}
     }
 
     public function import(Request $request){

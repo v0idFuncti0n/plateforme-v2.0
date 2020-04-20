@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Etudiant extends Model implements ToModel, WithHeadingRow
 {
+    use SoftDeletes;
     protected $table = "etudiant";
     protected $fillable = ['cin', 'niveau_id', 'filiere_id', 'cne', 'nom', 'prenom', 'email_address', 'username', 'password', 'numero', 'num_apologie'];
     protected $primaryKey = 'etudiant_id';

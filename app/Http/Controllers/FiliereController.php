@@ -25,7 +25,11 @@ class FiliereController extends Controller
 
         return view('filiere.index', $filiere);
     }
-
+    public function restore(Request $request){
+  
+        filiere::withTrashed()->whereIn('filiere_id',(array_values($request->input('fil'))) )->restore();
+      return redirect()->back();
+  }
     /**
      * Show the form for creating a new resource.
      *
@@ -128,10 +132,13 @@ class FiliereController extends Controller
      */
     public function destroy(Request $filiere)
     {
-        $delete = $filiere->all();
-        $deletefiliere = Filiere::findOrfail($filiere->filiere_id);
-        $deletefiliere->delete();
-        return redirect()->route('filiere.index');
+         if($filiere->but=='no'){ 
+            $deletefiliere = Filiere::findOrfail($filiere->filiere_id);
+            $deletefiliere->delete();
+            return redirect()->back();}
+            if($filiere->but=='dif'){ 
+                filiere::find($filiere->filiere_id)->forceDelete();
+                return redirect()->back();}
     }
 
     public function import(Request $request){

@@ -40,15 +40,7 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
 
-    <style>
-        input[type="file"]{
-            height:40px;
-        }
 
-        input[type="file"]::-webkit-file-upload-button{
-            height:40px;
-        }
-    </style>
 </head>
 
 <body class="dark-edition">
@@ -305,6 +297,7 @@
                                     </div>
 
 
+                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
@@ -314,7 +307,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+
 
                 <!-- Modal edit -->
                 <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
@@ -359,6 +352,7 @@
                                                class="form-control"
                                                placeholder="volume horaire" min="1">
                                     </div>
+                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
@@ -367,7 +361,6 @@
                             </form>
                         </div>
                     </div>
-                </div>
                 </div>
 
 
@@ -393,16 +386,59 @@
                                         matiere</p>
 
 
+                            </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
-                                <button type="submit" class="btn btn-danger">supprimer</button>
+                                <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
+
+                                <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
                             </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                </div>
+
+                    <!-- restore data -->
+
+                    <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form action="{{action('MatiereController@restore')}}" method="POST">
+                                        @csrf
+                                        <?php $matieres['matieres'] = App\matiere::onlyTrashed()->get();?>
+
+                                        @foreach($matieres['matieres'] as $matiere)
+
+                                            <label class="switcher" style="margin-left:10px;">
+                                                <input name="matiere[]" type="checkbox" value="{{$matiere->matiere_id}}"/>
+                                                <div class="switcher__indicator"></div>
+                                                <span style="font-size: 15px; color:black;">{{$matiere->nom_matiere}}</span>
+                                            </label><br>
+                                            <br>
+
+                                    @endforeach
+
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+
+                                    <button type="submit" class="btn btn-danger">restaurer</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
 
             </div>
@@ -410,8 +446,6 @@
         </div>
 
     </div>
-    </div>
-</div>
 </body>
 
 <script>
@@ -427,7 +461,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('Modifer matiére');
+        modal.find('.modal-title').text('EDIT STUDENT INFORMATION');
         modal.find('.modal-body #matiere_id').val(matiere_id);
         modal.find('.modal-body #nom_matiere').val(nom_matiere);
         modal.find('.modal-body #volume_horaire').val(volume_horaire);

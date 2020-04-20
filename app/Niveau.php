@@ -5,9 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Niveau extends Model implements ToModel, WithHeadingRow
 {
+    use SoftDeletes;
+
     protected $table="niveau";
     protected $fillable=['nom'];
     protected $primaryKey='niveau_id';

@@ -7,9 +7,12 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Professeur extends Authenticatable implements ToModel, WithHeadingRow
 {
+  
+  use SoftDeletes ;
     use Notifiable;
 
     protected $guard = 'professeur';

@@ -48,6 +48,7 @@
             height:40px;
         }
     </style>
+    <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 
 </head>
 
@@ -276,6 +277,7 @@
                                         ?>
                                     </div>
 
+                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
@@ -284,7 +286,6 @@
                             </form>
                         </div>
                     </div>
-                </div>
                 </div>
 
 
@@ -336,7 +337,6 @@
                         </div>
                     </div>
                 </div>
-                </div>
 
 
                 <!-- Modal delete -->
@@ -361,19 +361,62 @@
                                         matiere</p>
 
 
+                            </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                                <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
 
-                                <button type="submit" class="btn btn-danger">supprimer</button>
+                                <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
                             </div>
                             </form>
                         </div>
                     </div>
                 </div>
+
+
+                    <!-- restore data -->
+
+                    <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form action="{{action('ModuleController@restore')}}" method="POST">
+                                        @csrf
+                                        <?php $modules['modules'] = App\module::onlyTrashed()->get();?>
+
+                                        @foreach($modules['modules'] as $module)
+
+                                            <label class="switcher" style="margin-left:10px;">
+                                                <input name="module[]" type="checkbox" value="{{$module->module_id}}"/>
+                                                <div class="switcher__indicator"></div>
+                                                <span style="font-size: 15px; color:black;">{{$module->nom_module}}</span>
+                                            </label><br>
+                                            <br>
+
+                                    @endforeach
+
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+
+                                    <button type="submit" class="btn btn-danger">restaurer</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
         <div>
-        </div>
 
         </div>
 
@@ -391,7 +434,7 @@
         var id_filiere = button.data('id_filiere')
         var modal = $(this)
 
-        modal.find('.modal-title').text('Modifer module');
+        modal.find('.modal-title').text('EDIT STUDENT INFORMATION');
         modal.find('.modal-body #module_id').val(module_id);
         modal.find('.modal-body #nom_module').val(nom_module);
         modal.find('.modal-body #id_filiere').val(id_filiere);
@@ -406,7 +449,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('Supprimer module');
+        modal.find('.modal-title').text('delete STUDENT INFORMATION');
 
         modal.find('.modal-body #module_id').val(module_id);
     });

@@ -30,7 +30,11 @@ class MatiereController extends Controller
     {
         //
     }
-
+    public function restore(Request $request){
+  
+        matiere::withTrashed()->whereIn('matiere_id',(array_values($request->input('matiere'))) )->restore();
+      return redirect()->back();
+  }
     /**
      * Store a newly created resource in storage.
      *
@@ -102,11 +106,14 @@ class MatiereController extends Controller
      */
     public function destroy(Request $matiere)
     {
-        //
-        $delete = $matiere->all();
-        $deletematiere = Matiere::findOrfail($matiere->matiere_id);
-        $deletematiere->delete();
-        return redirect()->route('matiere.index');
+          if($matiere->but=='no'){ 
+            $delete = $matiere->all();
+            $deletematiere = Matiere::findOrfail($matiere->matiere_id);
+            $deletematiere->delete();
+            return redirect()->route('matiere.index');;}
+            if($matiere->but=='dif'){ 
+                matiere::find($matiere->matiere_id)->forceDelete();
+                return redirect()->route('matiere.index');}
     }
 
     public function import(Request $request){

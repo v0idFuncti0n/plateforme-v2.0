@@ -49,6 +49,8 @@
             height:40px;
         }
     </style>
+    <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
+
 </head>
 
 <body class="dark-edition">
@@ -246,8 +248,7 @@
                                                        data-num_apologie="{{$etudiant->num_apologie}}"
                                                        data-toggle="modal"
                                                        data-target="#exampleModal-edit" type="button"
-                                                       class="btn btn-warning btn-sm" style="margin-bottom: 5px;width: 100px;">modifier</a>
-
+                                                       class="btn btn-warning btn-sm">modifier</a>
                                                     <a data-id="{{$etudiant->etudiant_id}}"
                                                        data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
@@ -376,7 +377,7 @@
                                                class="form-control"
                                                placeholder="num_apologie" min="1">
                                     </div>
-
+                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
@@ -486,18 +487,17 @@
                                                class="form-control"
                                                placeholder="num_apologie" min="1">
                                     </div>
-
+                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
                                 <button type="submit" class="btn btn-success">modifier</button>
-
                             </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                </div>
+
 
                 <!-- Modal delete -->
                 <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
@@ -521,16 +521,62 @@
                                         etudiant</p>
 
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-
-                                <button type="submit" class="btn btn-danger">supprimer</button>
                             </div>
+                            <div class="modal-footer">
+
+                                    <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
+
+                                    <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
+                                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+
+                <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
+
+
+                 <!-- restore data -->
+
+         <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <div class="modal-body">
+
+                <form action="{{action('EtudiantController@restore')}}" method="POST">
+                        @csrf
+                      <?php $etds['etds'] = App\etudiant::onlyTrashed()->get();?>
+
+                  @foreach($etds['etds'] as $etudiant)
+
+                        <label class="switcher" style="margin-left:10px;">
+                       <input name="etd[]" type="checkbox" value="{{$etudiant->etudiant_id}}"/>
+                            <div class="switcher__indicator"></div>
+                            <span style="font-size: 15px; color:black;">{{$etudiant->num_apologie}}</span>
+                        </label><br>
+                        <br>
+
+                   @endforeach
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+
+                    <button type="submit" class="btn btn-danger">restaurer</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
             </div>
@@ -571,7 +617,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('Modifer étudiant');
+        modal.find('.modal-title').text('EDIT STUDENT INFORMATION');
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #cin').val(cin);
         modal.find('.modal-body #cne').val(cne);
@@ -596,7 +642,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('supprimer étudiant');
+        modal.find('.modal-title').text('delete STUDENT INFORMATION');
 
         modal.find('.modal-body #id').val(id);
     });
