@@ -146,12 +146,13 @@
                         <input type="date" name="date" id="date"
                                class="form-control" required>
                     </label>
-            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
                 <button type="submit" class="btn btn-success">modifier</button>
             </div>
             </form>
+            </div>
+
         </div>
     </div>
 </div>
@@ -177,7 +178,6 @@
                         matiere</p>
 
 
-            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
@@ -186,6 +186,8 @@
             </form>
         </div>
     </div>
+    </div>
+
 </div>
 </div>
 </div>

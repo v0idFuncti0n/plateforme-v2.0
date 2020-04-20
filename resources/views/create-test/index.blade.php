@@ -235,7 +235,7 @@
                                     <div class="form-holder form-holder-2 form-control">
                                         <label class="form-row-inner">
                                             <input type="number" name="duree" id="duree" class="form-control" required>
-                                            <span class="label" style="left: 70px;">Duree(minute)</span>
+                                            <span class="label" style="left: 70px;">Durée(minute)</span>
                                             <span class="border"></span>
 
                                         </label>
@@ -321,12 +321,12 @@
                             </div>
                             <div class="inner" style="display:flex;">
 
-                                <div class="form-row">
+                                <div class="form-row" style="left: 260px">
                                     <div class="form-holder form-holder-2">
                                         <label class="form-row-inner">
                                             <input type="number" name="d5" id="d5" class="form-control" min="0"
                                                    required>
-                                            <span class="label" style="left: 100px;">Difficulté 5</span>
+                                            <span class="label" style="left: 90px;">Difficulté 5</span>
                                             <span class="border"></span>
 
                                         </label>

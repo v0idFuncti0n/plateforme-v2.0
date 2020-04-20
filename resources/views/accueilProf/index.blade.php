@@ -50,7 +50,12 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-
+                <li class="menu-active"><a href="test">Home</a></li>
+                <li><a href="create-test/{{$prof->professeur_id}}">Créer test</a></li>
+                <li><a href="{{route('manager-test',['prof_id' => $prof])}}">Gérer test</a></li>
+                <li><a href="">Gérer les notes</a></li>
+                <li><a href="">Déconnexion</a></li>
+            </ul>
         </nav><!-- #nav-menu-container -->
     </div>
 </header><!-- #header -->
@@ -67,7 +72,7 @@ Header
     <!--==========================
          Portfolio Section
        ============================-->
-    <section id="portfolio">
+    <section id="portfolio" >
         <div class="container wow fadeInUp">
             <div class="row">
 
@@ -105,7 +110,7 @@ Header
                 </div>
                 @php $matiere = $prof->matiere ; $i=0 @endphp
                 <div class="col-lg-12 portfolio-item filter-logo" style="display: none;">
-                    <table class="table table-fixed">
+                    <table class="table table-fixed" style="width: 1800px">
                         <thead>
                         <tr>
                             <th scope="col" class="col-3">#</th>
@@ -134,12 +139,12 @@ Header
     <!--==========================
       About Us Section
     ============================-->
-    <section id="about">
+    <section id="facts" >
         <div class="container wow fadeIn">
             <div class="row about-container">
 
                 <div class="container main-section">
-                    <h4>Professeur</h4>
+                    <h4 style="font-size: 30px">Services</h4>
                     <div class="row justify-content-md-center">
                         <div class="col-lg-3 col-sm-4 col-12 text-center wow fadeInUp">
                             <div class="row main-box-layout img-thumbnail">
@@ -147,8 +152,8 @@ Header
                                     <i class="fa fa-magic" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-lg-12 col-sm-12 col-12 box-text-section">
-                                    <p><a href="create-test/{{$prof->professeur_id}}" style="color:white;">create
-                                            quiz</a></p></div>
+                                    <p><a href="create-test/{{$prof->professeur_id}}" style="color:#007bff;font-weight: bold">Créer
+                                            test</a></p></div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-4 col-12 text-center wow fadeInUp">
@@ -157,7 +162,7 @@ Header
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-lg-12 col-sm-12 col-12 box-text-section">
-                                    <p><a href="{{route('manager-test',['prof_id' => $prof])}}" style="color:white;">gerer
+                                    <p><a href="{{route('manager-test',['prof_id' => $prof])}}" style="color:darkgoldenrod;font-weight: bold">Gérer
                                             les tests</a></p>
                                 </div>
                             </div>
@@ -168,7 +173,7 @@ Header
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-lg-12 col-sm-12 col-12 box-text-section">
-                                    <p><a href="#" style="color:white;">create qcm </a></p>
+                                    <p><a href="#" style="color:#dc3545;font-weight: bold">Gérer étudiants</a></p>
                                 </div>
                             </div>
                         </div>

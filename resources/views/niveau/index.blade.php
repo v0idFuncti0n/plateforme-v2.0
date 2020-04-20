@@ -40,7 +40,15 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
 
+    <style>
+        input[type="file"]{
+            height:40px;
+        }
 
+        input[type="file"]::-webkit-file-upload-button{
+            height:40px;
+        }
+    </style>
 </head>
 
 <body class="dark-edition">
@@ -246,13 +254,14 @@
                                                pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" placeholder="nom de niveau">
                                     </div>
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
                                 <button type="submit" class="btn btn-success">enregistrer</button>
                             </div>
                             </form>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -276,20 +285,21 @@
                                     @method('PUT')
                                     <div class="form-group">
 
-                                        <label for="">nom</label>
+                                        <label for="nom" style="color:#c21db7;">nom</label>
 
                                         <input required type="text" style="color:black;" id="nom" name="nom" class="form-control"
                                                pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" placeholder="nom de niveau">
                                     </div>
                                     <input required type="hidden" style="color:black;" name="niveau_id" id="niveau_id">
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
                                 <button type="submit" class="btn btn-success">modifier</button>
                             </div>
                             </form>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -317,13 +327,14 @@
                                         niveau</p>
 
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
 
                                 <button type="submit" class="btn btn-danger">supprimer</button>
                             </div>
                             </form>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -334,6 +345,7 @@
         </div>
 
     </div>
+</div>
 </body>
 
 <script>

@@ -40,7 +40,15 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
 
+    <style>
+        input[type="file"]{
+            height:40px;
+        }
 
+        input[type="file"]::-webkit-file-upload-button{
+            height:40px;
+        }
+    </style>
 </head>
 
 <body class="dark-edition">
@@ -221,7 +229,7 @@
                                                        data-volume_horaire="{{$matiere->volume_horaire}}"
                                                        data-toggle="modal"
                                                        data-target="#exampleModal-edit" type="button"
-                                                       class="btn btn-warning btn-sm">modifier</a>
+                                                       class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
                                                     <a data-matiere_id="{{$matiere->matiere_id}}" data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
                                                 </td>
@@ -275,10 +283,11 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <br>
                                     <div class="form-group">
                                         <label for="professeur_id" style="color:#c21db7;">Professeur</label>
                                         <?php $professeur = \App\Professeur::all()?>
-                                        <select name="professeur_id" size="1">
+                                        <select name="professeur_id" id="professeur_id" class="form-control" size="3">
                                             @foreach($professeur as $p)
                                                 <option value={{$p->professeur_id}}>{{$p->nom}}</option>
                                             @endforeach
@@ -296,7 +305,6 @@
                                     </div>
 
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
@@ -306,7 +314,7 @@
                         </div>
                     </div>
                 </div>
-
+                </div>
 
                 <!-- Modal edit -->
                 <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
@@ -351,7 +359,6 @@
                                                class="form-control"
                                                placeholder="volume horaire" min="1">
                                     </div>
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
@@ -360,6 +367,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -385,7 +393,6 @@
                                         matiere</p>
 
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
@@ -395,6 +402,7 @@
                         </div>
                     </div>
                 </div>
+                </div>
 
 
             </div>
@@ -402,6 +410,8 @@
         </div>
 
     </div>
+    </div>
+</div>
 </body>
 
 <script>
@@ -417,7 +427,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('EDIT STUDENT INFORMATION');
+        modal.find('.modal-title').text('Modifer matiére');
         modal.find('.modal-body #matiere_id').val(matiere_id);
         modal.find('.modal-body #nom_matiere').val(nom_matiere);
         modal.find('.modal-body #volume_horaire').val(volume_horaire);
@@ -434,7 +444,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('delete STUDENT INFORMATION');
+        modal.find('.modal-title').text('Supprimer matiére');
 
         modal.find('.modal-body #matiere_id').val(matiere_id);
     });

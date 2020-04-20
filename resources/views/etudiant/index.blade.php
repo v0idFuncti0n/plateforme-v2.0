@@ -40,7 +40,15 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
 
+    <style>
+        input[type="file"]{
+            height:40px;
+        }
 
+        input[type="file"]::-webkit-file-upload-button{
+            height:40px;
+        }
+    </style>
 </head>
 
 <body class="dark-edition">
@@ -238,7 +246,8 @@
                                                        data-num_apologie="{{$etudiant->num_apologie}}"
                                                        data-toggle="modal"
                                                        data-target="#exampleModal-edit" type="button"
-                                                       class="btn btn-warning btn-sm">modifier</a>
+                                                       class="btn btn-warning btn-sm" style="margin-bottom: 5px;width: 100px;">modifier</a>
+
                                                     <a data-id="{{$etudiant->etudiant_id}}"
                                                        data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
@@ -303,10 +312,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="niveau_id" style="color:#c21db7;">Niveau</label>
+                                        <br>
                                         <?php
 
                                         use App\filiere;use App\Niveau;$niveaux = Niveau::all();
-                                        echo "<select size='1' name=niveau_id>";
+                                        echo "<select size='3' id='niveau_id' class='form-control' name=niveau_id>";
                                         foreach($niveaux as $n){
                                             $niveau_id =$n->niveau_id;
                                             echo "<option value=$niveau_id>$n->nom</option>";
@@ -316,10 +326,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="filiere_id" style="color:#c21db7;">Filiere</label>
+                                        <br>
                                         <?php
 
                                         $filieres = filiere::all();
-                                        echo "<select size='1' name=filiere_id>";
+                                        echo "<select  size='3' id='filiere_id' class='form-control'  name=filiere_id>";
                                         foreach($filieres as $f){
                                             $id_filiere=$f->filiere_id;
                                             echo "<option value=$id_filiere>$f->nom</option>";
@@ -365,7 +376,7 @@
                                                class="form-control"
                                                placeholder="num_apologie" min="1">
                                     </div>
-                            </div>
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
@@ -374,6 +385,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -425,10 +437,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="niveau_id" style="color:#c21db7;">Niveau</label>
+                                        <br>
                                         <?php
 
                                         $niveaux = Niveau::all();
-                                        echo "<select size='1' name=niveau_id>";
+                                        echo "<select size='3' id='niveau_id' class='form-control' name=niveau_id>";
                                         foreach($niveaux as $n){
                                             $niveau_id =$n->niveau_id;
                                             echo "<option value=$niveau_id>$n->nom</option>";
@@ -438,10 +451,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="filiere_id" style="color:#c21db7;">Filiere</label>
+                                        <br>
                                         <?php
 
                                         $filieres = filiere::all();
-                                        echo "<select size='1' name=filiere_id>";
+                                        echo "<select size='3' id='filiere_id' class='form-control' name=filiere_id>";
                                         foreach($filieres as $f){
                                             $id_filiere=$f->filiere_id;
                                             echo "<option value=$id_filiere>$f->nom</option>";
@@ -472,17 +486,18 @@
                                                class="form-control"
                                                placeholder="num_apologie" min="1">
                                     </div>
-                            </div>
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
                                 <button type="submit" class="btn btn-success">modifier</button>
+
                             </div>
                             </form>
                         </div>
                     </div>
                 </div>
-
+                </div>
 
                 <!-- Modal delete -->
                 <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
@@ -506,7 +521,6 @@
                                         etudiant</p>
 
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
@@ -515,6 +529,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -556,7 +571,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('EDIT STUDENT INFORMATION');
+        modal.find('.modal-title').text('Modifer étudiant');
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #cin').val(cin);
         modal.find('.modal-body #cne').val(cne);
@@ -581,7 +596,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('delete STUDENT INFORMATION');
+        modal.find('.modal-title').text('supprimer étudiant');
 
         modal.find('.modal-body #id').val(id);
     });

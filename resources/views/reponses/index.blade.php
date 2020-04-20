@@ -55,43 +55,35 @@
     </script>
     <script src="/js/jspdf.min.js"></script>
     <title>Document</title>
-
+    <style>
+       .table th{
+            font-size: 18px;
+           font-weight: bold;
+           color: #333;
+        }
+        .table td{
+            font-size: 15px;
+            font-weight: normal;
+        }
+    </style>
 </head>
 <body>
 <header id="header">
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="/img/logo.png" alt="" title=""></img></a>
+            <a href="#hero"><img src="{{asset('img/logo.png')}}" alt="" title=""/></a>
             <!-- Uncomment below if you prefer to use a text logo -->
             <!--<h1><a href="#hero">Regna</a></h1>-->
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#hero">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#team">Team</a></li>
-                <li class="menu-has-children"><a href="">Drop Down</a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="menu-has-children"><a href="#">Drop Down 2</a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                        <li><a href="#">Drop Down 5</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li ><a href="test" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li class="menu-active"><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Déconnexion</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
@@ -108,25 +100,25 @@
     <div class="container d-flex align-items-stretch" style="margin-left: 0rem;">
         <nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">
             <div class="p-4">
-                <h1><a class="logo">Services</a></h1>
+                <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
                 <ul class="list-unstyled components mb-5">
-                    <li>
+                    <li >
                         <a href="index.html"><span class="fa fa-home mr-3"></span> Acceuil</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-user mr-3"></span> Création des test</a>
+                        <a href="#"><span class="fa fa-plus-square-o mr-3"></span> Création des test</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-plane mr-3"></span> table des test</a>
+                        <a href="#"><span class="fa fa-table mr-3"></span> table des test</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> création question qcm</a>
+                        <a href="#"><span class="fa fa-list mr-3"></span> création question qcm</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-cogs mr-3"></span> Création question binaire </a>
+                        <a href="#"><span class="fa fa-question mr-3"></span> Création question binaire </a>
                     </li>
-                    <li class="active">
-                        <a href="#"><span class="fa fa-paper-plane mr-3"></span> Création question text </a>
+                    <li>
+                        <a href="#"><span class="fa fa-file-text-o mr-3"></span> Création question text </a>
                     </li>
 
                     </li>
@@ -135,12 +127,12 @@
             </div>
         </nav>
 
-        <div class="table-wrapper" style="width: 100rem; margin-top: 3.125rem">
-            <table class="table table-bordered" id="myTable">
-                <thead>
-                <tr>
+        <div class="table-wrapper" style="width: 150rem; margin-top: 3.125rem">
+            <table class="table table-bordered" id="myTable" style="width: 1000px;">
+                <thead >
+                <tr >
                     <th>nom</th>
-                    <th>reponses</th>
+                    <th>reponses (PDF)</th>
                     <th>note final</th>
                     <th>Action</th>
                 </tr>
@@ -154,7 +146,7 @@
                     @foreach($session as $s)
                         <tr>
                             <td>{{$s->username}}</td>
-                            <td>
+                            <td style="font-weight: bold;color: #20df80">
                                 @php $reponses = \App\Reponse_text::query()->where('etudiant_id','=',$s->session_id)->get() @endphp
                                 <button value="{{$reponses}}" type="button" class="word" onclick="getWord(this)">
                                     reponses
@@ -213,16 +205,19 @@
                                 <label for="note_final" style="color:#c21db7;">Note Final</label>
                                 <input type="number" id="note_final" name="note_final" class="form-control" min="0" value="" required />
                             </div>
-                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
                         <button type="submit" class="btn btn-success">modifier</button>
                     </div>
                     </form>
+                    </div>
+
                 </div>
             </div>
         </div>
+    </div>
+</main>
 </body>
 </html>
 <script src="{{asset('/lib/jquery/jquery.min.js')}}"></script>
@@ -238,7 +233,7 @@
 
         var modal = $(this);
 
-        modal.find('.modal-title').text('EDIT STUDENT INFORMATION');
+        modal.find('.modal-title').text('Modifier la note ');
         modal.find('.modal-body #session_id').val(session_id);
         modal.find('.modal-body #note_final').val(note_total);
     });
