@@ -22,11 +22,12 @@ body, html {
   border-bottom-right-radius: 0;
   text-align: center;
   height: 170px;
-  background: url("https://www.studyrama.com/local/cache-vignettes/L990xH363/arton104495-82a98.jpg?1524842425");
+  background: url("/images/quiz.jpg");
   background-color: #4D637B;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
 }
 .wizard__header-content {
   position: absolute;
@@ -37,6 +38,7 @@ body, html {
   left: 50%;
   transform: translate(-50%, -60%);
   color: #31394a;
+
 }
 .wizard__header-overlay {
   position: absolute;
@@ -47,11 +49,13 @@ body, html {
   background: rgba(77, 99, 123, 0.6);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+
 }
 .wizard__title {
   font-size: 2.5rem;
   line-height: 2rem;
   margin: 0;
+  
 }
 .wizard__subheading {
   text-transform: uppercase;

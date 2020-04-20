@@ -42,7 +42,15 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
 
+<style>
+    input[type="file"]{
+        height:40px;
+    }
 
+    input[type="file"]::-webkit-file-upload-button{
+        height:40px;
+    }
+</style>
 </head>
 
 <body class="dark-edition">
@@ -185,8 +193,8 @@
                                     <form action={{ route('professeur.import') }} method="POST"
                                           enctype="multipart/form-data">
                                         @csrf
-                                        <input type="file" name="file">
-                                        <input class="btn btn-primary" type="submit" name="upload" value="upload">
+                                        <input type="file" name="file" >
+                                        <input class="btn btn-primary" type="submit"  name="upload" value="upload">
                                     </form>
                                 </div>
                                 <a href="" class="btn btn-info" data-toggle="modal"
@@ -233,7 +241,7 @@
                                                        data-departement_id="{{$professeur->departement_id}}"
                                                        data-toggle="modal"
                                                        data-target="#exampleModal-edit" type="button"
-                                                       class="btn btn-warning btn-sm">modifier</a>
+                                                       class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
                                                     <a data-professeur_id="{{$professeur->professeur_id}}" data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
                                                 </td>
@@ -272,12 +280,14 @@
                                         <input required type="text" name="cin_p" style="color:black;" class="form-control"
                                                pattern="[A-Z]{1,2}[0-9]{2,5}" placeholder="Exemple: XX145">
                                     </div>
+                                    <br>
 
                                     <div class="form-group">
                                         <label for="nom_p" style="color:#c21db7;">nom</label>
                                         <input required type="text" name="nom_p" style="color:black;" class="form-control"
                                                pattern="[a-zA-Z]*" placeholder="nom de professeur">
                                     </div>
+                                    <br>
 
                                     <div class="form-group">
                                         <label for="prenom_p" style="color:#c21db7;">prenom</label>
@@ -286,6 +296,7 @@
                                         <input required type="text" name="prenom_p" style="color:black;" class="form-control"
                                                pattern="[a-zA-Z]*" placeholder="prenom de professeur">
                                     </div>
+                                    <br>
 
                                     <div class="form-group">
                                         <label for="username_p" style="color:#c21db7;">nom d'utilsateur</label>
@@ -294,6 +305,8 @@
                                         <input required type="text" name="username_p" style="color:black;" class="form-control"
                                                pattern="[a-zA-Z1-9]*" placeholder="username">
                                     </div>
+                                    <br>
+
                                     <div class="form-group">
                                         <label for="email_p" style="color:#c21db7;">email</label>
 
@@ -302,6 +315,8 @@
                                                pattern="[a-zA-Z1-9]*@ests.ac.ma"
                                                placeholder="Exemple: XXX111@ests.ac.ma">
                                     </div>
+                                    <br>
+
                                     <div class="form-group">
                                         <label for="password_p" style="color:#c21db7;">mot de passe</label>
                                         <div>
@@ -312,6 +327,7 @@
                                                   style="float: right; margin-left: -25px; margin-top: -25px; position: relative; z-index: 2;"></span>
                                         </div>
                                     </div>
+                                    <br>
 
                                     <div class="form-group">
                                         <label for="grade_p" style="color:#c21db7;">grade</label>
@@ -319,18 +335,18 @@
                                         <input required type="text" name="grade_p" style="color:black;" class="form-control"
                                                pattern="[1-9]{1,2}" placeholder="grade de professeur">
                                     </div>
+                                    <br>
 
                                     <div class="form-group">
                                         <label for="departement_id" style="color:#c21db7;">Departement</label>
                                         <?php $departement = \App\Departement::all()?>
-                                        <select name="departement_id" size="2">
+                                        <select name="departement_id" id="departement_id" class="form-control" size="3">
                                             @foreach($departement as $d)
                                                 <option value="{{$d->departement_id}}">{{$d->nom}}</option>
                                             @endforeach
                                         </select>
                                     </div>
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
@@ -339,6 +355,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -360,49 +377,59 @@
                                     @method('PUT')
                                     <div class="form-group">
 
-                                        <label for="">cin</label>
+                                        <label for="" style="color:#c21db7;">cin</label>
 
                                         <input required type="text" style="color:black;" id="cin_p" name="cin_p"
                                                class="form-control"
                                                pattern="[A-Z]{1,2}[1-9]{2,5}" placeholder="Exemple: XX154">
                                     </div>
+                                    <br>
+
                                     <input required type="hidden" style="color:black;" name="professeur_id" id="professeur_id">
                                     <div class="form-group">
 
-                                        <label for="">nom</label>
+                                        <label for="" style="color:#c21db7;">nom</label>
 
                                         <input required type="text" style="color:black;" id="nom_p" name="nom_p"
                                                class="form-control"
                                                pattern="[a-zA-Z]*" placeholder="nom de professeur">
                                     </div>
+                                    <br>
+
                                     <div class="form-group">
 
-                                        <label for="">prenom</label>
+                                        <label for="" style="color:#c21db7;">prenom</label>
 
                                         <input required type="text" style="color:black;" id="prenom_p" name="prenom_p"
                                                class="form-control"
                                                pattern="[a-zA-Z]*" placeholder="prenom de professeur">
                                     </div>
+                                    <br>
+
                                     <div class="form-group">
 
-                                        <label for="">nom d'utilsateur</label>
+                                        <label for="" style="color:#c21db7;">nom d'utilsateur</label>
 
                                         <input required type="text" style="color:black;" id="username_p" name="username_p"
                                                class="form-control"
                                                pattern="[a-zA-Z1-9]*" placeholder="username">
                                     </div>
+                                    <br>
+
                                     <div class="form-group">
 
-                                        <label for="">email</label>
+                                        <label for="" style="color:#c21db7;">email</label>
 
                                         <input required type="text" style="color:black;" id="email_p" name="email_p"
                                                class="form-control"
                                                pattern="[a-zA-Z1-9]*@ests.ac.ma"
                                                placeholder="Exemple: XXX111@ests.ac.ma">
                                     </div>
+                                    <br>
+
                                     <div class="form-group">
 
-                                        <label for="">mot de passe</label>
+                                        <label for="" style="color:#c21db7;">mot de passe</label>
                                         <div>
                                             <input required type="password" style="color:black;" id="password_p"
                                                    name="password_p" class="form-control"
@@ -413,25 +440,28 @@
                                                   style="float: right; margin-left: -25px; margin-top: -25px; position: relative; z-index: 2;"></span>
                                         </div>
                                     </div>
+                                    <br>
+
                                     <div class="form-group">
 
-                                        <label for="">grade</label>
+                                        <label for="" style="color:#c21db7;">grade</label>
 
                                         <input required type="text" style="color:black;" id="grade_p" name="grade_p"
                                                class="form-control"
                                                pattern="[1-9]{1,2}" placeholder="grade de professeur">
                                     </div>
+                                    <br>
+
                                     <div class="form-group">
                                         <label for="departement_id" style="color:#c21db7;">Departement</label>
                                         <?php $departement = \App\Departement::all()?>
-                                        <select name="departement_id" size="2">
+                                        <select name="departement_id" id="departement_id" class="form-control" size="3">
                                             @foreach($departement as $d)
                                                 <option value={{$d->departement_id}}>{{$d->nom}}</option>
                                             @endforeach
                                         </select>
                                     </div>
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
@@ -440,6 +470,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -465,7 +496,6 @@
                                         professeur</p>
 
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
 
@@ -475,6 +505,7 @@
                         </div>
                     </div>
                 </div>
+                </div>
 
 
             </div>
@@ -482,6 +513,7 @@
         </div>
 
     </div>
+</div>
 </body>
 <script>$(".toggle-password").click(function () {
 
@@ -509,7 +541,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('Modifier les informations');
+        modal.find('.modal-title').text('Modifier professeur');
         modal.find('.modal-body #cin_p').val(cin);
         modal.find('.modal-body #nom_p').val(nom);
         modal.find('.modal-body #prenom_p').val(prenom);
@@ -531,7 +563,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('Supprimer le professeur');
+        modal.find('.modal-title').text('Supprimer professeur');
 
         modal.find('.modal-body #professeur_id').val(professeur_id);
     });

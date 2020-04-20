@@ -59,36 +59,18 @@ Header
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="/create-qcmd/img/logo.png" alt="" title=""/></img></a>
+            <a href="#hero"><img src="{{asset('img/logo.png')}}" alt="" title=""/></a>
             <!-- Uncomment below if you prefer to use a text logo -->
             <!--<h1><a href="#hero">Regna</a></h1>-->
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#hero">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#team">Team</a></li>
-                <li class="menu-has-children"><a href="">Drop Down</a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="menu-has-children"><a href="#">Drop Down 2</a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                        <li><a href="#">Drop Down 5</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li ><a href="test" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Déconnexion</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
@@ -107,27 +89,27 @@ Header
       Services Section
     ============================-->
     <div class="container d-flex align-items-stretch" style="margin-left: 0rem;">
-        <nav id="sidebar" class="img" style="background-image: url(/create-qcmd/images/stu.jpg);">
+        <nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">
             <div class="p-4">
-                <h1><a class="logo">Services</a></h1>
+                <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
                         <a href="index.html"><span class="fa fa-home mr-3"></span> Acceuil</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-user mr-3"></span> Création des test</a>
+                        <a href="#"><span class="fa fa-plus-square-o mr-3"></span> Création des test</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-plane mr-3"></span> table des test</a>
+                        <a href="#"><span class="fa fa-table mr-3"></span> table des test</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> création question qcm</a>
+                        <a href="#"><span class="fa fa-list mr-3"></span> création question qcm</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-cogs mr-3"></span> Création question binaire </a>
+                        <a href="#"><span class="fa fa-question mr-3"></span> Création question binaire </a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-paper-plane mr-3"></span> Création question text </a>
+                        <a href="#"><span class="fa fa-file-text-o mr-3"></span> Création question text </a>
                     </li>
 
                     </li>
@@ -151,6 +133,17 @@ Header
                             <form action="{{action('QCMController@store')}}" method="post">
                                 @csrf
 
+
+                                <div class="form-row">
+                                    <div class="name">Question</div>
+                                    <div class="value">
+                                        <div class="input-group">
+                                            <textarea class="textarea--style-6" name="question" style="width:96.6%;"
+                                                      placeholder=""></textarea>
+
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-row">
                                     <div class="name" style="height: 1.25rem;line-height: 0rem;">Difficulté</div>
                                     <div class="value">
@@ -172,22 +165,12 @@ Header
                                     <div class="name">Note</div>
                                     <div class="value">
                                         <div class="input-group">
-                                            <input type="number" name="note" >
+                                            <input type="number" name="note" style="height: 32px;width: 460px" >
 
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-row">
-                                    <div class="name">Question</div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <textarea class="textarea--style-6" name="question" style="width:96.6%;"
-                                                      placeholder=""></textarea>
-
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class=" form-row ">
 
                                     <div class="name">Option</div>
@@ -215,14 +198,14 @@ Header
                                 <br>
                                 <br>
                                 <input type="submit" id="submit" style="width: 17rem; margin-left:7rem; "
-                                       class="btn btn-info" value="Ajouter et enregistrer"/>
+                                       class="btn btn-info" value="Enregistrer et Ajouter"/>
                                 <input type="hidden" name="test_id" value="{{$test['test']->test_id}}">
-                                <input class="btn btn-success" style="width: 17rem" value="ajouter et quitter">
-
+                                <input class="btn btn-success" style="width: 17rem" value="Enregistrer et quitter">
+                            </form>
                         </div>
-                        </form>
                     </div>
-                </div>
+                <h2 class="mb-1" style=" margin-top: 10rem">Table des questions</h2>
+
                 @php
                     //  use \App
                         $qcms = App\qcm::OrderBy('question_id','asc')->where('test_id',$test['test']->test_id)->get(); @endphp
@@ -269,7 +252,6 @@ Header
                     </table>
                 </div>
         </div>
-    </div>
 
 
     <!-- Modal edit -->
@@ -303,7 +285,7 @@ Header
                             <label for="" style="color:#c21db7;">difficultes </label>
 
 
-                            <select name="difficulty" id="difficulty" class="form-control">
+                            <select name="difficulty" id="difficulty" size="1" class="form-control">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -333,13 +315,14 @@ Header
                                    placeholder="test id">
                         </div>
                         <br>
-                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
                     <button type="submit" class="btn btn-success">modifier</button>
                 </div>
                 </form>
+                </div>
+
             </div>
         </div>
     </div>
@@ -361,8 +344,7 @@ Header
                         @method('DELETE')
 
                         <input type="hidden" name="question_id" id="question_id">
-                        <p class="text-center" width="50px"> vous ete sûre que vous voulez supprimer cette question</p>
-                </div>
+                        <p class="text-center" style="font-weight: bold" width="50px"> vous ete sûre que vous voulez supprimer cette question</p>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-danger">supprimer</button>
@@ -371,8 +353,8 @@ Header
             </div>
         </div>
     </div>
-
     </div>
+
     </section><!-- #services -->
 
 

@@ -38,7 +38,15 @@
     <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
+    <style>
+        input[type="file"]{
+            height:40px;
+        }
 
+        input[type="file"]::-webkit-file-upload-button{
+            height:40px;
+        }
+    </style>
 
 </head>
 
@@ -186,7 +194,7 @@
                                 <div>
                                     <form action={{ route('departement.import') }} method="POST" enctype="multipart/form-data">
                                         @csrf
-                                        <input required type="file" name="file">
+                                        <input required type="file" name="file" >
                                         <input class="btn btn-primary" type="submit" name="upload" value="upload">
                                     </form>
                                 </div>
@@ -221,7 +229,7 @@
                                                        data-chef="{{$departement->chef}}"
                                                        data-date_fin="{{$departement->date_fin}}" data-toggle="modal"
                                                        data-target="#exampleModal-edit" type="button"
-                                                       class="btn btn-warning btn-sm">modifier</a>
+                                                       class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
                                                     <a data-departement_id="{{$departement->departement_id}}"
                                                        data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
@@ -325,7 +333,6 @@
                                     </div>
 
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
@@ -334,6 +341,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -391,7 +399,6 @@
                                                placeholder="date de fin">
                                     </div>
                                     <br>
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
@@ -400,6 +407,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -425,7 +433,6 @@
                                         departement</p>
 
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
@@ -435,6 +442,7 @@
                         </div>
                     </div>
                 </div>
+                </div>
 
 
             </div>
@@ -442,6 +450,7 @@
         </div>
 
     </div>
+</div>
 </body>
 
 <script>

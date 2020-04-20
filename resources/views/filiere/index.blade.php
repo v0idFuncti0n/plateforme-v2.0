@@ -38,7 +38,15 @@
     <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
+    <style>
+        input[type="file"]{
+            height:40px;
+        }
 
+        input[type="file"]::-webkit-file-upload-button{
+            height:40px;
+        }
+    </style>
 
 </head>
 
@@ -226,7 +234,7 @@
                                                        data-departement_id="{{$filiere->departement_id}}"
                                                        data-toggle="modal"
                                                        data-target="#exampleModal-edit" type="button"
-                                                       class="btn btn-warning btn-sm">modifier</a>
+                                                       class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
                                                     <a data-filiere_id="{{$filiere->filiere_id}}" data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
                                                 </td>
@@ -251,7 +259,7 @@
                     <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Ajouter filiére</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -294,9 +302,10 @@
 
                                     <div class="form-group">
 
-                                        <label for="" style="color:#c21db7;"> id departemeent</label>
+                                        <label for="nom_dep" style="color:#c21db7;"> id departemeent  </label>
 
-                                        <select name="nom_dep" size="1">
+
+                                        <select name="nom_dep" size="3" id="nom_dep" class="form-control">
                                             <?php
                                             use App\departement;
                                             $departements = departement::all();
@@ -307,18 +316,21 @@
                                             }
                                             ?>
                                         </select>
-
+                                    </div>
+                                    <br>
                                         <div class="form-group">
                                             <label for="niveau_id" style="color:#c21db7;">niveau</label>
                                             <?php $niveau = \App\Niveau::all()?>
-                                            <select name="niveau_id" size="1">
+                                            <select name="niveau_id" size="3" id="niveau_id" class="form-control" >
                                                 @foreach($niveau as $n)
                                                     <option value="{{$n->niveau_id}}">{{$n->nom}}</option>
                                                 @endforeach
                                             </select>
+
                                         </div>
-                                    </div>
-                            </div>
+
+
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
@@ -327,6 +339,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -383,9 +396,9 @@
 
                                     <div class="form-group">
 
-                                        <label for="" style="color:#c21db7;"> id departemeent</label>
+                                        <label for="nom_dep" style="color:#c21db7;"> id departemeent</label>
 
-                                        <select name="nom_dep" size="1">
+                                        <select name="nom_dep" size="3" id="nom_dep" class="form-control">
                                             <?php
 
                                             $departements = Departement::all();
@@ -396,18 +409,18 @@
                                             }
                                             ?>
                                         </select>
-
+                                    </div>
+                                    <br>
                                         <div class="form-group">
                                             <label for="niveau_id" style="color:#c21db7;">niveau</label>
                                             <?php $niveau = \App\Niveau::all()?>
-                                            <select name="niveau_id" size="2">
+                                            <select name="niveau_id" size="3" id="niveau_id" class="form-control">
                                                 @foreach($niveau as $n)
                                                     <option value="{{$n->niveau_id}}">{{$n->nom}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
-                            </div>
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
@@ -416,6 +429,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -442,7 +456,6 @@
                                         filiere</p>
 
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-dismiss="modal">fermer</button>
 
@@ -459,6 +472,8 @@
         </div>
 
     </div>
+    </div>
+</div>
 </body>
 
 <script>
@@ -528,9 +543,9 @@
 <script src="../assets/js/material-dashboard.js?v=2.1.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js"></script>
-<script>
-    <
-    /html>
+
+
+    </html>
 
 
 

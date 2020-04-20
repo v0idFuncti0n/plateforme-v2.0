@@ -39,7 +39,15 @@
     <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
+    <style>
+        input[type="file"]{
+            height:40px;
+        }
 
+        input[type="file"]::-webkit-file-upload-button{
+            height:40px;
+        }
+    </style>
 
 </head>
 
@@ -193,7 +201,7 @@
                                     </form>
                                 </div>
                                 <a href="" class="btn btn-info" data-toggle="modal"
-                                   data-target="#exampleModal">ajouter</a>
+                                   data-target="#exampleModal">ajouter </a>
 
                             </div>
                             <div class="card-body">
@@ -215,7 +223,7 @@
                                                        data-nom_module="{{$module->nom_module}}"
                                                        data-toggle="modal"
                                                        data-target="#exampleModal-edit" type="button"
-                                                       class="btn btn-warning btn-sm">modifier</a>
+                                                       class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
                                                     <a data-module_id="{{$module->module_id}}" data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
                                                 </td>
@@ -253,13 +261,13 @@
                                         <input pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_module" style="color:black;" class="form-control"
                                                placeholder="nom de module">
                                     </div>
-
+                                  <br>
                                     <div class="form-group">
                                         <label for="filiere_id" style="color:#c21db7;">Filiere</label>
                                         <?php
                                         use App\filiere;
                                         $filieres = filiere::all();
-                                      echo "<select size='1' name=filiere_id>";
+                                      echo "<select size='3' id='filiere_id' class='form-control' name=filiere_id>";
                                             foreach($filieres as $f){
                                                 $id_filiere=$f->filiere_id;
                                                 echo "<option value=$id_filiere>$f->nom </option>";
@@ -268,7 +276,6 @@
                                         ?>
                                     </div>
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
@@ -277,6 +284,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -304,12 +312,14 @@
                                                class="form-control"
                                                placeholder="nom de module">
                                     </div>
+                                    <br>
+
                                     <div class="form-group">
                                         <label for="filiere_id" style="color:#c21db7;">Filiere</label>
                                         <?php
 
                                         $filieres = filiere::all();
-                                        echo "<select size='1' name=filiere_id>";
+                                        echo "<select size='3' id='filiere_id' class='form-control'  name=filiere_id>";
                                         foreach($filieres as $f){
                                             $id_filiere=$f->filiere_id;
                                             echo "<option value=$id_filiere>$f->nom</option>";
@@ -317,7 +327,6 @@
                                         echo "</select>";
                                         ?>
                                     </div>
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
@@ -326,6 +335,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -351,7 +361,6 @@
                                         matiere</p>
 
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
@@ -364,6 +373,7 @@
             </div>
         </div>
         <div>
+        </div>
 
         </div>
 
@@ -381,7 +391,7 @@
         var id_filiere = button.data('id_filiere')
         var modal = $(this)
 
-        modal.find('.modal-title').text('EDIT STUDENT INFORMATION');
+        modal.find('.modal-title').text('Modifer module');
         modal.find('.modal-body #module_id').val(module_id);
         modal.find('.modal-body #nom_module').val(nom_module);
         modal.find('.modal-body #id_filiere').val(id_filiere);
@@ -396,7 +406,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('delete STUDENT INFORMATION');
+        modal.find('.modal-title').text('Supprimer module');
 
         modal.find('.modal-body #module_id').val(module_id);
     });
