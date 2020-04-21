@@ -38,7 +38,15 @@
 
     <link rel="stylesheet" href="{{asset("/managetest/css/stylemodal.css")}}">
     <link rel="stylesheet" href="/managetest/css/stylechoice.css">
+<style>
+    select.form-control:not([size]):not([multiple]) {
+        height: 32px;
+    }
+    .dataTables_filter{
+        margin-left: 300px;
+    }
 
+</style>
     <!-- =======================================================
       Theme Name: Regna
       Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
@@ -218,29 +226,25 @@ Header
             <div class="section-header">
                 <h3 class="section-title">manage test</h3>
             </div>
-            <div style="text-align: center" title="Créer test"><a href="{{route("create-test.index",$prof->professeur_id)}}">
+            <div style="text-align: center" title="Créer test">
+                <a href="{{route("create-test.index",$prof->professeur_id)}}">
                     <button class="btn btn-primary"><i class="fa fa-plus"></i></button>
                 </a>
-                <a class="btn btn-success" title="restaurer"
-                   data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
+
             </div>
 
             <div class="table-wrapper">
                 <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="show-entries">
-                                <span>Show</span>
-                                <span>entries</span>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="search-box">
-                                <div class="input-group">
 
-                                </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-12 col-md-13" style="margin-bottom: 0px" >
+                        <div class="input-group">
+                            <div style="text-align: center" >
+
+                                <a class="btn btn-success" title="restaurer"
+                                   data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
                             </div>
                         </div>
                     </div>
@@ -335,12 +339,12 @@ Header
         ?>
     <section id="service">
 
-        <div class="modal1">
+        <div class="modal1" >
             <div class="modal1-container">
                 <div class="modal1-left">
-                    <div class="input-block">
+                    <div class="input-block" >
                         <input type="radio" id="al" class="sty" name="select" value="1">
-                        <label for="al" class="stl">
+                        <label for="al" class="stl" >
                             <h2>Aléatoire</h2>
                             <p>les question seront ajouter d'une maniére aléatoire</p>
                         </label>
@@ -601,14 +605,14 @@ Header
                             matiere</p>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-
-                    <button type="submit" class="btn btn-danger">supprimer</button>
-                    </form>
                     <form action="{{action("TestController@forceDelete",['test_id'=>$test->test_id])}}" method="POST">
                         @csrf
                         <input required type="hidden" name="force_test_id" id="force_test_id">
                         <button type="submit" class="btn btn-danger">forcer la suppression</button>
+                    </form>
+                    <button type="submit" class="btn btn-danger">supprimer</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                </div>
                     </form>
                 </div>
 
@@ -640,10 +644,10 @@ Header
                                 <div class="switcher__indicator"></div>
                             </label>
                     @endforeach
-                </div>
                 <div class="modal-footer">
                     <button type="button" id="restore" class="btn btn-success">Restore</button>
                     <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                </div>
                     </form>
                 </div>
             </div>

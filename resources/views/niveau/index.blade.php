@@ -43,11 +43,18 @@
 
     <style>
         input[type="file"]{
-            height:40px;
+            height:20px;
+            color: white;
         }
 
         input[type="file"]::-webkit-file-upload-button{
-            height:40px;
+            height:20px;
+        }
+        .dark-edition .form-control {
+            color: white;
+        }
+        select option{
+            background-color:#3C4858;
         }
     </style>
 </head>
@@ -226,6 +233,8 @@
                                         {{$niveaux->links()}}
                                         </thead>
                                     </table>
+                                    <a data-toggle="modal" style="margin-left: 889px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
+
                                 </div>
 
                             </div>
@@ -234,7 +243,6 @@
 
                 </div>
 
-                <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
                 <!-- Modal add -->
                 <div class="modal fade-right" id="exampleModal" tabindex="-1" role="dialog"
@@ -257,7 +265,6 @@
                                                pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" placeholder="nom de niveau">
                                     </div>
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
@@ -268,6 +275,7 @@
                     </div>
                 </div>
 
+                </div>
 
                 <!-- Modal edit -->
                 <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
@@ -294,7 +302,6 @@
                                     </div>
                                     <input required type="hidden" style="color:black;" name="niveau_id" id="niveau_id">
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
@@ -303,6 +310,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -328,7 +336,6 @@
                                         niveau</p>
 
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
 
@@ -337,6 +344,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
                 <!-- restore data -->
@@ -370,7 +378,6 @@
 
 
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
@@ -380,12 +387,14 @@
                         </div>
                     </div>
                 </div>
+                </div>
 
             </div>
 
         </div>
 
     </div>
+</div>
 </body>
 
 <script>

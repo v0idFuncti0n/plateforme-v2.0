@@ -40,11 +40,19 @@
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
     <style>
         input[type="file"]{
-            height:40px;
+            height:20px;
+            color: white;
+
         }
 
         input[type="file"]::-webkit-file-upload-button{
-            height:40px;
+            height:20px;
+        }
+        .dark-edition .form-control {
+            color: white;
+        }
+        select option{
+            background-color:#3C4858;
         }
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
@@ -245,6 +253,8 @@
                                         {{$filieres->links()}}
                                         </thead>
                                     </table>
+                                    <a data-toggle="modal" style="margin-left: 905px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
+
                                 </div>
 
                             </div>
@@ -252,7 +262,6 @@
                     </div>
 
                 </div>
-                <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
                 <!-- Modal add -->
 
                 <div class="modal fade-right" id="exampleModal" tabindex="-1" role="dialog"
@@ -329,8 +338,6 @@
                                             </select>
 
                                         </div>
-                                    </div>
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
@@ -339,6 +346,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -419,8 +427,6 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
@@ -429,6 +435,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
 
@@ -455,7 +462,6 @@
                                         filiere</p>
 
 
-                            </div>
                             <div class="modal-footer">
                                 <button type="submit" name = "but" value="dif"class="btn btn-warning" >supdif</button>
 
@@ -464,6 +470,7 @@
                             </form>
                         </div>
                     </div>
+                </div>
                 </div>
 
         <!-- restore data -->
@@ -497,7 +504,6 @@
 
 
 
-                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
@@ -512,6 +518,8 @@
         </div>
 
     </div>
+                </div>
+            </div>
 </body>
 
 <script>

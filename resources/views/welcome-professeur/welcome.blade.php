@@ -53,23 +53,7 @@ Header
                 <li><a href="{{route('profauth.login')}}">Se connecter</a></li>
 
                 <li><a href="#team">equipe</a></li>
-                <li class="menu-has-children"><a href="">Drop Down</a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="menu-has-children"><a href="#">Drop Down 2</a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                        <li><a href="#">Drop Down 5</a></li>
-                    </ul>
-                </li>
+                <
                 <li><a href="#contact">Contact Us</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
@@ -97,29 +81,31 @@ Header
     <section id="facts">
         <div class="container wow fadeIn">
             <div class="section-header">
-                <h3 class="section-title">Facts</h3>
-                <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+                <h3 class="section-title">Les faits</h3>
             </div>
+            <?php $nbrtest = DB::table('test')->count()?>
             <div class="row counters">
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-toggle="counter-up">232</span>
-                    <p>Clients</p>
+                    <span data-toggle="counter-up"> {{$nbrtest}}</span>
+                    <p>Tests</p>
                 </div>
+                <?php $nbrquestion = DB::table('qcm')->count()+DB::table('binaire')->count()+DB::table('text_libre')->count()?>
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-toggle="counter-up">521</span>
-                    <p>Projects</p>
+                    <span data-toggle="counter-up">{{$nbrquestion}}</span>
+                    <p>Questions</p>
                 </div>
+                <?php $nbretudiant = DB::table('etudiant')->count()?>
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-toggle="counter-up">1,463</span>
-                    <p>Hours Of Support</p>
+                    <span data-toggle="counter-up">{{$nbretudiant}}</span>
+                    <p>Etudiants</p>
                 </div>
-
+                <?php $nbrprofesseur = DB::table('professeur')->count()?>
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-toggle="counter-up">15</span>
-                    <p>Hard Workers</p>
+                    <span data-toggle="counter-up">{{$nbrprofesseur}}</span>
+                    <p>Professeurs</p>
                 </div>
 
             </div>

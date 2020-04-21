@@ -198,7 +198,7 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li ><a href="test" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Acceuil</a></li>
                 <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
                 <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
@@ -254,10 +254,7 @@ Header
             <h2 class="mb-4">Création des questions binaire</h2>
             <section id="services">
                 <div class="container wow fadeIn">
-                    <div class="section-header">
-                        <a class="btn btn-success" title="restaurer"
-                           data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
-                    </div>
+
 
 
                     <div class=" card-6" style="margin-left: -3.75rem;">
@@ -375,6 +372,10 @@ Header
                             </thead>
 
                         </table>
+                        <div class="section-header" style="margin-left: 875px">
+                            <a class="btn btn-success" title="restaurer"
+                               data-target="#exampleModal-restore"  data-toggle="modal">Restaurer</a>
+                        </div>
                     </div>
                 </div>
 
@@ -468,20 +469,23 @@ Header
                                     @method('DELETE')
 
                                     <input type="hidden" name="binaire_id" id="binaire_id">
-                                    <p class="text-center" width="50px" style="font-weight: normal"> vous ete sûre que
+                                    <p class="text-center" width="50px" style="font-weight:900 ;font-size: 14px;"> vous ete sûre que
                                         vous voulez supprimer cette question</p>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close
-                                        </button>
-                                        <button type="submit" class="btn btn-danger">supprimer</button>
-                                        </form>
                                         <form action="{{action("BinaireController@forceDelete")}}" method="POST">
                                             @csrf
                                             <input required type="hidden" name="force_question_id"
                                                    id="force_question_id" >
                                             <button type="submit" class="btn btn-danger">forcer la suppression</button>
                                         </form>
+                                        <button type="submit" class="btn btn-danger">supprimer</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close
+                                        </button>
+                                    </div>
+                                        </form>
+
+
                                     </div>
 
                             </div>
@@ -514,10 +518,10 @@ Header
                                     <div class="switcher__indicator"></div>
                                 </label>
                         @endforeach
-                    </div>
                     <div class="modal-footer">
                         <button type="button" id="restore" class="btn btn-success">Restore</button>
                         <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                    </div>
                         </form>
                     </div>
                 </div>

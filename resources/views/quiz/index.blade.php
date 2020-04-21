@@ -57,21 +57,14 @@ $niveau = \App\Niveau::findOrfail($etudiant->niveau_id);
                 <div class="header__tool">
                     <div class="account-wrap">
                         <div class="account-item account-item--style2 clearfix js-item-menu">
-                            <div class="image">
-                                <img src="/resultat1/images/icon/avatar-01.jpg" alt="{{$etudiant->nom." ".$etudiant->prenom}}"/>
-                            </div>
+
                             <div class="content">
                                 <a class="js-acc-btn" href="#">{{$etudiant->nom." ".$etudiant->prenom}}</a>
                             </div>
                             <div class="account-dropdown js-dropdown">
                                 <div class="info clearfix">
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="/resultat1/images/icon/avatar-01.jpg"
-                                                 alt="{{$etudiant->nom." ".$etudiant->prenom}}"/>
-                                        </a>
-                                    </div>
-                                    <div class="content">
+
+                                    <div class="content" style="margin-left: 10px;">
                                         <h5 class="name">
                                             <a href="#">j{{$etudiant->nom." ".$etudiant->prenom}}</a>
                                         </h5>

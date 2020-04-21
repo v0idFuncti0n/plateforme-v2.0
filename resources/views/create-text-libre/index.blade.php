@@ -66,7 +66,7 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li ><a href="test" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Acceuil</a></li>
                 <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
                 <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
@@ -119,15 +119,10 @@ Header
 
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5 pt-5">
-            <h2 class="mb-4">Création des questions</h2>
+            <h2 class="mb-4">Création des questions text libre </h2>
             <section id="services">
                 <div class="container wow fadeIn">
-                    <br>
-                    <br>
-                    <div style="text-align: center">
-                        <a class="btn btn-success" title="restaurer"
-                           data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
-                    </div>
+
                     <div class=" card-6" style="margin-left: -3.75rem;">
                         <div class="">
                             <form action="{{action('Text_libreController@store')}}" method="POST">
@@ -214,6 +209,10 @@ Header
                         </thead>
 
                     </table>
+                        <div class="section-header" style="margin-left: 875px">
+                            <a class="btn btn-success" title="restaurer"
+                               data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
+                        </div>
                 </div>
         </div>
 
@@ -292,19 +291,19 @@ Header
                         <p class="text-center" style="font-weight: bold" width="50px"> vous ete sûre que vous voulez supprimer ce
                             matiere</p>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-
-                    <button type="submit" class="btn btn-danger">supprimer</button>
-                    </form>
                     <form action="{{action("Text_libreController@forceDelete")}}" method="POST">
                         @csrf
                         <input required type="hidden" name="force_question_id" id="force_question_id">
                         <button type="submit" class="btn btn-danger">forcer la suppression</button>
                     </form>
+                    <button type="submit" class="btn btn-danger">supprimer</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                </div>
+                    </form>
+
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     </section><!-- #services -->
@@ -329,10 +328,10 @@ Header
                                 <label for="questions[{{$text_libre->question_id}}]">{{$text_libre->question_text}}</label>
                                 <input type="checkbox" name="questions[{{$text_libre->question_id}}]" value="{{$text_libre->question_id}}"/>
                         @endforeach
-                    </div>
                     <div class="modal-footer">
                         <button type="button" id="restore" class="btn btn-success">Restore</button>
                         <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                    </div>
                         </form>
                     </div>
                 </div>

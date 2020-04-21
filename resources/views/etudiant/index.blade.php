@@ -42,11 +42,22 @@
 
     <style>
         input[type="file"]{
-            height:40px;
+            height:20px;
+            color: white;
+
         }
 
         input[type="file"]::-webkit-file-upload-button{
-            height:40px;
+            height:20px;
+        }
+        .dark-edition .form-control {
+            color: white;
+        }
+        .pagination .page-item .page-link{
+            color: white;
+        }
+        select option{
+            background-color:#3C4858;
         }
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
@@ -248,10 +259,10 @@
                                                        data-num_apologie="{{$etudiant->num_apologie}}"
                                                        data-toggle="modal"
                                                        data-target="#exampleModal-edit" type="button"
-                                                       class="btn btn-warning btn-sm">modifier</a>
+                                                       class="btn btn-warning btn-sm" style="width: 100px">modifier</a>
                                                     <a data-id="{{$etudiant->etudiant_id}}"
                                                        data-toggle="modal"
-                                                       data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
+                                                       data-target="#exampleModal-delete" style="margin-top: 5px" class="btn btn-danger btn-sm">supprimer</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -259,6 +270,8 @@
                                         {{$etudiants->links()}}
                                         </thead>
                                     </table>
+                                    <a data-toggle="modal" style="margin-left: 889px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
+
                                 </div>
 
                             </div>
@@ -377,13 +390,14 @@
                                                class="form-control"
                                                placeholder="num_apologie" min="1">
                                     </div>
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
                                 <button type="submit" class="btn btn-success">enregistrer</button>
                             </div>
                             </form>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -487,7 +501,6 @@
                                                class="form-control"
                                                placeholder="num_apologie" min="1">
                                     </div>
-                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
@@ -498,6 +511,7 @@
                     </div>
                 </div>
 
+                </div>
 
                 <!-- Modal delete -->
                 <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
@@ -521,7 +535,6 @@
                                         etudiant</p>
 
 
-                            </div>
                             <div class="modal-footer">
 
                                     <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
@@ -567,7 +580,6 @@
 
 
 
-                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
 
@@ -585,6 +597,8 @@
 
     </div>
 </div>
+</div>
+
 </body>
 
 <script>$(".toggle-password").click(function() {
@@ -675,6 +689,7 @@
 <script src="/public/assets/js/material-dashboard.js?v=2.1.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="/public/assets/demo/demo.js"></script>
+
 <script type="text/javascript"
         src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
 <script>

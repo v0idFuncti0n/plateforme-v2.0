@@ -241,36 +241,18 @@ Header
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="/img/logo.png" alt="" title=""/></a>
+            <a href="#hero"><img src="{{asset('img/logo.png')}}" alt="" title=""/></a>
             <!-- Uncomment below if you prefer to use a text logo -->
             <!--<h1><a href="#hero">Regna</a></h1>-->
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#hero">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#team">Team</a></li>
-                <li class="menu-has-children"><a href="">Drop Down</a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="menu-has-children"><a href="#">Drop Down 2</a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                        <li><a href="#">Drop Down 5</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Gérer étudiants</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Déconnexion</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
     </div>
@@ -291,26 +273,25 @@ Header
     <div class="container d-flex align-items-stretch" style="margin-left: 0rem;">
         <nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">
             <div class="p-4">
-
-                <h1><a class="logo">Services</a></h1>
+                <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
                 <ul class="list-unstyled components mb-5">
-                    <li class="active">
+                    <li >
                         <a href="index.html"><span class="fa fa-home mr-3"></span> Acceuil</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-user mr-3"></span> Création des test</a>
+                        <a href="#"><span class="fa fa-plus-square-o mr-3"></span> Création des test</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-plane mr-3"></span> table des test</a>
+                        <a href="#"><span class="fa fa-table mr-3"></span> table des test</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-sticky-note mr-3"></span> création question qcm</a>
+                        <a href="#"><span class="fa fa-list mr-3"></span> création question qcm</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-cogs mr-3"></span> Création question binaire </a>
+                        <a href="#"><span class="fa fa-question mr-3"></span> Création question binaire </a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-paper-plane mr-3"></span> Création question text </a>
+                        <a href="#"><span class="fa fa-file-text-o mr-3"></span> Création question text </a>
                     </li>
 
                     </li>
@@ -318,13 +299,10 @@ Header
 
             </div>
         </nav>
-
         <div id="content" class="p-4 p-md-5 pt-5" style="width: 100rem; margin-top: 3.125rem">
-            <div class="section-header">
-                <a class="btn btn-success" title="restaurer"
-                   data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
-            </div>
-            <div class="table-responsive">
+            <h2 class="mb-4"  >Table des options</h2>
+
+            <div class="table-responsive" style="margin-top: 70px;width: 1000px;">
                 <table class="table table-bordered" style=" border-top: 2px solid #DCDCDC;" id="myTable">
                     <thead>
                     <tr>
@@ -362,6 +340,10 @@ Header
                     </thead>
 
                 </table>
+                <div class="section-header" style="margin-left: 913px">
+                    <a class="btn btn-success" title="restaurer"
+                       data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
+                </div>
             </div>
         </div>
     </div>
@@ -414,13 +396,14 @@ Header
 
 
                         <br>
-                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
                     <button type="submit" class="btn btn-success">modifier</button>
                 </div>
                 </form>
+                </div>
+
             </div>
         </div>
     </div>
@@ -442,20 +425,21 @@ Header
                         @method('DELETE')
 
                         <input type="hidden" name="option_id" id="option_id">
-                        <p class="text-center" width="50px"> vous ete sûre que vous voulez supprimer cette question</p>
+                        <p class="text-center"style="font-weight:900 ;font-size: 14px;"  width="50px"> vous ete sûre que vous voulez supprimer cette question</p>
 
 
-                </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-
-                    <button type="submit" class="btn btn-danger">supprimer</button>
-                    </form>
                     <form action="{{action("OptionController@forceDelete")}}" method="POST">
                         @csrf
                         <input required type="hidden" name="force_option_id" id="force_option_id">
                         <button type="submit" class="btn btn-danger">forcer la suppression</button>
                     </form>
+                    <button type="submit" class="btn btn-danger">supprimer</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+
+                </div>
+                    </form>
+
                 </div>
 
             </div>
@@ -488,17 +472,17 @@ Header
                             <div class="switcher__indicator"></div>
                         </label>
                 @endforeach
-            </div>
             <div class="modal-footer">
                 <button type="button" id="restore" class="btn btn-success">Restore</button>
                 <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
-                </form>
             </div>
+
+                </form>
         </div>
     </div>
 </div>
 
-
+</div>
 </body>
 </html>
 

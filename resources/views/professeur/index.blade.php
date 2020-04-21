@@ -45,11 +45,19 @@
 
 <style>
     input[type="file"]{
-        height:40px;
+        height:20px;
+        color: white;
+
     }
 
     input[type="file"]::-webkit-file-upload-button{
-        height:40px;
+        height:20px;
+    }
+    .dark-edition .form-control {
+        color: white;
+    }
+    select option{
+        background-color:#3C4858;
     }
 </style>
 </head>
@@ -252,6 +260,8 @@
                                         {{$professeurs->links()}}
                                         </thead>
                                     </table>
+                                    <a data-toggle="modal" style="margin-left: 889px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
+
                                 </div>
 
                             </div>
@@ -474,7 +484,6 @@
                 </div>
                 </div>
 
-                <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
                 <!-- Modal delete -->
                 <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
@@ -504,7 +513,6 @@
 
                                 <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
                                              </div>
-                            </div>
                             </form>
                         </div>
                     </div>
@@ -512,7 +520,7 @@
                 </div>
 
    <!-- restore data -->
-                 
+
    <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
    aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
@@ -528,7 +536,7 @@
           <form action="{{action('ProfesseurController@restore')}}" method="POST">
                   @csrf
                 <?php $profs['profs'] = App\professeur::onlyTrashed()->get();?>
-             
+
             @foreach($profs['profs'] as $professeur)
 
                   <label class="switcher" style="margin-left:10px;">
@@ -542,7 +550,6 @@
 
 
 
-          </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
@@ -552,6 +559,7 @@
       </div>
   </div>
 </div>
+   </div>
 
 
 

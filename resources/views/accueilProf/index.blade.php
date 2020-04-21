@@ -173,7 +173,7 @@ Header
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-lg-12 col-sm-12 col-12 box-text-section">
-                                    <p><a href="#" style="color:#dc3545;font-weight: bold">Gérer étudiants</a></p>
+                                    <p><a href="#" style="color:#dc3545;font-weight: bold">Gérer les notes</a></p>
                                 </div>
                             </div>
                         </div>

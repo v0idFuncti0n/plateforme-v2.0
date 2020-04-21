@@ -195,7 +195,7 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li ><a href="test" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Acceuil</a></li>
                 <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
                 <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Gérer étudiants</a></li>
@@ -223,7 +223,7 @@ Header
                 <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
                 <ul class="list-unstyled components mb-5">
                     <li >
-                        <a href="index.html"><span class="fa fa-home mr-3"></span> Acceuil</a>
+                        <a href=""><span class="fa fa-home mr-3"></span> Acceuil</a>
                     </li>
                     <li>
                         <a href="#"><span class="fa fa-plus-square-o mr-3"></span> Création des test</a>
@@ -246,10 +246,7 @@ Header
 
             </div>
         </nav>
-        <div class="section-header">
-            <a class="btn btn-success" title="restaurer"
-               data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
-        </div>
+
         <div id="content" class="p-4 p-md-5 pt-5" style="width: 100rem; margin-top: 3.125rem">
             <h2 class="mb-4"  >Table des options</h2>
 
@@ -289,6 +286,10 @@ Header
                 </thead>
 
             </table>
+                <div class="section-header" style="margin-left: 913px">
+                    <a class="btn btn-success" title="restaurer"
+                       data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
+                </div>
         </div>
     </div>
 </div>
@@ -369,18 +370,21 @@ Header
                     @method('DELETE')
 
                     <input type="hidden" name="option_id" id="option_id">
-                    <p class="text-center" style="font-weight: bold" width="50px"> vous ete sûre que vous voulez supprimer cette question</p>
+                    <p class="text-center" style="font-weight:900 ;font-size: 14px;" width="50px"> vous ete sûre que vous voulez supprimer cette question</p>
 
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-danger">supprimer</button>
-                </form>
                 <form action="{{action("OptionController@forceDelete")}}" method="POST">
                     @csrf
                     <input required type="hidden" name="force_option_id" id="force_option_id">
                     <button type="submit" class="btn btn-danger">forcer la suppression</button>
                 </form>
+                <button type="submit" class="btn btn-danger">supprimer</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+
+            </div>
+                </form>
+
             </div>
         </div>
     </div>
@@ -416,14 +420,15 @@ Header
                             <div class="switcher__indicator"></div>
                         </label>
                 @endforeach
-            </div>
+
             <div class="modal-footer">
                 <button type="button" id="restore" class="btn btn-success">Restore</button>
                 <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+            </div>
                 </form>
             </div>
-        </div>
     </div>
+        </div>
 </div>
 </body>
 </html>
