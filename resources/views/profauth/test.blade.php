@@ -268,7 +268,11 @@ Header
                     $key = 0;
                     ?>
                     @foreach($tests as $test)
+
                         @php
+                            if($key == 0){
+                                echo "<script> var test_id = ".$test->test_id." </script>";
+                            }
                             $sess = App\Session::query()->where('test_id','=',$test->test_id)->first();
                                 if ( $sess->active == 0){
                                     $value = 0;
@@ -825,12 +829,15 @@ Header
         console.log(test_id);
 
     })*/
-    var test_id;
 
-    function teleport(elem) {
+
+   /* function teleport(elem) {
         test_id = elem;
 
-    }
+    }*/
+   $(document).ready(function(){
+       teleport1();
+   })
 
     function teleport1() {
         var checked1 = document.getElementById('one3').checked;

@@ -123,6 +123,7 @@ class AdminController extends Controller
 
     public function adminLogout(Request $request)
     {
+
         $request->session()->flush();
         return redirect()->route('admin.index');
     }

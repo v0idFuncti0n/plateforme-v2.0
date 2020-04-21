@@ -262,8 +262,8 @@ Header
                             <form action="{{action('question@StoreSelected')}}" method="POST">
                                 @csrf
                                 @foreach($tests as $test1)
-
                                     <?php $qcms['qcms'] = DB::table('qcm')->where('test_id', $test1->test_id)->get();?>
+
                                     @foreach($qcms['qcms'] as $qcm)
 
                                         <label class="switcher" style="margin-left:10px;">
@@ -290,11 +290,20 @@ Header
 
                                     @endforeach
 
+                                        <?php $text_libre['text_libre'] = DB::table('text_libre')->where('test_id', $test1->test_id)->get();?>
+
+                                        @foreach($text_libre['text_libre'] as $text_libre)
+
+                                            <label class="switcher" style="margin-left:10px;">
+                                                <input name="text_libre[]" type="checkbox" value="{{$text_libre->question_id}}"/>
+                                                <div class="switcher__indicator"></div>
+                                                <span style="font-size: 15px;">{{$text_libre->question_text}}</span>
+                                            </label><br>
+                                            <br>
 
 
 
-
-
+                                        @endforeach
                                 @endforeach
                                 <input type="hidden" name="test_id" value="{{$test->test_id}}">
                                 <div style="padding-left:100px;">

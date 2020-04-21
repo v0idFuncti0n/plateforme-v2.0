@@ -35,14 +35,17 @@ class question extends Controller
         return view('create-qcm.index');
     }
 
-    public function select ($test_id){
-        $test =test::find($test_id);
-        return view ('select-question.index',compact('test'));
+    public function select($test_id)
+    {
+        $test = test::find($test_id);
+        return view('select-question.index', compact('test'));
 
     }
-    public function Random ($test_id){
-        $test =test::find($test_id);
-        return view ('Random.index',compact('test'));
+
+    public function Random($test_id)
+    {
+        $test = test::find($test_id);
+        return view('Random.index', compact('test'));
 
     }
 
@@ -54,10 +57,19 @@ class question extends Controller
      */
     public function StoreSelected(Request $request)
     {
-        $qcms['qcms'] = qcm::find(array_values($request->input('qcm')));
+        if ($request->input('qcm') != null)
+            $qcms['qcms'] = qcm::find(array_values($request->input('qcm')));
+        else
+            $qcms['qcms'] = array();
         if ($request->input('bin') != null)
             $binaires['binaires'] = binaire::find(array_values($request->input('bin')));
-        $text_libre['text_libre'] = Text_libre::query()->find(array_values($request->input('text_libre')));
+        else
+            $binaires['binaires'] = array();
+        if ($request->input('text_libre') != null)
+            $text_libre['text_libre'] = Text_libre::query()->find(array_values($request->input('text_libre')));
+        else
+            $text_libre['text_libre'] = array();
+
         foreach ($qcms['qcms'] as $qcm) {
             $qcm->test_id = $request->test_id;
             $qc = array(
@@ -110,7 +122,7 @@ class question extends Controller
 
         }
 
-        foreach ($text_libre['text_libre'] as $text_libre){
+        foreach ($text_libre['text_libre'] as $text_libre) {
             $text_libre->test_id = $request->test_id;
             $tl = array(
                 'test_id' => $text_libre->test_id,
@@ -126,125 +138,128 @@ class question extends Controller
     }
 
 
-    public function RandomStoring(Request $request){
-        $nbr=$request->nombre ;
-        $difficulty =$request->difficulty ;
-        $type=$request->type;
-        $test=test::find($request->test_id);
+    public function RandomStoring(Request $request)
+    {
+        $nbr = $request->nombre;
+        $difficulty = $request->difficulty;
+        $type = $request->type;
+        $test = test::find($request->test_id);
 
 
-        $test2['test2'] =DB::table('test')->where('test_id','<>',$request->test_id)->where('matiere_id',$test->matiere_id)->where('professeur_id',$test->professeur_id)->get();
-        $i=0;
-        foreach($test2['test2'] as $test){
-            $test1[$i]=$test->test_id ;
+        $test2['test2'] = DB::table('test')->where('test_id', '<>', $request->test_id)->where('matiere_id', $test->matiere_id)->where('professeur_id', $test->professeur_id)->get();
+        $i = 0;
+        foreach ($test2['test2'] as $test) {
+            $test1[$i] = $test->test_id;
             $i++;
         }
 
 
-
-        if ($type == 'qcm'){
-            $i=0;
-            $t=[];
-            $shiit['shiit']= DB::table('qcm')->where('test_id',$request->test_id)->where('difficulty',$difficulty)->get();
-            foreach( $shiit['shiit'] as $qcm1){
-                $t[$i]=$qcm1->question_text ;
+        if ($type == 'qcm') {
+            $i = 0;
+            $t = [];
+            $shiit['shiit'] = DB::table('qcm')->where('test_id', $request->test_id)->where('difficulty', $difficulty)->get();
+            foreach ($shiit['shiit'] as $qcm1) {
+                $t[$i] = $qcm1->question_text;
                 $i++;
             }
 
 
-            $qcms= qcm::orderByRaw("RAND()")->where('test_id','<>',$request->test_id)->where('difficulty',$difficulty)->whereIn('test_id',$test1)->whereNotIn('question_text',$t)->take($nbr)->get();
-            $count= qcm::orderByRaw("RAND()")->where('test_id','<>',$request->test_id)->where('difficulty',$difficulty)->whereIn('test_id',$test1)->whereNotIn('question_text',$t)->take($nbr)->get()->count();
+            $qcms = qcm::orderByRaw("RAND()")->where('test_id', '<>', $request->test_id)->where('difficulty', $difficulty)->whereIn('test_id', $test1)->whereNotIn('question_text', $t)->take($nbr)->get();
+            $count = qcm::orderByRaw("RAND()")->where('test_id', '<>', $request->test_id)->where('difficulty', $difficulty)->whereIn('test_id', $test1)->whereNotIn('question_text', $t)->take($nbr)->get()->count();
 
             // $qcmCount =DB::table('qcm')->where('test_id',$test->test_id)->where('difficulty',$difficulty)->get() ;
             //$disponible = - count($qcmCount);
 
-            if($nbr==$count){
-                foreach($qcms as $qcm){
-                    $test1 =test::find($qcm->test_id);
-                    if($test1->matiere_id == $test->matiere_id && $test1->professeur_id == $test->professeur_id ){
-                        $insert =array(
-                            'question_text' => $qcm->question_text ,
-                            'test_id' => $request->test_id ,
+            if ($nbr == $count) {
+                foreach ($qcms as $qcm) {
+                    $test1 = test::find($qcm->test_id);
+                    if ($test1->matiere_id == $test->matiere_id && $test1->professeur_id == $test->professeur_id) {
+                        $insert = array(
+                            'question_text' => $qcm->question_text,
+                            'test_id' => $request->test_id,
                             'note' => $qcm->note,
-                            'difficulty' => $qcm->difficulty ,
+                            'difficulty' => $qcm->difficulty,
                         );
-                        $id=qcm::create($insert);
-                        $options=DB::table('option')->where('question_id',$qcm->question_id)->get();
+                        $id = qcm::create($insert);
+                        $options = DB::table('option')->where('question_id', $qcm->question_id)->get();
 
-                        foreach($options as $option ){
-                            $option->question_id=$id->question_id ;
-                            $opt =array(
+                        foreach ($options as $option) {
+                            $option->question_id = $id->question_id;
+                            $opt = array(
 
-                                'point'=>$option->point,
-                                'question_id'=>$option->question_id,
-                                'option_text'=> $option->option_text
+                                'point' => $option->point,
+                                'question_id' => $option->question_id,
+                                'option_text' => $option->option_text
 
                             );
 
                             Option::create($opt);
                         }
-
-
-
-                    }
-
-                }}else {session()->flash('notif','le nombre que vous avez choisi est plus grands que les question de type qcm  qui existe');}
-        }
-        if ($type == 'binaire'){
-            $j=0;
-            $k=[];
-            $shiit1['shiit1']= DB::table('binaire')->where('test_id',$request->test_id)->where('difficulty',$difficulty)->get();
-            foreach( $shiit1['shiit1'] as $binaire1){
-                $k[$j]=$binaire1->question_text ;
-                $j++;
-            }
-
-            $binaires= binaire::orderByRaw("RAND()")->where('test_id','<>',$request->test_id)->where('difficulty',$difficulty)->whereNotIn('question_text',$k)->whereIn('test_id',$test1)->take($nbr)->get();
-            $count1= binaire::orderByRaw("RAND()")->where('test_id','<>',$request->test_id)->where('difficulty',$difficulty)->whereNotIn('question_text',$k)->whereIn('test_id',$test1)->take($nbr)->get()->count();
-
-            if($nbr==$count1){
-                ;
-                foreach($binaires as $binaire){
-                    $test1 =test::find($binaire->test_id);
-
-                    if($test1->matiere_id == $test->matiere_id && $test1->professeur_id == $test->professeur_id ){
-
-
-                        $insert1 =array(
-                            'question_text' => $binaire->question_text ,
-                            'test_id' => $request->test_id ,
-                            'note' => $binaire->note,
-                            'difficulty' => $binaire->difficulty
-                        );
-
-
-                        $id1=binaire::create($insert1);
-
-
-                        $options=DB::table('option')->where('binaire_id',$binaire->binaire_id)->get();
-
-                        foreach($options as $option ){
-                            $option->binaire_id=$id1->binaire_id ;
-                            $opt =array(
-
-                                'point'=>$option->point,
-                                'binaire_id'=>$option->binaire_id,
-                                'option_text'=> $option->option_text
-
-                            );
-
-                            Option::create($opt);
-                        }
-
 
 
                     }
 
                 }
-            }else{session()->flash('notif','le nombre que vous avez choisi est plus grands que les question de type Binaire qui existe');}
+            } else {
+                session()->flash('notif', 'le nombre que vous avez choisi est plus grands que les question de type qcm  qui existe');
+            }
+        }
+        if ($type == 'binaire') {
+            $j = 0;
+            $k = [];
+            $shiit1['shiit1'] = DB::table('binaire')->where('test_id', $request->test_id)->where('difficulty', $difficulty)->get();
+            foreach ($shiit1['shiit1'] as $binaire1) {
+                $k[$j] = $binaire1->question_text;
+                $j++;
+            }
+
+            $binaires = binaire::orderByRaw("RAND()")->where('test_id', '<>', $request->test_id)->where('difficulty', $difficulty)->whereNotIn('question_text', $k)->whereIn('test_id', $test1)->take($nbr)->get();
+            $count1 = binaire::orderByRaw("RAND()")->where('test_id', '<>', $request->test_id)->where('difficulty', $difficulty)->whereNotIn('question_text', $k)->whereIn('test_id', $test1)->take($nbr)->get()->count();
+
+            if ($nbr == $count1) {
+                ;
+                foreach ($binaires as $binaire) {
+                    $test1 = test::find($binaire->test_id);
+
+                    if ($test1->matiere_id == $test->matiere_id && $test1->professeur_id == $test->professeur_id) {
+
+
+                        $insert1 = array(
+                            'question_text' => $binaire->question_text,
+                            'test_id' => $request->test_id,
+                            'note' => $binaire->note,
+                            'difficulty' => $binaire->difficulty
+                        );
+
+
+                        $id1 = binaire::create($insert1);
+
+
+                        $options = DB::table('option')->where('binaire_id', $binaire->binaire_id)->get();
+
+                        foreach ($options as $option) {
+                            $option->binaire_id = $id1->binaire_id;
+                            $opt = array(
+
+                                'point' => $option->point,
+                                'binaire_id' => $option->binaire_id,
+                                'option_text' => $option->option_text
+
+                            );
+
+                            Option::create($opt);
+                        }
+
+
+                    }
+
+                }
+            } else {
+                session()->flash('notif', 'le nombre que vous avez choisi est plus grands que les question de type Binaire qui existe');
+            }
 
         }
-        return  redirect()->back();
+        return redirect()->back();
 
     }
 

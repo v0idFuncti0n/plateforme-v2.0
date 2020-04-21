@@ -15,8 +15,8 @@ class CreateMatiereProfsTable extends Migration
     {
         Schema::create('matiere_prof', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('matiere_id')->nullable('false')->unique();
-            $table->unsignedBigInteger('professeur_id')->nullable('false')->unique();
+            $table->unsignedBigInteger('matiere_id')->nullable('false');
+            $table->unsignedBigInteger('professeur_id')->nullable('false');
             $table->timestamps();
 
 

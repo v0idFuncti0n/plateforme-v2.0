@@ -24,7 +24,7 @@ return view ('create-question.index');
 
     public function index2($test_id)
     {
-        $test['test']=test::findOrfail($test_id) ;
+        $test['test']=Test::findOrfail($test_id) ;
         return view('create-qcm.index',compact('test'));
     }
     public function index1(Request $request)
