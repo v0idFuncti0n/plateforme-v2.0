@@ -270,9 +270,6 @@ Header
                     @foreach($tests as $test)
 
                         @php
-                            if($key == 0){
-                                echo "<script> var test_id = ".$test->test_id." </script>";
-                            }
                             $sess = App\Session::query()->where('test_id','=',$test->test_id)->first();
                                 if ( $sess->active == 0){
                                     $value = 0;
@@ -301,7 +298,7 @@ Header
                                 </div>
                             </td>
                             <td>
-                                <a  data-test_id="{{$test->test_id}}" onclick="teleport({{$test->test_id}})"
+                                <a  data-test_id="{{$test->test_id}}" onclick="getTestId({{$test->test_id}})"
                                    class="view modal-button"
                                    title="ajouter question"  data-toggle="tooltip" ><i
                                         class="material-icons">note_add</i></a>
@@ -355,7 +352,7 @@ Header
                         <div class="contental">
                             <form action="{{action('question@RandomStoring')}}" method="POST">
                                 @csrf
-                                <input type="hidden" name="test_id" id="test_id" value="{{$test->test_id}}">
+                                <input type="hidden" name="test_id" id=random-test_id>
                                 <div class="form__group field " style="margin-left: 150px">
                                     <input type="number" class="form__field" placeholder="question" name="nombre"
                                            id='nombre' min="1"/>
@@ -371,15 +368,15 @@ Header
                                 <br>
                                 <br>
                                 <div class="switch" style="margin-left: 175px">
-                                    <input name="type" id="one" type="radio" checked/>
+                                    <input name="type" id="one" type="radio" checked value="1"/>
                                     <label for="one" class="switch__label">QCM</label>
-                                    <input name="type" id="two" type="radio" value="qcm"/>
-                                    <label for="two" class="switch__label" value="binaire">Binaire</label>
-                                    <input name="type" id="three" type="radio"/>
-                                    <label for="three" class="switch__label" value="text_libre">Text</label>
+                                    <input name="type" id="two" type="radio" value="2"/>
+                                    <label for="two" class="switch__label">Binaire</label>
+                                    <input name="type" id="three" type="radio" value="3"/>
+                                    <label for="three" class="switch__label">Text</label>
                                     <div class="switch__indicator"/>
                                 </div>
-                                <input id="type" type="hidden" name="type" value="">
+
                                 <button id="random" class="btn btn-success">Ajouter les questions</button>
                             </form>
                         </div>
@@ -474,7 +471,7 @@ Header
                 </div>
                 <div class="modal-body">
 
-                    <form action="{{action('TestController@update1',$test->test_id)}}" method="POST">
+                    <form action="{{action('TestController@update1')}}" method="POST">
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="test_id" id="test_id">
@@ -662,6 +659,14 @@ Header
 
 
 <script>
+    var test_id;
+    function getTestId(id){
+        let random = document.getElementById('random-test_id');
+        random.value = id;
+        test_id = id;
+        firstRun(test_id);
+    }
+
     $('#exampleModal-edit').on('show.bs.modal', function (event) {
 
         var button = $(event.relatedTarget)
@@ -701,7 +706,7 @@ Header
 
         var button = $(event.relatedTarget)
 
-        var test_id = button.data('test_id')
+        let test_id = button.data('test_id')
         var force_test_id = test_id;
 
 
@@ -839,7 +844,26 @@ Header
        teleport1();
    })
 
+
     function teleport1() {
+        var checked1 = document.getElementById('one3').checked;
+        var checked2 = document.getElementById('two3').checked;
+        var checked3 = document.getElementById('three3').checked;
+        var bt = document.getElementById('teleport');
+        var abt = document.getElementById('teleport-a');
+        if (checked1) {
+            bt.firstChild.textContent = 'ajouter QCM';
+            abt.href = "/create-qcm1/" + test_id;
+        } else if (checked2) {
+            bt.firstChild.textContent = 'ajouter Binaire';
+            abt.href = "/create-bin/" + test_id;
+        } else if (checked3) {
+            bt.firstChild.textContent = 'ajouter text';
+            abt.href = "/create-text-libre/" + test_id;
+        }
+    }
+
+    function firstRun(test_id) {
         var checked1 = document.getElementById('one3').checked;
         var checked2 = document.getElementById('two3').checked;
         var checked3 = document.getElementById('three3').checked;

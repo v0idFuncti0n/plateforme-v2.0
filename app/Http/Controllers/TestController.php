@@ -150,7 +150,7 @@ class TestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $test = array(
+        /*$test = array(
             'nom' => $request->nom,
             'note' => $request->note,
             'duree' => $request->duree,
@@ -166,7 +166,7 @@ class TestController extends Controller
         );
         $profid = Professeur::findOrFail($request->professeur_id)->first();
         Test::findOrFail($request->test_id)->update($test);
-        return redirect()->route('create-test.index', $profid);
+        return redirect()->route('create-test.index', $profid);*/
     }
 
     public function update1(Request $request)
@@ -177,7 +177,13 @@ class TestController extends Controller
             'duree' => $request->duree,
             'salle' => $request->salle,
             'date' => $request->date,
-            'discription' => $request->discription
+            'discription' => $request->discription,
+            'matiere_id' => $request->matiere_id,
+            'd1' => $request->d1,
+            'd2' => $request->d2,
+            'd3' => $request->d3,
+            'd4' => $request->d4,
+            'd5' => $request->d5
         );
         Test::find($request->test_id)->update($test);
         return redirect()->back();

@@ -145,7 +145,6 @@ class question extends Controller
         $type = $request->type;
         $test = test::find($request->test_id);
 
-
         $test2['test2'] = DB::table('test')->where('test_id', '<>', $request->test_id)->where('matiere_id', $test->matiere_id)->where('professeur_id', $test->professeur_id)->get();
         $i = 0;
         foreach ($test2['test2'] as $test) {
@@ -154,10 +153,11 @@ class question extends Controller
         }
 
 
-        if ($type == 'qcm') {
+        if ($type == 1) {
             $i = 0;
             $t = [];
             $shiit['shiit'] = DB::table('qcm')->where('test_id', $request->test_id)->where('difficulty', $difficulty)->get();
+            //return compact('shiit');
             foreach ($shiit['shiit'] as $qcm1) {
                 $t[$i] = $qcm1->question_text;
                 $i++;
@@ -204,7 +204,7 @@ class question extends Controller
                 session()->flash('notif', 'le nombre que vous avez choisi est plus grands que les question de type qcm  qui existe');
             }
         }
-        if ($type == 'binaire') {
+        if ($type == 2) {
             $j = 0;
             $k = [];
             $shiit1['shiit1'] = DB::table('binaire')->where('test_id', $request->test_id)->where('difficulty', $difficulty)->get();

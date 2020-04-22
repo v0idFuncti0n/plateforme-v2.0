@@ -11,8 +11,10 @@
 
 
     <!-- Icons font CSS-->
-    <link href="{{ asset('/passage_test/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('/passage_test/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('/passage_test/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet"
+          media="all">
+    <link href="{{ asset('/passage_test/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet"
+          media="all">
     <!-- Font special for pages-->
     <link
         href="{{ asset('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i') }}"
@@ -829,7 +831,7 @@ for ($b = 0; $b < $j; $b++) {
                                         @elseif($page === ($cou-1))
                                             <a class="btn-back">back</a>
                                             <input type="hidden" name="test_id" value="{{$test1}}">
-                                            <a class="btn-last" href="javascript:$('form').submit()">Submit</a>
+                                            <button class="btn-last" type="button" onclick="getHTML();">Submit</button>
                                         @else
                                             <a class="btn-back">back</a>
                                             <a class="btn-next">next</a>
@@ -904,12 +906,13 @@ for ($b = 0; $b < $j; $b++) {
 
                                             @if ($page === 0)<a class="btn-next">Next</a>
                                             @elseif($page === ($cou-1))
-                                                <a class="btn-back" >back</a>
+                                                <a class="btn-back">back</a>
                                                 <input type="hidden" name="test_id" value="{{$test1}}">
-                                                <button class="btn-last" type="submit" onclick="getHTML()">Submit</button>
+                                                <button class="btn-last" type="submit" onclick="getHTML()">Submit
+                                                </button>
                                             @else
-                                                <a class="btn-back" >back</a>
-                                                <a class="btn-next" >next</a>
+                                                <a class="btn-back">back</a>
+                                                <a class="btn-next">next</a>
                                             @endif
                                         </div>
 
@@ -984,11 +987,8 @@ for ($b = 0; $b < $j; $b++) {
             name.value = element[i].innerHTML.toString();
             i++;
         }
-        var form = document.getElementById("form"); // get form by ID
-        form.onsubmit = function () {// onsubmit do this first
-            return true; // submit form
-        }
-
+        var form = document.getElementById("js-wizard-form"); // get form by ID
+        form.submit();
     }
 
 </script>

@@ -25,7 +25,8 @@ class ProfesseurMiddleware
                 return $next($request);
             }
         }else{
-            return $next($request);
+            //return $next($request);
+            return redirect()->route('profauth.login');
         }
 
     }

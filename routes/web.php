@@ -100,7 +100,7 @@ Route::post('professeur/import', 'ProfesseurController@import')->name('professeu
 
 Route::post('/profauth/test/random','question@RandomStoring');
 Route::delete('/profauth/test/supprimer','TestController@destroy')->name('test.destroy');
-Route::put('/profauth/test/modifier/{test_id}','TestController@update1');
+Route::put('/profauth/test/modifier','TestController@update1');
 
 Route::post('/reponses/note','ResultatController@storeFinal');
 Route::put('profauth/reponses/note','ResultatController@update');
