@@ -113,17 +113,17 @@ Header
                     <table class="table table-fixed" style="width: 1800px">
                         <thead>
                         <tr>
-                            <th scope="col" class="col-3">#</th>
-                            <th scope="col" class="col-3">nom de matiere</th>
-                            <th scope="col" class="col-3">Volume Horaire</th>
+                            <th scope="col" class="col-4">#</th>
+                            <th scope="col" class="col-4">nom de matiere</th>
+                            <th scope="col" class="col-4">Volume Horaire</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($matiere as $m)
                             <tr>
-                                <td scope="col" class="col-3">{{++$i}}</td>
-                                <td scope="col" class="col-3">{{$m->nom_matiere}}</td>
-                                <td scope="col" class="col-3">{{$m->volume_horaire}}</td>
+                                <td scope="col" class="col-4">{{++$i}}</td>
+                                <td scope="col" class="col-4">{{$m->nom_matiere}}</td>
+                                <td scope="col" class="col-4">{{$m->volume_horaire}}</td>
                             </tr>
                         @endforeach
                         </tbody>
