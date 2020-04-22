@@ -44,7 +44,7 @@ Route::Resource('moduleFiliere','ModuleFiliereController')->middleware('admin.au
 Route::Resource('niveau','NiveauController')->middleware('admin.auth');;
 Route::Resource('professeur','ProfesseurController')->middleware('admin.auth');;
 Route::Resource('create-test','TestController');
-Route::get('profauth/create-test/{prof}','TestController@index2')->name('create-test.index')->middleware('professeur');
+Route::get('profauth/create-test/{prof}','TestController@index2')->name('create-test.index');
 
 Route::resource('Resultat','ResultatController')->middleware('session');
 Route::get ('question/{test_id}/{session_id}','TestController@question')->middleware('session');
@@ -86,9 +86,9 @@ Route::get('session/logout','Auth\SessionController@sessionLogout')->name('sessi
 Route::get('admin','Auth\AdminController@index')->name('admin.index');
 Route::post('admin/login','Auth\AdminController@adminLogin')->name('admin.login');
 Route::get('profauth/login','Auth\ProfauthController@index')->name('profauth.login');
-Route::post('profauth/test','Auth\ProfauthController@professeurLogin')->name('profauth.test')->middleware('professeur');
-Route::get('profauth/test','Auth\ProfauthController@professeurLogin')->name('profauth.test')->middleware('professeur');
-Route::get('profauth/logout','Auth\ProfauthController@professeurLogout')->name('profauth.logout')->middleware('professeur');
+Route::post('profauth/test','Auth\ProfauthController@professeurLogin')->name('profauth.test');
+Route::get('profauth/test','Auth\ProfauthController@professeurLogin')->name('profauth.test');
+Route::get('profauth/logout','Auth\ProfauthController@professeurLogout')->name('profauth.logout');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('departement/import', 'departementController@import')->name('departement.import');
 Route::post('etudiant/import', 'EtudiantController@import')->name('etudiant.import');
@@ -104,7 +104,7 @@ Route::put('/profauth/test/modifier','TestController@update1');
 
 Route::post('/reponses/note','ResultatController@storeFinal');
 Route::put('profauth/reponses/note','ResultatController@update');
-Route::post('resultat/note')->middleware('professeur');
+Route::post('resultat/note');
 
 Route::get('/welcome-professeur',function (){
     return view('welcome-professeur.welcome');
@@ -116,7 +116,7 @@ Route::get('/welcome-etudiant',function(){
 Route::get('/manager-test/{prof_id}',function ($prof){
     $p = \App\Professeur::query()->where('professeur_id',$prof)->first();
     return view('profauth.test')->with('prof', $p);
-})->name('manager-test')->middleware('professeur');
+})->name('manager-test');
 
 Route::post('/test/forceDelete/{test_id}','TestController@forceDelete');
 Route::get('/create-test-restore','TestController@indexRestore');

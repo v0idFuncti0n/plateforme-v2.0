@@ -29,6 +29,5 @@ class SessionMiddleware
             return view('session.login');
         }
         return $next($request);
-
     }
 }
