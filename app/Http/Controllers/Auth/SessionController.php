@@ -29,16 +29,18 @@ class SessionController extends Controller
         $password = $request->password;
         $etudiantSession = Session::query()->where('username','=',$request->username)->where('active','=',true)->count();
         if(intval($etudiantSession) > 0){
-            $etudiantSessionPass = Session::query()->where('username','=',$request->username)->first();
-            if(strcmp($password,$etudiantSessionPass->password)==0){
-                $request->session()->put('username',$username);
-                $request->session()->put('id',$etudiantSessionPass->session_id);
-                $request->session()->put('end','false');
-                return redirect()->action('TestController@index1',['s'=>$etudiantSessionPass->session_id]);
-            }else{
-                $error = "le nom d'utilisateur ou le mot de passe sont incorrects";
-                return redirect()->route('session.index')->with('error',$error);
+            $etudiantSessionPassArray = Session::query()->where('username','=',$request->username)->get();
+            foreach($etudiantSessionPassArray as $etudiantSessionPass) {
+                if (strcmp($password, $etudiantSessionPass->password) == 0) {
+                    $request->session()->put('username', $username);
+                    $request->session()->put('id', $etudiantSessionPass->session_id);
+                    $request->session()->put('end', 'false');
+                    return redirect()->action('TestController@index1', ['s' => $etudiantSessionPass->session_id]);
+
+                }
             }
+            $error = "le nom d'utilisateur ou le mot de passe sont incorrects";
+            return redirect()->route('session.index')->with('error', $error);
         }else{
             $error = "le nom d'utilisateur ou le mot de passe sont incorrects";
             return redirect()->route('session.index')->with('error',$error);
