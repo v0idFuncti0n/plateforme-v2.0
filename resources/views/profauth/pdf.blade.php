@@ -20,14 +20,22 @@
     <thead>
     <tr>
         <!--<th>ID</th>-->
-        <th>Username</th>
-        <th>Password</th>
+        <th>N apologie</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Nom d'utilisateur</th>
+        <th>Mot de passe</th>
     </tr>
     </thead>
     <tbody>
     @foreach($sessions as $s)
+        @php
+            $etudiant  = \App\Etudiant::find($s->etudiant_id);
+        @endphp
         <tr>
-        <!--<td>{{ $s->etudiant_id }}</td>-->
+            <td>{{ $etudiant->num_apologie }}</td>
+            <td>{{ $etudiant->nom }}</td>
+            <td>{{ $etudiant->prenom }}</td>
             <td>{{ $s->username }}</td>
             <td>{{ $s->password }}</td>
         </tr>
