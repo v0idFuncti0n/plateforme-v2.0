@@ -105,7 +105,7 @@ class TestController extends Controller
                 $session = array(
                     'etudiant_id' => $e->etudiant_id,
                     'test_id' => $currentTest->test_id,
-                    'username' => $e->nom,
+                    'username' => strtolower(str_replace(" ",'',$e->nom.$e->prenom.$e->etudiant_id)),
                     'password' => $this->randomPassword(),
 
                 );

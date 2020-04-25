@@ -85,8 +85,8 @@ Route::get('session/logout', 'Auth\SessionController@sessionLogout')->name('sess
 Route::get('admin', 'Auth\AdminController@index')->name('admin.index');
 Route::post('admin/login', 'Auth\AdminController@adminLogin')->name('admin.login');
 Route::get('profauth/login', 'Auth\ProfauthController@index')->name('profauth.login');
-Route::post('profauth/test', 'Auth\ProfauthController@professeurLogin')->name('profauth.test');
-Route::get('profauth/test', 'Auth\ProfauthController@professeurLogin')->name('profauth.test');
+Route::post('profauth/test', 'Auth\ProfauthController@professeurLogin')->name('profauth.test')->middleware('professeur');
+Route::get('profauth/test', 'Auth\ProfauthController@professeurLogin')->name('profauth.test')->middleware('professeur');
 Route::get('profauth/logout', 'Auth\ProfauthController@professeurLogout')->name('profauth.logout');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('departement/import', 'departementController@import')->name('departement.import');
