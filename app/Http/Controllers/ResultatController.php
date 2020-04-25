@@ -104,6 +104,14 @@ class ResultatController extends Controller
                                 $er = true;
                             }
                         }
+                        $reponse_qcm = array(
+                            'test_id' => $test_id,
+                            'question_id' => $ch->question_id,
+                            'option_id' => $ch->option_id,
+                            'session_id' => $request->session_id,
+                            'note' => $ch->point
+                        );
+                        Reponse_QCM::query()->create($reponse_qcm);
                     }
                     if ($somme2 == $somme3 && $er == false) {
                         $somme = $somme + $qcm->note;
@@ -111,14 +119,7 @@ class ResultatController extends Controller
                     } else {
                         $faux++;
                     }
-                    $reponse_qcm = array(
-                        'test_id' => $test_id,
-                        'question_id' => $ch->question_id,
-                        'option_id' => $ch->option_id,
-                        'session_id' => $request->session_id,
-                        'note' => $ch->point
-                    );
-                    Reponse_QCM::query()->create($reponse_qcm);
+
 
                 }
             }
