@@ -26,14 +26,9 @@ class ProfauthController extends Controller
         }
         return redirect()->route('profauth.login');*/
         //$request->session()->flush();
-        if ($request->session()->get('p_username') !== null) {
-            $username = $request->session()->get('p_username');
-            $password = $request->session()->get('p_password');
 
-        } else {
-            $username = $request->username;
-            $password = $request->password;
-        }
+        $username = $request->username;
+        $password = $request->password;
         $professeur = Professeur::query()->where('username', '=', $username)->count();
         if (intval($professeur) > 0) {
             $professeurPass = Professeur::query()->where('username', '=', $username)->first();
@@ -43,14 +38,14 @@ class ProfauthController extends Controller
                 $request->session()->put('p_id', $professeurPass->professeur_id);
                 //$tests = Test::query()->where('professeur_id',$professeurPass->professeur_id)->count();
                 return view('accueilProf.index')->with('prof', $professeurPass);
-                   // return view('profauth.test')->with('prof', $professeurPass);
+                // return view('profauth.test')->with('prof', $professeurPass);
             } else {
                 $error = "le nom d'utilisateur ou le mot de passe sont incorrects";
-                return redirect()->route('profauth.login')->with('error',$error);
+                return redirect()->route('profauth.login')->with('error', $error);
             }
         } else {
             $error = "le nom d'utilisateur ou le mot de passe sont incorrects";
-            return redirect()->route('profauth.login')->with('error',$error);
+            return redirect()->route('profauth.login')->with('error', $error);
         }
     }
 
