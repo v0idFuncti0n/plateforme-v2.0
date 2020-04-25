@@ -29,7 +29,7 @@ class SessionController extends Controller
         $password = $request->password;
         $etudiantSession = Session::query()->where('username','=',$request->username)->where('active','=',true)->count();
         if(intval($etudiantSession) > 0){
-            $etudiantSessionPassArray = Session::query()->where('username','=',$request->username)->get();
+            $etudiantSessionPassArray = Session::query()->where('username','=',$request->username)->where('active','=',true)->get();
             foreach($etudiantSessionPassArray as $etudiantSessionPass) {
                 if (strcmp($password, $etudiantSessionPass->password) == 0) {
                     $request->session()->put('username', $username);
