@@ -517,10 +517,11 @@ Header
                         <form id="form" action="{{route("text-libre.restore")}}" method="POST">
                             @csrf
                             @foreach($text_libres as $text_libre)
-                                <label
-                                    for="questions[{{$text_libre->question_id}}]">{{$text_libre->question_text}}</label>
-                                <input type="checkbox" name="questions[{{$text_libre->question_id}}]"
-                                       value="{{$text_libre->question_id}}"/>
+                                <label style="font-size: 15px" class="switcher">{{$text_libre->question_text}}
+                                    <input type="checkbox" name="questions[{{$text_libre->question_id}}]"
+                                           value="{{$text_libre->question_id}}"/>
+                                    <div class="switcher__indicator"></div>
+                                </label>
                             @endforeach
                             <div class="modal-footer">
                                 <button type="button" id="restore" class="btn btn-success">Restore</button>
