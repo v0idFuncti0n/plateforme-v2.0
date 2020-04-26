@@ -12,8 +12,9 @@
     <link href="{{asset('/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700')}}"
-          rel="stylesheet">
+    <link
+        href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700')}}"
+        rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
     <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')}}"></script>
@@ -26,7 +27,8 @@
     <!-- Main Stylesheet File -->
     <link href="{{asset('/css/style1.css')}}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css')}}">
+    <link rel="stylesheet"
+          href="{{asset('http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css')}}">
     <!-- level-->
     <link rel="stylesheet" href="{{asset('/css/form.css')}}">
 
@@ -36,11 +38,190 @@
 
     <link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
 
-    <link href="{{asset('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900')}}" rel="stylesheet">
+    <link href="{{asset('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900')}}"
+          rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
+    <link rel="stylesheet"
+          href="{{asset('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('/css/themes/bars-movie.css')}}">
+    <style>
+        $
+        green: #2ecc71
+
+        ;
+        $
+        red: #e74c3c
+
+        ;
+        $
+        blue: #3498db
+
+        ;
+        $
+        yellow: #f1c40f
+
+        ;
+        $
+        purple: #8e44ad
+
+        ;
+        $
+        turquoise: #1abc9c
+
+        ;
+
+
+        h1 {
+            color: $ yellow;
+            font-size: 4rem;
+            text-transform: uppercase;
+            display: block;
+            width: 100%;
+            text-align: center;
+
+        @media screen and (max-width: 600px) {
+            font-size:
+
+        3rem
+
+        ;
+        }
+
+        }
+
+        p {
+            color: $ yellow;
+            font-size: 1.2rem;
+        / / text-transform: uppercase;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+
+        /
+        /
+        Basic Button Style
+        .btn {
+            box-sizing: border-box;
+            appearance: none;
+            background-color: transparent;
+            border: 2px solid $ red;
+            border-radius: 0.6em;
+            color: $ red;
+            cursor: pointer;
+            display: flex;
+            align-self: center;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1;
+            margin: 20px;
+            padding: 1.2em 2.8em;
+            text-decoration: none;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+
+        &
+        :hover,
+
+        &
+        :focus {
+            color: #fff;
+            outline: 0;
+        }
+
+        }
+
+        /
+        /
+        BUTTON
+
+        1
+        .first {
+            transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+
+        &
+        :hover {
+            box-shadow: 0 0 40px 40px $ red inset;
+        }
+
+        }
+
+        /
+        /
+        BUTTON
+
+        2
+        .second {
+            border-radius: 3em;
+            border-color: $ turquoise;
+            color: #fff;
+
+        background: {
+            image: linear-gradient(to right,
+            transparentize($ turquoise, 0.4),
+            transparentize($ turquoise, 0.4) 5%,
+            $ turquoise 5%,
+            $ turquoise 10%,
+            transparentize($ turquoise, 0.4) 10%,
+            transparentize($ turquoise, 0.4) 15%,
+            $ turquoise 15%,
+            $ turquoise 20%,
+            transparentize($ turquoise, 0.4) 20%,
+            transparentize($ turquoise, 0.4) 25%,
+            $ turquoise 25%,
+            $ turquoise 30%,
+            transparentize($ turquoise, 0.4) 30%,
+            transparentize($ turquoise, 0.4) 35%,
+            $ turquoise 35%,
+            $ turquoise 40%,
+            transparentize($ turquoise, 0.4) 40%,
+            transparentize($ turquoise, 0.4) 45%,
+            $ turquoise 45%,
+            $ turquoise 50%,
+            transparentize($ turquoise, 0.4) 50%,
+            transparentize($ turquoise, 0.4) 55%,
+            $ turquoise 55%,
+            $ turquoise 60%,
+            transparentize($ turquoise, 0.4) 60%,
+            transparentize($ turquoise, 0.4) 65%,
+            $ turquoise 65%,
+            $ turquoise 70%,
+            transparentize($ turquoise, 0.4) 70%,
+            transparentize($ turquoise, 0.4) 75%,
+            $ turquoise 75%,
+            $ turquoise 80%,
+            transparentize($ turquoise, 0.4) 80%,
+            transparentize($ turquoise, 0.4) 85%,
+            $ turquoise 85%,
+            $ turquoise 90%,
+            transparentize($ turquoise, 0.4) 90%,
+            transparentize($ turquoise, 0.4) 95%,
+            $ turquoise 95%,
+            $ turquoise 100%);
+            position: 0 0;
+            size: 100%;
+        }
+
+        transition: background
+
+        300
+        ms ease-in-out
+
+        ;
+
+        &
+        :hover {
+            background-position: 100px;
+        }
+
+        }
+
+    </style>
+    <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 
     <!-- =======================================================
       Theme Name: Regna
@@ -66,9 +247,9 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li ><a href="" style=" text-decoration: none;color: #fff">Acceuil</a></li>
-                <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
-                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Déconnexion</a></li>
             </ul>
@@ -92,7 +273,7 @@ Header
             <div class="p-4">
                 <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
                 <ul class="list-unstyled components mb-5">
-                    <li >
+                    <li>
                         <a href="index.html"><span class="fa fa-home mr-3"></span> Acceuil</a>
                     </li>
                     <li>
@@ -133,7 +314,8 @@ Header
                                     <div class="name">Question</div>
                                     <div class="value">
                                         <div class="input-group">
-                                             <textarea class="textarea--style-6" name="question_text" style="width:75%; margin-right: 30px"
+                                             <textarea class="textarea--style-6" name="question_text"
+                                                       style="width:75%; margin-right: 30px"
                                                        placeholder=""></textarea>
                                         </div>
                                     </div>
@@ -141,8 +323,8 @@ Header
                                 <div class="form-row">
                                     <div class="name" style="height: 1.25rem;line-height: 0rem;">Difficulté</div>
                                     <div class="value">
-                                        <div class="input-group" >
-                                            <select id="example-movie" name="difficulty" autocomplete="off" >
+                                        <div class="input-group">
+                                            <select id="example-movie" name="difficulty" autocomplete="off">
                                                 <option value="1">Trés facile</option>
                                                 <option value="2">Facile</option>
                                                 <option value="3" selected="selected">Moyenne</option>
@@ -164,149 +346,159 @@ Header
                                 <br>
                                 <input type="submit" name="submit" id="submit" style="width: 17rem; margin-left:7rem; "
                                        class="btn btn-info" value="Ajouter et enregistrer"/>
-                        </form>
+                            </form>
                         </div>
                     </div>
                     <h2 class="mb-1" style=" margin-top: 10rem">Table des questions</h2>
 
                     <div class="table-wrapper" style="width: 100rem; margin-top: 3.125rem">
-                    <table class="table table-bordered" id="myTable">
-                        <thead>
-                        <tr>
-                            <th>question_id</th>
-                            <th>question text</th>
-                            <th>note</th>
-                            <th>difficulty</th>
-                            <th>Action</th>
-                        </tr>
-                        <tbody>
-                        @php
-                            $questions = \App\Text_libre::query()->where('test_id','=',$test['test_id'])->get();
-                        @endphp
-                        @foreach($questions as $q)
+                        <table class="table table-bordered" id="myTable">
+                            <thead>
                             <tr>
-                                <td>{{$q->question_id}}</td>
-                                <td>{{$q->question_text}}</td>
-                                <td>{{$q->note}}</td>
-                                <td>{{$q->difficulty}}</td>
-                                <td class="exclude">
-                                    <a data-question_id="{{$q->question_id}}"
-                                       data-question_text="{{$q->question_text}}"
-                                       data-note="{{$q->note}}"
-                                       data-difficulty="{{$q->difficulty}}"
-                                       data-test_id = "{{$q->test_id}}" data-toggle="modal"
-                                       data-target="#exampleModal-edit" class="edit" title="modifier"><i
-                                            class="material-icons">&#xE254;</i></a>
-                                    <a data-question_id="{{$q->question_id}}"
-                                       data-toggle="modal"
-                                       data-target="#exampleModal-delete" class="delete" title="supprimer"><button><i
-                                                class="material-icons">&#xE872;</i></button></a>
-                                </td>
+                                <th>question_id</th>
+                                <th>question text</th>
+                                <th>note</th>
+                                <th>difficulty</th>
+                                <th>Action</th>
                             </tr>
-                        @endforeach
-                        </tbody>
+                            <tbody>
+                            @php
+                                $questions = \App\Text_libre::query()->where('test_id','=',$test['test_id'])->get();
+                            @endphp
+                            @foreach($questions as $q)
+                                <tr>
+                                    <td>{{$q->question_id}}</td>
+                                    <td>{{$q->question_text}}</td>
+                                    <td>{{$q->note}}</td>
+                                    <td>{{$q->difficulty}}</td>
+                                    <td class="exclude">
+                                        <a data-question_id="{{$q->question_id}}"
+                                           data-question_text="{{$q->question_text}}"
+                                           data-note="{{$q->note}}"
+                                           data-difficulty="{{$q->difficulty}}"
+                                           data-test_id="{{$q->test_id}}" data-toggle="modal"
+                                           data-target="#exampleModal-edit" class="edit" title="modifier"><i
+                                                class="material-icons">&#xE254;</i></a>
+                                        <a data-question_id="{{$q->question_id}}"
+                                           data-toggle="modal"
+                                           data-target="#exampleModal-delete" class="delete" title="supprimer">
+                                            <button><i
+                                                    class="material-icons">&#xE872;</i></button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
 
-                        </thead>
+                            </thead>
 
-                    </table>
+                        </table>
                         <div class="section-header" style="margin-left: 875px">
                             <a class="btn btn-success" title="restaurer"
                                data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
                         </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{route('create-text-libre.update','question_id')}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="test_id" id="test_id1" value="">
+                                    <input type="hidden" name="question_id" id="question_id1" value="">
+                                    <div class="form-group">
+
+                                        <label for="question_text" style="color:#c21db7;">
+                                            Question : </label>
+
+                                        <textarea class="form-control" rows="3" style="color: black"
+                                                  name="question_text" id="question_text"></textarea>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+
+                                        <label for="note" style="color:#c21db7;">
+                                            Note : </label>
+
+                                        <input type="number" name="note" id="note" min="1" class="form-control"
+                                               style="color: black">
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="question_text" style="color:#c21db7;">
+                                            Difficulty : </label>
+
+                                        <select required name="difficulty" size="1" class="form-control"
+                                                style="color: black">
+                                            <option value="1">trés facile</option>
+                                            <option value="2">facile</option>
+                                            <option value="3">moyenne</option>
+                                            <option value="4">difficile</option>
+                                            <option value="5">très difficile</option>
+                                        </select>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer
+                                        </button>
+                                        <button type="submit" class="btn btn-success">modifier</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Modal delete -->
+                <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form action="{{route('create-text-libre.destroy','question_id')}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input required type="hidden" name="question_id" id="question_id">
+                                    <p class="text-center" style="font-weight: bold" width="50px"> vous ete sûre que
+                                        vous voulez supprimer ce
+                                        matiere</p>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close
+                                        </button>
+                                        <button type="submit" class="btn btn-danger">supprimer</button>
+                                </form>
+                                <form action="{{action("Text_libreController@forceDelete")}}" method="POST">
+                                    @csrf
+                                    <input required type="hidden" name="force_question_id" id="force_question_id">
+                                    <button type="submit" class="btn btn-danger">forcer la suppression</button>
+                                </form>
+
+                            </div>
+
+
+                        </div>
+                    </div>
                 </div>
         </div>
 
-
-    <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{route('create-text-libre.update','question_id')}}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <input type="hidden" name="test_id" id="test_id1" value="">
-                        <input type="hidden" name="question_id" id="question_id1" value="">
-                        <div class="form-group">
-
-                        <label for="question_text" style="color:#c21db7;">
-                            Question : </label>
-
-                        <textarea class="form-control" rows="3" style="color: black" name="question_text" id="question_text" ></textarea>
-                        </div>
-                            <br>
-                        <div class="form-group">
-
-                        <label for="note" style="color:#c21db7;">
-                            Note : </label>
-
-                        <input type="number" name="note" id="note" min="1" class="form-control" style="color: black">
-                        </div>
-                        <br>
-                        <div class="form-group">
-                        <label for="question_text" style="color:#c21db7;">
-                            Difficulty : </label>
-
-                        <select required name="difficulty" size="1" class="form-control" style="color: black">
-                                <option value="1">trés facile</option>
-                                <option value="2">facile</option>
-                                <option value="3">moyenne</option>
-                                <option value="4">difficile</option>
-                                <option value="5">très difficile</option>
-                            </select>
-                        </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-                    <button type="submit" class="btn btn-success">modifier</button>
-                </div>
-                </form>
-            </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- Modal delete -->
-    <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <form action="{{route('create-text-libre.destroy','question_id')}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <input required type="hidden" name="question_id" id="question_id">
-                        <p class="text-center" style="font-weight: bold" width="50px"> vous ete sûre que vous voulez supprimer ce
-                            matiere</p>
-                <div class="modal-footer">
-                    <form action="{{action("Text_libreController@forceDelete")}}" method="POST">
-                        @csrf
-                        <input required type="hidden" name="force_question_id" id="force_question_id">
-                        <button type="submit" class="btn btn-danger">forcer la suppression</button>
-                    </form>
-                    <button type="submit" class="btn btn-danger">supprimer</button>
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    </section><!-- #services -->
+        </section><!-- #services -->
         <!-- Modal Restore -->
         <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -325,13 +517,15 @@ Header
                         <form id="form" action="{{route("text-libre.restore")}}" method="POST">
                             @csrf
                             @foreach($text_libres as $text_libre)
-                                <label for="questions[{{$text_libre->question_id}}]">{{$text_libre->question_text}}</label>
-                                <input type="checkbox" name="questions[{{$text_libre->question_id}}]" value="{{$text_libre->question_id}}"/>
-                        @endforeach
-                    <div class="modal-footer">
-                        <button type="button" id="restore" class="btn btn-success">Restore</button>
-                        <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
-                    </div>
+                                <label
+                                    for="questions[{{$text_libre->question_id}}]">{{$text_libre->question_text}}</label>
+                                <input type="checkbox" name="questions[{{$text_libre->question_id}}]"
+                                       value="{{$text_libre->question_id}}"/>
+                            @endforeach
+                            <div class="modal-footer">
+                                <button type="button" id="restore" class="btn btn-success">Restore</button>
+                                <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -414,11 +608,11 @@ Header
     });
 </script>
 <script>
-    $("#restore").click(function() {
+    $("#restore").click(function () {
         $("#form").attr("action", "{{route("text-libre.restore")}}");
         $("form").submit();
     });
-    $("#force-delete").click(function() {
+    $("#force-delete").click(function () {
         $("#form").attr("action", "{{route("text-libre.forceDelete")}}");
         $("form").submit();
     });

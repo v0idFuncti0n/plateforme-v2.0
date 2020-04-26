@@ -10,6 +10,7 @@ use App\Resultat;
 use App\Option;
 use App\qcm;
 use App\Session;
+use App\Text_libre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -132,18 +133,20 @@ class ResultatController extends Controller
         $etudiant_id = $se->etudiant_id;
         for ($i = 0; $i < $request->nb_ql; $i++) {
             $name = 'fichier' . strval($i);
+            $text_libre = Text_libre::find($request->question_id[$i]);
             if ($i != $request->nb_ql - 1) {
                 $rp = array(
                     'question_id' => $request->question_id[$i],
                     'etudiant_id' => $request->session_id,
-                    'fichier' => $request->$name,
+                    'fichier' => "<p>".$text_libre->question_text.": </p><p>     ".$request->$name."</p>",
                 );
                 $reponse_text = Reponse_text::query()->create($rp);
             } else {
+                $text_libre = Text_libre::find($request->question_id[$i]);
                 $rp = array(
                     'question_id' => $request->question_id[$i],
                     'etudiant_id' => $request->session_id,
-                    'fichier' => $request->$name . '<p>' . strval($somme) . '</p>',
+                    'fichier' => "<p>".$text_libre->question_text.": </p><p>     ".$request->$name . '</p><p> Note de la parti QCM et binaire' . strval($somme) . '</p>',
                 );
                 $reponse_text = Reponse_text::query()->create($rp);
             }
