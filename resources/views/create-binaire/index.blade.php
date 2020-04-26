@@ -53,16 +53,34 @@
       License: https://bootstrapmade.com/license/
     ======================================================= -->
     <style>
-        $green: #2ecc71;
-        $red: #e74c3c;
-        $blue: #3498db;
-        $yellow: #f1c40f;
-        $purple: #8e44ad;
-        $turquoise: #1abc9c;
+        $
+        green: #2ecc71
+
+        ;
+        $
+        red: #e74c3c
+
+        ;
+        $
+        blue: #3498db
+
+        ;
+        $
+        yellow: #f1c40f
+
+        ;
+        $
+        purple: #8e44ad
+
+        ;
+        $
+        turquoise: #1abc9c
+
+        ;
 
 
         h1 {
-            color: $yellow;
+            color: $ yellow;
             font-size: 4rem;
             text-transform: uppercase;
             display: block;
@@ -70,112 +88,143 @@
             text-align: center;
 
         @media screen and (max-width: 600px) {
-            font-size: 3rem;
+            font-size:
+
+        3rem
+
+        ;
         }
+
         }
 
         p {
-            color: $yellow;
+            color: $ yellow;
             font-size: 1.2rem;
-        // text-transform: uppercase;
+        / / text-transform: uppercase;
             width: 100%;
             padding: 20px;
             text-align: center;
         }
 
 
-        // Basic Button Style
-           .btn {
-               box-sizing: border-box;
-               appearance: none;
-               background-color: transparent;
-               border: 2px solid $red;
-               border-radius: 0.6em;
-               color: $red;
-               cursor: pointer;
-               display: flex;
-               align-self: center;
-               font-size: 1rem;
-               font-weight: 400;
-               line-height: 1;
-               margin: 20px;
-               padding: 1.2em 2.8em;
-               text-decoration: none;
-               text-align: center;
-               text-transform: uppercase;
-               font-family: 'Montserrat', sans-serif;
-               font-weight: 700;
+        /
+        /
+        Basic Button Style
+        .btn {
+            box-sizing: border-box;
+            appearance: none;
+            background-color: transparent;
+            border: 2px solid $ red;
+            border-radius: 0.6em;
+            color: $ red;
+            cursor: pointer;
+            display: flex;
+            align-self: center;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1;
+            margin: 20px;
+            padding: 1.2em 2.8em;
+            text-decoration: none;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
 
-        &:hover,
-        &:focus {
-             color: #fff;
-             outline: 0;
-         }
+        &
+        :hover,
+
+        &
+        :focus {
+            color: #fff;
+            outline: 0;
         }
 
-        //BUTTON 1
+        }
+
+        /
+        /
+        BUTTON
+
+        1
         .first {
             transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-        &:hover {
-             box-shadow: 0 0 40px 40px $red inset;
-         }
+
+        &
+        :hover {
+            box-shadow: 0 0 40px 40px $ red inset;
         }
 
-        //BUTTON 2
+        }
+
+        /
+        /
+        BUTTON
+
+        2
         .second {
             border-radius: 3em;
-            border-color: $turquoise;
+            border-color: $ turquoise;
             color: #fff;
+
         background: {
             image: linear-gradient(to right,
-            transparentize($turquoise, 0.4),
-            transparentize($turquoise, 0.4) 5%,
-            $turquoise 5%,
-            $turquoise 10%,
-            transparentize($turquoise, 0.4) 10%,
-            transparentize($turquoise, 0.4) 15%,
-            $turquoise 15%,
-            $turquoise 20%,
-            transparentize($turquoise, 0.4) 20%,
-            transparentize($turquoise, 0.4) 25%,
-            $turquoise 25%,
-            $turquoise 30%,
-            transparentize($turquoise, 0.4) 30%,
-            transparentize($turquoise, 0.4) 35%,
-            $turquoise 35%,
-            $turquoise 40%,
-            transparentize($turquoise, 0.4) 40%,
-            transparentize($turquoise, 0.4) 45%,
-            $turquoise 45%,
-            $turquoise 50%,
-            transparentize($turquoise, 0.4) 50%,
-            transparentize($turquoise, 0.4) 55%,
-            $turquoise 55%,
-            $turquoise 60%,
-            transparentize($turquoise, 0.4) 60%,
-            transparentize($turquoise, 0.4) 65%,
-            $turquoise 65%,
-            $turquoise 70%,
-            transparentize($turquoise, 0.4) 70%,
-            transparentize($turquoise, 0.4) 75%,
-            $turquoise 75%,
-            $turquoise 80%,
-            transparentize($turquoise, 0.4) 80%,
-            transparentize($turquoise, 0.4) 85%,
-            $turquoise 85%,
-            $turquoise 90%,
-            transparentize($turquoise, 0.4) 90%,
-            transparentize($turquoise, 0.4) 95%,
-            $turquoise 95%,
-            $turquoise 100%);
+            transparentize($ turquoise, 0.4),
+            transparentize($ turquoise, 0.4) 5%,
+            $ turquoise 5%,
+            $ turquoise 10%,
+            transparentize($ turquoise, 0.4) 10%,
+            transparentize($ turquoise, 0.4) 15%,
+            $ turquoise 15%,
+            $ turquoise 20%,
+            transparentize($ turquoise, 0.4) 20%,
+            transparentize($ turquoise, 0.4) 25%,
+            $ turquoise 25%,
+            $ turquoise 30%,
+            transparentize($ turquoise, 0.4) 30%,
+            transparentize($ turquoise, 0.4) 35%,
+            $ turquoise 35%,
+            $ turquoise 40%,
+            transparentize($ turquoise, 0.4) 40%,
+            transparentize($ turquoise, 0.4) 45%,
+            $ turquoise 45%,
+            $ turquoise 50%,
+            transparentize($ turquoise, 0.4) 50%,
+            transparentize($ turquoise, 0.4) 55%,
+            $ turquoise 55%,
+            $ turquoise 60%,
+            transparentize($ turquoise, 0.4) 60%,
+            transparentize($ turquoise, 0.4) 65%,
+            $ turquoise 65%,
+            $ turquoise 70%,
+            transparentize($ turquoise, 0.4) 70%,
+            transparentize($ turquoise, 0.4) 75%,
+            $ turquoise 75%,
+            $ turquoise 80%,
+            transparentize($ turquoise, 0.4) 80%,
+            transparentize($ turquoise, 0.4) 85%,
+            $ turquoise 85%,
+            $ turquoise 90%,
+            transparentize($ turquoise, 0.4) 90%,
+            transparentize($ turquoise, 0.4) 95%,
+            $ turquoise 95%,
+            $ turquoise 100%);
             position: 0 0;
             size: 100%;
         }
-        transition: background 300ms ease-in-out;
 
-        &:hover {
-             background-position: 100px;
-         }
+        transition: background
+
+        300
+        ms ease-in-out
+
+        ;
+
+        &
+        :hover {
+            background-position: 100px;
+        }
+
         }
 
     </style>
@@ -198,9 +247,9 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li ><a href="" style=" text-decoration: none;color: #fff">Acceuil</a></li>
-                <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
-                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Déconnexion</a></li>
             </ul>
@@ -225,7 +274,7 @@ Header
             <div class="p-4">
                 <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
                 <ul class="list-unstyled components mb-5">
-                    <li >
+                    <li>
                         <a href="index.html"><span class="fa fa-home mr-3"></span> Acceuil</a>
                     </li>
                     <li>
@@ -254,7 +303,6 @@ Header
             <h2 class="mb-4">Création des questions binaire</h2>
             <section id="services">
                 <div class="container wow fadeIn">
-
 
 
                     <div class=" card-6" style="margin-left: -3.75rem;">
@@ -318,7 +366,8 @@ Header
                                 <input type="submit" name="submit" id="submit" style="width: 17rem; margin-left:7rem; "
                                        class="btn btn-info" value="Enregistrer et Ajouter"/>
                                 <input type="hidden" name="test_id" value="{{$test->test_id}}">
-                                <input type="submit" class="btn btn-success" style="width: 17rem" value="Enregistrer et quitter">
+                                <input type="submit" class="btn btn-success" style="width: 17rem"
+                                       value="Enregistrer et quitter">
 
 
                             </form>
@@ -374,7 +423,7 @@ Header
                         </table>
                         <div class="section-header" style="margin-left: 875px">
                             <a class="btn btn-success" title="restaurer"
-                               data-target="#exampleModal-restore"  data-toggle="modal">Restaurer</a>
+                               data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
                         </div>
                     </div>
                 </div>
@@ -469,64 +518,68 @@ Header
                                     @method('DELETE')
 
                                     <input type="hidden" name="binaire_id" id="binaire_id">
-                                    <p class="text-center" width="50px" style="font-weight:900 ;font-size: 14px;"> vous ete sûre que
+                                    <p class="text-center" width="50px" style="font-weight:900 ;font-size: 14px;"> vous
+                                        ete sûre que
                                         vous voulez supprimer cette question</p>
 
                                     <div class="modal-footer">
-                                        <form action="{{action("BinaireController@forceDelete")}}" method="POST">
-                                            @csrf
-                                            <input required type="hidden" name="force_question_id"
-                                                   id="force_question_id" >
-                                            <button type="submit" class="btn btn-danger">forcer la suppression</button>
-                                        </form>
-                                        <button type="submit" class="btn btn-danger">supprimer</button>
                                         <button type="button" class="btn btn-warning" data-dismiss="modal">Close
                                         </button>
-                                    </div>
-                                        </form>
+                                        <button type="submit" class="btn btn-danger">supprimer</button>
+                                </form>
+                                <form action="{{action("BinaireController@forceDelete")}}" method="POST">
+                                    @csrf
+                                    <input required type="hidden" name="force_question_id"
+                                           id="force_question_id">
+                                    <button type="submit" class="btn btn-danger">forcer la suppression</button>
+                                </form>
 
-
-                                    </div>
 
                             </div>
+
+
                         </div>
+
                     </div>
-            </section><!-- #services -->
-
-
+                </div>
         </div>
-        <!-- Modal Restore -->
-        <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
-             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Restaurer</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        @php
-                            $bins = \App\binaire::onlyTrashed()->get();
-                        @endphp
-                        <form id="form" action="{{route("bin.restore")}}" method="POST">
-                            @csrf
-                            @foreach($bins as $bin)
-                                <label style="font-size: 15px" class="switcher">{{$bin->question_text}}
-                                <input type="checkbox" name="questions[{{$bin->binaire_id}}]" value="{{$bin->binaire_id}}"/>
-                                    <div class="switcher__indicator"></div>
-                                </label>
+        </section><!-- #services -->
+
+
+    </div>
+    <!-- Modal Restore -->
+    <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Restaurer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @php
+                        $bins = \App\binaire::onlyTrashed()->get();
+                    @endphp
+                    <form id="form" action="{{route("bin.restore")}}" method="POST">
+                        @csrf
+                        @foreach($bins as $bin)
+                            <label style="font-size: 15px" class="switcher">{{$bin->question_text}}
+                                <input type="checkbox" name="questions[{{$bin->binaire_id}}]"
+                                       value="{{$bin->binaire_id}}"/>
+                                <div class="switcher__indicator"></div>
+                            </label>
                         @endforeach
-                    <div class="modal-footer">
-                        <button type="button" id="restore" class="btn btn-success">Restore</button>
-                        <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
-                    </div>
-                        </form>
-                    </div>
+                        <div class="modal-footer">
+                            <button type="button" id="restore" class="btn btn-success">Restore</button>
+                            <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     </div>
@@ -538,11 +591,11 @@ Header
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.12.0/js/mdb.min.js"></script>
 <script>
-    $("#restore").click(function() {
+    $("#restore").click(function () {
         $("#form").attr("action", "{{route("bin.restore")}}");
         $("form").submit();
     });
-    $("#force-delete").click(function() {
+    $("#force-delete").click(function () {
         $("#form").attr("action", "{{route("bin.forceDelete")}}");
         $("form").submit();
     });

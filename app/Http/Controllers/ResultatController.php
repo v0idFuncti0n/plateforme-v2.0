@@ -63,6 +63,17 @@ class ResultatController extends Controller
         if ($request->input('options') != null) {
             $choices1 = option::find(array_values($request->input('options')));
         }
+        //return dd($choices1);
+        foreach ($choices1 as $ch){
+            $reponse_qcm = array(
+                'test_id' => $test_id,
+                'question_id' => $ch->question_id,
+                'option_id' => $ch->option_id,
+                'session_id' => $request->session_id,
+                'note' => $ch->point
+            );
+            Reponse_QCM::query()->create($reponse_qcm);
+        }
         if ($choices != null) {
             foreach ($choices as $choice) {
                 $er = false;
@@ -104,14 +115,7 @@ class ResultatController extends Controller
                                 $er = true;
                             }
                         }
-                        $reponse_qcm = array(
-                            'test_id' => $test_id,
-                            'question_id' => $ch->question_id,
-                            'option_id' => $ch->option_id,
-                            'session_id' => $request->session_id,
-                            'note' => $ch->point
-                        );
-                        Reponse_QCM::query()->create($reponse_qcm);
+
                     }
                     if ($somme2 == $somme3 && $er == false) {
                         $somme = $somme + $qcm->note;

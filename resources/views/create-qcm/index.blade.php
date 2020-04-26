@@ -243,9 +243,9 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li ><a href="" style=" text-decoration: none;color: #fff">Acceuil</a></li>
-                <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
-                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Déconnexion</a></li>
             </ul>
@@ -302,7 +302,6 @@ Header
                 <div class="container wow fadeIn">
 
 
-
                     <div class=" card-6" style="margin-left: -3.75rem;">
                         <div class="">
                             <form action="{{action('QCMController@store')}}" method="post">
@@ -340,7 +339,7 @@ Header
                                     <div class="name">Note</div>
                                     <div class="value">
                                         <div class="input-group">
-                                            <input type="number" name="note" style="height: 32px;width: 460px" >
+                                            <input type="number" name="note" style="height: 32px;width: 460px">
 
                                         </div>
                                     </div>
@@ -379,212 +378,213 @@ Header
                             </form>
                         </div>
                     </div>
-                <h2 class="mb-1" style=" margin-top: 10rem">Table des questions</h2>
+                    <h2 class="mb-1" style=" margin-top: 10rem">Table des questions</h2>
 
-                @php
-                    //  use \App
-                        $qcms = App\qcm::OrderBy('question_id','asc')->where('test_id',$test['test']->test_id)->get(); @endphp
-                <div class="table-wrapper" style="width: 100rem; margin-top: 3.125rem">
-                    <table class="table table-bordered" id="myTable">
-                        <thead>
-                        <tr>
-                            <th class="exclude">#</th>
-                            <th>question text</th>
-                            <th>note</th>
-                            <th>difficultes</th>
-                            <th>id test</th>
-                            <th class="exclude">Action</th>
-                        </tr>
-                        <tbody>
-                        @foreach($qcms as $key=>$qcm)
+                    @php
+                        //  use \App
+                            $qcms = App\qcm::OrderBy('question_id','asc')->where('test_id',$test['test']->test_id)->get(); @endphp
+                    <div class="table-wrapper" style="width: 100rem; margin-top: 3.125rem">
+                        <table class="table table-bordered" id="myTable">
+                            <thead>
                             <tr>
-                                <td class="exclude">{{++$key}}</td>
-                                <td>{{$qcm->question_text}}</td>
-                                <td>{{$qcm->note}}</td>
-                                <td>{{$qcm->difficulty}}</td>
-                                <td>{{$qcm->test_id}}</td>
-                                <td class="exclude">
-                                    <a data-question_id="{{$qcm->question_id}}"
-                                       data-question_text="{{$qcm->question_text}}"
-                                       data-note="{{$qcm->note}}"
-                                       data-difficulty="{{$qcm->difficulty}}"
-                                       data-test_id="{{$qcm->test_id}}" data-toggle="modal"
-                                       data-target="#exampleModal-edit" class="edit" title="modifier"><i
-                                            class="material-icons">&#xE254;</i></a>
-                                    <a data-question_id="{{$qcm->question_id}}"
-                                       data-toggle="modal"
-                                       data-target="#exampleModal-delete" class="delete" title="supprimer">
-                                        <button><i
-                                                class="material-icons">&#xE872;</i></button>
-                                    </a>
-                                    <a href="option/qcm/{{$qcm->question_id}}" class="option" title="Les options">
-                                        <button><i
-                                                class="material-icons">list</i></button>
-                                    </a>
-                                </td>
+                                <th class="exclude">#</th>
+                                <th>question text</th>
+                                <th>note</th>
+                                <th>difficultes</th>
+                                <th>id test</th>
+                                <th class="exclude">Action</th>
                             </tr>
-                        @endforeach
-                        </tbody>
+                            <tbody>
+                            @foreach($qcms as $key=>$qcm)
+                                <tr>
+                                    <td class="exclude">{{++$key}}</td>
+                                    <td>{{$qcm->question_text}}</td>
+                                    <td>{{$qcm->note}}</td>
+                                    <td>{{$qcm->difficulty}}</td>
+                                    <td>{{$qcm->test_id}}</td>
+                                    <td class="exclude">
+                                        <a data-question_id="{{$qcm->question_id}}"
+                                           data-question_text="{{$qcm->question_text}}"
+                                           data-note="{{$qcm->note}}"
+                                           data-difficulty="{{$qcm->difficulty}}"
+                                           data-test_id="{{$qcm->test_id}}" data-toggle="modal"
+                                           data-target="#exampleModal-edit" class="edit" title="modifier"><i
+                                                class="material-icons">&#xE254;</i></a>
+                                        <a data-question_id="{{$qcm->question_id}}"
+                                           data-toggle="modal"
+                                           data-target="#exampleModal-delete" class="delete" title="supprimer">
+                                            <button><i
+                                                    class="material-icons">&#xE872;</i></button>
+                                        </a>
+                                        <a href="option/qcm/{{$qcm->question_id}}" class="option" title="Les options">
+                                            <button><i
+                                                    class="material-icons">list</i></button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
 
-                        </thead>
+                            </thead>
 
-                    </table>
-                    <div class="section-header" style="margin-left: 873px">
-                        <a class="btn btn-success" title="restaurer"
-                           data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
+                        </table>
+                        <div class="section-header" style="margin-left: 873px">
+                            <a class="btn btn-success" title="restaurer"
+                               data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
+                        </div>
                     </div>
                 </div>
-    </div>
 
 
+                <!-- Modal edit -->
+                <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form action="{{route('create-qcm.update','question_id')}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="form-group">
+
+                                        <label for="" style="color:#c21db7;">nom</label>
+
+                                        <input type="text" style="color:black;" id="question_text" name="question_text"
+                                               class="form-control"
+                                               placeholder="question">
+                                    </div>
+                                    <input type="hidden" style="color:black;" name="question_id" id="question_id">
+                                    <br>
+                                    <div class="form-group">
+
+                                        <label for="" style="color:#c21db7;">difficultes </label>
 
 
-    <!-- Modal edit -->
-    <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                                        <select name="difficulty" id="difficulty" size="1" class="form-control">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+
+                                    </div>
+                                    <br>
+
+                                    <div class="form-group">
+
+                                        <label for="" style="color:#c21db7;">note</label>
+
+                                        <input type="text" id="note" style="color:black;" name="note"
+                                               class="form-control" placeholder="note">
+                                    </div>
+                                    <br>
+
+                                    <div class="form-group">
+
+
+                                        <label for="" style="color:#c21db7;">id test</label>
+
+                                        <input type="number" style="color:black;" id="test_id" name="test_id"
+                                               class="form-control"
+                                               placeholder="test id">
+                                    </div>
+                                    <br>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer
+                                        </button>
+
+                                        <button type="submit" class="btn btn-success">modifier</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
+                <!-- Modal delete -->
+                <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
 
-                    <form action="{{route('create-qcm.update','question_id')}}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div class="form-group">
+                                <form action="{{route('create-qcm.destroy','question_id')}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
 
-                            <label for="" style="color:#c21db7;">nom</label>
+                                    <input type="hidden" name="question_id" id="question_id">
+                                    <p class="text-center" style="font-weight:900 ;font-size: 14px;" width="50px"> vous
+                                        ete sûre que vous voulez supprimer cette question</p>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close
+                                        </button>
+                                        <button type="submit" class="btn btn-danger">supprimer</button>
+                                </form>
+                                <form action="{{action("QCMController@forceDelete")}}" method="POST">
+                                    @csrf
+                                    <input required type="hidden" name="force_question_id"
+                                           id="force_question_id">
+                                    <button type="submit" class="btn btn-danger">forcer la suppression</button>
+                                </form>
+                            </div>
 
-                            <input type="text" style="color:black;" id="question_text" name="question_text"
-                                   class="form-control"
-                                   placeholder="question">
+
                         </div>
-                        <input type="hidden" style="color:black;" name="question_id" id="question_id">
-                        <br>
-                        <div class="form-group">
-
-                            <label for="" style="color:#c21db7;">difficultes </label>
-
-
-                            <select name="difficulty" id="difficulty" size="1" class="form-control">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-
-                        </div>
-                        <br>
-
-                        <div class="form-group">
-
-                            <label for="" style="color:#c21db7;">note</label>
-
-                            <input type="text" id="note" style="color:black;" name="note"
-                                   class="form-control" placeholder="note">
-                        </div>
-                        <br>
-
-                        <div class="form-group">
-
-
-                            <label for="" style="color:#c21db7;">id test</label>
-
-                            <input type="number" style="color:black;" id="test_id" name="test_id"
-                                   class="form-control"
-                                   placeholder="test id">
-                        </div>
-                        <br>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-
-                    <button type="submit" class="btn btn-success">modifier</button>
+                    </div>
                 </div>
-                </form>
-                </div>
+        </div>
 
+
+        </section><!-- #services -->
+        <!-- Modal Restore -->
+        <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Restaurer</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @php
+                            $qcms = \App\QCM::onlyTrashed()->get();
+                        @endphp
+                        <form id="form" action="{{route("qcm.restore")}}" method="POST">
+                            @csrf
+                            @foreach($qcms as $qcm)
+                                <label style="font-size: 15px" class="switcher">{{$qcm->question_text}}
+                                    <input type="checkbox" name="questions[{{$qcm->question_id}}]"
+                                           value="{{$qcm->question_id}}"/>
+                                    <div class="switcher__indicator"></div>
+                                </label>
+                            @endforeach
+
+
+                            <div class="modal-footer">
+                                <button type="button" id="restore" class="btn btn-success">Restore</button>
+                                <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Modal delete -->
-    <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <form action="{{route('create-qcm.destroy','question_id')}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-
-                        <input type="hidden" name="question_id" id="question_id">
-                        <p class="text-center" style="font-weight:900 ;font-size: 14px;" width="50px"> vous ete sûre que vous voulez supprimer cette question</p>
-                <div class="modal-footer">
-                    <form action="{{action("QCMController@forceDelete")}}" method="POST">
-                        @csrf
-                        <input required type="hidden" name="force_question_id" id="force_question_id">
-                        <button type="submit" class="btn btn-danger">forcer la suppression</button>
-                    </form>
-                    <button type="submit" class="btn btn-danger">supprimer</button>
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-
-                </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    </section><!-- #services -->
-    <!-- Modal Restore -->
-    <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Restaurer</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    @php
-                        $qcms = \App\QCM::onlyTrashed()->get();
-                    @endphp
-                    <form action="{{route("qcm.restore")}}" method="POST">
-                        @csrf
-                        @foreach($qcms as $qcm)
-                            <label style="font-size: 15px" class="switcher">{{$qcm->question_text}}
-                                <input type="checkbox" name="questions[{{$qcm->question_id}}]"
-                                       value="{{$qcm->question_id}}"/>
-                                <div class="switcher__indicator"></div>
-                            </label>
-                    @endforeach
-
-
-                <div class="modal-footer">
-                    <button type="button" id="restore" class="btn btn-success">Restore</button>
-                    <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
-                </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     </div>
 
@@ -596,7 +596,16 @@ Header
 <!--==========================
   Footer
 ============================-->
-
+<script>
+    $("#restore").click(function () {
+        $("#form").attr("action", "{{route("qcm.restore")}}");
+        $("form").submit();
+    });
+    $("#force-delete").click(function () {
+        $("#form").attr("action", "{{route("qcm.forceDelete")}}");
+        $("form").submit();
+    });
+</script>
 <script>
     $('#exampleModal-edit').on('show.bs.modal', function (event) {
 
@@ -635,17 +644,7 @@ Header
 
 </script>
 
-<script>
-    $("#restore").click(function () {
-        $("#form").attr("action", "{{route("qcm.restore")}}");
-        $("form").submit();
-    });
-    $("#force-delete").click(function () {
-        $("#form").attr("action", "{{route("qcm.forceDelete")}}");
-        $("form").submit();
-    });
 
-</script>
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 <script>

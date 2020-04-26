@@ -38,15 +38,16 @@
 
     <link rel="stylesheet" href="{{asset("/managetest/css/stylemodal.css")}}">
     <link rel="stylesheet" href="/managetest/css/stylechoice.css">
-<style>
-    select.form-control:not([size]):not([multiple]) {
-        height: 32px;
-    }
-    .dataTables_filter{
-        margin-left: 300px;
-    }
+    <style>
+        select.form-control:not([size]):not([multiple]) {
+            height: 32px;
+        }
 
-</style>
+        .dataTables_filter {
+            margin-left: 300px;
+        }
+
+    </style>
     <!-- =======================================================
       Theme Name: Regna
       Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
@@ -55,16 +56,34 @@
       ======================================================= -->
 
     <style>
-        $green: #2ecc71;
-        $red: #e74c3c;
-        $blue: #3498db;
-        $yellow: #f1c40f;
-        $purple: #8e44ad;
-        $turquoise: #1abc9c;
+        $
+        green: #2ecc71
+
+        ;
+        $
+        red: #e74c3c
+
+        ;
+        $
+        blue: #3498db
+
+        ;
+        $
+        yellow: #f1c40f
+
+        ;
+        $
+        purple: #8e44ad
+
+        ;
+        $
+        turquoise: #1abc9c
+
+        ;
 
 
         h1 {
-            color: $yellow;
+            color: $ yellow;
             font-size: 4rem;
             text-transform: uppercase;
             display: block;
@@ -72,112 +91,143 @@
             text-align: center;
 
         @media screen and (max-width: 600px) {
-            font-size: 3rem;
+            font-size:
+
+        3rem
+
+        ;
         }
+
         }
 
         p {
-            color: $yellow;
+            color: $ yellow;
             font-size: 1.2rem;
-        // text-transform: uppercase;
+        / / text-transform: uppercase;
             width: 100%;
             padding: 20px;
             text-align: center;
         }
 
 
-        // Basic Button Style
-           .btn {
-               box-sizing: border-box;
-               appearance: none;
-               background-color: transparent;
-               border: 2px solid $red;
-               border-radius: 0.6em;
-               color: $red;
-               cursor: pointer;
-               display: flex;
-               align-self: center;
-               font-size: 1rem;
-               font-weight: 400;
-               line-height: 1;
-               margin: 20px;
-               padding: 1.2em 2.8em;
-               text-decoration: none;
-               text-align: center;
-               text-transform: uppercase;
-               font-family: 'Montserrat', sans-serif;
-               font-weight: 700;
+        /
+        /
+        Basic Button Style
+        .btn {
+            box-sizing: border-box;
+            appearance: none;
+            background-color: transparent;
+            border: 2px solid $ red;
+            border-radius: 0.6em;
+            color: $ red;
+            cursor: pointer;
+            display: flex;
+            align-self: center;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1;
+            margin: 20px;
+            padding: 1.2em 2.8em;
+            text-decoration: none;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
 
-        &:hover,
-        &:focus {
-             color: #fff;
-             outline: 0;
-         }
+        &
+        :hover,
+
+        &
+        :focus {
+            color: #fff;
+            outline: 0;
         }
 
-        //BUTTON 1
+        }
+
+        /
+        /
+        BUTTON
+
+        1
         .first {
             transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-        &:hover {
-             box-shadow: 0 0 40px 40px $red inset;
-         }
+
+        &
+        :hover {
+            box-shadow: 0 0 40px 40px $ red inset;
         }
 
-        //BUTTON 2
+        }
+
+        /
+        /
+        BUTTON
+
+        2
         .second {
             border-radius: 3em;
-            border-color: $turquoise;
+            border-color: $ turquoise;
             color: #fff;
+
         background: {
             image: linear-gradient(to right,
-            transparentize($turquoise, 0.4),
-            transparentize($turquoise, 0.4) 5%,
-            $turquoise 5%,
-            $turquoise 10%,
-            transparentize($turquoise, 0.4) 10%,
-            transparentize($turquoise, 0.4) 15%,
-            $turquoise 15%,
-            $turquoise 20%,
-            transparentize($turquoise, 0.4) 20%,
-            transparentize($turquoise, 0.4) 25%,
-            $turquoise 25%,
-            $turquoise 30%,
-            transparentize($turquoise, 0.4) 30%,
-            transparentize($turquoise, 0.4) 35%,
-            $turquoise 35%,
-            $turquoise 40%,
-            transparentize($turquoise, 0.4) 40%,
-            transparentize($turquoise, 0.4) 45%,
-            $turquoise 45%,
-            $turquoise 50%,
-            transparentize($turquoise, 0.4) 50%,
-            transparentize($turquoise, 0.4) 55%,
-            $turquoise 55%,
-            $turquoise 60%,
-            transparentize($turquoise, 0.4) 60%,
-            transparentize($turquoise, 0.4) 65%,
-            $turquoise 65%,
-            $turquoise 70%,
-            transparentize($turquoise, 0.4) 70%,
-            transparentize($turquoise, 0.4) 75%,
-            $turquoise 75%,
-            $turquoise 80%,
-            transparentize($turquoise, 0.4) 80%,
-            transparentize($turquoise, 0.4) 85%,
-            $turquoise 85%,
-            $turquoise 90%,
-            transparentize($turquoise, 0.4) 90%,
-            transparentize($turquoise, 0.4) 95%,
-            $turquoise 95%,
-            $turquoise 100%);
+            transparentize($ turquoise, 0.4),
+            transparentize($ turquoise, 0.4) 5%,
+            $ turquoise 5%,
+            $ turquoise 10%,
+            transparentize($ turquoise, 0.4) 10%,
+            transparentize($ turquoise, 0.4) 15%,
+            $ turquoise 15%,
+            $ turquoise 20%,
+            transparentize($ turquoise, 0.4) 20%,
+            transparentize($ turquoise, 0.4) 25%,
+            $ turquoise 25%,
+            $ turquoise 30%,
+            transparentize($ turquoise, 0.4) 30%,
+            transparentize($ turquoise, 0.4) 35%,
+            $ turquoise 35%,
+            $ turquoise 40%,
+            transparentize($ turquoise, 0.4) 40%,
+            transparentize($ turquoise, 0.4) 45%,
+            $ turquoise 45%,
+            $ turquoise 50%,
+            transparentize($ turquoise, 0.4) 50%,
+            transparentize($ turquoise, 0.4) 55%,
+            $ turquoise 55%,
+            $ turquoise 60%,
+            transparentize($ turquoise, 0.4) 60%,
+            transparentize($ turquoise, 0.4) 65%,
+            $ turquoise 65%,
+            $ turquoise 70%,
+            transparentize($ turquoise, 0.4) 70%,
+            transparentize($ turquoise, 0.4) 75%,
+            $ turquoise 75%,
+            $ turquoise 80%,
+            transparentize($ turquoise, 0.4) 80%,
+            transparentize($ turquoise, 0.4) 85%,
+            $ turquoise 85%,
+            $ turquoise 90%,
+            transparentize($ turquoise, 0.4) 90%,
+            transparentize($ turquoise, 0.4) 95%,
+            $ turquoise 95%,
+            $ turquoise 100%);
             position: 0 0;
             size: 100%;
         }
-        transition: background 300ms ease-in-out;
 
-        &:hover {
-             background-position: 100px;
-         }
+        transition: background
+
+        300
+        ms ease-in-out
+
+        ;
+
+        &
+        :hover {
+            background-position: 100px;
+        }
+
         }
 
     </style>
@@ -200,8 +250,8 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li ><a href="" style=" text-decoration: none;color: #fff">Acceuil</a></li>
-                <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
                 <li class="menu-active"><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Déconnexion</a></li>
@@ -239,9 +289,9 @@ Header
                 </div>
                 <div class="row">
 
-                    <div class="col-sm-12 col-md-13" style="margin-bottom: 0px" >
+                    <div class="col-sm-12 col-md-13" style="margin-bottom: 0px">
                         <div class="input-group">
-                            <div style="text-align: center" >
+                            <div style="text-align: center">
 
                                 <a class="btn btn-success" title="restaurer"
                                    data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
@@ -280,7 +330,8 @@ Header
                         <tr>
                             <td>{{++$key}}</td>
                             <td>{{$test->nom}}</td>
-                            <td><a href="/reponses/{{$test->test_id}}" style="font-weight: bold;color: #5cb85c">Vers la liste</a></td>
+                            <td><a href="/reponses/{{$test->test_id}}" style="font-weight: bold;color: #5cb85c">Vers la
+                                    liste</a></td>
                             <td>
                                 <div style="text-align:center;">
 
@@ -298,9 +349,9 @@ Header
                                 </div>
                             </td>
                             <td>
-                                <a  data-test_id="{{$test->test_id}}" onclick="getTestId({{$test->test_id}})"
+                                <a data-test_id="{{$test->test_id}}" onclick="getTestId({{$test->test_id}})"
                                    class="view modal-button"
-                                   title="ajouter question"  data-toggle="tooltip" ><i
+                                   title="ajouter question" data-toggle="tooltip"><i
                                         class="material-icons">note_add</i></a>
                                 <a data-test_id="{{$test->test_id}}"
                                    data-nom="{{$test->nom}}"
@@ -337,15 +388,15 @@ Header
     </section><!-- #portfolio -->
     <?php
     if(isset($test)){
-        ?>
+    ?>
     <section id="service">
 
-        <div class="modal1" >
+        <div class="modal1">
             <div class="modal1-container">
                 <div class="modal1-left">
-                    <div class="input-block" >
+                    <div class="input-block">
                         <input type="radio" id="al" class="sty" name="select" value="1">
-                        <label for="al" class="stl" >
+                        <label for="al" class="stl">
                             <h2>Aléatoire</h2>
                             <p>les question seront ajouter d'une maniére aléatoire</p>
                         </label>
@@ -414,39 +465,37 @@ Header
                         <br>
 
 
-
-
                     </div>
                 </div>
 
-            <div class="input-block">
-                <input type="radio" id="cr" class="sty" name="select" value="3">
-                <label for="cr" class="stl">
-                    <h2>nouveau</h2>
-                    <p>créer des nouveaux questions</p>
-                </label>
-                <div class="contentcr">
-                    <label style="font-size: 18px">Type de question:</label>
-                    <br>
-                    <br>
-                    <div class="switch3" style="margin-left: 175px">
-                        <input onclick="teleport1();" name="switch3" id="one3" type="radio" checked/>
-                        <label for="one3" class="switch__label3">QCM</label>
-                        <input onclick="teleport1();" name="switch3" id="two3" type="radio"/>
-                        <label for="two3" class="switch__label3">Binaire</label>
-                        <input onclick="teleport1();" name="switch3" id="three3" type="radio"/>
-                        <label for="three3" class="switch__label3">Text</label>
-                        <div class="switch__indicator3"/>
+                <div class="input-block">
+                    <input type="radio" id="cr" class="sty" name="select" value="3">
+                    <label for="cr" class="stl">
+                        <h2>nouveau</h2>
+                        <p>créer des nouveaux questions</p>
+                    </label>
+                    <div class="contentcr">
+                        <label style="font-size: 18px">Type de question:</label>
+                        <br>
+                        <br>
+                        <div class="switch3" style="margin-left: 175px">
+                            <input onclick="teleport1();" name="switch3" id="one3" type="radio" checked/>
+                            <label for="one3" class="switch__label3">QCM</label>
+                            <input onclick="teleport1();" name="switch3" id="two3" type="radio"/>
+                            <label for="two3" class="switch__label3">Binaire</label>
+                            <input onclick="teleport1();" name="switch3" id="three3" type="radio"/>
+                            <label for="three3" class="switch__label3">Text</label>
+                            <div class="switch__indicator3"/>
+                        </div>
+                        <a id="teleport-a" href="/create-qcm1/{{$test->test_id}}">
+                            <button id="teleport" class="btn btn-success">ajouter QCM</button>
+                        </a>
                     </div>
-                    <a id="teleport-a" href="/create-qcm1/{{$test->test_id}}">
-                        <button id="teleport" class="btn btn-success">ajouter QCM</button>
-                    </a>
                 </div>
             </div>
-        </div>
-        <div class="modal1-buttons">
-            <button class="input-button">Enregistrer</button>
-        </div>
+            <div class="modal1-buttons">
+                <button class="input-button">Enregistrer</button>
+            </div>
         </div>
 
         <button class="icon-button close-button">
@@ -476,35 +525,38 @@ Header
                         @method('PUT')
                         <input type="hidden" name="test_id" id="test_id">
                         <div class="form-group">
-                        <label for="nom" style="color:#c21db7;">Nom de test.</label>
+                            <label for="nom" style="color:#c21db7;">Nom de test.</label>
 
-                            <input class="form-control"  style="color:black;" type="text" pattern=".[a-zA-Z0-9]{1,255}"
+                            <input class="form-control" style="color:black;" type="text" pattern=".[a-zA-Z0-9]{1,255}"
                                    title="aucun caractère spécial n'est autorisé 1 - 255 max" name="nom" id="nom"
                                    required>
                         </div>
                         <br>
                         <div class="form-group">
-                        <label for="discription" style="color:#c21db7;">Discription </label>
+                            <label for="discription" style="color:#c21db7;">Discription </label>
 
-                            <textarea rows="5" cols="33"  style="color:black;" name="discription" id="discription" class="form-control"
+                            <textarea rows="5" cols="33" style="color:black;" name="discription" id="discription"
+                                      class="form-control"
                                       required></textarea>
                         </div>
                         <br>
                         <div class="form-group">
-                        <label for="note" style="color:#c21db7;"> Note </label>
+                            <label for="note" style="color:#c21db7;"> Note </label>
 
-                        <input type="number" style="color:black;" name="note" id="note" class="form-control" min="1" required>
+                            <input type="number" style="color:black;" name="note" id="note" class="form-control" min="1"
+                                   required>
                         </div>
                         <br>
                         <div class="form-group">
-                        <label for="duree" style="color:#c21db7;">
-                            Duree(minute) </label>
-                            <input type="number" style="color:black;" name="duree" id="duree" class="form-control" min="1" required>
+                            <label for="duree" style="color:#c21db7;">
+                                Duree(minute) </label>
+                            <input type="number" style="color:black;" name="duree" id="duree" class="form-control"
+                                   min="1" required>
                         </div>
                         <br>
                         <div class="form-group">
-                        <label for="salle" style="color:#c21db7;">
-                            Salle</label>
+                            <label for="salle" style="color:#c21db7;">
+                                Salle</label>
                             <input pattern="[a-zA-Z0-9]{1,255}" style="color:black;"
                                    title="aucun caractère spécial n'est autorisé 1 - 255 max"
                                    type="text" name="salle" id="salle" class="form-control" required>
@@ -512,17 +564,17 @@ Header
                         </div>
                         <br>
                         <div class="form-group">
-                        <label for="date" style="color:#c21db7;">
-                            Date</label>
+                            <label for="date" style="color:#c21db7;">
+                                Date</label>
                             <input type="date" name="date" id="date" style="color:black;"
                                    class="form-control" required>
                         </div>
                         <br>
                         <div class="form-group">
-                        <label for="matiere_id" style="color:#c21db7;">
-                            Matiere   </label>
+                            <label for="matiere_id" style="color:#c21db7;">
+                                Matiere </label>
 
-                        <?php
+                            <?php
                             $id = [];
                             $i = 0;
                             $mtrs = DB::table('matiere_prof')->where('professeur_id', $prof->professeur_id)->get();?>
@@ -533,7 +585,8 @@ Header
                             @endforeach
                             <?php   $matiere = DB::table('matiere')->whereIn('matiere_id', $id)->get();?>
 
-                            <select class="form-control" size="1" style='color:black;'id="matiere_id" name="matiere_id">
+                            <select class="form-control" size="1" style='color:black;' id="matiere_id"
+                                    name="matiere_id">
                                 @foreach ($matiere as $m)
                                     <?php $matiere_id = intval($m->matiere_id);?>
                                     <option value="{{$matiere_id}}">{{$m->nom_matiere}}</option>
@@ -543,51 +596,56 @@ Header
                         <br>
                         <div class="form-group">
                             <label for="d1" style="color:#c21db7;">
-                            Difficulté 1   </label>
+                                Difficulté 1 </label>
 
-                            <input type="number" style="color:black;" name="d1" id="d1" class="form-control" min="0" required>
+                            <input type="number" style="color:black;" name="d1" id="d1" class="form-control" min="0"
+                                   required>
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="d2" style="color:#c21db7;">
-                            Difficulté 2     </label>
-                            <input type="number" style="color:black;" name="d2" id="d2" class="form-control" min="0" required>
+                                Difficulté 2 </label>
+                            <input type="number" style="color:black;" name="d2" id="d2" class="form-control" min="0"
+                                   required>
                         </div>
-                            <br>
+                        <br>
                         <div class="form-group">
                             <label for="d3" style="color:#c21db7;">
-                            Difficulté 3     </label>
-                            <input type="number"  style="color:black;" name="d3" id="d3" class="form-control" min="0" required>
+                                Difficulté 3 </label>
+                            <input type="number" style="color:black;" name="d3" id="d3" class="form-control" min="0"
+                                   required>
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="d4" style="color:#c21db7;">
-                            Difficulté 4   </label>
+                                Difficulté 4 </label>
 
-                            <input type="number"  style="color:black;" name="d4" id="d4" class="form-control" min="0" required>
+                            <input type="number" style="color:black;" name="d4" id="d4" class="form-control" min="0"
+                                   required>
 
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="d5" style="color:#c21db7;">
-                            Difficulté 5     </label>
+                                Difficulté 5 </label>
 
-                                <input type="number" name="d5" id="d5"  style="color:black;" class="form-control" min="0" required>
+                            <input type="number" name="d5" id="d5" style="color:black;" class="form-control" min="0"
+                                   required>
                         </div>
                         <br>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-                    <button type="submit" class="btn btn-success">modifier</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                            <button type="submit" class="btn btn-success">modifier</button>
+                        </div>
+                    </form>
                 </div>
-                </form>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- Modal delete -->
     <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true" >
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -602,23 +660,25 @@ Header
                         @csrf
                         @method('DELETE')
                         <input required type="hidden" name="test_id" id="test_id">
-                        <p  class="text-center" > vous etes sûre que vous voulez supprimer ce
+                        <p class="text-center"> vous etes sûre que vous voulez supprimer ce
                             matiere</p>
 
-                <div class="modal-footer">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">supprimer</button>
+                    </form>
                     <form action="{{action("TestController@forceDelete",['test_id'=>$test->test_id])}}" method="POST">
                         @csrf
                         <input required type="hidden" name="force_test_id" id="force_test_id">
                         <button type="submit" class="btn btn-danger">forcer la suppression</button>
                     </form>
-                    <button type="submit" class="btn btn-danger">supprimer</button>
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-                </div>
-                    </form>
+
                 </div>
 
             </div>
+
         </div>
+    </div>
     </div>
 <?php }?>
 <!-- Modal Restore -->
@@ -636,7 +696,7 @@ Header
                     @php
                         $tests = \App\Test::onlyTrashed()->get();
                     @endphp
-                    <form action="{{route("test.restore")}}" method="POST">
+                    <form id="form" action="{{route("test.restore")}}" method="POST">
                         @csrf
                         @foreach($tests as $test)
                             <label style="font-size: 15px" class="switcher">
@@ -644,23 +704,24 @@ Header
                                 <input type="checkbox" name="tests[{{$test->test_id}}]" value="{{$test->test_id}}"/>
                                 <div class="switcher__indicator"></div>
                             </label>
-                    @endforeach
-                <div class="modal-footer">
-                    <button type="button" id="restore" class="btn btn-success">Restore</button>
-                    <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
-                </div>
+                        @endforeach
+                        <div class="modal-footer">
+                            <button type="button" id="restore" class="btn btn-success">Restore</button>
+                            <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
     </div>
 </main>
 
 
 <script>
     var test_id;
-    function getTestId(id){
+
+    function getTestId(id) {
         let random = document.getElementById('random-test_id');
         random.value = id;
         test_id = id;
@@ -836,13 +897,13 @@ Header
     })*/
 
 
-   /* function teleport(elem) {
-        test_id = elem;
+    /* function teleport(elem) {
+         test_id = elem;
 
-    }*/
-   $(document).ready(function(){
-       teleport1();
-   })
+     }*/
+    $(document).ready(function () {
+        teleport1();
+    })
 
 
     function teleport1() {

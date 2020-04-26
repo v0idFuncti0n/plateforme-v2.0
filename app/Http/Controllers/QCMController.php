@@ -151,7 +151,6 @@ $count =count($nbrs);
      */
     public function destroy(Request $QCM)
     {
-        $delete = $QCM->all();
         $deleteQCM = QCM::find($QCM->question_id);
         $deleteQCM->delete();
         //
