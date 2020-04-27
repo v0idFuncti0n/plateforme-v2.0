@@ -577,6 +577,8 @@
   }
 
   try {
+
+
     //WidgetChart 5
     var ctx = document.getElementById("widgetChart5");
     if (ctx) {
@@ -588,7 +590,7 @@
           datasets: [
             {
               label: "My First dataset",
-              data: [78, 81, 80, 64, 65, 80, 70, 75, 67, 85, 66, 68],
+              data: [po[i]],
               borderColor: "transparent",
               borderWidth: "0",
               backgroundColor: "#ccc",
@@ -619,7 +621,13 @@
   }
 
   try {
-
+ var repvrai = $('#pass').find('.vr');
+     var vrai = parseInt(repvrai.text());
+      var repfaux = $('#pass').find('.fa');
+     var faux = parseInt(repfaux.text());
+     var total=vrai+faux;
+     var pervrai=(vrai*100)/total;
+     var perfaux=(faux*100)/total;
     // Percent Chart 2
     var ctx = document.getElementById("percent-chart2");
     if (ctx) {
@@ -630,7 +638,7 @@
           datasets: [
             {
               label: "My First dataset",
-              data: [80, 20],
+              data: [pervrai.toFixed(1), perfaux.toFixed(1)],
               backgroundColor: [
                 '#00b5e9',
                 '#fa4251'
@@ -649,8 +657,8 @@
             }
           ],
           labels: [
-            'Products',
-            'Services'
+            'Corrects',
+            'Faux'
           ]
         },
         options: {

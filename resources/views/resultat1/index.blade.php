@@ -16,11 +16,11 @@
     <title>{{$etudiant->nom}}</title>
     <!-- Fontfaces resultat/css-->
     <link href="{{asset('resultat1/css/font-face.resultat/css')}}" rel="stylesheet" media="all">
-    <link href="{{asset('resultat1/vendor/font-awesome-4.7/resultat/css/font-awesome.min.css')}}" rel="stylesheet"
+    <link href="{{asset('resultat1/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet"
           media="all">
-    <link href="{{asset('resultat1/vendor/font-awesome-5/resultat/css/fontawesome-all.min.css')}}" rel="stylesheet"
+    <link href="{{asset('resultat1/vendor/font-awesome-5/css/fontawesome-all.min.css')}}" rel="stylesheet"
           media="all">
-    <link href="{{asset('resultat1/vendor/mdi-font/resultat/css/material-design-iconic-font.min.css')}}"
+    <link href="{{asset('resultat1/vendor/mdi-font/css/material-design-iconic-font.min.css')}}"
           rel="stylesheet" media="all">
     <!-- Bootstrap resultat/css-->
     <link href="{{asset('resultat1/vendor/bootstrap-4.1/bootstrap.min.css')}}" rel="stylesheet" media="all">
@@ -56,27 +56,14 @@
                             </div>
                             <div class="account-dropdown js-dropdown">
                                 <div class="info clearfix">
-                                    <div class="content">
+                                    <div class="content" style="margin-left: 10px;">
                                         <h5 class="name">
                                             <a>{{$etudiant->nom." ".$etudiant->prenom}}</a>
                                         </h5>
                                         <span class="email">{{$etudiant->email_address}}</span>
                                     </div>
                                 </div>
-                                <div class="account-dropdown__body">
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-account"></i>Account</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-settings"></i>Setting</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                    </div>
-                                </div>
+
                                 <div class="account-dropdown__footer">
                                     <a href="{{route('session.logout')}}">
                                         <i class="zmdi zmdi-power"></i>Logout</a>
@@ -180,61 +167,172 @@
                             </div>
                         </div>
                     </div>
+                    <div class="pass" id="pass">
+                        <div class="vr" role="vr">
+                            <span class="vra" style="display:none">{{$vrai}}</span>
+                        </div>
+                        <div class="fa" role="fa">
+                            <span class="fau" style="display:none">{{$faux}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-10 col-lg-6"  style="margin-left: 300px;">
+                        <div class="chart-percent-2">
+                            <h3 class="title-3 m-b-30" style="text-align: center">Pourcentage des correct et faux reponse %</h3>
+                            <div class="chart-wrap">
+                                <canvas id="percent-chart2"></canvas>
+                                <div id="chartjs-tooltip">
+                                    <table></table>
+                                </div>
+                            </div>
+                            <div class="chart-info">
+                                <div class="chart-note">
+                                    <span class="dot dot--blue"></span>
+                                    <span>correct</span>
+                                </div>
+                                <div class="chart-note">
+                                    <span class="dot dot--red"></span>
+                                    <span>faux</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END CHART PERCENT-->
+                    </div>
                 </div>
             </div>
-    </div>
     </section>
     <!-- END STATISTIC-->
+        <section class="p-t-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="title-5 m-b-35">Vos réponses</h3>
+
+                        <div class="table-responsive table-responsive-data2">
+                            <table class="table table-data2">
+                                <thead>
+                                <tr>
+
+                                    <th>name test</th>
+                                    <th>question</th>
+                                    <th>reponse</th>
+                                    <th>correcte reponse</th>
+                                    <th>note</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php $ntests = DB::table('Test')->where('test_id',$s->test_id)->first() ?>
+                                <?php $qcms = DB::table('QCM')->where('test_id',$s->test_id)->get() ; $i=0 ?>
+                                @foreach($qcms as $q)
+                                    <tr class="tr-shadow">
+
+                                        <td>{{$ntests->nom}}</td>
+                                        <td>
+                                            <span class="block-email">{{$q->question_text}}</span>
+                                        </td>
+                                        <?php $options = DB::table('Reponse_QCM')->where('question_id',++$i)->get(['option_id']); ?>
+                                        <td class="desc">
+                                            @foreach($options as $oid)
+                                                <?php $optte = DB::table('Option')->where('option_id',$oid->option_id )->value('option_text'); ?>
+                                                -{{$optte}}
+                                                <br>
+                                            @endforeach
+                                        </td>
+
+                                        <?php $corr = DB::table('Option')->where('question_id',$i)->where('point','>',0)->get(); ?>
+                                        <td>
+                                            @foreach($corr as $co)
+                                                -{{$co->option_text}}
+                                                <br>
+                                                @endforeach
+                                        </td>
+                                        <?php $repcountall = DB::table('Reponse_QCM')->where('question_id',$i)->count() ?>
+                                        <?php $repcount = DB::table('Reponse_QCM')->where('question_id',$i)->where('note',1)->count() ?>
+                                    <?php $optcount = DB::table('option')->where('question_id',$i)->where('point',1)->count() ?>
+
+                                    <?php if ( $repcount==$repcountall && $repcount==$optcount) {?>
+                                        <?php $notesq = DB::table('QCM')->where('question_id',$i)->value('note'); ?>
+                                        <td>
+                                            <span class="status--process">{{$notesq}}</span>
+                                        </td>
+                                        <?php } else {?>
+                                        <td>
+                                            <span class="status--process">0</span>
+                                        </td>
+                                        <?php } ?>
+
+                                @endforeach
+                                <?php $binaires = DB::table('binaire')->where('test_id',$s->test_id)->get() ; $j=0 ?>
+                                @foreach($binaires as $b)
+                                    <tr class="tr-shadow">
+
+                                        <td>{{$ntests->nom}}</td>
+                                        <td>
+                                            <span class="block-email">{{$b->question_text}}</span>
+                                        </td>
+                                        <?php $optionbs = DB::table('Reponse_Bin')->where('binaire_id',++$j)->value('option_id'); ?>
+                                        <?php $optionbid = DB::table('Option')->where('option_id',$optionbs)->value('option_text'); ?>
+                                        <td class="desc">{{$optionbid}}</td>
+                                        <?php $corrb = DB::table('Option')->where('binaire_id',$j)->where('point','>',0)->value('option_text'); ?>
+                                        <td>{{$corrb}}</td>
+                                        <?php $notesb = DB::table('Reponse_Bin')->where('binaire_id',$j)->value('note'); ?>
+                                        <?php if($notesb==0) { ?>
+                                        <td>
+                                            <span class="status--process">{{$notesb}}</span>
+                                        </td>
+                                        <?php } else if ($notesb==1) {?>
+                                        <?php $notesbn = DB::table('Binaire')->where('binaire_id',$j)->value('note'); ?>
+
+                                        <td>
+                                            <span class="status--process">{{$notesbn}}</span>
+                                        </td>
+                                    <?php }  ?>
+
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END DATA TABLE-->
 
     <!-- STATISTIC CHART-->
     <section class="statistic-chart">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="title-5 m-b-35">statistics</h3>
+                    <h3 class="title-5 m-b-35">Statistiques</h3>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <!-- CHART-->
-                    <div class="statistic-chart-1">
-                        <h3 class="title-3 m-b-30">vos test </h3>
-                        <div class="chart-wrap">
-                            <canvas id="widgetChart5"></canvas>
-                        </div>
-                        <div class="statistic-chart-1-note">
-                            <span class="big">30 test</span>
-                        </div>
-                    </div>
-                    <!-- END CHART-->
-                </div>
-                <div class="col-md-6 col-lg-4">
+
+                <div class="col-md-12 col-lg-6"  style="margin-left: 300px">
                     <!-- TOP CAMPAIGN-->
                     <div class="top-campaign">
-                        <h3 class="title-3 m-b-30">vos meilleur note</h3>
+                        <h3 class="title-3 m-b-30" style="text-align: center">vos meilleur note</h3>
                         <div class="table-responsive">
                             <table class="table table-top-campaign">
                                 <tbody>
+                                <?php
+                                    $idd=$s->etudiant_id;
+                                $top=DB::table('Resultat')
+                                 ->whereIn('session_id', function($query) use ($idd)
+                                  {
+                        $query->select('session_id')
+                        ->from('Session')
+                      ->where('etudiant_id',$idd);
+                        }) ->orderBy('note_total', 'desc')->take(5)->get();?>
+
+                       @foreach($top as $t )
+                     <?php $idtest = DB::table('Session')->where('session_id',$t->session_id)->value('test_id'); ?>
+                   <?php $nomtest = DB::table('Test')->where('test_id',$idtest)->value('nom'); ?>
+
                                 <tr>
-                                    <td> java</td>
-                                    <td>19/20</td>
+                                    <td> {{$nomtest}}</td>
+                                    <td>{{$t->note_total}}</td>
                                 </tr>
-                                <tr>
-                                    <td>php</td>
-                                    <td>17/20</td>
-                                </tr>
-                                <tr>
-                                    <td>algebre</td>
-                                    <td>16/20</td>
-                                </tr>
-                                <tr>
-                                    <td>html</td>
-                                    <td>15.5/20</td>
-                                </tr>
-                                <tr>
-                                    <td>analyse</td>
-                                    <td>12/20</td>
-                                </tr>
+                              @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -243,109 +341,16 @@
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <!-- CHART PERCENT-->
-                    <div class="chart-percent-2">
-                        <h3 class="title-3 m-b-30">pourcentage des correct et faux reponse %</h3>
-                        <div class="chart-wrap">
-                            <canvas id="percent-chart2"></canvas>
-                            <div id="chartjs-tooltip">
-                                <table></table>
-                            </div>
-                        </div>
-                        <div class="chart-info">
-                            <div class="chart-note">
-                                <span class="dot dot--blue"></span>
-                                <span>correct</span>
-                            </div>
-                            <div class="chart-note">
-                                <span class="dot dot--red"></span>
-                                <span>faux</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CHART PERCENT-->
+
                 </div>
             </div>
-        </div>
     </section>
+
+    </div>
+
     <!-- END STATISTIC CHART-->
 
     <!-- DATA TABLE-->
-    <section class="p-t-20">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="title-5 m-b-35">data table</h3>
-
-                    <div class="table-responsive table-responsive-data2">
-                        <table class="table table-data2">
-                            <thead>
-                            <tr>
-
-                                <th>name test</th>
-                                <th>question</th>
-                                <th>reponse</th>
-                                <th>correcte reponse</th>
-                                <th>note</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr class="tr-shadow">
-
-                                <td>java</td>
-                                <td>
-                                    <span class="block-email">heritage</span>
-                                </td>
-                                <td class="desc">implement</td>
-                                <td>extend</td>
-                                <td>
-                                    <span class="status--process">0</span>
-                                </td>
-                            </tr>
-                            <tr class="tr-shadow">
-                                <td>java</td>
-                                <td>
-                                    <span class="block-email">heritage</span>
-                                </td>
-                                <td class="desc">implement</td>
-                                <td>extend</td>
-                                <td>
-                                    <span class="status--process">0</span>
-                                </td>
-                            </tr>
-                            <tr class="tr-shadow">
-                                <td>java</td>
-                                <td>
-                                    <span class="block-email">heritage</span>
-                                </td>
-                                <td class="desc">implement</td>
-                                <td>extend</td>
-                                <td>
-                                    <span class="status--process">0</span>
-                                </td>
-
-                            </tr>
-                            <tr class="tr-shadow">
-
-                                <td>java</td>
-                                <td>
-                                    <span class="block-email">heritage</span>
-                                </td>
-                                <td class="desc">implement</td>
-                                <td>extend</td>
-                                <td>
-                                    <span class="status--process">0</span>
-                                </td>
-
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END DATA TABLE-->
 
 
 </div>

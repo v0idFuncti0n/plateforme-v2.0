@@ -50,7 +50,7 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="test">Home</a></li>
+                <li class="menu-active"><a href="test">Accueil</a></li>
                 <li><a href="create-test/{{$prof->professeur_id}}">Créer test</a></li>
                 <li><a href="{{route('manager-test',['prof_id' => $prof])}}">Gérer test</a></li>
                 <li><a href="">Gérer les notes</a></li>
@@ -110,7 +110,7 @@ Header
                 </div>
                 @php $matiere = $prof->matiere ; $i=0 @endphp
                 <div class="col-lg-12 portfolio-item filter-logo" style="display: none;">
-                    <table class="table table-fixed" style="width: 1800px">
+                    <table class="table table-fixed" >
                         <thead>
                         <tr>
                             <th scope="col" class="col-4">#</th>

@@ -8,21 +8,21 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-<link href="{{asset('/homeprofesseur/img/favicon.png')}}" rel="icon">
-<link href="{{asset('/homeprofesseur/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+<link href="{{asset('/homeEtudiant/img/favicon.png')}}" rel="icon">
+<link href="{{asset('/homeEtudiant/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
 <link href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700')}}" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-<link href="{{asset('/homeprofesseur/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{asset('/homeEtudiant/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-<link href="{{asset('/homeprofesseur/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-<link href="{{asset('/homeprofesseur/lib/animate/animate.min.css')}}" rel="stylesheet">
+<link href="{{asset('/homeEtudiant/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+<link href="{{asset('/homeEtudiant/lib/animate/animate.min.css')}}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-<link href="{{asset('/homeprofesseur/css/style2.css')}}" rel="stylesheet">
+<link href="{{asset('/homeEtudiant/css/style2.css')}}" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: Regna
@@ -41,7 +41,7 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <a href="#hero"><img src="homeProfesseur/img/logo.png" alt="" title="" /></a>
+        <a href="#hero"><img src="homeEtudiant/img/logo.png" alt="" title="" /></a>
         <!-- Uncomment below if you prefer to use a text logo -->
         <!--<h1><a href="#hero">Regna</a></h1>-->
       </div>
@@ -236,7 +236,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>Hassan</strong>. All Rights Reserved
+        &copy; Copyright <strong>ESTS</strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!--
@@ -253,20 +253,20 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
-<script src="{{asset('homeProfesseur/lib/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('homeprofesseur/lib/jquery/jquery-migrate.min.js')}}"></script>
-<script src="{{asset('homeprofesseur/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('homeprofesseur/lib/easing/easing.min.js')}}"></script>
-<script src="{{asset('homeprofesseur/lib/wow/wow.min.js')}}"></script>
-<script src="{{asset('homeprofesseur/lib/waypoints/waypoints.min.js')}}"></script>
-<script src="{{asset('homeprofesseur/lib/counterup/counterup.min.js')}}"></script>
-<script src="{{asset('homeprofesseur/lib/superfish/hoverIntent.js')}}"></script>
-<script src="{{asset('homeprofesseur/lib/superfish/superfish.min.js')}}"></script>
+<script src="{{asset('homeEtudiant/lib/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('homeEtudiant/lib/jquery/jquery-migrate.min.js')}}"></script>
+<script src="{{asset('homeEtudiant/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('homeEtudiant/lib/easing/easing.min.js')}}"></script>
+<script src="{{asset('homeEtudiant/lib/wow/wow.min.js')}}"></script>
+<script src="{{asset('homeEtudiant/lib/waypoints/waypoints.min.js')}}"></script>
+<script src="{{asset('homeEtudiant/lib/counterup/counterup.min.js')}}"></script>
+<script src="{{asset('homeEtudiant/lib/superfish/hoverIntent.js')}}"></script>
+<script src="{{asset('homeEtudiant/lib/superfish/superfish.min.js')}}"></script>
 
   <!-- Contact Form JavaScript File -->
 
   <!-- Template Main Javascript File -->
-<script src="{{asset('homeprofesseur/js/main.js')}}"></script>
+<script src="{{asset('homeEtudiant/js/main.js')}}"></script>
 
 </body>
 </html>

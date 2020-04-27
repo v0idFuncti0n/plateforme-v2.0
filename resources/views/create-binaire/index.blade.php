@@ -523,7 +523,7 @@ Header
                                         vous voulez supprimer cette question</p>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">fermer
                                         </button>
                                         <button type="submit" class="btn btn-danger">supprimer</button>
                                 </form>
@@ -531,7 +531,7 @@ Header
                                     @csrf
                                     <input required type="hidden" name="force_question_id"
                                            id="force_question_id">
-                                    <button type="submit" class="btn btn-danger">forcer la suppression</button>
+                                    <button type="submit" class="btn btn-danger">supprimer définitivement</button>
                                 </form>
 
 
@@ -572,8 +572,8 @@ Header
                             </label>
                         @endforeach
                         <div class="modal-footer">
-                            <button type="button" id="restore" class="btn btn-success">Restore</button>
-                            <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                            <button type="button" id="restore" class="btn btn-success">restaurer</button>
+                            <button type="button" id="force-delete" class="btn btn-danger">supprimer définitivement</button>
                         </div>
                     </form>
                 </div>

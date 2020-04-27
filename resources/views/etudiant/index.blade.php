@@ -46,18 +46,24 @@
             color: white;
 
         }
-
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
-        .dark-edition .form-control {
+        select option{
+            color: black;
+        }
+        input[type="search"]{
+            color: white !important;
+        }
+        .custom-select{
+            color: white !important;
+        }
+        .custom-select option{
+            background-color:#3C4858 !important;
             color: white;
         }
         .pagination .page-item .page-link{
             color: white;
-        }
-        select option{
-            background-color:#3C4858;
         }
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
@@ -401,7 +407,6 @@
                         </div>
                     </div>
                 </div>
-                </div>
 
 
                 <!-- Modal edit -->
@@ -545,8 +550,8 @@
                         </div>
                     </div>
                 </div>
+                </div>
 
-                <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
 
                  <!-- restore data -->
@@ -598,7 +603,7 @@
     </div>
 </div>
 </div>
-
+</div>
 </body>
 
 <script>$(".toggle-password").click(function() {

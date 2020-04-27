@@ -199,7 +199,7 @@ nav.horizontal ul li {
 
 /* horizontal menu */
 img {
-    max-width: 100%;
+    max-width: 50%;
 }
 
 /* //end reset */
@@ -209,7 +209,7 @@ body {
 }
 
 .main-bg {
-    background: url(../images/bg2.jpg) no-repeat center;
+    background: url(../images/admin.jpg) no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -221,7 +221,7 @@ body {
 /* title */
 h1 {
     font-size: 2.8vw;
-    color: #fff;
+    color: #4e4d4d;
     text-align: center;
     padding: 1.5vw 1vw 2vw;
     letter-spacing: 3px;
@@ -244,7 +244,7 @@ h1 {
 
 .top-content-style {
     padding: 2vw 4vw 4vw;
-    background: #1cc7d0;
+    background: #c0fcff;
 }
 
 .top-content-style img {
@@ -318,7 +318,7 @@ p.legend span {
     height: 45px;
     display: block;
     margin: 2.5em auto 0;
-    background: #1cc7d0;
+    background: #6ef8ff;
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
     -ms-border-radius: 10px;

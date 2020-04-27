@@ -45,15 +45,21 @@
             color: white;
 
         }
-
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
-        .dark-edition .form-control {
-            color: white;
-        }
         select option{
-            background-color:#3C4858;
+            color: black;
+        }
+        input[type="search"]{
+            color: white !important;
+        }
+        .custom-select{
+            color: white !important;
+        }
+        .custom-select option{
+            background-color:#3C4858 !important;
+            color: white;
         }
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">

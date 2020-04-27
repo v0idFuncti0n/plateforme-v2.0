@@ -476,18 +476,18 @@ Header
                                     @csrf
                                     @method('DELETE')
                                     <input required type="hidden" name="question_id" id="question_id">
-                                    <p class="text-center" style="font-weight: bold" width="50px"> vous ete sûre que
+                                    <p class="text-center" style="font-size:15px; font-weight: bold" width="50px"> vous ete sûre que
                                         vous voulez supprimer ce
                                         matiere</p>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">fermer
                                         </button>
                                         <button type="submit" class="btn btn-danger">supprimer</button>
                                 </form>
                                 <form action="{{action("Text_libreController@forceDelete")}}" method="POST">
                                     @csrf
                                     <input required type="hidden" name="force_question_id" id="force_question_id">
-                                    <button type="submit" class="btn btn-danger">forcer la suppression</button>
+                                    <button type="submit" class="btn btn-danger">supprimer définitivement</button>
                                 </form>
 
                             </div>
@@ -524,8 +524,8 @@ Header
                                 </label>
                             @endforeach
                             <div class="modal-footer">
-                                <button type="button" id="restore" class="btn btn-success">Restore</button>
-                                <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                                <button type="button" id="restore" class="btn btn-success">restaurer</button>
+                                <button type="button" id="force-delete" class="btn btn-danger">supprimer définitivement</button>
                             </div>
                         </form>
                     </div>

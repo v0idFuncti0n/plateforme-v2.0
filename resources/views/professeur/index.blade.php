@@ -42,24 +42,29 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
+    <style>
+        input[type="file"]{
+            height:20px;
+            color: white;
 
-<style>
-    input[type="file"]{
-        height:20px;
-        color: white;
-
-    }
-
-    input[type="file"]::-webkit-file-upload-button{
-        height:20px;
-    }
-    .dark-edition .form-control {
-        color: white;
-    }
-    select option{
-        background-color:#3C4858;
-    }
-</style>
+        }
+        input[type="file"]::-webkit-file-upload-button{
+            height:20px;
+        }
+        select option{
+            color: black;
+        }
+        input[type="search"]{
+            color: white !important;
+        }
+        .custom-select{
+            color: white !important;
+        }
+        .custom-select option{
+            background-color:#3C4858 !important;
+            color: white;
+        }
+    </style>
 </head>
 
 <body class="dark-edition">
@@ -508,11 +513,10 @@
 
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
                                 <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
-
                                 <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
-                                             </div>
+
+                            </div>
                             </form>
                         </div>
                     </div>
@@ -551,9 +555,10 @@
 
 
           <div class="modal-footer">
-              <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
 
-              <button type="submit" class="btn btn-danger">restaurer</button>
+              <button type="submit" class="btn btn-danger">Restaurer</button>
+
           </div>
           </form>
       </div>

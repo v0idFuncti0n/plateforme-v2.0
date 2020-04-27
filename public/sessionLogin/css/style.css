@@ -238,7 +238,7 @@ body {
 	font-family: 'Mukta', sans-serif;
 }
 .main {
-    background: url(../images/bg.jpg) no-repeat center;
+    background: url(../images/lo.jpg) no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -261,9 +261,10 @@ body {
     margin: 6em auto;
 }
 ul.links-unordered-list li.active a {
-    background: rgba(255, 255, 255, 0.05);
+    background:rgba(222, 222, 222, 0.36);
     padding: 5px 20px;
-    color: #fff;
+    color: #fc636b;
+    font-weight: bolder;
 }
 .icon span.fa{
     font-size: 60px;
@@ -280,7 +281,7 @@ ul.links-unordered-list li.active a {
 }
 .logo h1 a {
     font-size: 25px;
-    color: #fff;
+    color: #3b3632;
     text-transform: capitalize;
     font-weight: 600;
     letter-spacing: 1px;
@@ -361,7 +362,7 @@ ul.list-login-bottom li:nth-child(2) {
 /*/////////////// FORM STYLES ////////////////////*/
 
 form .field-group {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.64);
     display: flex;
     display: flex;
     display: -webkit-box;
@@ -446,8 +447,8 @@ ul.links-unordered-list li {
 }
 ul.links-unordered-list li a {
     font-size: 16px;
-    color: #ccc;
-    font-weight: normal;
+    color: #3b3632;
+    font-weight: bold;
     letter-spacing: 1px;
     padding: 0 5px;
     text-transform: capitalize;
@@ -494,7 +495,7 @@ label.switch {
     font-size: 15px;
     letter-spacing: 1px;
     font-weight: 300;
-    color: #ccc !important;
+    color: #3b3632 !important;
     text-transform: capitalize;
 }
 ul.list-login-bottom li:nth-child(1) a,ul.list-login-bottom li:nth-child(2) a {

@@ -377,10 +377,10 @@ Header
                 <form action="{{action("OptionController@forceDelete")}}" method="POST">
                     @csrf
                     <input required type="hidden" name="force_option_id" id="force_option_id">
-                    <button type="submit" class="btn btn-danger">forcer la suppression</button>
+                    <button type="submit" class="btn btn-danger">fsupprimer définitivement</button>
                 </form>
                 <button type="submit" class="btn btn-danger">supprimer</button>
-                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">fermer</button>
 
             </div>
                 </form>
@@ -422,8 +422,8 @@ Header
                 @endforeach
 
             <div class="modal-footer">
-                <button type="button" id="restore" class="btn btn-success">Restore</button>
-                <button type="button" id="force-delete" class="btn btn-danger">Force Delete</button>
+                <button type="button" id="restore" class="btn btn-success">restaurer</button>
+                <button type="button" id="force-delete" class="btn btn-danger">supprimer définitivement</button>
             </div>
                 </form>
             </div>

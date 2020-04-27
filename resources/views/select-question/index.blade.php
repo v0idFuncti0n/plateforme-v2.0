@@ -194,7 +194,7 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li ><a href="test" style=" text-decoration: none;color: #fff">Acceuil</a></li>
+                <li ><a href="test" style=" text-decoration: none;color: #fff">Accueil</a></li>
                 <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
                 <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>

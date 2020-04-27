@@ -42,21 +42,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 <div class="main-bg">
     <!-- title -->
-    <h1>Latest Login Form</h1>
+    <h1>Administrateur</h1>
     <!-- //title -->
     <!-- content -->
     <div class="sub-main-w3">
         <div class="bg-content-w3pvt">
             <div class="top-content-style">
-                <img src="/adminLogin/images/user.jpg" alt=""/>
+                <img src="/adminLogin/images/admin-logo-png-5.png" alt=""/>
+
             </div>
             <form method="POST" action="{{ action('Auth\AdminController@adminLogin') }}">
                 @csrf
-                <p class="legend">Login Here<span class="fa fa-hand-o-down"></span></p>
+                <p class="legend">Se connecter<span class="fa fa-hand-o-down"></span></p>
                 <div class="input">
                     <input pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max"
                            id="username" type="text" class="form-control" name="username" value="{{ old('username') }}"
-                           required autocomplete="off" autofocus placeholder="Username">
+                           required autocomplete="off" autofocus placeholder="Nom d'utilsateur">
 
                     <span class="fa fa-envelope"></span>
                 </div>
@@ -64,7 +65,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <input pattern="[a-zA-Z0-9]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max"
                            id="password" type="password"
                            class="form-control @if(!empty(Session::get('error'))) is-invalid @endif" name="password"
-                           required autocomplete="off" placeholder="Password">
+                           required autocomplete="off" placeholder="Mot de passe">
 
                     <span class="fa fa-unlock"></span>
                 </div>

@@ -29,10 +29,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         } </script>
 </head>
 <body>
-<h1>Professeur authentification</h1>
 <div class="main-agile">
-
-    <div class="content-wthree">
+    <div class="content-wthree" style="margin-top: 100px">
         <div class="about-middle">
             <section class="slider">
                 <div class="flexslider">
@@ -44,26 +42,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                          class="img-responsive">
                                 </div>
                                 <div class="new-account-form">
-                                    <h2 class="heading-w3-agile">Login</h2>
+                                    <h2 class="heading-w3-agile">se connecter</h2>
                                     <form method="POST" action="{{ action('Auth\ProfauthController@professeurLogin') }}">
                                         @csrf
                                         <div class="inputs-w3ls">
-                                            <p>Username</p>
+                                            <p>Nom d'utilisateur</p>
                                             <i class="fa fa-envelope" aria-hidden="true"></i>
                                             <input pattern="[a-zA-Z]{4,255}"
                                                    title="aucun caractère spécial n'est autorisé 4 - 255 max"
                                                    id="username" type="text" name="username"
                                                    required autocomplete="off" autofocus
-                                                   placeholder="Username">
+                                                   placeholder="Nom d'utilisateur">
                                         </div>
                                         <div class="inputs-w3ls">
-                                            <p>Password</p>
+                                            <p>Mot de passe</p>
                                             <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                             <input pattern="[a-zA-Z0-9]{4,255}"
                                                    title="aucun caractère spécial n'est autorisé 4 - 255 max"
                                                    id="password" type="password"
                                                    class="@if(!empty(Session::get('error'))) is-invalid @endif"
-                                                   name="password" required autocomplete="off" placeholder="Password">
+                                                   name="password" required autocomplete="off" placeholder="Mot de pass">
                                         </div>
                                         <input type="submit" value="s'identifier"/>
                                     </form>

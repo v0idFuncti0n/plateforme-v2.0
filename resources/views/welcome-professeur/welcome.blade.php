@@ -53,7 +53,7 @@ Header
                 <li><a href="{{route('profauth.login')}}">Se connecter</a></li>
 
                 <li><a href="#team">equipe</a></li>
-                <
+
                 <li><a href="#contact">Contact Us</a></li>
             </ul>
         </nav><!-- #nav-menu-container -->
@@ -236,7 +236,7 @@ Header
 
     <div class="container">
         <div class="copyright">
-            &copy; Copyright <strong>Hassan</strong>. All Rights Reserved
+            &copy; Copyright <strong>ESTS</strong>. All Rights Reserved
         </div>
         <div class="credits">
             <!--
