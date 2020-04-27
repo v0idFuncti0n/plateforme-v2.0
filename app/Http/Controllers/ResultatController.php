@@ -65,15 +65,17 @@ class ResultatController extends Controller
             $choices1 = option::find(array_values($request->input('options')));
         }
         //return dd($choices1);
-        foreach ($choices1 as $ch){
-            $reponse_qcm = array(
-                'test_id' => $test_id,
-                'question_id' => $ch->question_id,
-                'option_id' => $ch->option_id,
-                'session_id' => $request->session_id,
-                'note' => $ch->point
-            );
-            Reponse_QCM::query()->create($reponse_qcm);
+        if($choices1 != null) {
+            foreach ($choices1 as $ch) {
+                $reponse_qcm = array(
+                    'test_id' => $test_id,
+                    'question_id' => $ch->question_id,
+                    'option_id' => $ch->option_id,
+                    'session_id' => $request->session_id,
+                    'note' => $ch->point
+                );
+                Reponse_QCM::query()->create($reponse_qcm);
+            }
         }
         if ($choices != null) {
             foreach ($choices as $choice) {
