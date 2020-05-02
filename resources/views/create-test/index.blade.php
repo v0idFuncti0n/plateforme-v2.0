@@ -167,12 +167,31 @@
                                 </div>
 
                                 <div class="form-row" style="padding-right: 100px;">
+                                    <div class="form-holder form-holder-2 form-control">
+                                        <label class="form-row-inner">
+                                            <?php
+                                            $departements = \App\departement::all();
+                                            echo "<select type='text' size='1' style='width: 235px;margin-bottom:-50px' name='departement_id'> ";
+                                            foreach ($departements as $d) {
+                                                $departement_id = $d->departement_id;
+                                                echo "<option value='$departement_id' onclick='getFilieres(this.value)'>$d->nom</option>";
+                                            }
+                                            echo "</select>";
+                                            ?>
+                                            <span class="label" style="top: -30px; left:85px"
+                                                  for="departement_id">Departement</span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-row" style="padding-right: 100px;">
                                     <div class="form-holder form-holder-2">
                                         <label class="form-row-inner">
                                             <?php
 
                                             $filieres = filiere::all();
-                                            echo "<select size='1' style='width: 235px;margin-bottom:-80px ' name=filiere_id>";
+                                            echo "<select id='filiere' size='1' style='width: 235px;margin-bottom:-80px ' name=filiere_id>";
                                             foreach ($filieres as $f) {
                                                 $id_filiere = $f->filiere_id;
                                                 echo "<option value=$id_filiere>$f->nom</option>";
@@ -353,4 +372,25 @@
 <script src="{{asset('js/script.js')}}"></script>
 
 </body>
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    function getFilieres(id) {
+        $.ajax({
+            type:'GET',
+            url:'/getfilieres/'+id,
+            data:{id: id},
+            success:function(data) {
+                $("#filiere").empty();
+                data.forEach(function(item){
+                    $("#filiere").append(item);
+                });
+            },
+            error:function(xhr, ajaxOptions, thrownError){
+                alert(xhr.status);
+                alert(thrownError);
+            }
+
+        });
+    }
+</script>
 </html>

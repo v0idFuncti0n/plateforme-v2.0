@@ -142,3 +142,5 @@ Route::post('/option/forceDelete', 'OptionController@forceDelete');
 Route::get('/option-restore', 'OptionController@indexRestore');
 Route::post('/option-restore', 'OptionController@restoreOption')->name("option.restore");
 Route::post('/option-forcedelete', 'OptionController@forceDeleteMass')->name("option.forceDelete");
+
+Route::get('/getfilieres/{id}','AjaxController@filieres');
