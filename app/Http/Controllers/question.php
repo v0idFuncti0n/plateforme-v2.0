@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\binaire;
 use App\Option;
+use App\Professeur;
 use App\Session;
 use App\Text_libre;
 use Illuminate\Http\Request;
@@ -25,7 +26,8 @@ class question extends Controller
     public function index2($test_id)
     {
         $test['test'] = test::findOrfail($test_id);
-        return view('create-question.index', compact('test'));
+        $prof = Professeur::find($test['test']->professeur_id);
+        return view('create-question.index', compact('test'),compact('prof'));
 
     }
 
@@ -38,7 +40,8 @@ class question extends Controller
     public function select($test_id)
     {
         $test = test::find($test_id);
-        return view('select-question.index', compact('test'));
+        $prof = Professeur::find($test->professeur_id);
+        return view('select-question.index', compact('test'),compact('prof'));
 
     }
 

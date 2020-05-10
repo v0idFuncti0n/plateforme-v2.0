@@ -92,23 +92,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="step">
-                            <div class="step__content">
-                                <p class="step__number">4</p>
-                                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-                                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-                                </svg>
-
-                                <div class="lines">
-                                    <div class="line -background">
-                                    </div>
-
-                                    <div class="line -progress">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </nav>
                 </div>
             </header>
@@ -120,66 +103,20 @@
                 <div class="panels">
                     <div class="panel" style="margin-left: 10%;">
                         <section>
-                            <div class="inner" style="display: flex;">
-                                <div class="form-row" style="padding-right: 140px;">
-                                    <div class="form-holder form-holder-2 form-control">
-                                        <label class="form-row-inner">
-
-                                            <select type='text' size='1' style='width: 235px;' name="departement">
-
-
-                                            </select>
-
-                                            <span class="label" style="top: -30px; left:75px"
-                                                  for="departement">Departement</span>
-                                            <span class="border"></span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-row" style="padding-right: 100px;">
-                                    <div class="form-holder form-holder-2 form-control">
-                                        <label class="form-row-inner">
-                                            <?php
-                                            use App\filiere;use App\Niveau;$niveaux = Niveau::all();
-                                            echo "<select type='text' size='1' style='width: 235px;margin-bottom:-50px' id=niveau_id name=niveau_id> ";
-                                            foreach ($niveaux as $n) {
-                                                $niveau_id = $n->niveau_id;
-                                                echo "<option value=$niveau_id>$n->nom</option>";
-                                            }
-                                            echo "</select>";
-                                            ?>
-                                            <span class="label" style="top: -30px; left:85px"
-                                                  for="niveau_id">Niveau</span>
-                                            <span class="border"></span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-row" style="padding-right: 100px;">
+                            <div class="inner">
+                                <div class="form-row">
                                     <div class="form-holder form-holder-2">
                                         <label class="form-row-inner">
-                                            <?php
-
-                                            $filieres = filiere::all();
-                                            echo "<select size='1' style='width: 235px;margin-bottom:-80px ' id=filiere_id name=filiere_id>";
-                                            foreach ($filieres as $f) {
-                                                $id_filiere = $f->filiere_id;
-                                                echo "<option value=$id_filiere>$f->nom</option>";
-                                            }
-                                            echo "</select>";
-                                            ?>
-                                            <span class="label" style="top:-30px; left:80px "
-                                                  for="filiere_id">Filiere</span>
+                                            <input type="number" style=';margin-left: 220px;width: 50%;' name="ng"
+                                                   id="ng" class="form-control" required>
+                                            <span class="label" style="left: 400px;">Nombre des étudiants </span>
                                             <span class="border"></span>
                                         </label>
                                     </div>
                                 </div>
-
 
                             </div>
                             <div class="inner" style="display: flex;">
-
                                 <div class="form-row" style="padding-right: 100px;">
                                     <div class="form-holder form-holder-2 form-control">
                                         <label class="form-row-inner">
@@ -197,7 +134,7 @@
                                             @endforeach
                                             <?php   $matiere = DB::table('matiere')->whereIn('matiere_id', $id)->get();?>
 
-                                            <select type='text' size='1' style='width: 235px;' id="matiere_id" name="matiere_id">
+                                            <select type='text' size='1' style='width: 235px;' name="matiere_id">
                                                 @foreach ($matiere as $m)
                                                     <?php $matiere_id = intval($m->matiere_id);?>
                                                     <option value="{{$matiere_id}}">{{$m->nom_matiere}}</option>
@@ -205,32 +142,69 @@
                                             </select>
 
                                             <span class="label" style="top: -30px; left:85px"
-                                                  for="niveau_id" >Matiere</span>
+                                                  for="niveau_id">Matiere</span>
                                             <span class="border"></span>
                                         </label>
                                     </div>
                                 </div>
-                                <div class="form-row" style="padding-right: 80px;padding-left: 44px;">
-                                    <div class="form-holder form-holder-2">
+                                <div class="form-row" style="padding-right: 100px;">
+                                    <div class="form-holder form-holder-2 form-control">
                                         <label class="form-row-inner">
-                                            <input type="number" style='width: 92%;' name="nei"
-                                                   id="nei" class="form-control" required>
-                                            <span class="label" style="text-align: center;">Nombre des étudiants inscrits </span>
-                                            <span class="border"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-holder form-holder-2">
-                                        <label class="form-row-inner">
-                                            <input type="number" style='width: 92%;' name="ng"
-                                                   id="ng" class="form-control" required>
-                                            <span class="label"  style="text-align: center;top: -15px">Nombre des étudiants à passer le test </span>
+                                            <?php
+                                            use App\filiere;use App\Niveau;$niveaux = Niveau::all();
+                                            echo "<select type='text' size='1' style='width: 235px;margin-bottom:-50px' name=niveau_id> ";
+                                            foreach ($niveaux as $n) {
+                                                $niveau_id = $n->niveau_id;
+                                                echo "<option value=$niveau_id>$n->nom</option>";
+                                            }
+                                            echo "</select>";
+                                            ?>
+                                            <span class="label" style="top: -30px; left:85px"
+                                                  for="niveau_id">Niveau</span>
                                             <span class="border"></span>
                                         </label>
                                     </div>
                                 </div>
 
+                                <div class="form-row" style="padding-right: 100px;">
+                                    <div class="form-holder form-holder-2 form-control">
+                                        <label class="form-row-inner">
+                                            <?php
+                                            $departements = \App\departement::all();
+                                            $first_dep = $departements->first();
+                                            echo "<select type='text' size='1' style='width: 235px;margin-bottom:-50px' name='departement_id'> ";
+                                            foreach ($departements as $d) {
+                                                $departement_id = $d->departement_id;
+                                                echo "<option value='$departement_id' onclick='getFilieres(this.value)'>$d->nom</option>";
+                                            }
+                                            echo "</select>";
+                                            ?>
+                                            <span class="label" style="top: -30px; left:85px"
+                                                  for="departement_id">Departement</span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-row" style="padding-right: 100px;">
+                                    <div class="form-holder form-holder-2">
+                                        <label class="form-row-inner">
+                                            <?php
+
+                                            $filieres = filiere::where('departement_id',$first_dep->departement_id)->get();
+                                            echo "<select id='filiere' size='1' style='width: 235px;margin-bottom:-80px ' name=filiere_id>";
+                                            foreach ($filieres as $f) {
+                                                $id_filiere = $f->filiere_id;
+                                                echo "<option value=$id_filiere>$f->nom</option>";
+                                            }
+                                            echo "</select>";
+                                            ?>
+                                            <span class="label" style="top:-30px; left:80px "
+                                                  for="filiere_id">Filiere</span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </section>
                     </div>
@@ -316,9 +290,6 @@
                     </div>
 
                     <div class="panel" style="margin-left: 18%;">
-                        <header class="panel__header">
-                            <h2 class="panel__title" style="font-size: 19px;text-align: center">Entrez le nombre de questions qui apprtienennet à chaque catégorie de difficulté</h2>
-                        </header>
                         <section>
                             <div class="inner" style="display:flex;">
                                 <div class="form-row">
@@ -326,7 +297,7 @@
                                         <label class="form-row-inner">
                                             <input type="number" name="d1" id="d1" class="form-control" min="0"
                                                    required>
-                                            <span class="label" style="left: 100px;">Trés facile</span>
+                                            <span class="label" style="left: 100px;">Difficulté 1</span>
                                             <span class="border"></span>
                                         </label>
                                     </div>
@@ -337,7 +308,7 @@
                                         <label class="form-row-inner">
                                             <input type="number" name="d2" id="d2" class="form-control" min="0"
                                                    required>
-                                            <span class="label" style="left: 100px;">Facile</span>
+                                            <span class="label" style="left: 100px;">Difficulté 2</span>
                                             <span class="border"></span>
 
                                         </label>
@@ -351,7 +322,7 @@
                                         <label class="form-row-inner">
                                             <input type="number" name="d3" id="d3" class="form-control" min="0"
                                                    required>
-                                            <span class="label" style="left: 100px;">Moyen</span>
+                                            <span class="label" style="left: 100px;">Difficulté 3</span>
                                             <span class="border"></span>
 
                                         </label>
@@ -362,7 +333,7 @@
                                         <label class="form-row-inner">
                                             <input type="number" name="d4" id="d4" class="form-control" min="0"
                                                    required>
-                                            <span class="label" style="left: 100px;">Difficile</span>
+                                            <span class="label" style="left: 100px;">Difficulté 4</span>
                                             <span class="border"></span>
                                         </label>
                                     </div>
@@ -375,7 +346,7 @@
                                         <label class="form-row-inner">
                                             <input type="number" name="d5" id="d5" class="form-control" min="0"
                                                    required>
-                                            <span class="label" style="left: 90px;">Trés Difficile</span>
+                                            <span class="label" style="left: 90px;">Difficulté 5</span>
                                             <span class="border"></span>
 
                                         </label>
@@ -383,87 +354,6 @@
                                 </div>
 
                             </div>
-                        </section>
-                    </div>
-                    <div class="panel" >
-                        <section style="display: flex">
-                            <div class="inner" style="display: flex">
-                                <div class="form-row table-responsive">
-                                    <table class="table">
-                                        <tbody>
-                                        <tr class="space-row">
-                                            <th>Full Name:</th>
-                                            <td id="fullname-val"></td>
-                                        </tr>
-                                        <tr class="space-row">
-                                            <th>Email Address:</th>
-                                            <td id="email-val"></td>
-                                        </tr>
-                                        <tr class="space-row">
-                                            <th>Phone Number:</th>
-                                            <td id="phone-val"></td>
-                                        </tr>
-                                        <tr class="space-row">
-                                            <th>User:</th>
-                                            <td id="username-val"></td>
-                                        </tr>
-
-                                        <tr class="space-row">
-                                            <th>Gender:</th>
-                                            <td id="gender-val"></td>
-                                        </tr>
-                                        <tr class="space-row">
-                                            <th>Address:</th>
-                                            <td id="address-val"></td>
-                                        </tr>
-                                        <tr class="space-row">
-                                            <th>Card Type:</th>
-                                            <td id="pay-val">Credit Card</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </section>
-                    <section style="display: flex">
-                            <div class="inner" >
-                                <div class="form-row table-responsive">
-                                    <table class="table">
-                                        <tbody>
-                                        <tr class="space-row">
-                                            <th>Full Name:</th>
-                                            <td id="filiere_id-val"></td>
-                                        </tr>
-                                        <tr class="space-row">
-                                            <th>Email Address:</th>
-                                            <td id="niveau_id-val"></td>
-                                        </tr>
-                                        <tr class="space-row">
-                                            <th>Phone Number:</th>
-                                            <td id="matiere_id-val"></td>
-                                        </tr>
-                                        <tr class="space-row">
-                                            <th>User:</th>
-                                            <td id="nei-val"></td>
-                                        </tr>
-
-                                        <tr class="space-row">
-                                            <th>Gender:</th>
-                                            <td id="gender-val"></td>
-                                        </tr>
-                                        <tr class="space-row">
-                                            <th>Address:</th>
-                                            <td id="ng-val"></td>
-                                        </tr>
-                                        <tr class="space-row">
-                                            <th>Card Type:</th>
-                                            <td id="pay-val">Credit Card</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
                         </section>
                     </div>
                 </div>
@@ -481,8 +371,27 @@
 
 </div>
 <script src="{{asset('js/script.js')}}"></script>
-<script src="{{asset('js/finalstep.js')}}"></script>
-<script src="{{asset('js/js/jquery.steps.js')}}"></script>
 
 </body>
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    function getFilieres(id) {
+        $.ajax({
+            type:'GET',
+            url:'/getfilieres/'+id,
+            data:{id: id},
+            success:function(data) {
+                $("#filiere").empty();
+                data.forEach(function(item){
+                    $("#filiere").append(item);
+                });
+            },
+            error:function(xhr, ajaxOptions, thrownError){
+                alert(xhr.status);
+                alert(thrownError);
+            }
+
+        });
+    }
+</script>
 </html>

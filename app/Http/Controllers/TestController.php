@@ -62,7 +62,7 @@ class TestController extends Controller
             'd5' => $request->d5,
         );
 
-        $p = Professeur::query()->find($request->professeur_id)->get();
+        $p = Professeur::query()->find($request->professeur_id)->first();
 
         $currentTest = Test::query()->create($test);
 
@@ -105,20 +105,15 @@ class TestController extends Controller
                 $session = array(
                     'etudiant_id' => $e->etudiant_id,
                     'test_id' => $currentTest->test_id,
-                    'username' => strtolower(str_replace(" ",'',$e->nom.$e->prenom.$e->etudiant_id)),
+                    'username' => strtolower(str_replace(" ", '', $e->nom . $e->prenom . $e->etudiant_id)),
                     'password' => $this->randomPassword(),
 
                 );
                 $s = Session::query()->create($session);
             }
-
-
         }
-
-
-        return redirect()->route('profauth.test');
+        return view('accueilProf.index')->with('prof', $p);
     }
-
     /**
      * Display the specified resource.
      *
@@ -283,7 +278,9 @@ class TestController extends Controller
     {
         //$text_libre = Text_libre::query()->where('test_id','=',$test)->get();
         $session = Session::query()->where('test_id', '=', $test)->get();
-        return view('reponses.index', compact('session'));
+        $test = Test::find($session->first()->test_id);
+        $prof = Professeur::find($test->professeur_id);
+        return view('reponses.index', compact('session') , compact('prof'));
         //return compact('text_libre');
     }
 

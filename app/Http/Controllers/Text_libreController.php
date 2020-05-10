@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Professeur;
 use App\Test;
 use App\Text_libre;
 use Illuminate\Http\Request;
@@ -22,7 +23,8 @@ class Text_libreController extends Controller
     public function index2($test_id)
     {
         $test=test::findOrfail($test_id) ;
-        return view('create-text-libre.index',compact('test'));
+        $prof = Professeur::find($test['test']->professeur_id);
+        return view('create-text-libre.index',compact('test'),compact('prof'));
     }
 
     /**
