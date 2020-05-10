@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\binaire;
 use App\departement;
 use App\option;
+use App\Professeur;
 use App\QCM;
 use App\Test;
 use Illuminate\Http\Request;
@@ -19,7 +20,8 @@ class BinaireController extends Controller
     public function index1($test_id)
     {
         $test=test::find($test_id);
-        return view('create-binaire.index',compact('test'));
+        $prof = Professeur::find($test['test']->professeur_id);
+        return view('create-binaire.index',compact('test'),compact('prof'));
     }
 
     public function index2(){

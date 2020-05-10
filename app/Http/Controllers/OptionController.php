@@ -30,7 +30,7 @@ class OptionController extends Controller
         $options['options'] = Option::query()->where('binaire_id', $binaire_id)->get();
         $question = binaire::find($binaire_id);
         $test = Test::find($question->test_id);
-        $prof = Professeur::find($test['test']->professeur_id);
+        $prof = Professeur::find($test->professeur_id);
       return view('option.index',compact('options'),compact('prof'));
     }
     public function index2($question_id)
@@ -39,7 +39,7 @@ class OptionController extends Controller
         $options['options'] = Option::query()->where('question_id', $question_id)->get();
         $question = QCM::find($question_id);
         $test = Test::find($question->test_id);
-        $prof = Professeur::find($test['test']->professeur_id);
+        $prof = Professeur::find($test->professeur_id);
         return view('option.indexQCM',compact('options'),compact('prof'));
     }
 
