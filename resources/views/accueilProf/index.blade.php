@@ -51,8 +51,8 @@ Header
         <nav id="nav-menu-container">
             <ul class="nav-menu">
                 <li class="menu-active"><a href="test">Accueil</a></li>
-                <li><a href="create-test/{{$prof->professeur_id}}">Créer test</a></li>
-                <li><a href="{{route('manager-test',['prof_id' => $prof])}}">Gérer test</a></li>
+                <li><a href="create-test/{{$prof->professeur_id}}">Créer un test</a></li>
+                <li><a href="{{route('manager-test',['prof_id' => $prof])}}">Gérer les tests</a></li>
                 <li><a href="">Gérer les notes</a></li>
                 <li><a href="">Déconnexion</a></li>
             </ul>
@@ -78,8 +78,8 @@ Header
 
                 <div class="col-lg-12">
                     <ul id="portfolio-flters">
-                        <li data-filter=".filter-card" class="filter-active">mes test</li>
-                        <li data-filter=".filter-logo">mes classes</li>
+                        <li data-filter=".filter-card" class="filter-active">mes tests</li>
+                        <li data-filter=".filter-logo">mes matiére</li>
                     </ul>
                 </div>
             </div>
@@ -89,20 +89,29 @@ Header
                     <table class="table table-fixed">
                         <thead>
                         <tr>
-                            <th scope="col" class="col-3">#</th>
-                            <th scope="col" class="col-3">nom de test</th>
-                            <th scope="col" class="col-3">discription</th>
-                            <th scope="col" class="col-3">salle</th>
+                            <th scope="col" class="col-2">Identifiant</th>
+                            <th scope="col" class="col-2">Nom du test</th>
+                            <th scope="col" class="col-2">Discription</th>
+                            <th scope="col" class="col-2">Filiére</th>
+                            <th scope="col" class="col-2">Niveau</th>
+                            <th scope="col" class="col-2">salle</th>
                         </tr>
                         </thead>
                         <tbody>
                         @php $tests = \App\Test::query()->where('professeur_id',$prof->professeur_id)->get() ; $i=0 @endphp
                         @foreach($tests as $t)
                             <tr>
-                                <td scope="col" class="col-3">{{++$i}}</td>
-                                <td scope="col" class="col-3">{{$t->nom}}</td>
-                                <td scope="col" class="col-3">{{$t->discription}}</td>
-                                <td scope="col" class="col-3">{{$t->salle}}</td>
+                                <td scope="col" class="col-2">{{++$i}}</td>
+                                <td scope="col" class="col-2">{{$t->nom}}</td>
+                                <td scope="col" class="col-2">{{$t->discription}}</td>
+                                <?php $idmodule = DB::table('Matiere')->where('matiere_id',$t->matiere_id)->value('module_id') ?>
+                                <?php $idfilier = DB::table('filiere_module')->where('module_id',$idmodule)->value('filiere_id') ?>
+                                <?php $nomfilier = DB::table('Filiere')->where('filiere_id',$idfilier)->value('nom') ?>
+                                <td scope="col" class="col-2">{{$nomfilier}}</td>
+                                <?php $idniv = DB::table('filiere_niveau')->where('filiere_id',$idfilier)->value('niveau_id') ?>
+                                <?php $nomniv = DB::table('niveau')->where('niveau_id',$idniv)->value('nom') ?>
+                                <td scope="col" class="col-2">{{$nomniv}}</td>
+                                <td scope="col" class="col-2">{{$t->salle}}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -113,17 +122,26 @@ Header
                     <table class="table table-fixed" >
                         <thead>
                         <tr>
-                            <th scope="col" class="col-4">#</th>
-                            <th scope="col" class="col-4">nom de matiere</th>
-                            <th scope="col" class="col-4">Volume Horaire</th>
+                            <th scope="col" class="col-3">Identification</th>
+                            <th scope="col" class="col-2">nom de matiere</th>
+                            <th scope="col" class="col-2">Filiére</th>
+                            <th scope="col" class="col-2">Niveau</th>
+                            <th scope="col" class="col-2">Volume Horaire</th>
+
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($matiere as $m)
                             <tr>
-                                <td scope="col" class="col-4">{{++$i}}</td>
-                                <td scope="col" class="col-4">{{$m->nom_matiere}}</td>
-                                <td scope="col" class="col-4">{{$m->volume_horaire}}</td>
+                                <td scope="col" class="col-3">{{++$i}}</td>
+                                <td scope="col" class="col-2">{{$m->nom_matiere}}</td>
+                                <?php $idfilierm = DB::table('filiere_module')->where('module_id',$m->module_id)->value('filiere_id') ?>
+                                <?php $nomfilierm = DB::table('Filiere')->where('filiere_id',$idfilier)->value('nom') ?>
+                                <td scope="col" class="col-2">{{$nomfilier}}</td>
+                                <?php $idnivm = DB::table('filiere_niveau')->where('filiere_id',$idfilierm)->value('niveau_id') ?>
+                                <?php $nomnivm = DB::table('niveau')->where('niveau_id',$idnivm)->value('nom') ?>
+                                <td scope="col" class="col-2">{{$nomnivm}}</td>
+                                <td scope="col" class="col-2">{{$m->volume_horaire}}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -152,7 +170,7 @@ Header
                                     <i class="fa fa-magic" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-lg-12 col-sm-12 col-12 box-text-section">
-                                    <p><a href="create-test/{{$prof->professeur_id}}" style="color:#007bff;font-weight: bold">Créer
+                                    <p><a href="create-test/{{$prof->professeur_id}}" style="color:#007bff;font-weight: bold">Créer un
                                             test</a></p></div>
                             </div>
                         </div>
