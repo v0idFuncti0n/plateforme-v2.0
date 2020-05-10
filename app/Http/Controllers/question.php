@@ -26,8 +26,7 @@ class question extends Controller
     public function index2($test_id)
     {
         $test['test'] = test::findOrfail($test_id);
-        $prof = Professeur::find($test['test']->professeur_id);
-        return view('create-question.index', compact('test'),compact('prof'));
+        return view('create-question.index', compact('test'));
 
     }
 
