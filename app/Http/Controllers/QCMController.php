@@ -26,7 +26,7 @@ class QCMController extends Controller
     public function index2($test_id)
     {
         $test['test'] = Test::findOrfail($test_id);
-        $prof = Professeur::find($test->professeur_id);
+        $prof = Professeur::find($test['test']->professeur_id);
         return view('create-qcm.index', compact('test'),compact('prof'));
     }
 

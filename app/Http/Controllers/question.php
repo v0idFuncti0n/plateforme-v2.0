@@ -42,7 +42,6 @@ class question extends Controller
         $test = test::find($test_id);
         $prof = Professeur::find($test->professeur_id);
         return view('select-question.index', compact('test'),compact('prof'));
-
     }
 
     public function Random($test_id)

@@ -23,7 +23,7 @@ class Text_libreController extends Controller
     public function index2($test_id)
     {
         $test=test::findOrfail($test_id) ;
-        $prof = Professeur::find($test['test']->professeur_id);
+        $prof = Professeur::find($test->professeur_id);
         return view('create-text-libre.index',compact('test'),compact('prof'));
     }
 
