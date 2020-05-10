@@ -171,6 +171,7 @@
                                         <label class="form-row-inner">
                                             <?php
                                             $departements = \App\departement::all();
+                                            $first_dep = $departements->first();
                                             echo "<select type='text' size='1' style='width: 235px;margin-bottom:-50px' name='departement_id'> ";
                                             foreach ($departements as $d) {
                                                 $departement_id = $d->departement_id;
@@ -190,7 +191,7 @@
                                         <label class="form-row-inner">
                                             <?php
 
-                                            $filieres = filiere::all();
+                                            $filieres = filiere::where('departement_id',$first_dep->departement_id)->get();
                                             echo "<select id='filiere' size='1' style='width: 235px;margin-bottom:-80px ' name=filiere_id>";
                                             foreach ($filieres as $f) {
                                                 $id_filiere = $f->filiere_id;
