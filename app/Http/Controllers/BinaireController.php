@@ -20,7 +20,7 @@ class BinaireController extends Controller
     public function index1($test_id)
     {
         $test=test::find($test_id);
-        $prof = Professeur::find($test['test']->professeur_id);
+        $prof = Professeur::find($test->professeur_id);
         return view('create-binaire.index',compact('test'),compact('prof'));
     }
 
