@@ -194,12 +194,15 @@ h6 {
 #header #logo img {
   padding: 0;
   margin: 0;
+      height: 80px;
+    position: relative;
+    top: -30px;
 }
 
 #header.header-fixed {
   background: rgba(52, 59, 64, 0.9);
   padding: 20px 0;
-  height: 52px;
+  height: 62px;
   transition: all 0.5s;
 }
 .profile-dropdown {
@@ -273,7 +276,7 @@ top: -18px;
 .profile-dropdown .info .image img {
       height: 6.8rem;
       left: -14px;
-      top:-15px;
+      top:-15px;  
 
 }
 .profile-dropdown .info .content {
@@ -509,22 +512,6 @@ top: -18px;
 
 /* Nav Menu Arrows */
 
-.sf-arrows .sf-with-ul {
-  padding-right: 30px;
-}
-
-.sf-arrows .sf-with-ul:after {
-  content: "\f107";
-  position: absolute;
-  right: 15px;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-}
-
-.sf-arrows ul .sf-with-ul:after {
-  content: "\f105";
-}
 
 /* Nav Meu Container */
 

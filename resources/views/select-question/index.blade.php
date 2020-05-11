@@ -27,7 +27,7 @@
     <link href="{{asset('lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
-    <link href="{{asset('css/style1.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style4.css')}}" rel="stylesheet">
 
     <link rel="stylesheet"
           href="{{asset('http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css')}}">
@@ -46,6 +46,7 @@
     <link rel="stylesheet" href="{{asset('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css')}}">
+    <link rel="stylesheet" href=" https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css">
 
     <style>
         $green: #2ecc71;
@@ -187,20 +188,40 @@ Header
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="{{asset('img/logo.png')}}" alt="" title=""/></a>
+            <a href="#hero"><img src="{{asset('/managetest/img/logoapp.png')}}" alt="" title=""/></a>
             <!-- Uncomment below if you prefer to use a text logo -->
             <!--<h1><a href="#hero">Regna</a></h1>-->
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li ><a href="test" style=" text-decoration: none;color: #fff">Accueil</a></li>
-                <li ><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
-                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
-                <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
-                <li><a href="" style=" text-decoration: none;color: #fff">Déconnexion</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Accueil</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li class="menu-active"><a href="" style=" text-decoration: none;color: #fff">Gérer tests</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
+                <li style="margin-right: -90px;margin-left: 100px" class="profile-dropdown image" > <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
+                    <a  style=" text-decoration: none;color: #fff;position: relative;top: -18px">
+                        {{ $prof->nom ." ". $prof->prenom }}</a><ul style="left: -170px" >
+                        <li>   <div class="info clearfix">
+                                <div class="image">
+                                    <a href="#">
+                                        <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h5 class="name">
+                                        <a href="#">{{ $prof->nom ." ". $prof->prenom }}</a>
+                                    </h5>
+                                    <span class="email">{{ $prof->email}}</span>
+                                </div>
+                            </div></li>
+
+                        <li  style="line-height: 20px"><a href="#"><i style="font-size: 15px" class="mdi mdi-logout"></i>Déconnexion</a></li>
+                    </ul>
+                </li>
+
             </ul>
-        </nav><!-- #nav-menu-container -->
+        </nav><!-- #nav-menu-container-->
     </div>
 </header><!-- #header -->
 <!--==========================

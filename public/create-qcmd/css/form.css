@@ -506,7 +506,8 @@ textarea {
   -moz-border-radius: 3px;
   border-radius: 3px;
   color: #666;
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: bold;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;

@@ -268,7 +268,7 @@ Header
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="{{asset('img/logo.png')}}" alt="" title=""/></a>
+            <a href="#hero"><img src="{{asset('/managetest/img/logoapp.png')}}" alt="" title=""/></a>
             <!-- Uncomment below if you prefer to use a text logo -->
             <!--<h1><a href="#hero">Regna</a></h1>-->
         </div>
@@ -296,12 +296,11 @@ Header
                                 </div>
                             </div></li>
 
-                        <li><a href="#"><i class="mdi mdi-logout"></i>Déconnexion</a></li>
+                        <li><a href="#"><i style="font-size: 15px" class="mdi mdi-logout"></i>Déconnexion</a></li>
                     </ul>
                 </li>
 
             </ul>
-            <div class="background"></div>
         </nav><!-- #nav-menu-container -->
 
     </div>
