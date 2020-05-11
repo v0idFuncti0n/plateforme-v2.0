@@ -81,6 +81,11 @@ class DatabaseSeeder extends Seeder
             'nom' => 'troiseme',
         ]);
 
+        DB::table('filiere_niveau')->insert([
+            'filiere_id' => 1,
+            'niveau_id' =>1,
+        ]);
+
         foreach (range(1, 50) as $i) {
             DB::table('etudiant')->insert([
                 'cin' => $faker->randomNumber(6),

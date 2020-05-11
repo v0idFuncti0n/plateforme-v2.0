@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Etudiant;
+use App\filiere;
+use App\Filiere_Niveau;
 use App\Groupe;
+use App\Matiere;
+use App\Niveau;
 use App\Professeur;
 use App\Reponse_text;
 use App\Session;
@@ -60,14 +64,16 @@ class TestController extends Controller
             'd3' => $request->d3,
             'd4' => $request->d4,
             'd5' => $request->d5,
+            'num' => $request->ng,
+            'filiere_id' => $request->filiere_id,
         );
 
         $p = Professeur::query()->find($request->professeur_id)->first();
 
         $currentTest = Test::query()->create($test);
 
-        $nbe = ceil(Etudiant::query()->count() / $request->ng);
-        $numEtu = Etudiant::query()->count();
+        $nbe = ceil(Etudiant::query()->where('filiere_id',$request->filiere_id)->count() / $request->ng);
+        $numEtu = Etudiant::query()->where('filiere_id',$request->filiere_id)->count();
         $skip = 0;
         for ($i = 0; $i < $nbe; $i++) {
 
@@ -82,7 +88,7 @@ class TestController extends Controller
 
                 $g = new Groupe($groupe);
 
-                $etudiant = Etudiant::query()->skip($skip)->take($request->ng)->get();
+                $etudiant = Etudiant::query()->where('filiere_id',$request->filiere_id)->skip($skip)->take($request->ng)->get();
                 $numEtu = $numEtu - $request->ng;
                 $skip += $request->ng;
             } else {
@@ -95,7 +101,7 @@ class TestController extends Controller
 
 
                 $g = new Groupe($groupe);
-                $etudiant = Etudiant::query()->skip($skip)->take($numEtu)->get();
+                $etudiant = Etudiant::query()->where('filiere_id',$request->filiere_id)->skip($skip)->take($numEtu)->get();
                 $skip += $numEtu;
             }
 
@@ -333,7 +339,52 @@ class TestController extends Controller
         if (!is_null($test_ids)) {
             foreach ($test_ids as $test_id) {
                 Test::withTrashed()->find($test_id)->restore();
-                //echo $test_id. " ";
+                $currentTest = Test::find($test_id);
+                $nbe = ceil(Etudiant::query()->where('filiere_id',$currentTest->filiere_id)->count() / $currentTest->num);
+                $numEtu = Etudiant::query()->where('filiere_id',$currentTest->filiere_id)->count();
+                $filiere = filiere::where('filiere_id',$currentTest->filiere_id)->first();
+                $skip = 0;
+                for ($i = 0; $i < $nbe; $i++) {
+
+                    if ($numEtu > $currentTest->num) {
+                        $groupe = array(
+                            'test_id' => $currentTest->test_id,
+                            'filiere_id' => $currentTest->filiere_id,
+                            'niveau_id' => $filiere->niveau_id,
+                            'nombre_etudiant' => $currentTest->num,
+
+                        );
+
+                        $g = new Groupe($groupe);
+
+                        $etudiant = Etudiant::query()->where('filiere_id',$currentTest->filiere_id)->skip($skip)->take($currentTest->num)->get();
+                        $numEtu = $numEtu - $currentTest->ng;
+                        $skip += $currentTest->num;
+                    } else {
+                        $groupe = array(
+                            'test_id' => $currentTest->test_id,
+                            'filiere_id' => $currentTest->filiere_id,
+                            'niveau_id' => $filiere->niveau_id,
+                            'nombre_etudiant' => $numEtu,
+                        );
+                        $g = new Groupe($groupe);
+                        $etudiant = Etudiant::query()->where('filiere_id',$currentTest->filiere_id)->skip($skip)->take($numEtu)->get();
+                        $skip += $numEtu;
+                    }
+
+
+                    foreach ($etudiant as $e) {
+                        $e->groupe()->save($g);
+                        $session = array(
+                            'etudiant_id' => $e->etudiant_id,
+                            'test_id' => $currentTest->test_id,
+                            'username' => strtolower(str_replace(" ", '', $e->nom . $e->prenom . $e->etudiant_id)),
+                            'password' => $this->randomPassword(),
+
+                        );
+                        $s = Session::query()->create($session);
+                    }
+                }
             }
         }
         return redirect()->back();

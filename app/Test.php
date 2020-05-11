@@ -12,7 +12,7 @@ class Test extends Model implements ToModel, WithHeadingRow
     use SoftDeletes;
 
     protected $table = "test";
-    protected $fillable = ['nom', 'duree', 'salle', 'date', 'note', 'discription','professeur_id','matiere_id','d1','d2','d3','d4','d5'];
+    protected $fillable = ['nom', 'duree', 'salle', 'date', 'note', 'discription','professeur_id','matiere_id','d1','d2','d3','d4','d5','num','filiere_id'];
     protected $primaryKey = 'test_id';
     protected $dates = ['deleted_at'];
 
@@ -67,6 +67,10 @@ class Test extends Model implements ToModel, WithHeadingRow
             foreach ($t->text_libre as $tx)
             {
                 $tx->delete();
+            }
+            $session = Session::query()->where('test_id',$t->test_id)->get();
+            foreach ($session as $s){
+                $s->delete();
             }
 
         });

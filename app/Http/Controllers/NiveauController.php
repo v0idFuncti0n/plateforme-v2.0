@@ -29,22 +29,25 @@ class NiveauController extends Controller
     {
         //
     }
-    public function restore(Request $request){
-  
-        niveau::withTrashed()->whereIn('niveau_id',(array_values($request->input('niveau'))) )->restore();
-      return redirect()->back();
-  }
+
+    public function restore(Request $request)
+    {
+
+        niveau::withTrashed()->whereIn('niveau_id', (array_values($request->input('niveau'))))->restore();
+        return redirect()->back();
+    }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $niveau = array(
-        'nom' => $request->nom
-    );
+            'nom' => $request->nom
+        );
 
         niveau::create($niveau);
         return redirect()->route('niveau.index');
@@ -53,7 +56,7 @@ class NiveauController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show(niveau $niveau)
@@ -64,7 +67,7 @@ class NiveauController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(niveau $niveau)
@@ -75,8 +78,8 @@ class NiveauController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -92,25 +95,28 @@ class NiveauController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $niveau)
     {
-      
 
-        if($niveau->but=='no'){ 
+
+        if ($niveau->but == 'no') {
             $delete = $niveau->all();
             $deleteniveau = Niveau::findOrfail($niveau->niveau_id);
             $deleteniveau->delete();
-            return redirect()->route('niveau.index');}
-            if($niveau->but=='dif'){ 
-                niveau::find($niveau->niveau_id)->forceDelete();
-                return redirect()->route('niveau.index');}
+            return redirect()->route('niveau.index');
+        }
+        if ($niveau->but == 'dif') {
+            niveau::find($niveau->niveau_id)->forceDelete();
+            return redirect()->route('niveau.index');
+        }
     }
 
-    public function import(Request $request){
-        Excel::import(new Niveau ,request()->file('file'));
+    public function import(Request $request)
+    {
+        Excel::import(new Niveau, request()->file('file'));
         return back();
     }
 }
