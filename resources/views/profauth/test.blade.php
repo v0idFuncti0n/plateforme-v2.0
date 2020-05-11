@@ -388,7 +388,7 @@ Header
                                 </div>
                             </td>
                             <td>
-                                <a data-test_id="{{$test->test_id}}" onclick="getTestId({{$test->test_id}})"
+                                <a data-test_id="{{$test->test_id}}" onclick="getTestId({{$test->test_id}});getSelectionnerTestId()"
                                    class="view modal-button"
                                    title="ajouter question" data-toggle="tooltip"><i
                                         class="material-icons">note_add</i></a>
@@ -497,7 +497,7 @@ Header
                     }
                         @endphp
                         <br>
-                        <a href="/select-question/{{$test->test_id}}">
+                        <a id="selectionner" href="/select-question/{{$test->test_id}}">
                             <button class="btn btn-success">Selectionner</button>
                         </a>
                         <br>
@@ -760,6 +760,10 @@ Header
 <script>
     var test_id;
 
+    function getSelectionnerTestId(){
+        let anchor = document.getElementById('selectionner');
+        anchor.href = "/select-question/"+ test_id;
+    }
     function getTestId(id) {
         let random = document.getElementById('random-test_id');
         random.value = id;
