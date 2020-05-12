@@ -65,7 +65,7 @@ class BinaireController extends Controller
            );
            option::create($option);
            $option1 = array(
-               'option_text' => 'false',
+               'option_text' => 'faux',
 
                'binaire_id' => $id->binaire_id ,
                'point' => '0'
@@ -74,14 +74,14 @@ class BinaireController extends Controller
        }
         if($choice=='faux') {
             $option = array(
-                'option_text' => 'false',
+                'option_text' => 'faux',
 
                 'binaire_id' => $id->binaire_id ,
                 'point' => '1'
             );
             option::create($option);
             $option1 = array(
-                'option_text' => 'true',
+                'option_text' => 'vrai',
                 'binaire_id' => $id->binaire_id ,
                 'point' => '0'
             );
