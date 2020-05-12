@@ -103,68 +103,7 @@
                 <div class="panels">
                     <div class="panel" style="margin-left: 10%;">
                         <section>
-                            <div class="inner">
-                                <div class="form-row">
-                                    <div class="form-holder form-holder-2">
-                                        <label class="form-row-inner">
-                                            <input type="number" style=';margin-left: 220px;width: 50%;' name="ng"
-                                                   id="ng" class="form-control" required>
-                                            <span class="label" style="left: 400px;">Nombre des étudiants </span>
-                                            <span class="border"></span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                            </div>
                             <div class="inner" style="display: flex;">
-                                <div class="form-row" style="padding-right: 100px;">
-                                    <div class="form-holder form-holder-2 form-control">
-                                        <label class="form-row-inner">
-                                            <?php
-
-                                            use App\Matiere;
-                                            use App\Matiere_prof;
-                                            $id = [];
-                                            $i = 0;
-                                            $mtrs = DB::table('matiere_prof')->where('professeur_id', $p1)->get();?>
-                                            @foreach($mtrs as $mtr)
-                                                <?php $id[$i] = $mtr->matiere_id;
-                                                $i++;
-                                                ?>
-                                            @endforeach
-                                            <?php   $matiere = DB::table('matiere')->whereIn('matiere_id', $id)->get();?>
-
-                                            <select type='text' size='1' style='width: 235px;' name="matiere_id">
-                                                @foreach ($matiere as $m)
-                                                    <?php $matiere_id = intval($m->matiere_id);?>
-                                                    <option value="{{$matiere_id}}">{{$m->nom_matiere}}</option>
-                                                @endforeach
-                                            </select>
-
-                                            <span class="label" style="top: -30px; left:85px"
-                                                  for="niveau_id">Matiere</span>
-                                            <span class="border"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-row" style="padding-right: 100px;">
-                                    <div class="form-holder form-holder-2 form-control">
-                                        <label class="form-row-inner">
-                                            <?php
-                                            use App\filiere;use App\Niveau;$niveaux = Niveau::all();
-                                            echo "<select type='text' size='1' style='width: 235px;margin-bottom:-50px' name=niveau_id> ";
-                                            foreach ($niveaux as $n) {
-                                                $niveau_id = $n->niveau_id;
-                                                echo "<option value=$niveau_id>$n->nom</option>";
-                                            }
-                                            echo "</select>";
-                                            ?>
-                                            <span class="label" style="top: -30px; left:85px"
-                                                  for="niveau_id">Niveau</span>
-                                            <span class="border"></span>
-                                        </label>
-                                    </div>
-                                </div>
 
                                 <div class="form-row" style="padding-right: 100px;">
                                     <div class="form-holder form-holder-2 form-control">
@@ -187,12 +126,31 @@
                                 </div>
 
                                 <div class="form-row" style="padding-right: 100px;">
+                                    <div class="form-holder form-holder-2 form-control">
+                                        <label class="form-row-inner">
+                                            <?php
+                                            use App\filiere;use App\Niveau;$niveaux = Niveau::all();
+                                            echo "<select type='text' size='1' style='width: 235px;margin-bottom:-50px' id=niveau_id name=niveau_id> ";
+                                            foreach ($niveaux as $n) {
+                                                $niveau_id = $n->niveau_id;
+                                                echo "<option value=$niveau_id>$n->nom</option>";
+                                            }
+                                            echo "</select>";
+                                            ?>
+                                            <span class="label" style="top: -30px; left:85px"
+                                                  for="niveau_id">Niveau</span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-row" style="padding-right: 100px;">
                                     <div class="form-holder form-holder-2">
                                         <label class="form-row-inner">
                                             <?php
 
-                                            $filieres = filiere::where('departement_id',$first_dep->departement_id)->get();
-                                            echo "<select id='filiere' size='1' style='width: 235px;margin-bottom:-80px ' name=filiere_id>";
+                                            $filieres = filiere::all();
+                                            echo "<select size='1' style='width: 235px;margin-bottom:-80px ' id=filiere_id name=filiere_id>";
                                             foreach ($filieres as $f) {
                                                 $id_filiere = $f->filiere_id;
                                                 echo "<option value=$id_filiere>$f->nom</option>";
@@ -205,6 +163,65 @@
                                         </label>
                                     </div>
                                 </div>
+
+
+                            </div>
+                            <div class="inner" style="display: flex;">
+
+                                <div class="form-row" style="padding-right: 100px;">
+                                    <div class="form-holder form-holder-2 form-control">
+                                        <label class="form-row-inner">
+                                            <?php
+
+                                            use App\Matiere;
+                                            use App\Matiere_prof;
+                                            $id = [];
+                                            $i = 0;
+                                            $mtrs = DB::table('matiere_prof')->where('professeur_id', $p1)->get();?>
+                                            @foreach($mtrs as $mtr)
+                                                <?php $id[$i] = $mtr->matiere_id;
+                                                $i++;
+                                                ?>
+                                            @endforeach
+                                            <?php   $matiere = DB::table('matiere')->whereIn('matiere_id', $id)->get();?>
+
+                                            <select type='text' size='1' style='width: 235px;' id="matiere_id" name="matiere_id">
+                                                @foreach ($matiere as $m)
+                                                    <?php $matiere_id = intval($m->matiere_id);?>
+                                                    <option value="{{$matiere_id}}">{{$m->nom_matiere}}</option>
+                                                @endforeach
+                                            </select>
+
+                                            <span class="label" style="top: -30px; left:85px"
+                                                  for="niveau_id" >Matiere</span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="padding-right: 80px;">
+                                    <div class="form-holder form-holder-2">
+                                        <label class="form-row-inner">
+                                            <input type="number" style='width: 92%;' name="nei"
+                                                   id="nei" class="form-control" required>
+                                            <span class="label" style="text-align: center;top:-15px">Nombre des étudiants inscrits </span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-row">
+                                    <div class="form-holder form-holder-2">
+                                        <label class="form-row-inner">
+                                            <input type="number" style='width: 92%;' name="ng"
+                                                   id="ng" class="form-control" required>
+                                            <span class="label"  style="text-align: center;top: -15px">Nombre des étudiants à passer le test </span>
+
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
                             </div>
                         </section>
                     </div>
@@ -227,9 +244,9 @@
                                     <div class="form-holder form-holder-2">
                                         <label class="form-row-inner">
                                         <textarea rows="8" cols="33" name="discription" id="discription"
-                                                  class="form-control" style="width: 200%;"
+                                                  class="form-control" style="width: 130%;font-size: 20px"
                                                   required></textarea>
-                                            <span class="label" style="left:210px;top: -140px">Discription</span>
+                                            <span class="label" style="left:210px;top: -200px">Discription</span>
                                             <span class="border"></span>
                                         </label>
                                     </div>
@@ -290,6 +307,9 @@
                     </div>
 
                     <div class="panel" style="margin-left: 18%;">
+                        <header class="panel__header">
+                            <h2 class="panel__title" style="font-size: 19px;text-align: center">Entrez le nombre de questions qui apprtienennet à chaque catégorie de difficulté</h2>
+                        </header>
                         <section>
                             <div class="inner" style="display:flex;">
                                 <div class="form-row">
@@ -297,7 +317,7 @@
                                         <label class="form-row-inner">
                                             <input type="number" name="d1" id="d1" class="form-control" min="0"
                                                    required>
-                                            <span class="label" style="left: 100px;">Difficulté 1</span>
+                                            <span class="label" style="left: 100px;">Trés facile</span>
                                             <span class="border"></span>
                                         </label>
                                     </div>
@@ -308,7 +328,7 @@
                                         <label class="form-row-inner">
                                             <input type="number" name="d2" id="d2" class="form-control" min="0"
                                                    required>
-                                            <span class="label" style="left: 100px;">Difficulté 2</span>
+                                            <span class="label" style="left: 100px;">Facile</span>
                                             <span class="border"></span>
 
                                         </label>
@@ -322,7 +342,7 @@
                                         <label class="form-row-inner">
                                             <input type="number" name="d3" id="d3" class="form-control" min="0"
                                                    required>
-                                            <span class="label" style="left: 100px;">Difficulté 3</span>
+                                            <span class="label" style="left: 100px;">Moyen</span>
                                             <span class="border"></span>
 
                                         </label>
@@ -333,7 +353,7 @@
                                         <label class="form-row-inner">
                                             <input type="number" name="d4" id="d4" class="form-control" min="0"
                                                    required>
-                                            <span class="label" style="left: 100px;">Difficulté 4</span>
+                                            <span class="label" style="left: 100px;">Difficile</span>
                                             <span class="border"></span>
                                         </label>
                                     </div>
@@ -346,7 +366,7 @@
                                         <label class="form-row-inner">
                                             <input type="number" name="d5" id="d5" class="form-control" min="0"
                                                    required>
-                                            <span class="label" style="left: 90px;">Difficulté 5</span>
+                                            <span class="label" style="left: 90px;">Trés Difficile</span>
                                             <span class="border"></span>
 
                                         </label>
@@ -356,6 +376,7 @@
                             </div>
                         </section>
                     </div>
+
                 </div>
                 <div class="wizard__footer" style="justify-content: space-between">
                     <button type="button" class="button previous">Précedent</button>

@@ -826,12 +826,15 @@ for ($b = 0; $b < $j; $b++) {
                                     </div>
 
                                     <div class="btn-next-con">
-
-                                        @if ($page === 0)<a class="btn-next">Next</a>
+                                        @if($cou === 1)
+                                            <input type="hidden" name="test_id" value="{{$test1}}">
+                                            <button class="btn-last" type="button" onclick="getHTML();">Submit</button>
+                                        @elseif ($page === 0)<a class="btn-next">Next</a>
                                         @elseif($page === ($cou-1))
                                             <a class="btn-back">back</a>
                                             <input type="hidden" name="test_id" value="{{$test1}}">
                                             <button class="btn-last" type="button" onclick="getHTML();">Submit</button>
+
                                         @else
                                             <a class="btn-back">back</a>
                                             <a class="btn-next">next</a>
@@ -866,8 +869,10 @@ for ($b = 0; $b < $j; $b++) {
                                     </div>
 
                                     <div class="btn-next-con">
-
-                                        @if ($page === 0)<a class="btn-next">Next</a>
+                                        @if($cou === 1)
+                                            <input type="hidden" name="test_id" value="{{$test1}}">
+                                            <button class="btn-last" type="button" onclick="getHTML();">Submit</button>
+                                        @elseif ($page === 0)<a class="btn-next">Next</a>
                                         @elseif($page === ($cou-1))
                                             <a class="btn-back">back</a>
                                             <input type="hidden" name="test_id" value="{{$test1}}">
@@ -897,14 +902,17 @@ for ($b = 0; $b < $j; $b++) {
                                         <label class="label"> {{ $text->question_text }}</label>
                                         <div class="answ" style="margin-bottom: 40px;">Answer :</div>
                                         <div id="toolbar[{{$i}}]"></div>
-                                        <div id="editor[{{$i}}]"></div>
+                                        <div id="editor[{{$i}}]" style="height: 200px; font-size: 20px;"></div>
                                         <?php
                                         $i++;
                                         ?>
                                         <input type="hidden" name="nb_ql" value="{{$i}}">
                                         <div class="btn-next-con">
-
-                                            @if ($page === 0)<a class="btn-next">Next</a>
+                                            @if($cou === 1)
+                                                <input type="hidden" name="test_id" value="{{$test1}}">
+                                                <button class="btn-last" type="submit" onclick="getHTML()">Submit
+                                                </button>
+                                            @elseif ($page === 0)<a class="btn-next">Next</a>
                                             @elseif($page === ($cou-1))
                                                 <a class="btn-back">back</a>
                                                 <input type="hidden" name="test_id" value="{{$test1}}">

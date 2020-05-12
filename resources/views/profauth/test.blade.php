@@ -35,7 +35,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-
+    <link rel="stylesheet" href=" https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="{{asset("/managetest/css/stylemodal.css")}}">
     <link rel="stylesheet" href="/managetest/css/stylechoice.css">
     <style>
@@ -232,9 +232,34 @@
 
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
+
+
+    <script>
+
+    </script>
+    <style>
+        .dataTables_wrapper .dataTables_filter {
+            float: left;
+            text-align: left;
+            margin-left: 380px;
+            margin-top:120px;
+
+        }
+
+        .dataTables_wrapper .dataTables_length {
+
+            float: left;
+            margin-top:170px;
+            position: relative;
+            top:45px;
+            z-index: 999;
+        }
+
+    </style>
+
 </head>
 
-<body>
+<body >
 
 <!--==========================
 Header
@@ -243,7 +268,7 @@ Header
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="{{asset('img/logo.png')}}" alt="" title=""/></a>
+            <a href="#hero"><img src="{{asset('/managetest/img/logoapp.png')}}" alt="" title=""/></a>
             <!-- Uncomment below if you prefer to use a text logo -->
             <!--<h1><a href="#hero">Regna</a></h1>-->
         </div>
@@ -253,10 +278,31 @@ Header
                 <li><a href="" style=" text-decoration: none;color: #fff">Accueil</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
                 <li class="menu-active"><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
-                <li><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
-                <li><a href="" style=" text-decoration: none;color: #fff">Déconnexion</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
+                <li style="margin-right: -90px;margin-left: 100px" class="profile-dropdown image" > <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
+                    <a  style=" text-decoration: none;color: #fff;position: relative;top: -16px">
+                  {{ $prof->nom ." ". $prof->prenom }}</a><ul style="left: -170px" >
+                        <li>   <div class="info clearfix">
+                                <div class="image">
+                                    <a href="#">
+                                        <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h5 class="name">
+                                        <a href="#">{{ $prof->nom ." ". $prof->prenom }}</a>
+                                    </h5>
+                                    <span class="email">{{ $prof->email}}</span>
+                                </div>
+                            </div></li>
+
+                        <li><a href="#"><i style="font-size: 15px" class="mdi mdi-logout"></i>Déconnexion</a></li>
+                    </ul>
+                </li>
+
             </ul>
         </nav><!-- #nav-menu-container -->
+
     </div>
 </header><!-- #header -->
 <!--==========================
@@ -274,41 +320,31 @@ Header
     <section id="portfolio">
         <div class="container wow fadeInUp">
             <div class="section-header">
-                <h3 class="section-title">Gérer test</h3>
-            </div>
-            <div style="text-align: center" title="Créer test">
-                <a href="{{route("create-test.index",$prof->professeur_id)}}">
-                    <button class="btn btn-primary"><i class="fa fa-plus"></i></button>
-                </a>
-
+                <h3 class="section-title"  style="margin-bottom: -150px">Gérer test</h3>
             </div>
 
             <div class="table-wrapper">
                 <div class="table-title">
 
                 </div>
-                <div class="row">
+                <div >
 
-                    <div class="col-sm-12 col-md-13" style="margin-bottom: 0px">
-                        <div class="input-group">
-                            <div style="text-align: center">
-
-                                <a class="btn btn-success" title="restaurer"
-                                   data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <table id="myTable" class="table table-bordered">
+                <table id="myTable" class="table table-bordered" >
+
+
                     <thead>
                     <tr>
-                        <th>#</th>
+                        <th>Identifiant</th>
                         <th>Nom de test<i class="fa fa-sort"></i></th>
                         <th>Liste d'étudiant</th>
+                        <th>La date de création du test</th>
+                        <th>La date de prévue du test</th>
                         <th>Activer session</th>
                         <th style="width: 180px;">Actions</th>
                     </tr>
                     </thead>
+
                     <tbody>
                     <?php
                     use App\Matiere;
@@ -332,6 +368,8 @@ Header
                             <td>{{$test->nom}}</td>
                             <td><a href="/reponses/{{$test->test_id}}" style="font-weight: bold;color: #5cb85c">Vers la
                                     liste</a></td>
+                            <td>{{$test->created_at}}</td>
+                            <td>{{$test->date}}</td>
                             <td>
                                 <div style="text-align:center;">
 
@@ -846,7 +884,6 @@ Header
 
 </script>
 
-
 <script type="text/javascript">
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
@@ -952,12 +989,35 @@ Header
 <script type="text/javascript"
         src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $('#myTable').DataTable();
-    });
-    $('#myTable').DataTable({
-        responsive: true
-    });
+
+    $(document).ready(function() {
+
+        $('#myTable').DataTable( {
+            "oLanguage": {
+                "sLengthMenu": "Afficher _MENU_ élement",
+                "sZeroRecords": "Nothing found - sorry",
+                "sSearch":        "Rechercher:",
+                "sZeroRecords": "Rien trouvé - désolé\n",
+                "oPaginate": {
+                    "sNext":    "Suivant",
+                    "sPrevious": "Précedent"}
+            },
+            "dom": 'lf<"toolbar">tp'
+
+        } );
+
+        $("div.toolbar").html('<div style="float:right; margin-bottom:20px;"><div title="Créer test"   >\n' +
+            '                <a href="{{route("create-test.index",$prof->professeur_id)}}">\n' +
+            '                    <button  style="margin-left:940px;position: absolute;" class="btn btn-primary"><i class="fa fa-plus"></i></button>\n' +
+            '                </a>\n' +
+            '\n' +
+            '            </div>\n' +
+            '\n' +
+            '                        <a class="btn btn-success" title="restaurer"\n' +
+            '                           data-target="#exampleModal-restore" style="margin-left: 980px;margin-bottom: -10px;z-index: 9999999" data-toggle="modal">Restaurer</a>\n' +
+            '</div>');
+    } );
+
 </script>
 <script>
     $("#restore").click(function () {
