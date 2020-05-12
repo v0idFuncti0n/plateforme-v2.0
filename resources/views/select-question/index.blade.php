@@ -55,8 +55,6 @@
         $yellow: #f1c40f;
         $purple: #8e44ad;
         $turquoise: #1abc9c;
-
-
         h1 {
             color: $yellow;
             font-size: 4rem;
@@ -64,12 +62,10 @@
             display: block;
             width: 100%;
             text-align: center;
-
         @media screen and (max-width: 600px) {
             font-size: 3rem;
         }
         }
-
         p {
             color: $yellow;
             font-size: 1.2rem;
@@ -78,8 +74,6 @@
             padding: 20px;
             text-align: center;
         }
-
-
         // Basic Button Style
            .btn {
                box-sizing: border-box;
@@ -101,14 +95,12 @@
                text-transform: uppercase;
                font-family: 'Montserrat', sans-serif;
                font-weight: 700;
-
         &:hover,
         &:focus {
              color: #fff;
              outline: 0;
          }
         }
-
         //BUTTON 1
         .first {
             transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
@@ -116,7 +108,6 @@
              box-shadow: 0 0 40px 40px $red inset;
          }
         }
-
         //BUTTON 2
         .second {
             border-radius: 3em;
@@ -168,12 +159,10 @@
             size: 100%;
         }
         transition: background 300ms ease-in-out;
-
         &:hover {
              background-position: 100px;
          }
         }
-
     </style>
 
     <link href="{{asset('https://fonts.googleapis.com/css?family=Fira+Sans')}}" rel="stylesheet">
@@ -278,12 +267,24 @@ Header
                     <div class=" card-6" style="margin-left: -3.75rem;">
                         <div class="">
                             <?php $matiere_id = $test->matiere_id; ?>
-                            <?php $professeur_id = $test->professeur_id; ?>
+                            <?php $professeur_id = $test->professeur_id;
+                            $question_qcm =[];
+                            $question_text =[];
+                            $question_binaire =[];
+
+
+                            ?>
                             <?php $tests = DB::table('test')->where('matiere_id', $matiere_id)->where('test_id', '!=', $test->test_id)->where('professeur_id', $professeur_id)->get();?>
-                            <form action="{{action('question@StoreSelected')}}" method="POST">
+                            <form action="{{action('question@StoreSelected')}}" method="Post">
                                 @csrf
+                                <?php   $test_qcm['test_qcm'] = DB::table('qcm')->where('test_id', $test->test_id)->get();
+                                $i=0;
+                                foreach ($test_qcm['test_qcm'] as $qcm1) {
+                                    $question_qcm[$i] = $qcm1->question_text;
+                                    $i++;
+                                } ?>
                                 @foreach($tests as $test1)
-                                    <?php $qcms['qcms'] = DB::table('qcm')->where('test_id', $test1->test_id)->get();?>
+                                    <?php $qcms['qcms'] = DB::table('qcm')->where('test_id', $test1->test_id)->whereNotIn('question_text', $question_qcm)->get();?>
 
                                     @foreach($qcms['qcms'] as $qcm)
 
@@ -297,8 +298,13 @@ Header
 
 
                                     @endforeach
-
-                                    <?php $binaires['binaires'] = DB::table('binaire')->where('test_id', $test1->test_id)->get();?>
+                                    <?php   $test_binaire['test_binaire'] = DB::table('binaire')->where('test_id', $test->test_id)->get();
+                                    $i=0;
+                                    foreach ($test_binaire['test_binaire'] as $binaire1) {
+                                        $question_binaire[$i] = $binaire1->question_text;
+                                        $i++;
+                                    } ?>
+                                    <?php $binaires['binaires'] = DB::table('binaire')->where('test_id', $test1->test_id)->whereNotIn('question_text', $question_binaire)->get();?>
 
                                     @foreach($binaires['binaires'] as $binaire)
 
@@ -310,21 +316,26 @@ Header
                                         <br>
 
                                     @endforeach
+                                    <?php   $test_text_libre['test_text_libre'] = DB::table('text_libre')->where('test_id', $test->test_id)->get();
+                                    $i=0;
+                                    foreach ($test_text_libre['test_text_libre'] as $text_libre1) {
+                                        $question_text[$i] = $text_libre1->question_text;
+                                        $i++;
+                                    } ?>
+                                    <?php $text_libre['text_libre'] = DB::table('text_libre')->where('test_id', $test1->test_id)->whereNotIn('question_text', $question_text)->get();?>
 
-                                        <?php $text_libre['text_libre'] = DB::table('text_libre')->where('test_id', $test1->test_id)->get();?>
+                                    @foreach($text_libre['text_libre'] as $text_libre)
 
-                                        @foreach($text_libre['text_libre'] as $text_libre)
-
-                                            <label class="switcher" style="margin-left:10px;">
-                                                <input name="text_libre[]" type="checkbox" value="{{$text_libre->question_id}}"/>
-                                                <div class="switcher__indicator"></div>
-                                                <span style="font-size: 15px;">{{$text_libre->question_text}}</span>
-                                            </label><br>
-                                            <br>
+                                        <label class="switcher" style="margin-left:10px;">
+                                            <input name="text_libre[]" type="checkbox" value="{{$text_libre->question_id}}"/>
+                                            <div class="switcher__indicator"></div>
+                                            <span style="font-size: 15px;">{{$text_libre->question_text}}</span>
+                                        </label><br>
+                                        <br>
 
 
 
-                                        @endforeach
+                                    @endforeach
                                 @endforeach
                                 <input type="hidden" name="test_id" value="{{$test->test_id}}">
                                 <div style="padding-left:100px;">

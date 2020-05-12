@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\binaire;
 use App\Option;
-use App\Professeur;
 use App\Session;
 use App\Text_libre;
 use Illuminate\Http\Request;
 
 
 use App\Test;
+use App\Professeur;
 use App\qcm;
 use Illuminate\Support\Facades\DB;
 
@@ -58,6 +58,8 @@ class question extends Controller
      */
     public function StoreSelected(Request $request)
     {
+
+
         if ($request->input('qcm') != null)
             $qcms['qcms'] = qcm::find(array_values($request->input('qcm')));
         else
@@ -260,7 +262,51 @@ class question extends Controller
             }
 
         }
-        return redirect()->back();
+
+        if ($type == 3){
+            $j=0;
+            $k=[];
+            $shiit2['shiit2']= DB::table('text_libre')->where('test_id',$request->test_id)->where('difficulty',$difficulty)->get();
+            foreach( $shiit2['shiit2'] as $text_libre1){
+                $k[$j]=$text_libre1->question_text ;
+                $j++;
+            }
+
+            $text_libre= text_libre::orderByRaw("RAND()")->where('test_id','<>',$request->test_id)->where('difficulty',$difficulty)->whereNotIn('question_text',$k)->whereIn('test_id',$test1)->take($nbr)->get();
+            $count1= text_libre::orderByRaw("RAND()")->where('test_id','<>',$request->test_id)->where('difficulty',$difficulty)->whereNotIn('question_text',$k)->whereIn('test_id',$test1)->take($nbr)->get()->count();
+
+            if($nbr==$count1){
+                ;
+                foreach($text_libre as $text){
+                    $test1 =test::find($text->test_id);
+
+                    if($test1->matiere_id == $test->matiere_id && $test1->professeur_id == $test->professeur_id ){
+
+
+                        $insert2 =array(
+                            'question_text' => $text->question_text ,
+                            'test_id' => $request->test_id ,
+                            'note' => $text->note,
+                            'difficulty' => $text->difficulty
+                        );
+
+
+                        text_libre::create($insert2);
+
+
+
+
+
+                    }
+
+                }
+            }else{session()->flash('notif','le nombre que vous avez choisi est plus grands que les question de type text libre qui existe');}
+
+
+
+
+        }
+        return  redirect()->back();
 
     }
 
@@ -300,7 +346,7 @@ class question extends Controller
             );
             option::create($option);
             $option1 = array(
-                'option_text' => 'false',
+                'option_text' => 'faux',
 
                 'binaire_id' => $id->binaire_id,
                 'point' => '0'
@@ -309,21 +355,20 @@ class question extends Controller
         }
         if ($choice == 'faux') {
             $option = array(
-                'option_text' => 'false',
+                'option_text' => 'faux',
 
                 'binaire_id' => $id->binaire_id,
                 'point' => '1'
             );
             option::create($option);
             $option1 = array(
-                'option_text' => 'true',
+                'option_text' => 'vai',
                 'binaire_id' => $id->binaire_id,
                 'point' => '0'
             );
             option::create($option1);
         }
-        return view('depatement.index');
-    }
+        return  redirect()->back();    }
 
     /**
      * Display the specified resource.
