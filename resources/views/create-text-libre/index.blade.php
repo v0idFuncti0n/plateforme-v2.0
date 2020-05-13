@@ -375,7 +375,9 @@ Header
                                 <br>
                                 <br>
                                 <input type="submit" name="submit" id="submit" style="width: 17rem; margin-left:7rem; "
-                                       class="btn btn-info" value="Ajouter et enregistrer"/>
+                                       class="btn btn-info" value="Enregistrer et Ajouter"/>
+                                <input  class="btn btn-success" style="width: 17rem" value="Enregistrer et quitter">
+
                             </form>
                         </div>
                     </div>

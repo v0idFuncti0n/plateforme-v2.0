@@ -159,8 +159,8 @@ Header
                                 <td scope="col" class="col-3">{{++$i}}</td>
                                 <td scope="col" class="col-2">{{$m->nom_matiere}}</td>
                                 <?php $idfilierm = DB::table('filiere_module')->where('module_id',$m->module_id)->value('filiere_id') ?>
-                                <?php $nomfilierm = DB::table('Filiere')->where('filiere_id',$idfilier)->value('nom') ?>
-                                <td scope="col" class="col-2">{{$nomfilier}}</td>
+                                <?php $nomfilierm = DB::table('Filiere')->where('filiere_id',$idfilierm)->value('nom') ?>
+                                <td scope="col" class="col-2">{{$nomfilierm}}</td>
                                 <?php $idnivm = DB::table('filiere_niveau')->where('filiere_id',$idfilierm)->value('niveau_id') ?>
                                 <?php $nomnivm = DB::table('niveau')->where('niveau_id',$idnivm)->value('nom') ?>
                                 <td scope="col" class="col-2">{{$nomnivm}}</td>
