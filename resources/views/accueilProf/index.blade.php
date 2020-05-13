@@ -56,7 +56,6 @@ Header
                 <li class="menu-active"><a href="" style=" text-decoration: none;color: #fff">Accueil</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
                 <li ><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
-                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
                 <li style="margin-right: -90px;margin-left: 100px" class="profile-dropdown image" > <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
                     <a  style=" text-decoration: none;color: #fff;position: relative;top: -16px">
                         {{ $prof->nom ." ". $prof->prenom }}</a><ul style="left: -170px" >
@@ -190,7 +189,7 @@ Header
                         <div class="col-lg-3 col-sm-4 col-12 text-center wow fadeInUp">
                             <div class="row main-box-layout img-thumbnail">
                                 <div class="col-lg-12 col-sm-12 col-12 box-icon-section bg-primary">
-                                    <i class="fa fa-magic" aria-hidden="true"></i>
+                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-lg-12 col-sm-12 col-12 box-text-section">
                                     <p><a href="create-test/{{$prof->professeur_id}}" style="color:#007bff;font-weight: bold">Créer un
@@ -200,7 +199,7 @@ Header
                         <div class="col-lg-3 col-sm-4 col-12 text-center wow fadeInUp">
                             <div class="row main-box-layout img-thumbnail">
                                 <div class="col-lg-12 col-sm-12 col-12 box-icon-section bg-warning">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-area-chart" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-lg-12 col-sm-12 col-12 box-text-section">
                                     <p><a href="{{route('manager-test',['prof_id' => $prof])}}" style="color:darkgoldenrod;font-weight: bold">Gérer
@@ -211,10 +210,10 @@ Header
                         <div class="col-lg-3 col-sm-4 col-12 text-center wow fadeInUp">
                             <div class="row main-box-layout img-thumbnail">
                                 <div class="col-lg-12 col-sm-12 col-12 box-icon-section bg-danger">
-                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-lg-12 col-sm-12 col-12 box-text-section">
-                                    <p><a href="#" style="color:#dc3545;font-weight: bold">Gérer les notes</a></p>
+                                    <p><a href="#" style="color:#dc3545;font-weight: bold">Déconnexion</a></p>
                                 </div>
                             </div>
                         </div>
