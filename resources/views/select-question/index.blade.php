@@ -186,7 +186,7 @@ Header
             <ul class="nav-menu">
                 <li><a href="" style=" text-decoration: none;color: #fff">Accueil</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
-                <li class="menu-active"><a href="" style=" text-decoration: none;color: #fff">Gérer tests</a></li>
+                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer tests</a></li>
                 <li ><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
                 <li style="margin-right: -90px;margin-left: 100px" class="profile-dropdown image" > <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
                     <a  style=" text-decoration: none;color: #fff;position: relative;top: -18px">
