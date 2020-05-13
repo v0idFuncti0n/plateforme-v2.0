@@ -202,13 +202,13 @@
                                 <h4 class="card-title ">Table des professeurs</h4>
                             </div>
                             <div class="row justify-content-between card-header">
-                                <button id="btn" class="btn btn-info">Export to Excel</button>
+                                <button id="btn" class="btn btn-info">Exporter la table</button>
                                 <div>
                                     <form action={{ route('professeur.import') }} method="POST"
                                           enctype="multipart/form-data">
                                         @csrf
                                         <input type="file" name="file" >
-                                        <input class="btn btn-primary" type="submit"  name="upload" value="upload">
+                                        <input class="btn btn-primary" type="submit"  name="upload" value="importer">
                                     </form>
                                 </div>
                                 <a href="" class="btn btn-info" data-toggle="modal"
@@ -630,12 +630,18 @@
     });
 
 </script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#myTable').DataTable();
     });
     $('#myTable').DataTable({
-        responsive: true
+        responsive: true,
+        language:{
+            url:"//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
+        }
+
     });
 </script>
 
@@ -658,8 +664,7 @@
 <script src="../assets/js/material-dashboard.js?v=2.1.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js"></script>
-<script type="text/javascript"
-        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
+
 <script>
     $('#btn').click(function () {
         $('.table').table2excel({

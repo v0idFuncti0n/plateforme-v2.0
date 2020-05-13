@@ -45,21 +45,15 @@
             color: white;
 
         }
+
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
-        select option{
-            color: black;
-        }
-        input[type="search"]{
-            color: white !important;
-        }
-        .custom-select{
-            color: white !important;
-        }
-        .custom-select option{
-            background-color:#3C4858 !important;
+        .dark-edition .form-control {
             color: white;
+        }
+        select option{
+            background-color:#3C4858;
         }
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
@@ -206,13 +200,13 @@
                                 <p class="card-category"></p>
                             </div>
                             <div class="row justify-content-between card-header">
-                                <button id="btn" class="btn btn-info">Export to Excel</button>
+                                <button id="btn" class="btn btn-info">Exporter</button>
                                 <div>
                                     <form action={{ route('module.import') }} method="POST"
                                           enctype="multipart/form-data">
                                         @csrf
                                         <input required type="file" name="file">
-                                        <input class="btn btn-primary" type="submit" name="upload" value="upload">
+                                        <input class="btn btn-primary" type="submit" name="upload" value="importer">
                                     </form>
                                 </div>
                                 <a href="" class="btn btn-info" data-toggle="modal"
@@ -275,33 +269,33 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="nom_module" style="color:#c21db7;">nom module</label>
-                                        <input pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_module" style="color:black;" class="form-control"
+                                        <input pattern="[a-zA-Z]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_module" style="color:black;" class="form-control"
                                                placeholder="nom de module">
                                     </div>
-                                  <br>
+                                    <br>
                                     <div class="form-group">
                                         <label for="filiere_id" style="color:#c21db7;">Filiere</label>
                                         <?php
                                         use App\filiere;
                                         $filieres = filiere::all();
-                                      echo "<select size='3' id='filiere_id' class='form-control' name=filiere_id>";
-                                            foreach($filieres as $f){
-                                                $id_filiere=$f->filiere_id;
-                                                echo "<option value=$id_filiere>$f->nom </option>";
-                                            }
+                                        echo "<select size='3' id='filiere_id' class='form-control' name=filiere_id>";
+                                        foreach($filieres as $f){
+                                            $id_filiere=$f->filiere_id;
+                                            echo "<option value=$id_filiere>$f->nom </option>";
+                                        }
                                         echo "</select>";
                                         ?>
                                     </div>
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
-                                <button type="submit" class="btn btn-success">enregistrer</button>
+                                        <button type="submit" class="btn btn-success">enregistrer</button>
+                                    </div>
+                                </form>
                             </div>
-                            </form>
                         </div>
                     </div>
-                </div>
                 </div>
 
 
@@ -344,15 +338,15 @@
                                         echo "</select>";
                                         ?>
                                     </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
-                                <button type="submit" class="btn btn-success">modifier</button>
+                                        <button type="submit" class="btn btn-success">modifier</button>
+                                    </div>
+                                </form>
                             </div>
-                            </form>
                         </div>
                     </div>
-                </div>
                 </div>
 
 
@@ -378,67 +372,67 @@
                                         matiere</p>
 
 
-                            <div class="modal-footer">
-                                <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
+                                    <div class="modal-footer">
+                                        <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
 
-                                <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
+                                        <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
+                                    </div>
+                                </form>
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
-                </div>
 
-                    <!-- restore data -->
+                <!-- restore data -->
 
-                    <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
+                <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
 
-                                    <form action="{{action('ModuleController@restore')}}" method="POST">
-                                        @csrf
-                                        <?php $modules['modules'] = App\module::onlyTrashed()->get();?>
+                                <form action="{{action('ModuleController@restore')}}" method="POST">
+                                    @csrf
+                                    <?php $modules['modules'] = App\module::onlyTrashed()->get();?>
 
-                                        @foreach($modules['modules'] as $module)
+                                    @foreach($modules['modules'] as $module)
 
-                                            <label class="switcher" style="margin-left:10px;">
-                                                <input name="module[]" type="checkbox" value="{{$module->module_id}}"/>
-                                                <div class="switcher__indicator"></div>
-                                                <span style="font-size: 15px; color:black;">{{$module->nom_module}}</span>
-                                            </label><br>
-                                            <br>
+                                        <label class="switcher" style="margin-left:10px;">
+                                            <input name="module[]" type="checkbox" value="{{$module->module_id}}"/>
+                                            <div class="switcher__indicator"></div>
+                                            <span style="font-size: 15px; color:black;">{{$module->nom_module}}</span>
+                                        </label><br>
+                                        <br>
 
                                     @endforeach
 
 
 
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
 
-                                    <button type="submit" class="btn btn-danger">restaurer</button>
-                                </div>
+                                        <button type="submit" class="btn btn-danger">restaurer</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
-        </div>
-        <div>
+            <div>
+
+            </div>
 
         </div>
 
     </div>
-
 </div>
-            </div>
 
 </body>
 
@@ -472,12 +466,18 @@
     });
 
 </script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#myTable').DataTable();
     });
     $('#myTable').DataTable({
-        responsive: true
+        responsive: true,
+        language:{
+            url:"//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
+        }
+
     });
 </script>
 
@@ -500,8 +500,7 @@
 <script src="../assets/js/material-dashboard.js?v=2.1.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js"></script>
-<script type="text/javascript"
-        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
+
 <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
 <script>
     $('#btn').click(function () {

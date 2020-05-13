@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
@@ -44,21 +44,15 @@
             color: white;
 
         }
+
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
-        select option{
-            color: black;
-        }
-        input[type="search"]{
-            color: white !important;
-        }
-        .custom-select{
-            color: white !important;
-        }
-        .custom-select option{
-            background-color:#3C4858 !important;
+        .dark-edition .form-control {
             color: white;
+        }
+        select option{
+            background-color:#3C4858;
         }
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
@@ -205,12 +199,12 @@
                                 <p class="card-category"></p>
                             </div>
                             <div class="row justify-content-between card-header">
-                                <button id="btn" class="btn btn-info">Export to Excel</button>
+                                <button id="btn" class="btn btn-info">Exporter la table</button>
                                 <div>
                                     <form action={{ route('departement.import') }} method="POST" enctype="multipart/form-data">
                                         @csrf
-                                        <input required type="file" name="file" >
-                                        <input class="btn btn-primary" type="submit" name="upload" value="upload">
+                                        <input required type="file" value="parcouri" name="file" >
+                                        <input class="btn btn-primary" type="submit" name="upload" value="importer ">
                                     </form>
                                 </div>
                                 <a href="" class="btn btn-info" data-toggle="modal"
@@ -258,38 +252,38 @@
                                         use App\departement;
                                         if (isset($_POST['upload'])) {
 
-                                            $inputfilename = $_FILES['file']['tmp_name'];
-                                            $exceldata = array();
+                                        $inputfilename = $_FILES['file']['tmp_name'];
+                                        $exceldata = array();
 
-                                            try {
-                                                $inputfiletype = PHPExcel_IOFactory::identify($inputfilename);
-                                                $objReader = PHPExcel_IOFactory::createReader($inputfiletype);
-                                                $objPHPExcel = $objReader->load($inputfilename);
-                                            } catch (Exception $e) {
-                                            }
-                                            $sheet = $objPHPExcel->getSheet(0);
-                                            $highestRow = $sheet->getHighestRow();
-                                            $highestColumn = $sheet->getHighestColumn();
-                                            for ($row = 1; $row <= $highestRow; $row++) {
-                                                $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
-                                                //$sql = "INSERT INTO departement VALUES('" . $rowData[0][0] . "','" . $rowData[0][1] . "','" . $rowData[0][2] . "','" . $rowData[0][3] . "')";
-                                            }
+                                        try {
+                                            $inputfiletype = PHPExcel_IOFactory::identify($inputfilename);
+                                            $objReader = PHPExcel_IOFactory::createReader($inputfiletype);
+                                            $objPHPExcel = $objReader->load($inputfilename);
+                                        } catch (Exception $e) {
+                                        }
+                                        $sheet = $objPHPExcel->getSheet(0);
+                                        $highestRow = $sheet->getHighestRow();
+                                        $highestColumn = $sheet->getHighestColumn();
+                                        for ($row = 1; $row <= $highestRow; $row++) {
+                                            $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
+                                            //$sql = "INSERT INTO departement VALUES('" . $rowData[0][0] . "','" . $rowData[0][1] . "','" . $rowData[0][2] . "','" . $rowData[0][3] . "')";
+                                        }
                                         $departement = array(
                                             'nom' => $rowData[0][0],
                                             'chef' => $rowData[0][1],
                                             'date_cr' => $rowData[0][2],
                                             'date_fin' => $rowData[0][3]
                                         );
-                                            ?>
-                                            {{\App\departement::created($departement)}}
+                                        ?>
+                                        {{\App\departement::created($departement)}}
                                         <?php
-                                            foreach ($exceldata as $index => $excelraw) {
-                                                echo "<tr>";
-                                                foreach ($excelraw as $excelcolumn) {
-                                                    echo "<td>" . $excelcolumn . "</td>";
-                                                }
-                                                echo "</tr>";
+                                        foreach ($exceldata as $index => $excelraw) {
+                                            echo "<tr>";
+                                            foreach ($excelraw as $excelcolumn) {
+                                                echo "<td>" . $excelcolumn . "</td>";
                                             }
+                                            echo "</tr>";
+                                        }
                                         }
                                         ?>
                                     </table>
@@ -310,7 +304,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Ajouter departement</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="Fermer" data-dismiss="modal" aria-label="Fermer">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -323,7 +317,7 @@
 
 
                                         <input required type="text" name="nom" style="color:black;" class="form-control"
-                                               pattern="[a-zA-Z]{4,}" title="aucun caractère spécial n'est autorisé" placeholder="nom de departement">
+                                               pattern="[a-z A-Z]{4,}" title="aucun caractère spécial n'est autorisé" placeholder="nom de departement">
                                     </div>
                                     <br>
                                     <div class="form-group">
@@ -350,12 +344,12 @@
                                     </div>
 
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
-                                <button type="submit" value="enregistrer" class="btn btn-success">enregistrer</button>
-                            </div>
-                            </form>
+                                        <button type="submit" value="enregistrer" class="btn btn-success">enregistrer</button>
+                                    </div>
+                                </form>
                             </div>
 
                         </div>
@@ -371,7 +365,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="Fermer" data-dismiss="modal" aria-label="Fermer">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -418,12 +412,12 @@
                                                placeholder="date de fin">
                                     </div>
                                     <br>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
-                                <button type="submit" class="btn btn-success">modifier</button>
-                            </div>
-                            </form>
+                                        <button type="submit" class="btn btn-success">modifier</button>
+                                    </div>
+                                </form>
                             </div>
 
                         </div>
@@ -438,7 +432,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="Fermer" data-dismiss="modal" aria-label="Fermer">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -453,15 +447,15 @@
                                         departement</p>
 
 
-                            <div class="modal-footer">
-                                <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
+                                    <div class="modal-footer">
+                                        <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
 
-                                <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
+                                        <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
+                                    </div>
+                                </form>
                             </div>
-                            </form>
                         </div>
                     </div>
-                </div>
                 </div>
 
                 <!-- restore data -->
@@ -471,8 +465,8 @@
                     <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <h5 class="modal-title" id="exampleModalLabel">restaurer</h5>
+                                <button type="button" class="Fermer" data-dismiss="modal" aria-label="Fermer">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -491,26 +485,26 @@
                                         </label><br>
                                         <br>
 
-                                @endforeach
+                                    @endforeach
 
 
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
 
-                                <button type="submit" class="btn btn-danger">restaurer</button>
+                                        <button type="submit" class="btn btn-danger">restaurer</button>
+                                    </div>
+                                </form>
                             </div>
-                            </form>
                         </div>
                     </div>
-                </div>
 
+
+                </div>
 
             </div>
 
         </div>
-
-    </div>
     </div>
 </div>
 </body>
@@ -552,13 +546,18 @@
     });
 
 </script>
-
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#myTable').DataTable();
     });
     $('#myTable').DataTable({
-        responsive: true
+        responsive: true,
+        language:{
+            url:"//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
+        }
+
     });
 </script>
 
@@ -568,7 +567,7 @@
 <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="https://unpkg.com/default-passive-events"></script>
 <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!-- Place this tag in your head or just before your close body tag. -->
+<!-- Place this tag in your head or just before your Fermer body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
@@ -616,8 +615,7 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<script type="text/javascript"
-        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
+
 <script>
     $('#btn').click(function () {
         $('.table').table2excel({
