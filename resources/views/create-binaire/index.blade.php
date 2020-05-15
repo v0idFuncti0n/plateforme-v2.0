@@ -581,7 +581,7 @@ Header
                 </div>
                 <div class="modal-body">
                     @php
-                        $bins = \App\binaire::onlyTrashed()->get();
+                        $bins = \App\binaire::onlyTrashed()->find($test->test_id)->get();
                     @endphp
                     <form id="form" action="{{route("bin.restore")}}" method="POST">
                         @csrf

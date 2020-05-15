@@ -584,7 +584,7 @@ Header
                     </div>
                     <div class="modal-body">
                         @php
-                            $qcms = \App\QCM::onlyTrashed()->get();
+                            $qcms = \App\QCM::onlyTrashed()->find($test['test']->test_id)->get();
                         @endphp
                         <form id="form" action="{{route("qcm.restore")}}" method="POST">
                             @csrf
