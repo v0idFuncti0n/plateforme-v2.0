@@ -544,7 +544,7 @@ Header
                     </div>
                     <div class="modal-body">
                         @php
-                            $text_libres = \App\Text_libre::onlyTrashed()->find($test['test_id'])->get();
+                            $text_libres = \App\Text_libre::onlyTrashed()->where('test_id',$test['test_id'])->get();
                         @endphp
                         <form id="form" action="{{route("text-libre.restore")}}" method="POST">
                             @csrf
