@@ -224,6 +224,7 @@
                                             <th class="exclude">Action</th>
                                         </tr>
                                         <tbody>
+                                        @php $departements = \App\departement::all() @endphp
                                         @foreach($departements as $key=>$departement)
                                             <tr>
                                                 <td class="exclude">{{++$key}}</td>
@@ -246,7 +247,6 @@
                                             </tr>
                                         @endforeach
                                         </tbody>
-                                        {{$departements->links()}}
                                         </thead>
                                         <?php
                                         use App\departement;

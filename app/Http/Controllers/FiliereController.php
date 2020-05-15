@@ -22,7 +22,6 @@ class FiliereController extends Controller
     public function index()
     {
         $filiere['filieres'] = filiere::OrderBy('filiere_id', 'asc')->paginate(10);
-
         return view('filiere.index', $filiere);
     }
     public function restore(Request $request){
