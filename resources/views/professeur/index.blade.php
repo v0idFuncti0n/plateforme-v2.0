@@ -356,7 +356,7 @@
                                     <div class="form-group">
                                         <label for="departement_id" style="color:#c21db7;">Departement</label>
                                         <?php $departement = \App\Departement::all()?>
-                                        <select name="departement_id" id="departement_id" class="form-control" size="3">
+                                        <select required name="departement_id" id="departement_id" class="form-control" size="3">
                                             @foreach($departement as $d)
                                                 <option value="{{$d->departement_id}}">{{$d->nom}}</option>
                                             @endforeach
@@ -471,7 +471,7 @@
                                     <div class="form-group">
                                         <label for="departement_id" style="color:#c21db7;">Departement</label>
                                         <?php $departement = \App\Departement::all()?>
-                                        <select name="departement_id" id="departement_id" class="form-control" size="3">
+                                        <select required name="departement_id" id="departement_id" class="form-control" size="3">
                                             @foreach($departement as $d)
                                                 <option value={{$d->departement_id}}>{{$d->nom}}</option>
                                             @endforeach

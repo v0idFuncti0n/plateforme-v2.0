@@ -66,6 +66,7 @@ class TestController extends Controller
             'd5' => $request->d5,
             'num' => $request->ng,
             'filiere_id' => $request->filiere_id,
+            'num_inscrit'=> $request->nei,
         );
 
         $p = Professeur::query()->find($request->professeur_id)->first();

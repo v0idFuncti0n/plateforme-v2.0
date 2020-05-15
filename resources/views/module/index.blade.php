@@ -269,8 +269,8 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="nom_module" style="color:#c21db7;">nom module</label>
-                                        <input pattern="[a-zA-Z]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_module" style="color:black;" class="form-control"
-                                               placeholder="nom de module">
+                                        <input pattern="[a-zA-Z ]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_module" style="color:black;" class="form-control"
+                                               placeholder="Nom de module">
                                     </div>
                                     <br>
                                     <div class="form-group">
@@ -278,7 +278,7 @@
                                         <?php
                                         use App\filiere;
                                         $filieres = filiere::all();
-                                        echo "<select size='3' id='filiere_id' class='form-control' name=filiere_id>";
+                                        echo "<select required size='3' id='filiere_id' class='form-control' name=filiere_id>";
                                         foreach($filieres as $f){
                                             $id_filiere=$f->filiere_id;
                                             echo "<option value=$id_filiere>$f->nom </option>";
@@ -319,9 +319,9 @@
                                     <input required type="hidden" style="color:black;" name="module_id" id="module_id">
                                     <div class="form-group">
                                         <label for="nom_module" style="color:#c21db7;">nom module</label>
-                                        <input pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_module" id="nom_module" style="color:black;"
+                                        <input pattern="[a-zA-Z ]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_module" id="nom_module" style="color:black;"
                                                class="form-control"
-                                               placeholder="nom de module">
+                                               placeholder="Nom de module">
                                     </div>
                                     <br>
 
@@ -330,7 +330,7 @@
                                         <?php
 
                                         $filieres = filiere::all();
-                                        echo "<select size='3' id='filiere_id' class='form-control'  name=filiere_id>";
+                                        echo "<select required size='3' id='filiere_id' class='form-control'  name=filiere_id>";
                                         foreach($filieres as $f){
                                             $id_filiere=$f->filiere_id;
                                             echo "<option value=$id_filiere>$f->nom</option>";

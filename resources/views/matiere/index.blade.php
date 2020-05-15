@@ -276,8 +276,8 @@
                                         @csrf
                                         <div class="form-group">
                                             <label for="nom_matiere" style="color:#c21db7;">nom matiere</label>
-                                            <input required pattern="[a-z A-Z]{,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" type="text" name="nom_matiere" style="color:black;" class="form-control"
-                                                   placeholder="nom de matiere">
+                                            <input required pattern="[a-zA-Z ]{1,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" type="text" name="nom_matiere" style="color:black;" class="form-control"
+                                                   placeholder="Nom de matiere">
                                         </div>
                                         <br>
                                         <!--<div class="form-group">
@@ -288,7 +288,7 @@
                                         </div>-->
                                         <div class="form-group">
                                             <label for="module_id" style="color:#c21db7;">module</label>
-                                            <select name="module_id" id="module_id" class="form-control">
+                                            <select required name="module_id" id="module_id" class="form-control" size="3">
                                                 {{$mod = \App\Module::all()}}
                                                 @foreach( $mod as $m)
                                                     <option value="{{ $m->module_id }}">{{ $m->nom_module }}</option>
@@ -299,7 +299,7 @@
                                         <div class="form-group">
                                             <label for="professeur_id" style="color:#c21db7;">Professeur</label>
                                             <?php $professeur = \App\Professeur::all()?>
-                                            <select name="professeur_id" id="professeur_id" class="form-control" size="3">
+                                            <select required name="professeur_id" id="professeur_id" class="form-control" size="3">
                                                 @foreach($professeur as $p)
                                                     <option value={{$p->professeur_id}}>{{$p->nom}}</option>
                                                 @endforeach
@@ -313,7 +313,7 @@
 
                                             <input required type="number" name="volume_horaire" style="color:black;"
                                                    class="form-control"
-                                                   placeholder="volume horaire" min="1">
+                                                   placeholder="Volume horaire : e.g 90" min="1">
                                         </div>
 
 
@@ -349,13 +349,13 @@
                                         <input required type="hidden" style="color:black;" name="matiere_id" id="matiere_id">
                                         <div class="form-group">
                                             <label for="nom_matiere" style="color:#c21db7;">nom matiere</label>
-                                            <input pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_matiere" id="nom_matiere" style="color:black;" class="form-control"
+                                            <input pattern="[a-zA-Z ]{1,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_matiere" id="nom_matiere" style="color:black;" class="form-control"
                                                    placeholder="nom de matiere">
                                         </div>
                                         <br>
                                         <div class="form-group">
                                             <label for="module_id" style="color:#c21db7;">module</label>
-                                            <select name="module_id" id="module_id" class="form-control">
+                                            <select required name="module_id" id="module_id" class="form-control">
                                                 {{$mod = \App\Module::all()}}
                                                 @foreach( $mod as $m )
                                                     <option value="{{ $m->module_id }}">{{ $m->nom_module }}</option>
@@ -370,7 +370,7 @@
 
                                             <input required type="number" name="volume_horaire" id="volume_horaire" style="color:black;"
                                                    class="form-control"
-                                                   placeholder="volume horaire" min="1">
+                                                   placeholder="Volume horaire : e.g. 90" min="1">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>

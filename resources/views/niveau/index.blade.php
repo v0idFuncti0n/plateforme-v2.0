@@ -262,7 +262,7 @@
                                     <div class="form-group">
                                         <label for="nom" style="color:#c21db7;">nom</label>
                                         <input required type="text" name="nom" style="color:black;" class="form-control"
-                                               pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" placeholder="nom de niveau">
+                                               pattern="[a-zA-Z0-9 ]{2,255}" title="aucun caractère spécial n'est autorisé 2 - 255 max" placeholder="nom de niveau">
                                     </div>
 
                                     <div class="modal-footer">
@@ -298,7 +298,7 @@
                                         <label for="nom" style="color:#c21db7;">nom</label>
 
                                         <input required type="text" style="color:black;" id="nom" name="nom" class="form-control"
-                                               pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" placeholder="nom de niveau">
+                                               pattern="[a-zA-Z0-9 ]{2,255}" title="aucun caractère spécial n'est autorisé 2 - 255 max" placeholder="nom de niveau">
                                     </div>
                                     <input required type="hidden" style="color:black;" name="niveau_id" id="niveau_id">
 
@@ -335,11 +335,10 @@
                                     <p class="text-center" width="50px"> vous ete sûre que vous voulez supprimer ce
                                         niveau</p>
 
-
                                     <div class="modal-footer">
-                                        <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
+                                        <button type="submit" name = "but" value="dif" class="btn btn-warning" >supprimer définitivement</button>
 
-                                        <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
+                                        <button type="submit" name = "but" value="no" class="btn btn-danger">supprimer</button>
                                     </div>
                                 </form>
                             </div>

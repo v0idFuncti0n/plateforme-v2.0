@@ -26,7 +26,7 @@ class FiliereController extends Controller
         return view('filiere.index', $filiere);
     }
     public function restore(Request $request){
-  
+
         filiere::withTrashed()->whereIn('filiere_id',(array_values($request->input('fil'))) )->restore();
       return redirect()->back();
   }
@@ -132,11 +132,11 @@ class FiliereController extends Controller
      */
     public function destroy(Request $filiere)
     {
-         if($filiere->but=='no'){ 
+         if($filiere->but=='no'){
             $deletefiliere = Filiere::findOrfail($filiere->filiere_id);
             $deletefiliere->delete();
             return redirect()->back();}
-            if($filiere->but=='dif'){ 
+            if($filiere->but=='dif'){
                 filiere::find($filiere->filiere_id)->forceDelete();
                 return redirect()->back();}
     }

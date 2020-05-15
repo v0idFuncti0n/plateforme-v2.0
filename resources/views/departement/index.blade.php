@@ -317,14 +317,14 @@
 
 
                                         <input required type="text" name="nom" style="color:black;" class="form-control"
-                                               pattern="[a-z A-Z]{4,}" title="aucun caractère spécial n'est autorisé" placeholder="nom de departement">
+                                               pattern="[a-zA-Z ]{4,}" title="aucun caractère spécial n'est autorisé" placeholder="e.g. Informatique">
                                     </div>
                                     <br>
                                     <div class="form-group">
                                         <label for="date" style="color:#c21db7;">date de creation</label>
 
                                         <input required type="date" name="date_cr" style="color:black;" class="form-control"
-                                               placeholder="nom de departement">
+                                               placeholder="date de creation">
                                     </div>
                                     <br>
 
@@ -333,14 +333,14 @@
                                         <label for="chef" style="color:#c21db7;">chef</label>
 
                                         <input required type="text" name="chef" style="color:black;" class="form-control"
-                                               pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" placeholder="chef">
+                                               pattern="[a-zA-Z ]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" placeholder="Nom de chef de departmenet">
                                     </div>
                                     <div class="form-group">
 
                                         <label for="" style="color:#c21db7;">date de fin</label>
 
-                                        <input required type="date" style="color:black;" name="date_fin" class="form-control"
-                                               placeholder="date de fin">
+                                        <input type="date" style="color:black;" name="date_fin" class="form-control"
+                                               placeholder="Date de fin de departement">
                                     </div>
 
 
@@ -379,7 +379,7 @@
                                         <label for="" style="color:#c21db7;">nom</label>
 
                                         <input type="text" style="color:black;" id="nom" name="nom" class="form-control"
-                                               placeholder="nom de departement" pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                               placeholder="Nom de departement" pattern="[a-zA-Z ]{4,}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
                                     <input type="hidden" style="color:black;" name="departement_id" id="departement_id">
                                     <br>
@@ -389,7 +389,7 @@
 
                                         <input required type="date" style="color:black;" id="date" name="date_cr"
                                                class="form-control"
-                                               placeholder="nom de departement">
+                                               placeholder="Date de creation de departement">
                                     </div>
                                     <br>
 
@@ -398,7 +398,7 @@
                                         <label for="" style="color:#c21db7;">chef</label>
 
                                         <input type="text" id="chef" style="color:black;" name="chef"
-                                               class="form-control" placeholder="chef" pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                               class="form-control" placeholder="Nom de chef de departement" pattern="[a-zA-Z ]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
                                     <br>
 
@@ -407,9 +407,9 @@
 
                                         <label for="" style="color:#c21db7;">date de fin</label>
 
-                                        <input required type="date" style="color:black;" id="date" name="date_fin"
+                                        <input type="date" style="color:black;" id="date" name="date_fin"
                                                class="form-control"
-                                               placeholder="date de fin">
+                                               placeholder="date de fin de departement">
                                     </div>
                                     <br>
                                     <div class="modal-footer">

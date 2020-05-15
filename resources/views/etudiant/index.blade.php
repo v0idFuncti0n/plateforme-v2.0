@@ -200,7 +200,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title ">Table Etudiant </h4>
+                                <h4 class="card-title ">Table Etudiant</h4>
                                 <p class="card-category"></p>
                             </div>
                             <div class="row justify-content-between card-header">
@@ -299,14 +299,14 @@
                                         <label for="cin" style="color:#c21db7;">cin</label>
 
                                         <input required type="text" name="cin" style="color:black;" class="form-control"
-                                               placeholder="cin" pattern="[A-Z]{1,2}[1-9]{2,5}" title="Exemple: XX145">
+                                               placeholder="Exemple: XX145" pattern="[A-Z]{1,2}[1-9]{2,5}" title="Exemple: XX145">
                                     </div>
                                     <br>
                                     <div class="form-group">
                                         <label for="cne" style="color:#c21db7;">cne</label>
 
                                         <input required type="text" name="cne" style="color:black;" class="form-control"
-                                               placeholder="cne" pattern="[A-Z]{1,2}[0-9]{2,20}" title="Exemple: XX17522...">
+                                               placeholder="Exemple: XX17522..." pattern="[A-Z]{1,2}[0-9]{2,20}" title="Exemple: XX17522...">
                                     </div>
                                     <br>
                                     <div class="form-group">
@@ -330,7 +330,7 @@
                                         <?php
 
                                         use App\filiere;use App\Niveau;$niveaux = Niveau::all();
-                                        echo "<select size='3' id='niveau_id' class='form-control' name=niveau_id>";
+                                        echo "<select required size='3' id='niveau_id' class='form-control' name=niveau_id>";
                                         foreach($niveaux as $n){
                                             $niveau_id =$n->niveau_id;
                                             echo "<option value=$niveau_id>$n->nom</option>";
@@ -344,7 +344,7 @@
                                         <?php
 
                                         $filieres = filiere::all();
-                                        echo "<select  size='3' id='filiere_id' class='form-control'  name=filiere_id>";
+                                        echo "<select required size='3' id='filiere_id' class='form-control'  name=filiere_id>";
                                         foreach($filieres as $f){
                                             $id_filiere=$f->filiere_id;
                                             echo "<option value=$id_filiere>$f->nom</option>";
@@ -356,23 +356,23 @@
 
                                         <label for="email_address" style="color:#c21db7;">email</label>
 
-                                        <input pattern="[a-zA-Z1-9]{10,200}@ests.ac.ma" required type="email" style="color:black;" name="email_address"
+                                        <input pattern="[a-zA-Z1-9]{5,200}@ests.ac.ma" required type="email" style="color:black;" name="email_address"
                                                class="form-control"
-                                               placeholder="email" title="XXX111@ests.ac.ma">
+                                               placeholder="Email" title="XXX111@ests.ac.ma">
                                     </div>
                                     <div class="form-group">
 
                                         <label for="username" style="color:#c21db7;">username</label>
 
                                         <input required type="text" style="color:black;" name="username" class="form-control"
-                                               placeholder="username" pattern="[a-zA-Z0-9]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" >
+                                               placeholder="Nom d'utilisateur" pattern="[a-zA-Z0-9]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" >
                                     </div>
                                     <div class="form-group">
 
                                         <label for="password" style="color:#c21db7;">password</label>
 
                                         <input required type="password" id="eye" style="color:black;" name="password" class="form-control"
-                                               placeholder="password" pattern="[a-zA-Z0-9]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                               placeholder="Mot de passe" pattern="[a-zA-Z0-9]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                         <span toggle="#eye" class="fa fa-fw fa-eye field-icon toggle-password" style="float: right; margin-left: -25px; margin-top: -25px; position: relative; z-index: 2;"></span>
                                     </div>
                                     <div class="form-group">
@@ -380,7 +380,7 @@
                                         <label for="numero" style="color:#c21db7;">numero</label>
 
                                         <input required type="number" style="color:black;" name="numero" class="form-control"
-                                               placeholder="numero" min="1">
+                                               placeholder="Numéro" min="1">
                                     </div>
                                     <div class="form-group">
 
@@ -388,7 +388,7 @@
 
                                         <input required type="number" style="color:black;" name="num_apologie"
                                                class="form-control"
-                                               placeholder="num_apologie" min="1">
+                                               placeholder="Numéro d'apologie" min="1">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -425,21 +425,21 @@
                                     <label for="cin" style="color:#c21db7;">cin</label>
 
                                     <input required type="text" name="cin" id="cin" style="color:black;" class="form-control"
-                                           placeholder="cin" pattern="[A-Z]{1,2}[1-9]{2,5}" title="Exemple: XX145">
+                                           placeholder="Exemple: XX145" pattern="[A-Z]{1,2}[1-9]{2,5}" title="Exemple: XX145">
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <label for="cne" style="color:#c21db7;">cne</label>
 
                                     <input required type="text" name="cne" id="cne" style="color:black;" class="form-control"
-                                           placeholder="cne" >
+                                           placeholder="Exemple: XX17522..." >
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <label for="nom" style="color:#c21db7;">nom</label>
 
                                     <input required type="text" name="nom" id="nom" style="color:black;" class="form-control"
-                                           placeholder="nom">
+                                           placeholder="Nom d'etudiant">
                                 </div>
                                 <br>
 
@@ -448,7 +448,7 @@
                                     <label for="prenom" style="color:#c21db7;">prenom</label>
 
                                     <input required type="text" name="prenom" id="prenom" style="color:black;" class="form-control"
-                                           placeholder="prenom" pattern="[a-zA-Z]{3,255}" title="aucun caractère spécial n'est autorisé">
+                                           placeholder="Prenom d'etudiant" pattern="[a-zA-Z]{3,255}" title="aucun caractère spécial n'est autorisé">
                                 </div>
                                 <div class="form-group">
                                     <label for="niveau_id" style="color:#c21db7;">Niveau</label>
@@ -456,7 +456,7 @@
                                     <?php
 
                                     $niveaux = Niveau::all();
-                                    echo "<select size='3' id='niveau_id' class='form-control' name=niveau_id>";
+                                    echo "<select required size='3' id='niveau_id' class='form-control' name=niveau_id>";
                                     foreach($niveaux as $n){
                                         $niveau_id =$n->niveau_id;
                                         echo "<option value=$niveau_id>$n->nom</option>";
@@ -470,7 +470,7 @@
                                     <?php
 
                                     $filieres = filiere::all();
-                                    echo "<select size='3' id='filiere_id' class='form-control' name=filiere_id>";
+                                    echo "<select required size='3' id='filiere_id' class='form-control' name=filiere_id>";
                                     foreach($filieres as $f){
                                         $id_filiere=$f->filiere_id;
                                         echo "<option value=$id_filiere>$f->nom</option>";
@@ -484,14 +484,14 @@
 
                                     <input required type="email" id="email_address" style="color:black;" name="email_address"
                                            class="form-control"
-                                           placeholder="email" title="XXX111@ests.ac.ma">
+                                           placeholder="Email" title="XXX111@ests.ac.ma">
                                 </div>
                                 <div class="form-group">
 
                                     <label for="numero" style="color:#c21db7;">numero</label>
 
                                     <input required type="number" id="numero" style="color:black;" name="numero" class="form-control"
-                                           placeholder="numero" min="1">
+                                           placeholder="Numero" min="1">
                                 </div>
                                 <div class="form-group">
 
@@ -499,7 +499,7 @@
 
                                     <input required type="number" id="num_apologie" style="color:black;" name="num_apologie"
                                            class="form-control"
-                                           placeholder="num_apologie" min="1">
+                                           placeholder="Numero d'apologie" min="1">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>

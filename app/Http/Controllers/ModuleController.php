@@ -31,7 +31,7 @@ class ModuleController extends Controller
         //
     }
     public function restore(Request $request){
-  
+
         module::withTrashed()->whereIn('module_id',(array_values($request->input('module'))) )->restore();
       return redirect()->back();
   }
@@ -49,7 +49,7 @@ class ModuleController extends Controller
         );
 
         $m = new Module($module);
-        $f = Filiere::query()->findOrFail($request->filiere_id);
+        $f = Filiere::query()->find($request->filiere_id);
         $f->module()->save($m);
         return redirect()->route('module.index');
     }
@@ -90,7 +90,7 @@ class ModuleController extends Controller
             'nom_module' => $request->nom_module,
         );
 
-        Module::findOrFail($request->module_id)->update($module);
+        Module::find($request->module_id)->update($module);
         return redirect()->route('module.index');
     }
 
@@ -106,12 +106,12 @@ class ModuleController extends Controller
 
 
 
-        if($module->but=='no'){ 
+        if($module->but=='no'){
             $delete = $module->all();
             $deletemodule = Module::findOrfail($module->module_id);
             $deletemodule->delete();
             return redirect()->route('module.index');}
-            if($module->but=='dif'){ 
+            if($module->but=='dif'){
                 module::find($module->module_id)->forceDelete();
                 return redirect()->route('module.index');}
     }
