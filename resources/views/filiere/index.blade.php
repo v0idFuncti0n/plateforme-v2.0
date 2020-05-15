@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>
-        departement
+        Dashboard
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
           name='viewport'/>
@@ -68,24 +68,24 @@
           Tip 2: you can also add an image using data-image tag
       -->
         <div class="logo"><a href="javascript:void(0)" class="simple-text logo-normal">
-                departement
+                filiere
             </a></div>
         <div class="sidebar-wrapper">
             <ul class="nav">
 
-                <li class="nav-item active ">
+                <li class="nav-item  ">
                     <a class="nav-link" href="{{route("departement.index")}}">
                         <i class="material-icons">content_paste</i>
                         <p>departement</p>
                     </a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item active">
                     <a class="nav-link" href="{{route("filiere.index")}}">
                         <i class="material-icons">content_paste</i>
                         <p>filiere</p>
                     </a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item">
                     <a class="nav-link" href="{{route("etudiant.index")}}">
                         <i class="material-icons">content_paste</i>
                         <p>etudiant</p>
@@ -131,9 +131,8 @@
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:void(0)">departement</a>
+                    <a class="navbar-brand" href="javascript:void(0)">Filiere</a>
                 </div>
-
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
                     <span class="sr-only">Toggle navigation</span>
@@ -153,7 +152,8 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="material-icons">notifications</i>
                                 <span class="notification">5</span>
                                 <p class="d-lg-none d-md-block">
@@ -195,16 +195,17 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title ">table departement</h4>
+                                <h4 class="card-title ">table filiere</h4>
                                 <p class="card-category"></p>
                             </div>
                             <div class="row justify-content-between card-header">
                                 <button id="btn" class="btn btn-info">Exporter la table</button>
                                 <div>
-                                    <form action={{ route('departement.import') }} method="POST" enctype="multipart/form-data">
+                                    <form action={{ route('filiere.import') }} method="POST"
+                                          enctype="multipart/form-data">
                                         @csrf
-                                        <input required type="file" value="parcouri" name="file" >
-                                        <input class="btn btn-primary" type="submit" name="upload" value="importer ">
+                                        <input required type="file" name="file">
+                                        <input class="btn btn-primary" type="submit" name="upload" value="importer">
                                     </form>
                                 </div>
                                 <a href="" class="btn btn-info" data-toggle="modal"
@@ -216,76 +217,41 @@
                                     <table class="table table-bordered" id="myTable">
                                         <thead>
                                         <tr>
-                                            <th class="exclude">#</th>
+                                            <th>#</th>
                                             <th>nom</th>
-                                            <th>date</th>
-                                            <th>chef departement</th>
-                                            <th>date de fin</th>
+                                            <th>coordinateur</th>
+                                            <th>date_de_debut</th>
+                                            <th>date_de_fin</th>
+                                            <th>departement_id</th>
                                             <th class="exclude">Action</th>
                                         </tr>
                                         <tbody>
-                                        @php $departements = \App\departement::all() @endphp
-                                        @foreach($departements as $key=>$departement)
+                                        @foreach($filieres as $key=>$filiere)
                                             <tr>
-                                                <td class="exclude">{{++$key}}</td>
-                                                <td>{{$departement->nom}}</td>
-                                                <td>{{$departement->date_cr}}</td>
-                                                <td>{{$departement->chef}}</td>
-                                                <td>{{$departement->date_fin}}</td>
+                                                <td>{{++$key}}</td>
+                                                <td>{{$filiere->nom}}</td>
+                                                <td>{{$filiere->coordinateur}}</td>
+                                                <td>{{$filiere->datedebut}}</td>
+                                                <td>{{$filiere->datefin}}</td>
+                                                <td>{{$filiere->departement_id}}</td>
                                                 <td class="exclude">
-                                                    <a data-departement_id="{{$departement->departement_id}}"
-                                                       data-nom="{{$departement->nom}}"
-                                                       data-date="{{$departement->date}}"
-                                                       data-chef="{{$departement->chef}}"
-                                                       data-date_fin="{{$departement->date_fin}}" data-toggle="modal"
+                                                    <a data-filiere_id="{{$filiere->filiere_id}}"
+                                                       data-nom="{{$filiere->nom}}"
+                                                       data-coordinateur="{{$filiere->coordinsteur}}"
+                                                       data-datedebut="{{$filiere->datedebut}}"
+                                                       data-datefin="{{$filiere->datefin}}"
+                                                       data-departement_id="{{$filiere->departement_id}}"
+                                                       data-toggle="modal"
                                                        data-target="#exampleModal-edit" type="button"
                                                        class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
-                                                    <a data-departement_id="{{$departement->departement_id}}"
-                                                       data-toggle="modal"
+                                                    <a data-filiere_id="{{$filiere->filiere_id}}" data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
                                                 </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
+                                        {{$filieres->links()}}
                                         </thead>
-                                        <?php
-                                        use App\departement;
-                                        if (isset($_POST['upload'])) {
-
-                                        $inputfilename = $_FILES['file']['tmp_name'];
-                                        $exceldata = array();
-
-                                        try {
-                                            $inputfiletype = PHPExcel_IOFactory::identify($inputfilename);
-                                            $objReader = PHPExcel_IOFactory::createReader($inputfiletype);
-                                            $objPHPExcel = $objReader->load($inputfilename);
-                                        } catch (Exception $e) {
-                                        }
-                                        $sheet = $objPHPExcel->getSheet(0);
-                                        $highestRow = $sheet->getHighestRow();
-                                        $highestColumn = $sheet->getHighestColumn();
-                                        for ($row = 1; $row <= $highestRow; $row++) {
-                                            $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
-                                            //$sql = "INSERT INTO departement VALUES('" . $rowData[0][0] . "','" . $rowData[0][1] . "','" . $rowData[0][2] . "','" . $rowData[0][3] . "')";
-                                        }
-                                        $departement = array(
-                                            'nom' => $rowData[0][0],
-                                            'chef' => $rowData[0][1],
-                                            'date_cr' => $rowData[0][2],
-                                            'date_fin' => $rowData[0][3]
-                                        );
-                                        ?>
-                                        {{\App\departement::created($departement)}}
-                                        <?php
-                                        foreach ($exceldata as $index => $excelraw) {
-                                            echo "<tr>";
-                                            foreach ($excelraw as $excelcolumn) {
-                                                echo "<td>" . $excelcolumn . "</td>";
-                                            }
-                                            echo "</tr>";
-                                        }
-                                        }
-                                        ?>
                                     </table>
                                     <a data-toggle="modal" style="margin-left: 905px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
@@ -296,66 +262,92 @@
                     </div>
 
                 </div>
-
                 <!-- Modal add -->
+
                 <div class="modal fade-right" id="exampleModal" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Ajouter Filiere</h5>
-                                <button type="button" class="Fermer" data-dismiss="modal" aria-label="Fermer">
+                                <h5 class="modal-title" id="exampleModalLabel">Ajouter filiére</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
 
-                                <form action="{{route('departement.store')}}" method="POST">
+                                <form action="{{route('filiere.store')}}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="nom" style="color:#c21db7;">nom</label>
+                                        <label for="" style="color:#c21db7;">nom de filiere</label>
 
-
-                                        <input required type="text" name="nom" style="color:black;" class="form-control"
-                                               pattern="[a-zA-Z ]{4,}" title="aucun caractère spécial n'est autorisé" placeholder="Nom de departement">
+                                        <input required style="color:black;" type="text" id="nom" name="nom" class="form-control"
+                                               placeholder="nom de filiere" pattern="[a-zA-Z]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
+                                    <input required style="color:black;" type="hidden" name="filiere_id" id="filiere_id">
                                     <br>
                                     <div class="form-group">
-                                        <label for="date" style="color:#c21db7;">date de creation</label>
-
-                                        <input required type="date" name="date_cr" style="color:black;" class="form-control"
-                                               placeholder="Date de creation de filiere">
+                                        <label for="" style="color:#c21db7;">coordinateur</label>
+                                        <input required style="color:black;" type="text" id="coordinateur" name="coordinateur"
+                                               class="form-control"
+                                               placeholder="coordinateur" pattern="[a-z .A-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
                                     <br>
 
                                     <div class="form-group">
-
-                                        <label for="chef" style="color:#c21db7;">chef</label>
-
-                                        <input required type="text" name="chef" style="color:black;" class="form-control"
-                                               pattern="[a-zA-Z ]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" placeholder="Chef de filiere">
+                                        <label for="" style="color:#c21db7;">date de debut</label>
+                                        <input required style="color:black;" type="date" id="datedebut" name="datedebut"
+                                               class="form-control"
+                                               placeholder="date de debut">
                                     </div>
-                                    <div class="form-group">
+                                    <br>
 
+                                    <div class="form-group">
                                         <label for="" style="color:#c21db7;">date de fin</label>
-
-                                        <input type="date" style="color:black;" name="date_fin" class="form-control"
-                                               placeholder="Date de fin">
+                                        <input required style="color:black;" type="date" id="datefin" name="datefin"
+                                               class="form-control"
+                                               placeholder="date de fin">
                                     </div>
+                                    <br>
+
+                                    <div class="form-group">
+
+                                        <label for="nom_dep" style="color:#c21db7;"> id departemeent  </label>
 
 
+                                        <select name="nom_dep" size="3" id="nom_dep" class="form-control">
+                                            <?php
+                                            use App\departement;
+                                            $departements = departement::all();
+                                            foreach ($departements as $un) {
+                                                echo '<option>';
+                                                echo $un->nom;
+                                                echo '</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="niveau_id" style="color:#c21db7;">niveau</label>
+                                        <?php $niveau = \App\Niveau::all()?>
+                                        <select name="niveau_id" size="3" id="niveau_id" class="form-control" >
+                                            @foreach($niveau as $n)
+                                                <option value="{{$n->niveau_id}}">{{$n->nom}}</option>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
-                                        <button type="submit" value="enregistrer" class="btn btn-success">enregistrer</button>
+                                        <button type="submit" class="btn btn-success">enregistrer</button>
                                     </div>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
 
 
                 <!-- Modal edit -->
@@ -364,91 +356,114 @@
                     <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
-                                <button type="button" class="Fermer" data-dismiss="modal" aria-label="Fermer">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
 
-                                <form action="{{route('departement.update','departement_id')}}" method="POST">
+                                <form action="{{route('filiere.update','filiere_id')}}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
+                                        <label for="" style="color:#c21db7;">nom de filiere</label>
 
-                                        <label for="" style="color:#c21db7;">nom</label>
 
-                                        <input type="text" style="color:black;" id="nom" name="nom" class="form-control"
-                                               placeholder="nom de filiere" pattern="[a-zA-Z ]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                        <input required style="color:black;" type="text" id="nom" name="nom" class="form-control"
+                                               placeholder="nom de departement" pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
-                                    <input type="hidden" style="color:black;" name="departement_id" id="departement_id">
+                                    <input required type="hidden" name="filiere_id" id="filiere_id">
                                     <br>
                                     <div class="form-group">
-
-                                        <label for="" style="color:#c21db7;">date de creation </label>
-
-                                        <input required type="date" style="color:black;" id="date" name="date_cr"
+                                        <label for="" style="color:#c21db7;">coordinateur</label>
+                                        <input required style="color:black;" type="text" id="coordinateur" name="coordinateur"
                                                class="form-control"
-                                               placeholder="Date de creation de filiere">
+                                               placeholder="coordinateur" pattern="[a-z .A-Z]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
                                     <br>
 
                                     <div class="form-group">
-
-                                        <label for="" style="color:#c21db7;">chef</label>
-
-                                        <input type="text" id="chef" style="color:black;" name="chef"
-                                               class="form-control" placeholder="Chef de filiere" pattern="[a-zA-Z ]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                        <label for="" style="color:#c21db7;">date de debut</label>
+                                        <input required style="color:black;" type="date" id="datedebut" name="datedebut"
+                                               class="form-control"
+                                               placeholder="date de debut">
                                     </div>
                                     <br>
 
                                     <div class="form-group">
-
-
                                         <label for="" style="color:#c21db7;">date de fin</label>
 
-                                        <input type="date" style="color:black;" id="date" name="date_fin"
+
+                                        <input required style="color:black;" type="date" id="datefin" name="datefin"
                                                class="form-control"
-                                               placeholder="date de fin de filiere">
+                                               placeholder="date de fin">
                                     </div>
                                     <br>
+
+                                    <div class="form-group">
+
+                                        <label for="nom_dep" style="color:#c21db7;"> id departemeent</label>
+
+                                        <select name="nom_dep" size="3" id="nom_dep" class="form-control">
+                                            <?php
+
+                                            $departements = Departement::all();
+                                            foreach ($departements as $un) {
+                                                echo '<option>';
+                                                echo $un->nom;
+                                                echo '</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="niveau_id" style="color:#c21db7;">niveau</label>
+                                        <?php $niveau = \App\Niveau::all()?>
+                                        <select name="niveau_id" size="3" id="niveau_id" class="form-control">
+                                            @foreach($niveau as $n)
+                                                <option value="{{$n->niveau_id}}">{{$n->nom}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
-                                        <button type="submit" class="btn btn-success">modifier</button>
+                                        <button type="submit" class="btn btn-success">Modifier</button>
                                     </div>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
 
 
                 <!-- Modal delete -->
+
                 <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                                <button type="button" class="Fermer" data-dismiss="modal" aria-label="Fermer">
+                                <h5 class="modal-title" id="exampleModalLabel">supprimer filiere</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
 
-                                <form action="{{route('departement.destroy','departement_id')}}" method="POST">
+                                <form action="{{route('filiere.destroy','filiere_id')}}" method="POST">
                                     @csrf
                                     @method('DELETE')
 
-                                    <input type="hidden" name="departement_id" id="departement_id">
-                                    <p class="text-center" width="50px"> vous ete sûre que vous voulez supprimer ce
-                                        departement</p>
+                                    <input required type="hidden" name="filiere_id" id="filiere_id">
+                                    <p class="text-center" width="50px"> vous ete sur que vous voulez supprimer ce
+                                        filiere</p>
 
 
                                     <div class="modal-footer">
-                                        <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
+                                        <button type="submit" name = "but" value="dif"class="btn btn-warning" >supdif</button>
 
                                         <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
                                     </div>
@@ -465,23 +480,23 @@
                     <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">restaurer</h5>
-                                <button type="button" class="Fermer" data-dismiss="modal" aria-label="Fermer">
+                                <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
 
-                                <form action="{{action('DepartementController@restore')}}" method="POST">
+                                <form action="{{action('FiliereController@restore')}}" method="POST">
                                     @csrf
-                                    <?php $deps['deps'] = App\departement::onlyTrashed()->get();?>
+                                    <?php $fils['fils'] = App\filiere::onlyTrashed()->get();?>
 
-                                    @foreach($deps['deps'] as $departemen)
+                                    @foreach($fils['fils'] as $filiere)
 
                                         <label class="switcher" style="margin-left:10px;">
-                                            <input name="dep[]" type="checkbox" value="{{$departemen->departement_id}}"/>
+                                            <input name="fil[]" type="checkbox" value="{{$filiere->filiere_id}}"/>
                                             <div class="switcher__indicator"></div>
-                                            <span style="font-size: 15px; color:black;">{{$departemen->nom}}</span>
+                                            <span style="font-size: 15px; color:black;">{{$filiere->nom}}</span>
                                         </label><br>
                                         <br>
 
@@ -490,7 +505,7 @@
 
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
                                         <button type="submit" class="btn btn-danger">restaurer</button>
                                     </div>
@@ -498,8 +513,6 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
             </div>
@@ -514,20 +527,22 @@
 
         var button = $(event.relatedTarget)
         var nom = button.data('nom')
-        var date = button.data('date_cr')
-        var chef = button.data('chef')
-        var date_fin = button.data('date_fin')
+        var coordinateur = button.data('coordinateur')
+        var datedebut = button.data('datedebut')
+        var datefin = button.data('datefin')
         var departement_id = button.data('departement_id')
+        var filiere_id = button.data('filiere_id')
 
 
         var modal = $(this)
 
         modal.find('.modal-title').text('modifier');
         modal.find('.modal-body #nom').val(nom);
-        modal.find('.modal-body #date_cr').val(date);
-        modal.find('.modal-body #chef').val(chef);
-        modal.find('.modal-body #date_fin').val(date_fin);
+        modal.find('.modal-body #coordinateur').val(coordinateur);
+        modal.find('.modal-body #datedebut').val(datedebut);
+        modal.find('.modal-body #datefin').val(datefin);
         modal.find('.modal-body #departement_id').val(departement_id);
+        modal.find('.modal-body #filiere_id').val(filiere_id);
     });
 
 
@@ -535,17 +550,18 @@
 
         var button = $(event.relatedTarget)
 
-        var departement_id = button.data('departement_id')
+        var filiere_id = button.data('filiere_id')
 
 
         var modal = $(this)
 
         modal.find('.modal-title').text('supprimer');
 
-        modal.find('.modal-body #departement_id').val(departement_id);
+        modal.find('.modal-body #filiere_id').val(filiere_id);
     });
 
 </script>
+
 <script type="text/javascript"
         src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
 <script>
@@ -567,7 +583,7 @@
 <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="https://unpkg.com/default-passive-events"></script>
 <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!-- Place this tag in your head or just before your Fermer body tag. -->
+<!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
@@ -580,9 +596,81 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js"></script>
 
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- jQuery -->
-<script
-    src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -615,13 +703,12 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-
 <script>
     $('#btn').click(function () {
         $('.table').table2excel({
             exclude: ".exclude",
-            name: "Departement",
-            filename: "Departement",
+            name: "Filiere",
+            filename: "Filiere",
             fileext: ".xls",
         })
     });
