@@ -46,7 +46,6 @@
             color: white;
 
         }
-
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
@@ -54,7 +53,17 @@
             color: white;
         }
         select option{
+            color: black;
+        }
+        select.form-control:not([size]):not([multiple]){
+            width: 40px;
+            margin-right: 400px;
+        }
+        select.form-control:not([size]):not([multiple])  option{
+            text-align: center;
             background-color:#3C4858;
+            color: white;
+
         }
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
@@ -449,7 +458,7 @@
 
 
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
 
                                             <button type="submit" class="btn btn-danger">restaurer</button>
                                         </div>
@@ -504,14 +513,21 @@
     });
 
 </script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#myTable').DataTable();
     });
     $('#myTable').DataTable({
-        responsive: true
+        responsive: true,
+        language:{
+            url:"//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
+        }
+
     });
 </script>
+
 <script type="text/javascript"
         src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
 <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
@@ -534,8 +550,7 @@
 <script src="../assets/js/material-dashboard.js?v=2.1.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js"></script>
-<script type="text/javascript"
-        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
+
 <script>
     $('#btn').click(function () {
         $('.table').table2excel({

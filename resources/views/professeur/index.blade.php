@@ -51,18 +51,21 @@
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
+        .dark-edition .form-control {
+            color: white;
+        }
         select option{
             color: black;
         }
-        input[type="search"]{
-            color: white !important;
+        select.form-control:not([size]):not([multiple]){
+            width: 40px;
+            margin-right: 400px;
         }
-        .custom-select{
-            color: white !important;
-        }
-        .custom-select option{
-            background-color:#3C4858 !important;
+        select.form-control:not([size]):not([multiple])  option{
+            text-align: center;
+            background-color:#3C4858;
             color: white;
+
         }
     </style>
 </head>

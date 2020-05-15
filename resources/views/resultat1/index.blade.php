@@ -212,7 +212,7 @@
                                 <thead>
                                 <tr>
 
-                                    <th>name test</th>
+                                    <th>Test</th>
                                     <th>question</th>
                                     <th>reponse</th>
                                     <th>correcte reponse</th>
@@ -222,7 +222,7 @@
                                 </thead>
                                 <tbody>
                                 <?php $ntests = DB::table('Test')->where('test_id',$s->test_id)->first() ?>
-                                <?php $qcms = DB::table('QCM')->where('test_id',$s->test_id)->get() ; $i=0 ?>
+                                <?php $qcms = DB::table('QCM')->where('test_id',$s->test_id)->whereNull('deleted_at')->get() ; ?>
                                 @foreach($qcms as $q)
                                     <tr class="tr-shadow">
 
@@ -262,7 +262,7 @@
                                         <?php } ?>
 
                                 @endforeach
-                                <?php $binaires = DB::table('binaire')->where('test_id',$s->test_id)->get() ; $j=0 ?>
+                                <?php $binaires = DB::table('binaire')->where('test_id',$s->test_id)->whereNull('deleted_at')->get() ; $j=0 ?>
                                 @foreach($binaires as $b)
                                     <tr class="tr-shadow">
 

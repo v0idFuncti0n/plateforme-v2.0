@@ -45,7 +45,6 @@
             color: white;
 
         }
-
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
@@ -53,7 +52,17 @@
             color: white;
         }
         select option{
+            color: black;
+        }
+        select.form-control:not([size]):not([multiple]){
+            width: 40px;
+            margin-right: 400px;
+        }
+        select.form-control:not([size]):not([multiple])  option{
+            text-align: center;
             background-color:#3C4858;
+            color: white;
+
         }
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">

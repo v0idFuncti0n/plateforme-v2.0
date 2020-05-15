@@ -45,8 +45,8 @@
         input[type="file"]{
             height:20px;
             color: white;
-        }
 
+        }
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
@@ -54,7 +54,17 @@
             color: white;
         }
         select option{
+            color: black;
+        }
+        select.form-control:not([size]):not([multiple]){
+            width: 40px;
+            margin-right: 400px;
+        }
+        select.form-control:not([size]):not([multiple])  option{
+            text-align: center;
             background-color:#3C4858;
+            color: white;
+
         }
     </style>
 </head>
@@ -378,7 +388,7 @@
 
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
 
                                         <button type="submit" class="btn btn-danger">restaurer</button>
                                     </div>

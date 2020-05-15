@@ -46,20 +46,32 @@
             color: white;
 
         }
-
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
         .dark-edition .form-control {
             color: white;
         }
+        select option{
+            color: black;
+        }
+        select.form-control:not([size]):not([multiple]){
+            width: 40px;
+            margin-right: 400px;
+        }
+        select.form-control:not([size]):not([multiple])  option{
+            text-align: center;
+            background-color:#3C4858;
+            color: white;
+
+        }
         .pagination .page-item .page-link{
             color: white;
         }
-        select option{
-            background-color:#3C4858;
-        }
     </style>
+
+
+
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 
 </head>
@@ -369,7 +381,7 @@
                                     </div>
                                     <div class="form-group">
 
-                                        <label for="password" style="color:#c21db7;">password</label>
+                                        <label for="password" style="color:#c21db7;">Mot de passe</label>
 
                                         <input required type="password" id="eye" style="color:black;" name="password" class="form-control"
                                                placeholder="Mot de passe" pattern="[a-zA-Z0-9]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
@@ -512,7 +524,6 @@
                 </div>
 
             </div>
-            <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
             <!-- Modal delete -->
             <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"

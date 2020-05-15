@@ -805,7 +805,7 @@ for ($b = 0; $b < $j; $b++) {
                         @for($n=0;$n<$k ; $n++)
                             @foreach ($qcms[$n]  as $qcm)
                                 <div class="tab-pane " id="tab{{$page+1}}">
-                                    <div class="numquestion">question {{$page+1}} of {{$cou}}</div>
+                                    <div class="numquestion">question {{$page+1}} sur {{$cou}}</div>
                                     <div class="input-group">
                                         <input type="hidden" name="qcms[{{ $qcm->question_id }}]"
                                                value="{{$qcm->question_id}}">
@@ -828,16 +828,16 @@ for ($b = 0; $b < $j; $b++) {
                                     <div class="btn-next-con">
                                         @if($cou === 1)
                                             <input type="hidden" name="test_id" value="{{$test1}}">
-                                            <button class="btn-last" type="button" onclick="getHTML();">Submit</button>
-                                        @elseif ($page === 0)<a class="btn-next">Next</a>
+                                            <button class="btn-last" type="button" onclick="getHTML();">Valider</button>
+                                        @elseif ($page === 0)<a class="btn-next">Suivant</a>
                                         @elseif($page === ($cou-1))
-                                            <a class="btn-back">back</a>
+                                            <a class="btn-back">Retour</a>
                                             <input type="hidden" name="test_id" value="{{$test1}}">
-                                            <button class="btn-last" type="button" onclick="getHTML();">Submit</button>
+                                            <button class="btn-last" type="button" onclick="getHTML();">Valider</button>
 
                                         @else
-                                            <a class="btn-back">back</a>
-                                            <a class="btn-next">next</a>
+                                            <a class="btn-back">Retour</a>
+                                            <a class="btn-next">Suivant</a>
                                         @endif
                                     </div>
 
@@ -850,7 +850,7 @@ for ($b = 0; $b < $j; $b++) {
                         @for($m=0;$m<$i;$m++)
                             @foreach ($binaires[$m]  as $binaire)
                                 <div class="tab-pane " id="tab{{$page+1}}">
-                                    <div class="numquestion">question {{$page+1}} of {{$cou}}</div>
+                                    <div class="numquestion">question {{$page+1}} sur {{$cou}}</div>
                                     <div class="input-group">
                                         <div class="answ">Question :</div>
                                         <label class="label">{{ $binaire->question_text }}</label>
@@ -871,15 +871,15 @@ for ($b = 0; $b < $j; $b++) {
                                     <div class="btn-next-con">
                                         @if($cou === 1)
                                             <input type="hidden" name="test_id" value="{{$test1}}">
-                                            <button class="btn-last" type="button" onclick="getHTML();">Submit</button>
-                                        @elseif ($page === 0)<a class="btn-next">Next</a>
+                                            <button class="btn-last" type="button" onclick="getHTML();">Valider</button>
+                                        @elseif ($page === 0)<a class="btn-next">Suivant</a>
                                         @elseif($page === ($cou-1))
-                                            <a class="btn-back">back</a>
+                                            <a class="btn-back">Retour</a>
                                             <input type="hidden" name="test_id" value="{{$test1}}">
-                                            <button class="btn-last" type="button" onclick="getHTML();">Submit</button>
+                                            <button class="btn-last" type="button" onclick="getHTML();">Valider</button>
                                         @else
-                                            <a class="btn-back">back</a>
-                                            <a class="btn-next">next</a>
+                                            <a class="btn-back">Retour</a>
+                                            <a class="btn-next">Suivant</a>
                                         @endif
                                     </div>
 
@@ -896,7 +896,7 @@ for ($b = 0; $b < $j; $b++) {
                                 <input type="hidden" name="question_id[{{$i}}]" value="{{$text->question_id}}">
 
                                 <div class="tab-pane " id="tab{{$page+1}}">
-                                    <div class="numquestion">question {{$page+1}} of {{$cou}}</div>
+                                    <div class="numquestion">question {{$page+1}} sur {{$cou}}</div>
                                     <div class="input-group">
                                         <div class="answ">Question :</div>
                                         <label class="label"> {{ $text->question_text }}</label>
@@ -910,17 +910,17 @@ for ($b = 0; $b < $j; $b++) {
                                         <div class="btn-next-con">
                                             @if($cou === 1)
                                                 <input type="hidden" name="test_id" value="{{$test1}}">
-                                                <button class="btn-last" type="submit" onclick="getHTML()">Submit
+                                                <button class="btn-last" type="submit" onclick="getHTML()">Valider
                                                 </button>
-                                            @elseif ($page === 0)<a class="btn-next">Next</a>
+                                            @elseif ($page === 0)<a class="btn-next">Suivant</a>
                                             @elseif($page === ($cou-1))
-                                                <a class="btn-back">back</a>
+                                                <a class="btn-back">Retour</a>
                                                 <input type="hidden" name="test_id" value="{{$test1}}">
-                                                <button class="btn-last" type="submit" onclick="getHTML()">Submit
+                                                <button class="btn-last" type="submit" onclick="getHTML()">Valider
                                                 </button>
                                             @else
-                                                <a class="btn-back">back</a>
-                                                <a class="btn-next">next</a>
+                                                <a class="btn-back">Retour</a>
+                                                <a class="btn-next">Suivant</a>
                                             @endif
                                         </div>
 
