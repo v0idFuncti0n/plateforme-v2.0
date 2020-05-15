@@ -282,15 +282,15 @@
                                         <label for="" style="color:#c21db7;">nom de filiere</label>
 
                                         <input required style="color:black;" type="text" id="nom" name="nom" class="form-control"
-                                               placeholder="nom de filiere" pattern="[a-zA-Z]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                               placeholder="Nom de filiere : e.g. Genie Logiciel" pattern="[a-zA-Z ]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
-                                    <input required style="color:black;" type="hidden" name="filiere_id" id="filiere_id">
+                                    <input style="color:black;" type="hidden" name="filiere_id" id="filiere_id">
                                     <br>
                                     <div class="form-group">
-                                        <label for="" style="color:#c21db7;">coordinateur</label>
+                                        <label for="" style="color:#c21db7;">Coordinateur</label>
                                         <input required style="color:black;" type="text" id="coordinateur" name="coordinateur"
                                                class="form-control"
-                                               placeholder="coordinateur" pattern="[a-z .A-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                               placeholder="Coordinatuer" pattern="[a-zA-Z. ]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
                                     <br>
 
@@ -298,7 +298,7 @@
                                         <label for="" style="color:#c21db7;">date de debut</label>
                                         <input required style="color:black;" type="date" id="datedebut" name="datedebut"
                                                class="form-control"
-                                               placeholder="date de debut">
+                                               placeholder="Date de creation de filiere">
                                     </div>
                                     <br>
 
@@ -312,10 +312,10 @@
 
                                     <div class="form-group">
 
-                                        <label for="nom_dep" style="color:#c21db7;"> id departemeent  </label>
+                                        <label for="nom_dep" style="color:#c21db7;">departemeent</label>
 
 
-                                        <select name="nom_dep" size="3" id="nom_dep" class="form-control">
+                                        <select required name="nom_dep" size="3" id="nom_dep" class="form-control">
                                             <?php
                                             use App\departement;
                                             $departements = departement::all();
@@ -331,7 +331,7 @@
                                     <div class="form-group">
                                         <label for="niveau_id" style="color:#c21db7;">niveau</label>
                                         <?php $niveau = \App\Niveau::all()?>
-                                        <select name="niveau_id" size="3" id="niveau_id" class="form-control" >
+                                        <select required name="niveau_id" size="3" id="niveau_id" class="form-control" >
                                             @foreach($niveau as $n)
                                                 <option value="{{$n->niveau_id}}">{{$n->nom}}</option>
                                             @endforeach
@@ -371,7 +371,7 @@
 
 
                                         <input required style="color:black;" type="text" id="nom" name="nom" class="form-control"
-                                               placeholder="nom de departement" pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                               placeholder="Nom de filiere" pattern="[a-zA-Z. ]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
                                     <input required type="hidden" name="filiere_id" id="filiere_id">
                                     <br>
@@ -379,7 +379,7 @@
                                         <label for="" style="color:#c21db7;">coordinateur</label>
                                         <input required style="color:black;" type="text" id="coordinateur" name="coordinateur"
                                                class="form-control"
-                                               placeholder="coordinateur" pattern="[a-z .A-Z]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                               placeholder="Coordinateur" pattern="[a-zA-Z. ]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
                                     <br>
 
@@ -387,7 +387,7 @@
                                         <label for="" style="color:#c21db7;">date de debut</label>
                                         <input required style="color:black;" type="date" id="datedebut" name="datedebut"
                                                class="form-control"
-                                               placeholder="date de debut">
+                                               placeholder="date de creation de filiere">
                                     </div>
                                     <br>
 
@@ -403,9 +403,9 @@
 
                                     <div class="form-group">
 
-                                        <label for="nom_dep" style="color:#c21db7;"> id departemeent</label>
+                                        <label for="nom_dep" style="color:#c21db7;">departemeent</label>
 
-                                        <select name="nom_dep" size="3" id="nom_dep" class="form-control">
+                                        <select required name="nom_dep" size="3" id="nom_dep" class="form-control">
                                             <?php
 
                                             $departements = Departement::all();
@@ -421,7 +421,7 @@
                                     <div class="form-group">
                                         <label for="niveau_id" style="color:#c21db7;">niveau</label>
                                         <?php $niveau = \App\Niveau::all()?>
-                                        <select name="niveau_id" size="3" id="niveau_id" class="form-control">
+                                        <select required name="niveau_id" size="3" id="niveau_id" class="form-control">
                                             @foreach($niveau as $n)
                                                 <option value="{{$n->niveau_id}}">{{$n->nom}}</option>
                                             @endforeach
