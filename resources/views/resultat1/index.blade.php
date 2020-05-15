@@ -230,7 +230,7 @@
                                         <td>
                                             <span class="block-email">{{$q->question_text}}</span>
                                         </td>
-                                        <?php $options = DB::table('Reponse_QCM')->where('question_id',++$i)->get(['option_id']); ?>
+                                        <?php $options = DB::table('Reponse_QCM')->where('question_id',$q->question_id)->get(['option_id']); ?>
                                         <td class="desc">
                                             @foreach($options as $oid)
                                                 <?php $optte = DB::table('Option')->where('option_id',$oid->option_id )->value('option_text'); ?>
@@ -239,19 +239,19 @@
                                             @endforeach
                                         </td>
 
-                                        <?php $corr = DB::table('Option')->where('question_id',$i)->where('point','>',0)->get(); ?>
+                                        <?php $corr = DB::table('Option')->where('question_id',$q->question_id)->where('point','>',0)->get(); ?>
                                         <td>
                                             @foreach($corr as $co)
                                                 -{{$co->option_text}}
                                                 <br>
                                                 @endforeach
                                         </td>
-                                        <?php $repcountall = DB::table('Reponse_QCM')->where('question_id',$i)->count() ?>
-                                        <?php $repcount = DB::table('Reponse_QCM')->where('question_id',$i)->where('note',1)->count() ?>
-                                    <?php $optcount = DB::table('option')->where('question_id',$i)->where('point',1)->count() ?>
+                                        <?php $repcountall = DB::table('Reponse_QCM')->where('question_id',$q->question_id)->count() ?>
+                                        <?php $repcount = DB::table('Reponse_QCM')->where('question_id',$q->question_id)->where('note',1)->count() ?>
+                                    <?php $optcount = DB::table('option')->where('question_id',$q->question_id)->where('point',1)->count() ?>
 
                                     <?php if ( $repcount==$repcountall && $repcount==$optcount) {?>
-                                        <?php $notesq = DB::table('QCM')->where('question_id',$i)->value('note'); ?>
+                                        <?php $notesq = DB::table('QCM')->where('question_id',$q->question_id)->value('note'); ?>
                                         <td>
                                             <span class="status--process">{{$notesq}}</span>
                                         </td>
@@ -270,18 +270,18 @@
                                         <td>
                                             <span class="block-email">{{$b->question_text}}</span>
                                         </td>
-                                        <?php $optionbs = DB::table('Reponse_Bin')->where('binaire_id',++$j)->value('option_id'); ?>
+                                        <?php $optionbs = DB::table('Reponse_Bin')->where('binaire_id',$b->binaire_id)->value('option_id'); ?>
                                         <?php $optionbid = DB::table('Option')->where('option_id',$optionbs)->value('option_text'); ?>
                                         <td class="desc">{{$optionbid}}</td>
-                                        <?php $corrb = DB::table('Option')->where('binaire_id',$j)->where('point','>',0)->value('option_text'); ?>
+                                        <?php $corrb = DB::table('Option')->where('binaire_id',$b->binaire_id)->where('point','>',0)->value('option_text'); ?>
                                         <td>{{$corrb}}</td>
-                                        <?php $notesb = DB::table('Reponse_Bin')->where('binaire_id',$j)->value('note'); ?>
+                                        <?php $notesb = DB::table('Reponse_Bin')->where('binaire_id',$b->binaire_id)->value('note'); ?>
                                         <?php if($notesb==0) { ?>
                                         <td>
                                             <span class="status--process">{{$notesb}}</span>
                                         </td>
                                         <?php } else if ($notesb==1) {?>
-                                        <?php $notesbn = DB::table('Binaire')->where('binaire_id',$j)->value('note'); ?>
+                                        <?php $notesbn = DB::table('Binaire')->where('binaire_id',$b->binaire_id)->value('note'); ?>
 
                                         <td>
                                             <span class="status--process">{{$notesbn}}</span>
@@ -327,9 +327,10 @@
                        @foreach($top as $t )
                      <?php $idtest = DB::table('Session')->where('session_id',$t->session_id)->value('test_id'); ?>
                    <?php $nomtest = DB::table('Test')->where('test_id',$idtest)->value('nom'); ?>
+                     <?php $distest = DB::table('Test')->where('test_id',$idtest)->value('discription'); ?>
 
                                 <tr>
-                                    <td> {{$nomtest}}</td>
+                                    <td> {{$nomtest." ".$distest}}</td>
                                     <td>{{$t->note_total}}</td>
                                 </tr>
                               @endforeach

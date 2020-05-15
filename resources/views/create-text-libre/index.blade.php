@@ -258,7 +258,7 @@ Header
             <ul class="nav-menu">
                 <li><a href="" style=" text-decoration: none;color: #fff">Accueil</a></li>
                 <li><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
-                <li class="menu-active"><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li ><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
                 <li style="margin-right: -90px;margin-left: 100px" class="profile-dropdown image" > <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
                     <a  style=" text-decoration: none;color: #fff;position: relative;top: -16px">
@@ -375,7 +375,9 @@ Header
                                 <br>
                                 <br>
                                 <input type="submit" name="submit" id="submit" style="width: 17rem; margin-left:7rem; "
-                                       class="btn btn-info" value="Ajouter et enregistrer"/>
+                                       class="btn btn-info" value="Enregistrer et Ajouter"/>
+                                <input  class="btn btn-success" style="width: 17rem" value="Enregistrer et quitter">
+
                             </form>
                         </div>
                     </div>

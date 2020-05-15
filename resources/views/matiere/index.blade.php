@@ -46,21 +46,15 @@
             color: white;
 
         }
+
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
-        select option{
-            color: black;
-        }
-        input[type="search"]{
-            color: white !important;
-        }
-        .custom-select{
-            color: white !important;
-        }
-        .custom-select option{
-            background-color:#3C4858 !important;
+        .dark-edition .form-control {
             color: white;
+        }
+        select option{
+            background-color:#3C4858;
         }
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
@@ -113,10 +107,10 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                <a class="nav-link" href="{{route("niveau.index")}}">
-                    <i class="material-icons">content_paste</i>
-                    <p>niveau</p>
-                </a>
+                    <a class="nav-link" href="{{route("niveau.index")}}">
+                        <i class="material-icons">content_paste</i>
+                        <p>niveau</p>
+                    </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("professeur.index")}}">
@@ -207,222 +201,222 @@
                                 <p class="card-category"></p>
                             </div>
                             <div class="row justify-content-between card-header">
-                                <button id="btn" class="btn btn-info">Export to Excel</button>
+                                <button id="btn" class="btn btn-info">Exporter</button>
                                 <div>
                                     <form action={{ route('matiere.import') }} method="POST"
                                           enctype="multipart/form-data">
                                         @csrf
                                         <input required type="file" name="file">
-                                        <input class="btn btn-primary" type="submit" name="upload" value="upload">
+                                        <input class="btn btn-primary" type="submit" name="upload" value="importer">
                                     </form>
                                 </div>
                                 <a href="" class="btn btn-info" data-toggle="modal"
                                    data-target="#exampleModal">ajouter</a>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="myTable">
-                                        <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>module_id</th>
-                                            <th>module</th>
-                                            <th>nom matiere</th>
-                                            <th>volume horaire</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        <tbody>
-                                        @foreach($matieres as $key=>$matiere)
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="myTable">
+                                            <thead>
                                             <tr>
-                                                <td>{{++$key}}</td>
-                                                <td>{{$matiere->module_id}}</td>
-                                                <td>{{\App\Module::query()->find($matiere->module_id)->nom_module}}</td>
-                                                <td>{{$matiere->nom_matiere}}</td>
-                                                <td>{{$matiere->volume_horaire}}</td>
-                                                <td>
-                                                    <a data-matiere_id="{{$matiere->matiere_id}}"
-                                                       data-module_id="{{$matiere->module_id}}"
-                                                       data-nom_matiere="{{$matiere->nom_matiere}}"
-                                                       data-volume_horaire="{{$matiere->volume_horaire}}"
-                                                       data-toggle="modal"
-                                                       data-target="#exampleModal-edit" type="button"
-                                                       class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
-                                                    <a data-matiere_id="{{$matiere->matiere_id}}" data-toggle="modal"
-                                                       data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
-                                                </td>
+                                                <th>#</th>
+                                                <th>module_id</th>
+                                                <th>module</th>
+                                                <th>nom matiere</th>
+                                                <th>volume horaire</th>
+                                                <th>Action</th>
                                             </tr>
-                                        @endforeach
-                                        </tbody>
-                                        {{$matieres->links()}}
-                                        </thead>
-                                    </table>
-                                    <a data-toggle="modal" style="margin-left: 889px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
+                                            <tbody>
+                                            @foreach($matieres as $key=>$matiere)
+                                                <tr>
+                                                    <td>{{++$key}}</td>
+                                                    <td>{{$matiere->module_id}}</td>
+                                                    <td>{{\App\Module::query()->find($matiere->module_id)->nom_module}}</td>
+                                                    <td>{{$matiere->nom_matiere}}</td>
+                                                    <td>{{$matiere->volume_horaire}}</td>
+                                                    <td>
+                                                        <a data-matiere_id="{{$matiere->matiere_id}}"
+                                                           data-module_id="{{$matiere->module_id}}"
+                                                           data-nom_matiere="{{$matiere->nom_matiere}}"
+                                                           data-volume_horaire="{{$matiere->volume_horaire}}"
+                                                           data-toggle="modal"
+                                                           data-target="#exampleModal-edit" type="button"
+                                                           class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
+                                                        <a data-matiere_id="{{$matiere->matiere_id}}" data-toggle="modal"
+                                                           data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                            {{$matieres->links()}}
+                                            </thead>
+                                        </table>
+                                        <a data-toggle="modal" style="margin-left: 889px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
+
+                                    </div>
 
                                 </div>
+                            </div>
+                        </div>
 
+                    </div>
+
+                    <!-- Modal add -->
+                    <div class="modal fade-right" id="exampleModal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Ajouter matiere</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form action="{{route('matiere.store')}}" method="POST">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="nom_matiere" style="color:#c21db7;">nom matiere</label>
+                                            <input required pattern="[a-z A-Z]{,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" type="text" name="nom_matiere" style="color:black;" class="form-control"
+                                                   placeholder="nom de matiere">
+                                        </div>
+                                        <br>
+                                        <!--<div class="form-group">
+                                            <label for="module_id" style="color:#c21db7;">module</label>
+
+                                            <input required type="number" name="module_id" style="color:black;" class="form-control"
+                                                   placeholder="module">
+                                        </div>-->
+                                        <div class="form-group">
+                                            <label for="module_id" style="color:#c21db7;">module</label>
+                                            <select name="module_id" id="module_id" class="form-control">
+                                                {{$mod = \App\Module::all()}}
+                                                @foreach( $mod as $m)
+                                                    <option value="{{ $m->module_id }}">{{ $m->nom_module }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label for="professeur_id" style="color:#c21db7;">Professeur</label>
+                                            <?php $professeur = \App\Professeur::all()?>
+                                            <select name="professeur_id" id="professeur_id" class="form-control" size="3">
+                                                @foreach($professeur as $p)
+                                                    <option value={{$p->professeur_id}}>{{$p->nom}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <br>
+
+                                        <div class="form-group">
+
+                                            <label for="volume_horaire" style="color:#c21db7;">volume horaire</label>
+
+                                            <input required type="number" name="volume_horaire" style="color:black;"
+                                                   class="form-control"
+                                                   placeholder="volume horaire" min="1">
+                                        </div>
+
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+
+                                            <button type="submit" class="btn btn-success">enregistrer</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                </div>
 
-                <!-- Modal add -->
-                <div class="modal fade-right" id="exampleModal" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Ajouter matiere</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                    <!-- Modal edit -->
+                    <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form action="{{route('matiere.update','matiere_id')}}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+
+                                        <input required type="hidden" style="color:black;" name="matiere_id" id="matiere_id">
+                                        <div class="form-group">
+                                            <label for="nom_matiere" style="color:#c21db7;">nom matiere</label>
+                                            <input pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_matiere" id="nom_matiere" style="color:black;" class="form-control"
+                                                   placeholder="nom de matiere">
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label for="module_id" style="color:#c21db7;">module</label>
+                                            <select name="module_id" id="module_id" class="form-control">
+                                                {{$mod = \App\Module::all()}}
+                                                @foreach( $mod as $m )
+                                                    <option value="{{ $m->module_id }}">{{ $m->nom_module }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <br>
+
+                                        <div class="form-group">
+
+                                            <label for="volume_horaire" style="color:#c21db7;">volume horaire</label>
+
+                                            <input required type="number" name="volume_horaire" id="volume_horaire" style="color:black;"
+                                                   class="form-control"
+                                                   placeholder="volume horaire" min="1">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+
+                                            <button type="submit" class="btn btn-success">modifier</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="modal-body">
-
-                                <form action="{{route('matiere.store')}}" method="POST">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="nom_matiere" style="color:#c21db7;">nom matiere</label>
-                                        <input required pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" type="text" name="nom_matiere" style="color:black;" class="form-control"
-                                               placeholder="nom de matiere">
-                                    </div>
-                                    <br>
-                                    <!--<div class="form-group">
-                                        <label for="module_id" style="color:#c21db7;">module</label>
-
-                                        <input required type="number" name="module_id" style="color:black;" class="form-control"
-                                               placeholder="module">
-                                    </div>-->
-                                    <div class="form-group">
-                                        <label for="module_id" style="color:#c21db7;">module</label>
-                                        <select name="module_id" id="module_id" size="3" class="form-control">
-                                            {{$mod = \App\Module::all()}}
-                                            @foreach( $mod as $m)
-                                                <option value="{{ $m->module_id }}">{{ $m->nom_module }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <br>
-                                    <div class="form-group">
-                                        <label for="professeur_id" style="color:#c21db7;">Professeur</label>
-                                        <?php $professeur = \App\Professeur::all()?>
-                                        <select name="professeur_id" id="professeur_id" class="form-control" size="3">
-                                            @foreach($professeur as $p)
-                                                <option value={{$p->professeur_id}}>{{$p->nom}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <br>
-
-                                    <div class="form-group">
-
-                                        <label for="volume_horaire" style="color:#c21db7;">volume horaire</label>
-
-                                        <input required type="number" name="volume_horaire" style="color:black;"
-                                               class="form-control"
-                                               placeholder="volume horaire" min="1">
-                                    </div>
-
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-
-                                <button type="submit" class="btn btn-success">enregistrer</button>
-                            </div>
-                            </form>
                         </div>
                     </div>
-                </div>
-                </div>
 
 
-                <!-- Modal edit -->
-                <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                    <!-- Modal delete -->
+                    <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form action="{{route('matiere.destroy','matiere_id')}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <input required type="hidden" name="matiere_id" id="matiere_id">
+                                        <p class="text-center" width="50px"> vous ete sûre que vous voulez supprimer ce
+                                            matiere</p>
+
+
+                                        <div class="modal-footer">
+
+                                            <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
+
+                                            <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="modal-body">
-
-                                <form action="{{route('matiere.update','matiere_id')}}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-
-                                    <input required type="hidden" style="color:black;" name="matiere_id" id="matiere_id">
-                                    <div class="form-group">
-                                        <label for="nom_matiere" style="color:#c21db7;">nom matiere</label>
-                                        <input pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_matiere" id="nom_matiere" style="color:black;" class="form-control"
-                                               placeholder="nom de matiere">
-                                    </div>
-                                    <br>
-                                    <div class="form-group">
-                                        <label for="module_id" style="color:#c21db7;">module</label>
-                                        <select name="module_id" id="module_id" class="form-control">
-                                            {{$mod = \App\Module::all()}}
-                                            @foreach( $mod as $m )
-                                                <option value="{{ $m->module_id }}">{{ $m->nom_module }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <br>
-
-                                    <div class="form-group">
-
-                                        <label for="volume_horaire" style="color:#c21db7;">volume horaire</label>
-
-                                        <input required type="number" name="volume_horaire" id="volume_horaire" style="color:black;"
-                                               class="form-control"
-                                               placeholder="volume horaire" min="1">
-                                    </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-
-                                <button type="submit" class="btn btn-success">modifier</button>
-                            </div>
-                            </form>
                         </div>
                     </div>
-                </div>
-                </div>
-
-
-                <!-- Modal delete -->
-                <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-
-                                <form action="{{route('matiere.destroy','matiere_id')}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <input required type="hidden" name="matiere_id" id="matiere_id">
-                                    <p class="text-center" width="50px"> vous ete sûre que vous voulez supprimer ce
-                                        matiere</p>
-
-
-                            <div class="modal-footer">
-
-                                <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
-
-                                <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
-                            </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                </div>
                     <!-- restore data -->
 
                     <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
@@ -450,28 +444,27 @@
                                             </label><br>
                                             <br>
 
-                                    @endforeach
+                                        @endforeach
 
 
 
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
-                                    <button type="submit" class="btn btn-danger">restaurer</button>
-
+                                            <button type="submit" class="btn btn-danger">restaurer</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                </form>
                             </div>
                         </div>
                     </div>
-                    </div>
+                </div>
+
             </div>
 
         </div>
-
     </div>
-        </div>
-    </div>
+</div>
 </div>
 </body>
 

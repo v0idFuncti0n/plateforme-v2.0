@@ -46,24 +46,18 @@
             color: white;
 
         }
+
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
-        select option{
-            color: black;
-        }
-        input[type="search"]{
-            color: white !important;
-        }
-        .custom-select{
-            color: white !important;
-        }
-        .custom-select option{
-            background-color:#3C4858 !important;
+        .dark-edition .form-control {
             color: white;
         }
         .pagination .page-item .page-link{
             color: white;
+        }
+        select option{
+            background-color:#3C4858;
         }
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
@@ -115,10 +109,10 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                <a class="nav-link" href="{{route("niveau.index")}}">
-                    <i class="material-icons">content_paste</i>
-                    <p>niveau</p>
-                </a>
+                    <a class="nav-link" href="{{route("niveau.index")}}">
+                        <i class="material-icons">content_paste</i>
+                        <p>niveau</p>
+                    </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("professeur.index")}}">
@@ -206,16 +200,16 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title ">Etudiant Table</h4>
+                                <h4 class="card-title ">Table Etudiant </h4>
                                 <p class="card-category"></p>
                             </div>
                             <div class="row justify-content-between card-header">
-                                <button id="btn" class="btn btn-info">Export to Excel</button>
+                                <button id="btn" class="btn btn-info">Exporter</button>
                                 <div>
                                     <form action={{ route('etudiant.import') }} method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input required type="file" name="file">
-                                        <input class="btn btn-primary" type="submit" name="upload" value="upload">
+                                        <input class="btn btn-primary" type="submit" name="upload" value="importer">
                                     </form>
                                 </div>
                                 <a href="" class="btn btn-info" data-toggle="modal"
@@ -396,214 +390,216 @@
                                                class="form-control"
                                                placeholder="num_apologie" min="1">
                                     </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
-                                <button type="submit" class="btn btn-success">enregistrer</button>
-                            </div>
-                            </form>
+                                        <button type="submit" class="btn btn-success">enregistrer</button>
+                                    </div>
+                                </form>
                             </div>
 
                         </div>
                     </div>
                 </div>
+            </div>
 
 
-                <!-- Modal edit -->
-                <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
+            <!-- Modal edit -->
+            <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
 
-                                <form action="{{route('etudiant.update','id')}}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <input required type="hidden" name="id" id="id">
-                                    <div class="form-group">
-                                        <label for="cin" style="color:#c21db7;">cin</label>
+                            <form action="{{route('etudiant.update','id')}}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input required type="hidden" name="id" id="id">
+                                <div class="form-group">
+                                    <label for="cin" style="color:#c21db7;">cin</label>
 
-                                        <input required type="text" name="cin" id="cin" style="color:black;" class="form-control"
-                                               placeholder="cin" pattern="[A-Z]{1,2}[1-9]{2,5}" title="Exemple: XX145">
-                                    </div>
+                                    <input required type="text" name="cin" id="cin" style="color:black;" class="form-control"
+                                           placeholder="cin" pattern="[A-Z]{1,2}[1-9]{2,5}" title="Exemple: XX145">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="cne" style="color:#c21db7;">cne</label>
+
+                                    <input required type="text" name="cne" id="cne" style="color:black;" class="form-control"
+                                           placeholder="cne" >
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="nom" style="color:#c21db7;">nom</label>
+
+                                    <input required type="text" name="nom" id="nom" style="color:black;" class="form-control"
+                                           placeholder="nom">
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+
+                                    <label for="prenom" style="color:#c21db7;">prenom</label>
+
+                                    <input required type="text" name="prenom" id="prenom" style="color:black;" class="form-control"
+                                           placeholder="prenom" pattern="[a-zA-Z]{3,255}" title="aucun caractère spécial n'est autorisé">
+                                </div>
+                                <div class="form-group">
+                                    <label for="niveau_id" style="color:#c21db7;">Niveau</label>
                                     <br>
-                                    <div class="form-group">
-                                        <label for="cne" style="color:#c21db7;">cne</label>
+                                    <?php
 
-                                        <input required type="text" name="cne" id="cne" style="color:black;" class="form-control"
-                                               placeholder="cne" >
-                                    </div>
+                                    $niveaux = Niveau::all();
+                                    echo "<select size='3' id='niveau_id' class='form-control' name=niveau_id>";
+                                    foreach($niveaux as $n){
+                                        $niveau_id =$n->niveau_id;
+                                        echo "<option value=$niveau_id>$n->nom</option>";
+                                    }
+                                    echo "</select>";
+                                    ?>
+                                </div>
+                                <div class="form-group">
+                                    <label for="filiere_id" style="color:#c21db7;">Filiere</label>
                                     <br>
-                                    <div class="form-group">
-                                        <label for="nom" style="color:#c21db7;">nom</label>
+                                    <?php
 
-                                        <input required type="text" name="nom" id="nom" style="color:black;" class="form-control"
-                                               placeholder="nom">
-                                    </div>
-                                    <br>
+                                    $filieres = filiere::all();
+                                    echo "<select size='3' id='filiere_id' class='form-control' name=filiere_id>";
+                                    foreach($filieres as $f){
+                                        $id_filiere=$f->filiere_id;
+                                        echo "<option value=$id_filiere>$f->nom</option>";
+                                    }
+                                    echo "</select>";
+                                    ?>
+                                </div>
+                                <div class="form-group">
 
-                                    <div class="form-group">
+                                    <label for="email_address" style="color:#c21db7;">email</label>
 
-                                        <label for="prenom" style="color:#c21db7;">prenom</label>
+                                    <input required type="email" id="email_address" style="color:black;" name="email_address"
+                                           class="form-control"
+                                           placeholder="email" title="XXX111@ests.ac.ma">
+                                </div>
+                                <div class="form-group">
 
-                                        <input required type="text" name="prenom" id="prenom" style="color:black;" class="form-control"
-                                               placeholder="prenom" pattern="[a-zA-Z]{3,255}" title="aucun caractère spécial n'est autorisé">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="niveau_id" style="color:#c21db7;">Niveau</label>
-                                        <br>
-                                        <?php
+                                    <label for="numero" style="color:#c21db7;">numero</label>
 
-                                        $niveaux = Niveau::all();
-                                        echo "<select size='3' id='niveau_id' class='form-control' name=niveau_id>";
-                                        foreach($niveaux as $n){
-                                            $niveau_id =$n->niveau_id;
-                                            echo "<option value=$niveau_id>$n->nom</option>";
-                                        }
-                                        echo "</select>";
-                                        ?>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="filiere_id" style="color:#c21db7;">Filiere</label>
-                                        <br>
-                                        <?php
+                                    <input required type="number" id="numero" style="color:black;" name="numero" class="form-control"
+                                           placeholder="numero" min="1">
+                                </div>
+                                <div class="form-group">
 
-                                        $filieres = filiere::all();
-                                        echo "<select size='3' id='filiere_id' class='form-control' name=filiere_id>";
-                                        foreach($filieres as $f){
-                                            $id_filiere=$f->filiere_id;
-                                            echo "<option value=$id_filiere>$f->nom</option>";
-                                        }
-                                        echo "</select>";
-                                        ?>
-                                    </div>
-                                    <div class="form-group">
+                                    <label for="num_apologie" style="color:#c21db7;">num apologie</label>
 
-                                        <label for="email_address" style="color:#c21db7;">email</label>
+                                    <input required type="number" id="num_apologie" style="color:black;" name="num_apologie"
+                                           class="form-control"
+                                           placeholder="num_apologie" min="1">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
-                                        <input required type="email" id="email_address" style="color:black;" name="email_address"
-                                               class="form-control"
-                                               placeholder="email" title="XXX111@ests.ac.ma">
-                                    </div>
-                                    <div class="form-group">
-
-                                        <label for="numero" style="color:#c21db7;">numero</label>
-
-                                        <input required type="number" id="numero" style="color:black;" name="numero" class="form-control"
-                                               placeholder="numero" min="1">
-                                    </div>
-                                    <div class="form-group">
-
-                                        <label for="num_apologie" style="color:#c21db7;">num apologie</label>
-
-                                        <input required type="number" id="num_apologie" style="color:black;" name="num_apologie"
-                                               class="form-control"
-                                               placeholder="num_apologie" min="1">
-                                    </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-
-                                <button type="submit" class="btn btn-success">modifier</button>
-                            </div>
+                                    <button type="submit" class="btn btn-success">modifier</button>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
 
-                </div>
+            </div>
+            <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
-                <!-- Modal delete -->
-                <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
+            <!-- Modal delete -->
+            <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
 
-                                <form action="{{route('etudiant.destroy','id')}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
+                            <form action="{{route('etudiant.destroy','id')}}" method="POST">
+                                @csrf
+                                @method('DELETE')
 
-                                    <input required type="hidden" name="id" id="id">
-                                    <p class="text-center" width="50px"> vous ete sûre que vous voulez supprimer ce
-                                        etudiant</p>
+                                <input required type="hidden" name="id" id="id">
+                                <p class="text-center" width="50px"> vous ete sûre que vous voulez supprimer cet
+                                    étudiant</p>
 
 
-                            <div class="modal-footer">
+                                <div class="modal-footer">
 
                                     <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
 
                                     <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
-                                                 </div>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                </div>
-
-
-
-                 <!-- restore data -->
-
-         <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                <form action="{{action('EtudiantController@restore')}}" method="POST">
-                        @csrf
-                      <?php $etds['etds'] = App\etudiant::onlyTrashed()->get();?>
-
-                  @foreach($etds['etds'] as $etudiant)
-
-                        <label class="switcher" style="margin-left:10px;">
-                       <input name="etd[]" type="checkbox" value="{{$etudiant->etudiant_id}}"/>
-                            <div class="switcher__indicator"></div>
-                            <span style="font-size: 15px; color:black;">{{$etudiant->num_apologie}}</span>
-                        </label><br>
-                        <br>
-
-                   @endforeach
-
-
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
-
-                    <button type="submit" class="btn btn-danger">restaurer</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
 
             </div>
 
+
+            <!-- restore data -->
+
+            <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <form action="{{action('EtudiantController@restore')}}" method="POST">
+                                @csrf
+                                <?php $etds['etds'] = App\etudiant::onlyTrashed()->get();?>
+
+                                @foreach($etds['etds'] as $etudiant)
+
+                                    <label class="switcher" style="margin-left:10px;">
+                                        <input name="etd[]" type="checkbox" value="{{$etudiant->etudiant_id}}"/>
+                                        <div class="switcher__indicator"></div>
+                                        <span style="font-size: 15px; color:black;">{{$etudiant->num_apologie}}</span>
+                                    </label><br>
+                                    <br>
+
+                                @endforeach
+
+
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+
+                                    <button type="submit" class="btn btn-danger">restaurer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
         </div>
 
     </div>
 </div>
 </div>
-</div>
+
 </body>
 
 <script>$(".toggle-password").click(function() {
@@ -636,7 +632,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('EDIT STUDENT INFORMATION');
+        modal.find('.modal-title').text('modifier');
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #cin').val(cin);
         modal.find('.modal-body #cne').val(cne);
@@ -653,6 +649,63 @@
     });
 
 
+
+
+
+
+
+
+
+
+
+
+
+    $('#exampleModal-edit').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget);
+        var id = button.data('id')
+        var cin = button.data('cin')
+        var cne = button.data('cne')
+        var nom = button.data('nom')
+        var prenom = button.data('prenom')
+        var id_niveau = button.data('id_niveau')
+        var email = button.data('email_address')
+        var username = button.data('username')
+        var password = button.data('password')
+        var numero = button.data('numero')
+        var num_apologie = button.data('num_apologie')
+
+
+        var modal = $(this)
+
+        modal.find('.modal-title').text('modifier');
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #cin').val(cin);
+        modal.find('.modal-body #cne').val(cne);
+        modal.find('.modal-body #nom').val(nom);
+        modal.find('.modal-body #prenom').val(prenom);
+        modal.find('.modal-body #id_niveau').val(id_niveau);
+        modal.find('.modal-body #email_address').val(email);
+        modal.find('.modal-body #username').val(username);
+        modal.find('.modal-body #password').val(password);
+        modal.find('.modal-body #numero').val(numero);
+        modal.find('.modal-body #num_apologie').val(num_apologie);
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
     $('#exampleModal-delete').on('show.bs.modal', function (event) {
 
         var button = $(event.relatedTarget)
@@ -661,20 +714,27 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('delete STUDENT INFORMATION');
+        modal.find('.modal-title').text('suprimer cet étudiant');
 
         modal.find('.modal-body #id').val(id);
     });
 
 </script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#myTable').DataTable();
     });
     $('#myTable').DataTable({
-        responsive: true
+        responsive: true,
+        language:{
+            url:"//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
+        }
+
     });
 </script>
+
 
 <!--   Core JS Files   -->
 <script src="/public/assets/js/core/jquery.min.js"></script>
@@ -695,8 +755,7 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="/public/assets/demo/demo.js"></script>
 
-<script type="text/javascript"
-        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
+
 <script>
     $('#btn').click(function () {
         $('.table').table2excel({

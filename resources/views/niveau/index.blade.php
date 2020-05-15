@@ -45,23 +45,16 @@
         input[type="file"]{
             height:20px;
             color: white;
-
         }
+
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
-        select option{
-            color: black;
-        }
-        input[type="search"]{
-            color: white !important;
-        }
-        .custom-select{
-            color: white !important;
-        }
-        .custom-select option{
-            background-color:#3C4858 !important;
+        .dark-edition .form-control {
             color: white;
+        }
+        select option{
+            background-color:#3C4858;
         }
     </style>
 </head>
@@ -199,13 +192,13 @@
                                 <h4 class="card-title ">Table des niveaux</h4>
                             </div>
                             <div class="row justify-content-between card-header">
-                                <button id="btn" class="btn btn-info">Export to Excel</button>
+                                <button id="btn" class="btn btn-info">Exporter la table</button>
                                 <div>
                                     <form action={{ route('niveau.import') }} method="POST"
                                           enctype="multipart/form-data">
                                         @csrf
                                         <input required type="file" name="file">
-                                        <input class="btn btn-primary" type="submit" name="upload" value="upload">
+                                        <input class="btn btn-primary" type="submit" name="upload" value="importer">
                                     </form>
                                 </div>
                                 <a href="" class="btn btn-info" data-toggle="modal"
@@ -272,15 +265,15 @@
                                                pattern="[a-zA-Z]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" placeholder="nom de niveau">
                                     </div>
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
-                                <button type="submit" class="btn btn-success">enregistrer</button>
+                                        <button type="submit" class="btn btn-success">enregistrer</button>
+                                    </div>
+                                </form>
                             </div>
-                            </form>
                         </div>
                     </div>
-                </div>
 
                 </div>
 
@@ -309,15 +302,15 @@
                                     </div>
                                     <input required type="hidden" style="color:black;" name="niveau_id" id="niveau_id">
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
 
-                                <button type="submit" class="btn btn-success">modifier</button>
+                                        <button type="submit" class="btn btn-success">modifier</button>
+                                    </div>
+                                </form>
                             </div>
-                            </form>
                         </div>
                     </div>
-                </div>
                 </div>
 
 
@@ -343,15 +336,15 @@
                                         niveau</p>
 
 
-                            <div class="modal-footer">
-                                <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
+                                    <div class="modal-footer">
+                                        <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
 
-                                <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
+                                        <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
+                                    </div>
+                                </form>
                             </div>
-                            </form>
                         </div>
                     </div>
-                </div>
                 </div>
 
                 <!-- restore data -->
@@ -381,20 +374,19 @@
                                         </label><br>
                                         <br>
 
-                                @endforeach
+                                    @endforeach
 
 
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
 
-                                <button type="submit" class="btn btn-danger">restaurer</button>
-
+                                        <button type="submit" class="btn btn-danger">restaurer</button>
+                                    </div>
+                                </form>
                             </div>
-                            </form>
                         </div>
                     </div>
-                </div>
                 </div>
 
             </div>
@@ -436,15 +428,20 @@
     });
 
 </script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#myTable').DataTable();
     });
     $('#myTable').DataTable({
-        responsive: true
+        responsive: true,
+        language:{
+            url:"//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
+        }
+
     });
 </script>
-
 
 <!--   Core JS Files   -->
 <script src="../assets/js/core/jquery.min.js"></script>
@@ -464,8 +461,7 @@
 <script src="../assets/js/material-dashboard.js?v=2.1.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js"></script>
-<script type="text/javascript"
-        src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
+
 <script>
     $('#btn').click(function () {
         $('.table').table2excel({

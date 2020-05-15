@@ -42,11 +42,9 @@
         select.form-control:not([size]):not([multiple]) {
             height: 32px;
         }
-
         .dataTables_filter {
             margin-left: 300px;
         }
-
     </style>
     <!-- =======================================================
       Theme Name: Regna
@@ -58,30 +56,22 @@
     <style>
         $
         green: #2ecc71
-
         ;
         $
         red: #e74c3c
-
         ;
         $
         blue: #3498db
-
         ;
         $
         yellow: #f1c40f
-
         ;
         $
         purple: #8e44ad
-
         ;
         $
         turquoise: #1abc9c
-
         ;
-
-
         h1 {
             color: $ yellow;
             font-size: 4rem;
@@ -89,17 +79,12 @@
             display: block;
             width: 100%;
             text-align: center;
-
         @media screen and (max-width: 600px) {
             font-size:
-
         3rem
-
         ;
         }
-
         }
-
         p {
             color: $ yellow;
             font-size: 1.2rem;
@@ -108,8 +93,6 @@
             padding: 20px;
             text-align: center;
         }
-
-
         /
         /
         Basic Button Style
@@ -133,43 +116,33 @@
             text-transform: uppercase;
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-
         &
         :hover,
-
         &
         :focus {
             color: #fff;
             outline: 0;
         }
-
         }
-
         /
         /
         BUTTON
-
         1
         .first {
             transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-
         &
         :hover {
             box-shadow: 0 0 40px 40px $ red inset;
         }
-
         }
-
         /
         /
         BUTTON
-
         2
         .second {
             border-radius: 3em;
             border-color: $ turquoise;
             color: #fff;
-
         background: {
             image: linear-gradient(to right,
             transparentize($ turquoise, 0.4),
@@ -215,27 +188,20 @@
             position: 0 0;
             size: 100%;
         }
-
         transition: background
-
         300
         ms ease-in-out
-
         ;
-
         &
         :hover {
             background-position: 100px;
         }
-
         }
-
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 
 
     <script>
-
     </script>
     <style>
         .dataTables_wrapper .dataTables_filter {
@@ -243,18 +209,14 @@
             text-align: left;
             margin-left: 380px;
             margin-top:120px;
-
         }
-
         .dataTables_wrapper .dataTables_length {
-
             float: left;
             margin-top:170px;
             position: relative;
             top:45px;
             z-index: 999;
         }
-
     </style>
 
 </head>
@@ -275,13 +237,12 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a href="" style=" text-decoration: none;color: #fff">Accueil</a></li>
-                <li><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li><a href="" style="text-decoration: none;color: #fff">Accueil</a></li>
+                <li><a href="{{route("create-test.index",$prof->professeur_id)}}" style=" text-decoration: none;color: #fff">Créer test</a></li>
                 <li class="menu-active"><a href="" style=" text-decoration: none;color: #fff">Gérer test</a></li>
-                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
                 <li style="margin-right: -90px;margin-left: 100px" class="profile-dropdown image" > <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
-                    <a  style=" text-decoration: none;color: #fff;position: relative;top: -16px">
-                  {{ $prof->nom ." ". $prof->prenom }}</a><ul style="left: -170px" >
+                    <a  style="text-decoration: none;color: #fff;position: relative;top: -16px">
+                        {{ $prof->nom ." ". $prof->prenom }}</a><ul style="left: -170px" >
                         <li>   <div class="info clearfix">
                                 <div class="image">
                                     <a href="#">
@@ -329,7 +290,7 @@ Header
                 </div>
                 <div >
 
-                    </div>
+                </div>
                 <table id="myTable" class="table table-bordered" >
 
 
@@ -483,7 +444,6 @@ Header
                         <?php $professeur_idd = $test->professeur_id; ?>
                         <?php $testss = DB::table('test')->where('matiere_id', $matiere_idd)->where('professeur_id', $professeur_idd)->get();?>
                         @php
-
                             $matiere_idd = $test->matiere_id;
                             $professeur_idd = $test->professeur_id;
                             $testss = DB::table('test')->where('matiere_id', $matiere_idd)->where('professeur_id', $professeur_idd)->get();
@@ -758,7 +718,6 @@ Header
 
 <script>
     var test_id;
-
     function getSelectionnerTestId(){
         let anchor = document.getElementById('selectionner');
         anchor.href = "/select-question/"+ test_id;
@@ -769,9 +728,7 @@ Header
         test_id = id;
         firstRun(test_id);
     }
-
     $('#exampleModal-edit').on('show.bs.modal', function (event) {
-
         var button = $(event.relatedTarget)
         var test_id = button.data('test_id')
         var nom = button.data('nom')
@@ -786,9 +743,7 @@ Header
         var d3 = button.data('d3')
         var d4 = button.data('d4')
         var d5 = button.data('d5')
-
         var modal = $(this)
-
         modal.find('.modal-title').text('Modifier test');
         modal.find('.modal-body #test_id').val(test_id);
         modal.find('.modal-body #nom').val(nom);
@@ -804,36 +759,24 @@ Header
         modal.find('.modal-body #d5').val(d5);
         modal.find('.modal-body #matiere_id').val(matiere_id);
     });
-
     $('#exampleModal-delete').on('show.bs.modal', function (event) {
-
         var button = $(event.relatedTarget)
-
         let test_id = button.data('test_id')
         var force_test_id = test_id;
-
-
         var modal = $(this);
-
         modal.find('.modal-title').text('Supprimer test');
-
         modal.find('.modal-body #test_id').val(test_id);
         modal.find('.modal-footer #force_test_id').val(force_test_id);
         //alert(document.getElementById('force_test_id').value);
-
     });
 </script>
 <script>
     const st = {};
-
     st.flap = document.querySelector('#flap');
     st.toggle = document.querySelector('.toggle');
-
     st.choice1 = document.querySelector('#choice1');
     st.choice2 = document.querySelector('#choice2');
-
     st.flap.addEventListener('transitionend', () => {
-
         if (st.choice1.checked) {
             st.toggle.style.transform = 'rotateY(-15deg)';
             setTimeout(() => st.toggle.style.transform = '', 400);
@@ -841,35 +784,27 @@ Header
             st.toggle.style.transform = 'rotateY(15deg)';
             setTimeout(() => st.toggle.style.transform = '', 400);
         }
-
     })
-
     st.clickHandler = (e) => {
-
         if (e.target.tagName === 'LABEL') {
             setTimeout(() => {
                 st.flap.children[0].textContent = e.target.textContent;
             }, 250);
         }
     }
-
     document.addEventListener('DOMContentLoaded', () => {
         st.flap.children[0].textContent = st.choice2.nextElementSibling.textContent;
     });
-
     document.addEventListener('click', (e) => st.clickHandler(e));
 </script>
 <script>
     $(document).ready(function () {
-
         $("input[name$='select']").click(function () {
             var radio_value = $(this).val();
             if (radio_value == '1') {
                 $(".contental").animate({height: "toggle"}, 500);
                 $(".contentse").hide();
                 $(".contentcr").hide();
-
-
             } else if (radio_value == '2') {
                 $(".contentse").animate({height: "toggle"}, 500);
                 $(".contental").hide();
@@ -881,7 +816,6 @@ Header
             }
         });
     });
-
 </script>
 
 <script type="text/javascript">
@@ -929,24 +863,17 @@ Header
 
 
 <script>
-
     /*$('.modal').on('openModal',function (event) {
         var btn = $(event.relatedTarget);
         var test_id = btn.data('test_id');
         console.log(test_id);
-
     })*/
-
-
     /* function teleport(elem) {
          test_id = elem;
-
      }*/
     $(document).ready(function () {
         teleport1();
     })
-
-
     function teleport1() {
         var checked1 = document.getElementById('one3').checked;
         var checked2 = document.getElementById('two3').checked;
@@ -964,7 +891,6 @@ Header
             abt.href = "/create-text-libre/" + test_id;
         }
     }
-
     function firstRun(test_id) {
         var checked1 = document.getElementById('one3').checked;
         var checked2 = document.getElementById('two3').checked;
@@ -982,16 +908,12 @@ Header
             abt.href = "/create-text-libre/" + test_id;
         }
     }
-
-
 </script>
 
 <script type="text/javascript"
         src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
 <script>
-
     $(document).ready(function() {
-
         $('#myTable').DataTable( {
             "oLanguage": {
                 "sLengthMenu": "Afficher _MENU_ élement",
@@ -1003,9 +925,7 @@ Header
                     "sPrevious": "Précedent"}
             },
             "dom": 'lf<"toolbar">tp'
-
         } );
-
         $("div.toolbar").html('<div style="float:right; margin-bottom:20px;"><div title="Créer test"   >\n' +
             '                <a href="{{route("create-test.index",$prof->professeur_id)}}">\n' +
             '                    <button  style="margin-left:940px;position: absolute;" class="btn btn-primary"><i class="fa fa-plus"></i></button>\n' +
@@ -1017,7 +937,6 @@ Header
             '                           data-target="#exampleModal-restore" style="margin-left: 980px;margin-bottom: -10px;z-index: 9999999" data-toggle="modal">Restaurer</a>\n' +
             '</div>');
     } );
-
 </script>
 <script>
     $("#restore").click(function () {
@@ -1029,5 +948,3 @@ Header
         $("form").submit();
     });
 </script>
-
-
