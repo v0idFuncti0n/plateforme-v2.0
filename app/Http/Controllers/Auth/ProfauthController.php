@@ -27,6 +27,12 @@ class ProfauthController extends Controller
         return redirect()->route('profauth.login');*/
         //$request->session()->flush();
 
+        if(!empty(session('p_username'))){
+            $professeurPass = Professeur::query()->where('username', '=', session('p_username'))->first();
+            return view('accueilProf.index')->with('prof', $professeurPass);
+        }
+
+
         $username = $request->username;
         $password = $request->password;
         $professeur = Professeur::query()->where('username', '=', $username)->count();

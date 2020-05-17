@@ -107,7 +107,7 @@ Route::post('resultat/note');
 
 Route::get('/welcome-professeur', function () {
     return view('welcome-professeur.welcome');
-});
+})->name('welcome.professeur');
 Route::get('/welcome-etudiant', function () {
     return view('welcome-etudiant.welcome');
 });
@@ -144,3 +144,5 @@ Route::post('/option-restore', 'OptionController@restoreOption')->name("option.r
 Route::post('/option-forcedelete', 'OptionController@forceDeleteMass')->name("option.forceDelete");
 
 Route::get('/getfilieres/{id}','AjaxController@filieres');
+
+
