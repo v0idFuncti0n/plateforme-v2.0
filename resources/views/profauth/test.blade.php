@@ -237,7 +237,7 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a href="{{ route('welcome.professeur') }}" style="text-decoration: none;color: #fff">Accueil</a></li>
+                <li><a href="{{ route('manager-test',$prof->professeur_id) }}" style="text-decoration: none;color: #fff">Accueil</a></li>
                 <li><a href="{{ route("create-test.index",$prof->professeur_id)}}" style=" text-decoration: none;color: #fff">Créer test</a></li>
                 <li class="menu-active"><a href="{{ route('manager-test',$prof) }}" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li style="margin-right: -90px;margin-left: 100px" class="profile-dropdown image" > <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />

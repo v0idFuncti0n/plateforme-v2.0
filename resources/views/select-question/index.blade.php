@@ -184,12 +184,11 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a href="" style=" text-decoration: none;color: #fff">Accueil</a></li>
-                <li><a href="" style=" text-decoration: none;color: #fff">Créer test</a></li>
-                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer tests</a></li>
-                <li ><a href="" style=" text-decoration: none;color: #fff">Gérer les notes</a></li>
+                <li><a href="{{ route('manager-test',$prof->professeur_id) }}" style="text-decoration: none;color: #fff">Accueil</a></li>
+                <li><a href="{{ route("create-test.index",$prof->professeur_id)}}" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li class="menu-active"><a href="{{ route('manager-test',$prof) }}" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li style="margin-right: -90px;margin-left: 100px" class="profile-dropdown image" > <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
-                    <a  style=" text-decoration: none;color: #fff;position: relative;top: -18px">
+                    <a  style="text-decoration: none;color: #fff;position: relative;top: -16px">
                         {{ $prof->nom ." ". $prof->prenom }}</a><ul style="left: -170px" >
                         <li>   <div class="info clearfix">
                                 <div class="image">
@@ -205,12 +204,13 @@ Header
                                 </div>
                             </div></li>
 
-                        <li  style="line-height: 20px"><a href="#"><i style="font-size: 15px" class="mdi mdi-logout"></i>Déconnexion</a></li>
+                        <li><a href="{{route('profauth.logout')}}"><i style="font-size: 15px" class="mdi mdi-logout"></i>Déconnexion</a></li>
                     </ul>
                 </li>
 
             </ul>
-        </nav><!-- #nav-menu-container-->
+        </nav><!-- #nav-menu-container -->
+
     </div>
 </header><!-- #header -->
 <!--==========================
@@ -227,26 +227,26 @@ Header
     ============================-->
     <div class="container d-flex align-items-stretch" style="margin-left: 0rem;">
         <nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">
-            <div class="p-4" style="margin-left: -7px;margin-top: 13px;">
+            <div class="p-4">
                 <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
                 <ul class="list-unstyled components mb-5">
-                    <li >
-                        <a href="index.html"><span class="fa fa-home mr-3"></span> Acceuil</a>
+                    <li>
+                        <a href="{{ route('manager-test',$prof->professeur_id) }}"><span class="fa fa-home mr-3"></span> Acceuil</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-plus-square-o mr-3"></span> Création des test</a>
+                        <a href="{{ route('create-test.index',$prof) }}"><span class="fa fa-plus-square-o mr-3"></span> Création des test</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-table mr-3"></span> table des test</a>
+                        <a href="{{ route('profauth.test') }}"><span class="fa fa-table mr-3"></span> table des test</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-list mr-3"></span> création question qcm</a>
+                        <a href="/create-qcm1/{{$test->test_id }}"><span class="fa fa-list mr-3"></span> création question qcm</a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-question mr-3"></span> Création question binaire </a>
+                        <a href="/create-bin/{{$test->test_id}}"><span class="fa fa-question mr-3"></span> Création question binaire </a>
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-file-text-o mr-3"></span> Création question text </a>
+                        <a href="/create-text-libre/{{$test->test_id}}"><span class="fa fa-file-text-o mr-3"></span> Création question text </a>
                     </li>
 
                     </li>

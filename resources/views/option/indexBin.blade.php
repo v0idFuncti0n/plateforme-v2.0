@@ -233,7 +233,7 @@
 
 <body>
 
-
+<?php $test = \App\Test::find(\App\binaire::find($options['options'][0]->binaire_id)->test_id) ?>
 <!--==========================
 Header
 ============================-->
@@ -241,38 +241,40 @@ Header
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="/img/logo.png" alt="" title=""/></a>
+            <a href="#hero"><img src="{{asset('/managetest/img/logoapp.png')}}" alt="" title=""/></a>
             <!-- Uncomment below if you prefer to use a text logo -->
             <!--<h1><a href="#hero">Regna</a></h1>-->
         </div>
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li class="menu-active"><a href="#hero">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#team">Team</a></li>
-                <li class="menu-has-children"><a href="">Drop Down</a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="menu-has-children"><a href="#">Drop Down 2</a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                        <li><a href="#">Drop Down 5</a></li>
+                <li><a href="{{ route('manager-test',$prof->professeur_id) }}" style="text-decoration: none;color: #fff">Accueil</a></li>
+                <li><a href="{{ route("create-test.index",$prof->professeur_id)}}" style=" text-decoration: none;color: #fff">Créer test</a></li>
+                <li class="menu-active"><a href="{{ route('manager-test',$prof) }}" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li style="margin-right: -90px;margin-left: 100px" class="profile-dropdown image" > <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
+                    <a  style="text-decoration: none;color: #fff;position: relative;top: -16px">
+                        {{ $prof->nom ." ". $prof->prenom }}</a><ul style="left: -170px" >
+                        <li>   <div class="info clearfix">
+                                <div class="image">
+                                    <a href="#">
+                                        <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h5 class="name">
+                                        <a href="#">{{ $prof->nom ." ". $prof->prenom }}</a>
+                                    </h5>
+                                    <span class="email">{{ $prof->email}}</span>
+                                </div>
+                            </div></li>
+
+                        <li><a href="{{route('profauth.logout')}}"><i style="font-size: 15px" class="mdi mdi-logout"></i>Déconnexion</a></li>
                     </ul>
                 </li>
-                <li><a href="#contact">Contact Us</a></li>
+
             </ul>
         </nav><!-- #nav-menu-container -->
+
     </div>
 </header><!-- #header -->
 
@@ -319,6 +321,32 @@ Header
                     </li>
                 </ul>
 
+            </div>
+        </nav><nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">
+            <div class="p-4">
+                <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
+                <ul class="list-unstyled components mb-5">
+                    <li>
+                        <a href="{{ route('manager-test',$prof->professeur_id) }}"><span class="fa fa-home mr-3"></span> Acceuil</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('create-test.index',$prof) }}"><span class="fa fa-plus-square-o mr-3"></span> Création des test</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('profauth.test') }}"><span class="fa fa-table mr-3"></span> table des test</a>
+                    </li>
+                    <li>
+                        <a href="/create-qcm1/{{$test->test_id }}"><span class="fa fa-list mr-3"></span> création question qcm</a>
+                    </li>
+                    <li>
+                        <a href="/create-bin/{{$test->test_id}}"><span class="fa fa-question mr-3"></span> Création question binaire </a>
+                    </li>
+                    <li>
+                        <a href="/create-text-libre/{{$test->test_id}}"><span class="fa fa-file-text-o mr-3"></span> Création question text </a>
+                    </li>
+
+                    </li>
+                </ul>
             </div>
         </nav>
         <div id="content" class="p-4 p-md-5 pt-5" style="width: 100rem; margin-top: 3.125rem">
