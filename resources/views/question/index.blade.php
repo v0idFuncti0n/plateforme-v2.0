@@ -811,7 +811,7 @@ for ($b = 0; $b < $j; $b++) {
                                                value="{{$qcm->question_id}}">
                                         <div class="answ">Question :</div>
                                         <label class="label"> {{ $qcm->question_text }}</label>
-                                        <div class="answ">Answer :</div>
+                                        <div class="answ">Reponse :</div>
                                         <?php $opt = DB::table('option')->where('question_id', $qcm->question_id)->get() ?>
                                         @foreach ($opt  as $option)
                                             <label>
@@ -854,7 +854,7 @@ for ($b = 0; $b < $j; $b++) {
                                     <div class="input-group">
                                         <div class="answ">Question :</div>
                                         <label class="label">{{ $binaire->question_text }}</label>
-                                        <div class="answ">Answer :</div>
+                                        <div class="answ">Reponse :</div>
                                         <?php $opt1 = DB::table('option')->where('binaire_id', $binaire->binaire_id)->get()?>
                                         @foreach ($opt1  as $option)
                                             <label>
@@ -900,7 +900,7 @@ for ($b = 0; $b < $j; $b++) {
                                     <div class="input-group">
                                         <div class="answ">Question :</div>
                                         <label class="label"> {{ $text->question_text }}</label>
-                                        <div class="answ" style="margin-bottom: 40px;">Answer :</div>
+                                        <div class="answ" style="margin-bottom: 40px;">Reponse :</div>
                                         <div id="toolbar[{{$i}}]"></div>
                                         <div id="editor[{{$i}}]" style="height: 200px; font-size: 20px;"></div>
                                         <?php

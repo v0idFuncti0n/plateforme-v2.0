@@ -481,11 +481,11 @@ Header
 
                                         <select name="difficulty" id="difficulty" style="height: 34px;"
                                                 class="form-control">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
+                                            <option value="1">Trés facile</option>
+                                            <option value="2">Facile</option>
+                                            <option value="3">Moyenne</option>
+                                            <option value="4">Difficile</option>
+                                            <option value="5">Trés difficile</option>
                                         </select>
                                     </div>
                                     <br>

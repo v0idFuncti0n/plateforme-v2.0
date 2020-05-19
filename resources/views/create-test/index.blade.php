@@ -262,7 +262,7 @@
                                     <div class="form-holder form-holder-2">
                                         <label class="form-row-inner">
                                             <input type="number" name="note" id="note" class="form-control" required>
-                                            <span class="label" style="left: 100px;">Note</span>
+                                            <span class="label" style="left: 100px;">Barème</span>
                                             <span class="border"></span>
                                         </label>
                                     </div>

@@ -405,13 +405,22 @@ Header
                                 <input type="hidden" name="test_id" id=random-test_id>
                                 <div class="form__group field " style="margin-left: 150px">
                                     <input type="number" class="form__field" placeholder="question" name="nombre"
-                                           id='nombre' min="1"/>
+                                           id='nombre' style="font-weight: bold" min="1"/>
                                     <label for="name" class="form__label">Nombre question: </label>
                                 </div>
                                 <div class="form__group field" style="margin-left: 150px">
-                                    <input type="number" class="form__field" placeholder="Difficulté" name="difficulty"
-                                           id='difficulty' min="1" max="5"/>
-                                    <label for="name" class="form__label">Difficulté</label>
+                                    <label for="name" class="form__label" >Difficulté</label>
+
+                                    <select class="form__field"name="difficulty"
+                                            id='difficulty' style="margin-top: 5px;font-weight: bold"
+                                            >
+                                        <option style="font-weight: bold" value="1">Trés facile</option>
+                                        <option style="font-weight: bold"  value="2">Facile</option>
+                                        <option style="font-weight: bold" value="3">Moyenne</option>
+                                        <option style="font-weight: bold" value="4">Difficile</option>
+                                        <option style="font-weight: bold" value="5">Trés difficile</option>
+                                    </select>
+
                                 </div>
                                 <br>
                                 <label style="font-size: 18px">Type de question:</label>
@@ -469,8 +478,8 @@ Header
                 <div class="input-block">
                     <input type="radio" id="cr" class="sty" name="select" value="3">
                     <label for="cr" class="stl">
-                        <h2>nouveau</h2>
-                        <p>créer des nouveaux questions</p>
+                        <h2>Créer</h2>
+                        <p>créer des nouvelles questions</p>
                     </label>
                     <div class="contentcr">
                         <label style="font-size: 18px">Type de question:</label>
@@ -539,7 +548,7 @@ Header
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="note" style="color:#c21db7;"> Note </label>
+                            <label for="note" style="color:#c21db7;"> Barème </label>
 
                             <input type="number" style="color:black;" name="note" id="note" class="form-control" min="1"
                                    required>
@@ -594,7 +603,7 @@ Header
                         <br>
                         <div class="form-group">
                             <label for="d1" style="color:#c21db7;">
-                                Difficulté 1 </label>
+                              Trés facile </label>
 
                             <input type="number" style="color:black;" name="d1" id="d1" class="form-control" min="0"
                                    required>
@@ -602,21 +611,21 @@ Header
                         <br>
                         <div class="form-group">
                             <label for="d2" style="color:#c21db7;">
-                                Difficulté 2 </label>
+                                facile </label>
                             <input type="number" style="color:black;" name="d2" id="d2" class="form-control" min="0"
                                    required>
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="d3" style="color:#c21db7;">
-                                Difficulté 3 </label>
+                                Moyenne </label>
                             <input type="number" style="color:black;" name="d3" id="d3" class="form-control" min="0"
                                    required>
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="d4" style="color:#c21db7;">
-                                Difficulté 4 </label>
+                                Difficile </label>
 
                             <input type="number" style="color:black;" name="d4" id="d4" class="form-control" min="0"
                                    required>
@@ -625,7 +634,7 @@ Header
                         <br>
                         <div class="form-group">
                             <label for="d5" style="color:#c21db7;">
-                                Difficulté 5 </label>
+                                 Trés difficile  </label>
 
                             <input type="number" name="d5" id="d5" style="color:black;" class="form-control" min="0"
                                    required>
