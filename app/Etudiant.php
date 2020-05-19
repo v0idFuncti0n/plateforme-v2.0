@@ -22,7 +22,7 @@ class Etudiant extends Model implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         // TODO: Implement model() method.
-        return new etudiant(array(
+        return new Etudiant(array(
             'cin' => $row['cin'],
             'niveau_id' => $row['niveau'],
             'filiere_id' => $row['filiere'],

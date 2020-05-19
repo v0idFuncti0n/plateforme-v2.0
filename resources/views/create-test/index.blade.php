@@ -149,7 +149,7 @@
                                         <label class="form-row-inner">
                                             <?php
 
-                                            $filieres = filiere::all();
+                                            $filieres = filiere::query()->where('departement_id',$departements->first()->departement_id)->get();
                                             echo "<select size='1' style='width: 235px;margin-bottom:-80px ' id=filiere_id name=filiere_id>";
                                             foreach ($filieres as $f) {
                                                 $id_filiere = $f->filiere_id;
@@ -402,9 +402,9 @@
             url:'/getfilieres/'+id,
             data:{id: id},
             success:function(data) {
-                $("#filiere").empty();
+                $("#filiere_id").empty();
                 data.forEach(function(item){
-                    $("#filiere").append(item);
+                    $("#filiere_id").append(item);
                 });
             },
             error:function(xhr, ajaxOptions, thrownError){
