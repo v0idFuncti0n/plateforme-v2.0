@@ -266,7 +266,7 @@ Header
 
                     <div class=" card-6" style="margin-left: -3.75rem;">
                         <div class="">
-                            <?php $matiere_id = $test->matiere_id; ?>
+                            <?php use Illuminate\Support\Facades\DB;$matiere_id = $test->matiere_id; ?>
                             <?php $professeur_id = $test->professeur_id;
                             $question_qcm =[];
                             $question_text =[];
@@ -284,7 +284,7 @@ Header
                                     $i++;
                                 } ?>
                                 @foreach($tests as $test1)
-                                    <?php $qcms['qcms'] = DB::table('qcm')->where('test_id', $test1->test_id)->whereNotIn('question_text', $question_qcm)->get();?>
+                                    <?php $qcms['qcms'] = \App\QCM::withoutTrashed()->where('test_id', $test1->test_id)->whereNotIn('question_text', $question_qcm)->get();?>
 
                                     @foreach($qcms['qcms'] as $qcm)
 
@@ -304,7 +304,7 @@ Header
                                         $question_binaire[$i] = $binaire1->question_text;
                                         $i++;
                                     } ?>
-                                    <?php $binaires['binaires'] = DB::table('binaire')->where('test_id', $test1->test_id)->whereNotIn('question_text', $question_binaire)->get();?>
+                                    <?php $binaires['binaires'] = \App\binaire::withoutTrashed()->where('test_id', $test1->test_id)->whereNotIn('question_text', $question_binaire)->get();?>
 
                                     @foreach($binaires['binaires'] as $binaire)
 
@@ -322,7 +322,7 @@ Header
                                         $question_text[$i] = $text_libre1->question_text;
                                         $i++;
                                     } ?>
-                                    <?php $text_libre['text_libre'] = DB::table('text_libre')->where('test_id', $test1->test_id)->whereNotIn('question_text', $question_text)->get();?>
+                                    <?php $text_libre['text_libre'] = \App\Text_libre::withoutTrashed()->where('test_id', $test1->test_id)->whereNotIn('question_text', $question_text)->get();?>
 
                                     @foreach($text_libre['text_libre'] as $text_libre)
 
@@ -349,9 +349,7 @@ Header
                 </div>
             </section><!-- #services -->
         </div>
-
     </div>
-
 </main>
 
 
