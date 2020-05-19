@@ -18,7 +18,7 @@ class CreateDepartementsTable extends Migration
             $table->string('nom');
             $table->date('date_cr');
             $table->string('chef');
-            $table->date('date_fin');
+            $table->date('date_fin')->nullable(true);
             $table->timestamps();
         });
     }

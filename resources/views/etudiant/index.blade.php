@@ -396,7 +396,7 @@
                                     </div>
                                     <div class="form-group">
 
-                                        <label for="num_apologie" style="color:#c21db7;">num apologie</label>
+                                        <label for="num_apologie" style="color:#c21db7;">num apogée</label>
 
                                         <input required type="number" style="color:black;" name="num_apologie"
                                                class="form-control"

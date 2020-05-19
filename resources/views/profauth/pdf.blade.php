@@ -20,7 +20,7 @@
     <thead>
     <tr>
         <!--<th>ID</th>-->
-        <th>N apologie</th>
+        <th>N.apogée</th>
         <th>Nom</th>
         <th>Prénom</th>
         <th>Nom d'utilisateur</th>

@@ -148,7 +148,7 @@ class ResultatController extends Controller
                 $rp = array(
                     'question_id' => $request->question_id[$i],
                     'etudiant_id' => $request->session_id,
-                    'fichier' => "<p>".$text_libre->question_text.": </p><p>     ".$request->$name . '</p><p> Note de la parti QCM et binaire' . strval($somme) . '</p>',
+                    'fichier' => "<p>".$text_libre->question_text.": </p><p>     ".$request->$name . '</p><p> Note de la parti QCM et binaire : ' . strval($somme) . '</p>',
                 );
                 $reponse_text = Reponse_text::query()->create($rp);
             }

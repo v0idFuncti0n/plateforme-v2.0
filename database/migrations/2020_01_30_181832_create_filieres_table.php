@@ -22,7 +22,7 @@ class CreateFilieresTable extends Migration
             $table->String('nom');
             $table->String('coordinateur');
             $table->date('datedebut');
-            $table->date('datefin');
+            $table->date('datefin')->nullable(true);
             $table->unsignedBigInteger('departement_id');
             $table->foreign('departement_id')->references('departement_id')->on('departement')->onDelete('cascade');
 
