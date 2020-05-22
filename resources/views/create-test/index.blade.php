@@ -124,31 +124,11 @@
                                         </label>
                                     </div>
                                 </div>
-
-                                <div class="form-row" style="padding-right: 100px;">
-                                    <div class="form-holder form-holder-2 form-control">
-                                        <label class="form-row-inner">
-                                            <?php
-                                            use App\filiere;use App\Niveau;$niveaux = Niveau::all();
-                                            echo "<select type='text' size='1' style='width: 235px;margin-bottom:-50px' id=niveau_id name=niveau_id> ";
-                                            foreach ($niveaux as $n) {
-                                                $niveau_id = $n->niveau_id;
-                                                echo "<option value=$niveau_id>$n->nom</option>";
-                                            }
-                                            echo "</select>";
-                                            ?>
-                                            <span class="label" style="top: -30px; left:85px"
-                                                  for="niveau_id">Niveau</span>
-                                            <span class="border"></span>
-                                        </label>
-                                    </div>
-                                </div>
-
                                 <div class="form-row" style="padding-right: 100px;">
                                     <div class="form-holder form-holder-2">
                                         <label class="form-row-inner">
                                             <?php
-
+                                            use App\filiere;
                                             $filieres = filiere::query()->where('departement_id',$departements->first()->departement_id)->get();
                                             echo "<select size='1' style='width: 235px;margin-bottom:-80px ' id='filiere_id' name='filiere_id'>";
                                             foreach ($filieres as $f) {
@@ -163,6 +143,26 @@
                                         </label>
                                     </div>
                                 </div>
+                                <div class="form-row" style="padding-right: 100px;">
+                                    <div class="form-holder form-holder-2 form-control">
+                                        <label class="form-row-inner">
+                                            <?php
+                                            use App\Niveau;$niveaux = Niveau::all();
+                                            echo "<select type='text' size='1' style='width: 235px;margin-bottom:-50px' id=niveau_id name=niveau_id> ";
+                                            foreach ($niveaux as $n) {
+                                                $niveau_id = $n->niveau_id;
+                                                echo "<option value=$niveau_id>$n->nom</option>";
+                                            }
+                                            echo "</select>";
+                                            ?>
+                                            <span class="label" style="top: -30px; left:85px"
+                                                  for="niveau_id">Niveau</span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+
 
 
                             </div>
