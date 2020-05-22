@@ -52,18 +52,15 @@
 
 		<div class="bottom-grid">
 			<div class="logo">
-				<h1> <a href="{{route('session.login')}}"><span class="fa fa-key"></span>Session</a></h1>
+				<h1> <a href="{{route('session.login')}}"><span class="fa fa-key"></span>T-EST</a></h1>
 			</div>
 			<div class="links">
 				<ul class="links-unordered-list">
 					<li class="active">
-						<a href="#" class="">Login</a>
+						<a href="#" class="">Connexion</a>
 					</li>
 					<li class="">
-						<a href="#" class="">About Us</a>
-					</li>
-					<li class="">
-						<a href="#" class="">Register</a>
+						<a href="#" class="">A propos de nous</a>
 					</li>
 					<li class="">
 						<a href="#" class="">Contact</a>
@@ -81,13 +78,13 @@
 					<div class="field-group">
 						<span class="fa fa-user" aria-hidden="true"></span>
 						<div class="wthree-field">
-                            <input title="aucun caractère spécial n'est autorisé 4 - 255 max" id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autocomplete="off" autofocus placeholder="Username">
+                            <input title="aucun caractère spécial n'est autorisé 4 - 255 max" id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autocomplete="off" autofocus placeholder="Nom d'utilsateur">
 						</div>
 					</div>
 					<div class="field-group">
 						<span class="fa fa-lock" aria-hidden="true"></span>
 						<div class="wthree-field">
-                            <input title="aucun caractère spécial n'est autorisé 4 - 255 max" id="password" type="password" class="form-control @if(!empty(Session::get('error'))) is-invalid @endif" name="password" required autocomplete="off" placeholder="Password">
+                            <input title="aucun caractère spécial n'est autorisé 4 - 255 max" id="password" type="password" class="form-control @if(!empty(Session::get('error'))) is-invalid @endif" name="password" required autocomplete="off" placeholder="Mot de passe">
                             <span style="color: red;" class="invalid-feedback" role="alert">
                                         <strong>{{ Session::get('error') }}</strong>
                                     </span>

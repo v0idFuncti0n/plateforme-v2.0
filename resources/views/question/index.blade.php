@@ -37,6 +37,11 @@
         crossorigin="anonymous">
     </script>
     <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+    <style>
+        .ql-editor p{
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>

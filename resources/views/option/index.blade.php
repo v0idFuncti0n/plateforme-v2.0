@@ -234,6 +234,7 @@
 
 <body>
 
+<?php $test = \App\Test::find(\App\QCM::find($options['options'][0]->binaire_id)->test_id) ?>
 
 <!--==========================
 Header
@@ -251,7 +252,7 @@ Header
             <ul class="nav-menu">
                 <li><a href="{{ route('manager-test',$prof->professeur_id) }}" style="text-decoration: none;color: #fff">Accueil</a></li>
                 <li><a href="{{ route("create-test.index",$prof->professeur_id)}}" style=" text-decoration: none;color: #fff">Créer test</a></li>
-                <li class="menu-active"><a href="{{ route('manager-test',$prof) }}" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li ><a href="{{ route('manager-test',$prof) }}" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li style="margin-right: -90px;margin-left: 100px" class="profile-dropdown image" > <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
                     <a  style="text-decoration: none;color: #fff;position: relative;top: -16px">
                         {{ $prof->nom ." ". $prof->prenom }}</a><ul style="left: -170px" >

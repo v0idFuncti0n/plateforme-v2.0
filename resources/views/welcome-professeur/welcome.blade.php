@@ -41,7 +41,6 @@ Header
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <a href="#hero"><img src="homeProfesseur/img/logo.png" alt="" title="" /></a>
             <!-- Uncomment below if you prefer to use a text logo -->
             <!--<h1><a href="#hero">Regna</a></h1>-->
         </div>
@@ -122,12 +121,10 @@ Header
         <div class="container wow fadeIn">
             <div class="row">
                 <div class="col-lg-9 text-center text-lg-left">
-                    <h3 class="cta-title">Call To Action</h3>
-                    <p class="cta-text"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <h3 class="cta-title">T-EST</h3>
+                    <p class="cta-text" style="font-size: 20px"> une application web qui est désigné pour faire la gestion des évaluations d’une manière en ligne et conçu pour migrer du système classique de gestion des examens vers un système automatique qui automatise et rend la gestion beaucoup plus facile.</p>
                 </div>
-                <div class="col-lg-3 cta-btn-container text-center">
-                    <a class="cta-btn align-middle" href="#">Call To Action</a>
-                </div>
+
             </div>
 
         </div>
