@@ -5,6 +5,7 @@
             var s=$('#sec').html();
             if(h==00 && m==00 && s==00){
                 clearInterval();
+                getHTML();
             }
             else{
                 if(s>00){

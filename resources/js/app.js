@@ -28,5 +28,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app',
+    el: '#js-wizard-form',
+    created() {
+        Echo.channel('testChannel')
+            .listen('TestSessionTerminated', (e) => {
+                getHTML();
+            });
+    }
 });

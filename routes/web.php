@@ -137,12 +137,9 @@ Route::get('/create-text-libre-restore', 'Text_libreController@indexRestore');
 Route::post('/create-text-libre-restore', 'Text_libreController@restoreTextLibre')->name("text-libre.restore");
 Route::post('/create-text-libre-forcedelete', 'Text_libreController@forceDeleteMass')->name("text-libre.forceDelete");
 
-
 Route::post('/option/forceDelete', 'OptionController@forceDelete');
 Route::get('/option-restore', 'OptionController@indexRestore');
 Route::post('/option-restore', 'OptionController@restoreOption')->name("option.restore");
 Route::post('/option-forcedelete', 'OptionController@forceDeleteMass')->name("option.forceDelete");
 
 Route::get('/getfilieres/{id}','AjaxController@filieres');
-
-

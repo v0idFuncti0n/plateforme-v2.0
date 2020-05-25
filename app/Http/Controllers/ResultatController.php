@@ -44,6 +44,10 @@ class ResultatController extends Controller
      */
     public function store(Request $request)
     {
+        $se = Session::find($request->session_id)->first();
+        if($se->deleted == 1){
+            return redirect()->route('session.index');
+        }
         $test_id = $request->test_id;
         $vrai = 0;
         $faux = 0;
@@ -131,7 +135,7 @@ class ResultatController extends Controller
                 }
             }
         }
-        $se = Session::find($request->session_id)->first();
+
         $etudiant_id = $se->etudiant_id;
         for ($i = 0; $i < $request->nb_ql; $i++) {
             $name = 'fichier' . strval($i);
@@ -159,6 +163,8 @@ class ResultatController extends Controller
                 'note_total' => $somme,
             );
             Resultat::query()->create($r);
+            $se->deleted = 1;
+            $se->save();
             return view('resultat1.index', ['somme' => $somme, 'vrai' => $vrai, 'faux' => $faux, 'session' => $request->session_id]);
         } else {
             session()->flush();

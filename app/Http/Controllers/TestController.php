@@ -305,11 +305,13 @@ class TestController extends Controller
                     'username' => $s->username,
                     'password' => $s->password,
                     'active' => 1,
+                    'deleted' => 0,
                 );
                 Session::findOrFail($s->session_id)->update($s1);
             }
         } else {
             $sessions = Session::query()->where('test_id', '=', $request->test_id)->get();
+            event(new \App\Events\TestSessionTerminated('terminated'));
             foreach ($sessions as $s) {
                 $s1 = array(
                     'session_id' => $s->session_id,
@@ -318,6 +320,7 @@ class TestController extends Controller
                     'username' => $s->username,
                     'password' => $s->password,
                     'active' => 0,
+                    'deleted' => 0,
                 );
                 Session::findOrFail($s->session_id)->update($s1);
             }
