@@ -143,3 +143,4 @@ Route::post('/option-restore', 'OptionController@restoreOption')->name("option.r
 Route::post('/option-forcedelete', 'OptionController@forceDeleteMass')->name("option.forceDelete");
 
 Route::get('/getfilieres/{id}','AjaxController@filieres');
+Route::get('/getInfos/{filiere_id}/{niveau_id}','AjaxController@nombreDesEtudiantDansFiliereNiveau');

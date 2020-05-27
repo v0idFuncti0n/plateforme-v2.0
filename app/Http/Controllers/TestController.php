@@ -72,7 +72,6 @@ class TestController extends Controller
         $p = Professeur::query()->find($request->professeur_id)->first();
 
         $currentTest = Test::query()->create($test);
-
         $nbe = ceil(Etudiant::query()->where('filiere_id',$request->filiere_id)->count() / $request->ng);
         $numEtu = Etudiant::query()->where('filiere_id',$request->filiere_id)->count();
         $skip = 0;

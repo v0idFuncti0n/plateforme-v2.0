@@ -92,6 +92,23 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="step">
+                            <div class="step__content">
+                                <p class="step__number">5</p>
+                                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                                </svg>
+
+                                <div class="lines">
+                                    <div class="line -background">
+                                    </div>
+
+                                    <div class="line -progress">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </nav>
                 </div>
             </header>
@@ -149,7 +166,7 @@
                                         <label class="form-row-inner">
                                             <?php
 
-                                            $filieres = filiere::query()->where('departement_id',$departements->first()->departement_id)->get();
+                                            $filieres = filiere::query()->where('departement_id', $departements->first()->departement_id)->get();
                                             echo "<select size='1' style='width: 235px;margin-bottom:-80px ' id='filiere_id' name='filiere_id'>";
                                             foreach ($filieres as $f) {
                                                 $id_filiere = $f->filiere_id;
@@ -185,7 +202,8 @@
                                             @endforeach
                                             <?php   $matiere = DB::table('matiere')->whereIn('matiere_id', $id)->get();?>
 
-                                            <select type='text' size='1' style='width: 235px;' id="matiere_id" name="matiere_id">
+                                            <select type='text' size='1' style='width: 235px;' id="matiere_id"
+                                                    name="matiere_id">
                                                 @foreach ($matiere as $m)
                                                     <?php $matiere_id = intval($m->matiere_id);?>
                                                     <option value="{{$matiere_id}}">{{$m->nom_matiere}}</option>
@@ -193,7 +211,7 @@
                                             </select>
 
                                             <span class="label" style="top: -30px; left:85px"
-                                                  for="niveau_id" >Matiere</span>
+                                                  for="niveau_id">Matiere</span>
                                             <span class="border"></span>
                                         </label>
                                     </div>
@@ -208,20 +226,7 @@
                                         </label>
                                     </div>
                                 </div>
-
-
-                                <div class="form-row">
-                                    <div class="form-holder form-holder-2">
-                                        <label class="form-row-inner">
-                                            <input type="number" style='width: 92%;' name="ng"
-                                                   id="ng" class="form-control" required>
-                                            <span class="label"  style="text-align: center;top: -15px">Nombre des étudiants à passer le test </span>
-
-                                            <span class="border"></span>
-                                        </label>
-                                    </div>
-                                </div>
-
+                                <input type="hidden" style='width: 92%;' name="ng" id="ng">
                             </div>
                         </section>
                     </div>
@@ -308,7 +313,8 @@
 
                     <div class="panel" style="margin-left: 18%;">
                         <header class="panel__header">
-                            <h2 class="panel__title" style="font-size: 19px;text-align: center">Entrez le nombre de questions qui apprtienennet à chaque catégorie de difficulté</h2>
+                            <h2 class="panel__title" style="font-size: 19px;text-align: center">Entrez le nombre de
+                                questions qui apprtienennet à chaque catégorie de difficulté</h2>
                         </header>
                         <section>
                             <div class="inner" style="display:flex;">
@@ -372,12 +378,44 @@
                                         </label>
                                     </div>
                                 </div>
-
                             </div>
                         </section>
                     </div>
+                    <div class="panel" style="margin-left: 18%;">
+                        <header class="panel__header">
+                            <h2 class="panel__title" style="font-size: 19px;text-align: center">Repartition des
+                                groupes</h2>
+                        </header>
+                        <section>
+                            <div class="inner" style="display:flex;">
+                                <div class="form-row" style="left: 260px">
+                                    <div class="form-holder form-holder-2">
+                                        <label class="form-row-inner">
+                                            Vous avez <span id="nombreDesEtudiant">0</span> etudiants dans filiere <span
+                                                id="nomFiliere">?</span> niveau <span id="nomNiveau">?</span>
+                                        </label>
+                                        <br>
+                                        <br>
+                                        <div class="form-row align-items-center">
+                                            <div class="col-auto">
+                                                <label for="inlineFormInput">Le nombre des etudiant par chaque groupe :</label>
+                                                <input type="number" class="form-control mb-2" id="surDiv"
+                                                       min="1" placeholder="20">
+                                                <button type="button" class="btn btn-success" onclick="divide();">
+                                                    Diviser
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div id="division">
 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
                 </div>
+
                 <div class="wizard__footer" style="justify-content: space-between">
                     <button type="button" class="button previous">Précedent</button>
                     <button type="button" id="save" class="button next">Suivant</button>
@@ -394,29 +432,106 @@
 <script src="{{asset('js/script.js')}}"></script>
 
 </body>
-<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
+    $("document").ready(function () {
+        getInfo();
+        document.getElementById("surDiv").value = 20;
+
+    });
+
+    function getInfo() {
+        let filiere = document.getElementById("filiere_id");
+        let selectedF = filiere.options[filiere.selectedIndex].value;
+
+        let niveau = document.getElementById("niveau_id");
+        let selectedN = niveau.options[niveau.selectedIndex].value;
+
+
+        $.ajax({
+            type: 'GET',
+            url: '/getInfos/' + selectedF + '/' + selectedN,
+            data: {
+                filiere_id: selectedF
+                , niveau_id: selectedN
+            },
+            success: function (data) {
+                let nf = $("#nomFiliere").empty();
+                nf.text(data['filiere']);
+
+                let nn = $("#nomNiveau").empty();
+                nn.text(data['niveau']);
+
+                let ne = $("#nombreDesEtudiant").empty();
+                ne.text(data['etudiants_count']);
+
+                let nei = document.getElementById('nei');
+                nei.value = data['etudiants_count'];
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+
+        });
+    }
+
     function getFilieres(id) {
         $.ajax({
-            type:'GET',
-            url:'/getfilieres/'+id,
-            data:{id: id},
-            success:function(data) {
+            type: 'GET',
+            url: '/getfilieres/' + id,
+            data: {id: id},
+            success: function (data) {
                 $("#filiere_id").empty();
-                console.log(data);
-                data.forEach(function(item){
+                data.forEach(function (item) {
                     $("#filiere_id").append(item);
                 });
             },
-            error:function(xhr, ajaxOptions, thrownError){
+            error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status);
                 alert(thrownError);
             }
         });
+        let division = document.getElementById("division");
+        division.innerHTML = "";
     }
 
-    $("#departement_id").on('change',function(){
+    function divide() {
+        let division = document.getElementById('division');
+        division.innerHTML = "";
+        let nbpg = Number.parseInt(document.getElementById('surDiv').value);
+        let nombreDesEtudiant = Number.parseInt(document.getElementById('nombreDesEtudiant').textContent);
+        let nbbg = 1;
+        let nbbe = nbpg;
+        let nbg = Math.ceil(nombreDesEtudiant / nbpg);
+        let nr = nombreDesEtudiant;
+        for (let i = 1; i <= nbg; i++) {
+            let html = "<label>Groupe " + i + " : de <span id=&#34;gb1&#34;>" + nbbg + "</span> jusqu&#39;a <span id=&#34;ge1&#34;>" + nbbe + "</span> </label> <br>";
+            division.insertAdjacentHTML('beforeend', html);
+            nbbg += nbpg;
+            nr -= nbpg;
+            if (nr < nbpg) {
+                nbbe += nr;
+            } else {
+                nbbe += nbpg;
+            }
+
+
+        }
+
+        let ng = document.getElementById('ng');
+        ng.value = nbpg;
+    }
+
+    $("#departement_id").on('change', function () {
         getFilieres(this.value)
-    })
+    });
+
+    $("#filiere_id").on('change', function () {
+        getInfo();
+    });
+    $("#niveau_id").on('change', function () {
+        getInfo();
+    });
 </script>
 </html>

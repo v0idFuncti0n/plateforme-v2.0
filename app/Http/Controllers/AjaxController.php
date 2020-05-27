@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Etudiant;
 use App\filiere;
+use App\Niveau;
 
 class AjaxController extends Controller
 {
@@ -15,5 +17,13 @@ class AjaxController extends Controller
             array_push($options,"<option value='$filiere->filiere_id'>$filiere->nom</option>");
         }
         return $options;
+    }
+
+    public function nombreDesEtudiantDansFiliereNiveau($filiere_id,$niveau_id){
+        $data['filiere'] = filiere::find($filiere_id)->nom;
+        $data['niveau'] = Niveau::find($niveau_id)->nom;
+        $data['etudiants_count'] = Etudiant::query()->where('filiere_id',$filiere_id)->where('niveau_id',$niveau_id)->count();
+
+        return $data;
     }
 }
