@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\departement;
 use App\Option;
+use App\OptionTemp;
 use App\Professeur;
+use App\QuestionTemp;
 use App\Reponse_text;
 use App\Test;
 use Illuminate\Http\Request;
@@ -63,13 +65,12 @@ class QCMController extends Controller
         $point = $request->input('point');
         $QCM = array(
             'question_text' => $question,
-            'type' => '1',
             'difficulty' => $request->difficulty,
             'test_id' => $test_id,
-            'note' => $request->note
+            'note' => $request->note,
+            'type' => 'qcm'
         );
-        $id = qcm::create($QCM);
-
+        $id = QuestionTemp::create($QCM);
         for ($i = 1; $i <= count($nbrs); $i++) {
 
             $test = in_array($i + 0, $point);
@@ -79,7 +80,7 @@ class QCMController extends Controller
                     'question_id' => $id->question_id,
                     'point' => '1'
                 );
-                option::create($option);
+                OptionTemp::create($option);
 
             }
             if ($test == false) {
@@ -88,7 +89,7 @@ class QCMController extends Controller
                     'question_id' => $id->question_id,
                     'point' => '0'
                 );
-                option::create($option);
+                OptionTemp::create($option);
 
 
             }

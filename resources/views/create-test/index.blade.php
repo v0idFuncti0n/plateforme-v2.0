@@ -226,6 +226,19 @@
                                         </label>
                                     </div>
                                 </div>
+                                <div class="form-row" style="padding-right: 80px;">
+                                    <div class="form-holder form-holder-2">
+                                        <label class="form-row-inner">
+                                            <select class="form-control" name="type" id="type">
+                                                <option value="1">Controle</option>
+                                                <option value="2">Final</option>
+                                                <option value="3">Ratrappage</option>
+                                            </select>
+                                            <span class="label" style="text-align: center;top:-15px">Type de test : </span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                </div>
                                 <input type="hidden" style='width: 92%;' name="ng" id="ng">
                             </div>
                         </section>

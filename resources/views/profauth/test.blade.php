@@ -384,6 +384,7 @@ Header
                 </table>
             </div>
         </div>
+
     </section><!-- #portfolio -->
     <?php
     if(isset($test)){
@@ -503,6 +504,16 @@ Header
             <div class="modal1-buttons">
                 <button class="input-button">Enregistrer</button>
             </div>
+            <form action="{{ route('question.validation') }}" method="POST">
+                @csrf
+                <input type="hidden" name="test_id" value="{{$test->test_id}}">
+                <button >Validate</button>
+            </form>
+            <form action="{{ route('question.discard') }}" method="POST">
+                @csrf
+                <input type="hidden" name="test_id" value="{{$test->test_id}}">
+                <button>Discard</button>
+            </form>
         </div>
 
         <button class="icon-button close-button">

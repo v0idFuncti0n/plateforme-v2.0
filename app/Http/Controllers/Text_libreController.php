@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Professeur;
+use App\QuestionTemp;
 use App\Test;
 use App\Text_libre;
 use Illuminate\Http\Request;
@@ -52,9 +53,10 @@ class Text_libreController extends Controller
             'difficulty' => $request->difficulty,
             'test_id' => $request->test_id,
             'note'  => $request->note,
+            'type' => 'text_libre'
         );
 
-        Text_libre::query()->create($text_libre);
+        QuestionTemp::query()->create($text_libre);
         return redirect()->back();
     }
 

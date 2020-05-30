@@ -12,7 +12,7 @@ class Test extends Model implements ToModel, WithHeadingRow
     use SoftDeletes;
 
     protected $table = "test";
-    protected $fillable = ['nom', 'duree', 'salle', 'date', 'note', 'discription','professeur_id','matiere_id','d1','d2','d3','d4','d5','num','filiere_id','num_inscrit'];
+    protected $fillable = ['nom', 'duree', 'salle', 'date', 'note', 'discription','professeur_id','matiere_id','d1','d2','d3','d4','d5','num','filiere_id','num_inscrit','type'];
     protected $primaryKey = 'test_id';
     protected $dates = ['deleted_at'];
 

@@ -26,4 +26,5 @@ class AjaxController extends Controller
 
         return $data;
     }
+
 }

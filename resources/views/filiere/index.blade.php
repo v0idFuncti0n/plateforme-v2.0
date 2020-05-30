@@ -313,7 +313,7 @@
 
                                     <div class="form-group">
                                         <label for="" style="color:#c21db7;">date de fin</label>
-                                        <input required style="color:black;" type="date" id="datefin" name="datefin"
+                                        <input style="color:black;" type="date" id="datefin" name="datefin"
                                                class="form-control"
                                                placeholder="date de fin">
                                     </div>

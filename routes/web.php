@@ -144,3 +144,8 @@ Route::post('/option-forcedelete', 'OptionController@forceDeleteMass')->name("op
 
 Route::get('/getfilieres/{id}','AjaxController@filieres');
 Route::get('/getInfos/{filiere_id}/{niveau_id}','AjaxController@nombreDesEtudiantDansFiliereNiveau');
+
+Route::post('/filiere-module/create','FiliereController@storeFromModule')->name('filiere.storeFromModule');
+
+Route::post('question/validate','QuestionTempController@validation')->name('question.validation');
+Route::post('question/discardAll','QuestionTempController@discardAll')->name('question.discard');

@@ -254,6 +254,10 @@
                                     <a data-toggle="modal" style="margin-left: 889px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
                                 </div>
+                                <a href="" class="btn btn-info" data-toggle="modal"
+                                   data-target="#filiereModal">ajouter filiere</a>
+
+                                <a href="{{ route("matiere.index") }}"><button class="btn btn-primary float-right">Voir les matieres</button></a>
 
                             </div>
                         </div>
@@ -427,6 +431,91 @@
                                         <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
 
                                         <button type="submit" class="btn btn-danger">restaurer</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade-right" id="filiereModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ajouter filiére</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form action="{{route('filiere.storeFromModule')}}" method="POST">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="" style="color:#c21db7;">nom de filiere</label>
+
+                                        <input required style="color:black;" type="text" id="nom" name="nom" class="form-control"
+                                               placeholder="Nom de filiere : e.g. Genie Logiciel" pattern="[a-zA-Z ]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                    </div>
+                                    <input style="color:black;" type="hidden" name="filiere_id" id="filiere_id">
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="" style="color:#c21db7;">Coordinateur</label>
+                                        <input required style="color:black;" type="text" id="coordinateur" name="coordinateur"
+                                               class="form-control"
+                                               placeholder="Coordinatuer" pattern="[a-zA-Z. ]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                    </div>
+                                    <br>
+
+                                    <div class="form-group">
+                                        <label for="" style="color:#c21db7;">date de debut</label>
+                                        <input required style="color:black;" type="date" id="datedebut" name="datedebut"
+                                               class="form-control"
+                                               placeholder="Date de creation de filiere">
+                                    </div>
+                                    <br>
+
+                                    <div class="form-group">
+                                        <label for="" style="color:#c21db7;">date de fin</label>
+                                        <input style="color:black;" type="date" id="datefin" name="datefin"
+                                               class="form-control"
+                                               placeholder="date de fin">
+                                    </div>
+                                    <br>
+
+                                    <div class="form-group">
+
+                                        <label for="nom_dep" style="color:#c21db7;">departemeent</label>
+
+
+                                        <select required name="nom_dep" size="3" id="nom_dep" class="form-control">
+                                            <?php
+                                            use App\departement;
+                                            $departements = departement::all();
+                                            foreach ($departements as $un) {
+                                                echo '<option>';
+                                                echo $un->nom;
+                                                echo '</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="niveau_id" style="color:#c21db7;">niveau</label>
+                                        <?php $niveau = \App\Niveau::all()?>
+                                        <select required name="niveau_id" size="3" id="niveau_id" class="form-control" >
+                                            @foreach($niveau as $n)
+                                                <option value="{{$n->niveau_id}}">{{$n->nom}}</option>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+
+                                        <button type="submit" class="btn btn-success">enregistrer</button>
                                     </div>
                                 </form>
                             </div>

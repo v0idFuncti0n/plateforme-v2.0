@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQCMSTable extends Migration
+class CreateQuestionTempTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateQCMSTable extends Migration
      */
     public function up()
     {
-        Schema::create('QCM', function (Blueprint $table) {
+        Schema::create('question_temp', function (Blueprint $table) {
             $table->bigIncrements('question_id');
             $table->unsignedBigInteger('test_id');
+            $table->string('question_text',2048);
             $table->integer('difficulty');
-            $table->string('question_text');
-            $table->double('note');
-            $table->softDeletes();
-            $table->timestamps();
+            $table->integer('note');
             $table->foreign('test_id')->references('test_id')->on('test')->onDelete('cascade');
+            $table->string('type');
+            $table->timestamps();
         });
     }
 
@@ -32,6 +32,6 @@ class CreateQCMSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('QCM');
+        Schema::dropIfExists('question_temp');
     }
 }

@@ -144,5 +144,29 @@ class FiliereController extends Controller
         Excel::import(new filiere,request()->file('file'));
         return back();
     }
+
+    public function storeFromModule(Request $request){
+        $selects = Departement::all();
+        foreach ($selects as $select) {
+
+
+            if ($select->nom == $request->nom_dep) {
+
+                $filiere = array(
+
+                    'nom' => $request->nom,
+                    'coordinateur' => $request->coordinateur,
+                    'datedebut' => $request->datedebut,
+                    'datefin' => $request->datefin,
+                    'departement_id' => $select->departement_id
+
+                );
+                $f = new filiere($filiere);
+                $n = Niveau::query()->findOrFail($request->niveau_id);
+                $n->filiere()->save($f);
+                return redirect()->route('module.index');
+            }
+        }
+    }
 }
 

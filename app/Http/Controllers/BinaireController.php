@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\binaire;
 use App\departement;
 use App\option;
+use App\OptionTemp;
 use App\Professeur;
 use App\QCM;
+use App\QuestionTemp;
 use App\Test;
 use Illuminate\Http\Request;
 
@@ -49,43 +51,43 @@ class BinaireController extends Controller
         $question =$request->question;
         $test_id=$request->test_id;
         $choice =$request->choice ;
-        $question=array(
+        $question = array(
             'question_text'=> $question,
             'test_id' =>$test_id,
             'difficulty' => $request->difficulty,
-            'note' => $request->note
+            'note' => $request->note,
+            'type' => 'binaire'
         );
-       $id= Binaire::create($question);
+       $id= QuestionTemp::create($question);
        if($choice=='vrai') {
            $option = array(
                'option_text' => 'vrai',
-
-               'binaire_id' => $id->binaire_id ,
+               'binaire_id' => $id->question_id ,
                'point' => '1'
            );
-           option::create($option);
+           OptionTemp::create($option);
            $option1 = array(
                'option_text' => 'faux',
 
-               'binaire_id' => $id->binaire_id ,
+               'binaire_id' => $id->question_id ,
                'point' => '0'
            );
-           option::create($option1);
+           OptionTemp::create($option1);
        }
         if($choice=='faux') {
             $option = array(
                 'option_text' => 'faux',
 
-                'binaire_id' => $id->binaire_id ,
+                'binaire_id' => $id->question_id ,
                 'point' => '1'
             );
-            option::create($option);
+            OptionTemp::create($option);
             $option1 = array(
                 'option_text' => 'vrai',
-                'binaire_id' => $id->binaire_id ,
+                'binaire_id' => $id->question_id ,
                 'point' => '0'
             );
-            option::create($option1);
+            OptionTemp::create($option1);
         }
        return redirect()->back();
     }
