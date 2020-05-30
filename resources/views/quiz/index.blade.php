@@ -148,7 +148,7 @@ $niveau = \App\Niveau::findOrfail($etudiant->niveau_id);
                                         <div class="au-task__item au-task__item--{{$color[rand(0,count($color)-1)]}}">
                                             <div class="au-task__item-inner">
                                                 <h5 class="task">
-                                                    <a href="/question/{{$test->test_id}}/{{$data['s']->session_id}}">{{ $test->nom }}</a>
+                                                    <a href="/question/{{$test->test_id}}/{{$data['s']->session_id}}">{{ $test->nom ." ". $test->discription }}</a>
                                                 </h5>
                                                 <span class="time">{{date("H A")}}</span>
                                             </div>

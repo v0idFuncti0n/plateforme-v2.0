@@ -237,7 +237,7 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a href="{{ route('manager-test',$prof->professeur_id) }}" style="text-decoration: none;color: #fff">Accueil</a></li>
+                <li><a href="{{ route('profauth.test') }}" style="text-decoration: none;color: #fff">Accueil</a></li>
                 <li><a href="{{ route("create-test.index",$prof->professeur_id)}}" style=" text-decoration: none;color: #fff">Créer test</a></li>
                 <li class="menu-active"><a href="{{ route('manager-test',$prof) }}" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li style="margin-right: -90px;margin-left: 100px" class="profile-dropdown image" > <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
@@ -297,7 +297,8 @@ Header
                     <thead>
                     <tr>
                         <th>Identifiant</th>
-                        <th>Nom de test<i class="fa fa-sort"></i></th>
+                        <th>Test</th>
+                        <th>Description</th>
                         <th>Liste d'étudiant</th>
                         <th>La date de création du test</th>
                         <th>La date de prévue du test</th>
@@ -327,6 +328,7 @@ Header
                         <tr>
                             <td>{{++$key}}</td>
                             <td>{{$test->nom}}</td>
+                            <td>{{$test->discription}}</td>
                             <td><a href="/reponses/{{$test->test_id}}" style="font-weight: bold;color: #5cb85c">Vers la
                                     liste</a></td>
                             <td>{{$test->created_at}}</td>

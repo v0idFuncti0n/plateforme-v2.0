@@ -53,9 +53,9 @@ Header
 
         <nav id="nav-menu-container">
             <ul class="nav-menu">
-                <li><a href="{{ route('manager-test',$prof->professeur_id) }}" style="text-decoration: none;color: #fff">Accueil</a></li>
+                <li class="menu-active"><a href="{{ route('manager-test',$prof->professeur_id) }}" style="text-decoration: none;color: #fff">Accueil</a></li>
                 <li><a href="{{ route("create-test.index",$prof->professeur_id)}}" style=" text-decoration: none;color: #fff">Créer test</a></li>
-                <li class="menu-active"><a href="{{ route('manager-test',$prof) }}" style=" text-decoration: none;color: #fff">Gérer test</a></li>
+                <li ><a href="{{ route('manager-test',$prof) }}" style=" text-decoration: none;color: #fff">Gérer test</a></li>
                 <li style="margin-right: -90px;margin-left: 100px" class="profile-dropdown image" > <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
                     <a  style="text-decoration: none;color: #fff;position: relative;top: -16px">
                         {{ $prof->nom ." ". $prof->prenom }}</a><ul style="left: -170px" >
@@ -213,7 +213,7 @@ Header
                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
                                 </div>
                                 <div class="col-lg-12 col-sm-12 col-12 box-text-section">
-                                    <p><a href="#" style="color:#dc3545;font-weight: bold">Déconnexion</a></p>
+                                    <p><a href="{{route('profauth.logout')}}" style="color:#dc3545;font-weight: bold">Déconnexion</a></p>
                                 </div>
                             </div>
                         </div>

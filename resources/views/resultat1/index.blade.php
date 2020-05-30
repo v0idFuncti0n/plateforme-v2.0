@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="overview-chart">
                                     <h3 style="color: white; text-align: center;margin-top: 20px;">{{$vrai}}
-                                        question</h3>
+                                        reponse</h3>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                                 </div>
                                 <div class="overview-chart">
                                     <h3 style="color: white; text-align: center;margin-top: 20px;">{{$faux}}
-                                        question</h3>
+                                        reponse</h3>
                                 </div>
                             </div>
                         </div>

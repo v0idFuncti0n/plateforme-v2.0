@@ -364,7 +364,7 @@
                                         <br>
                                         <div class="form-group">
                                             <label for="module_id" style="color:#c21db7;">module</label>
-                                            <select required name="module_id" id="module_id" class="form-control">
+                                            <select required name="module_id" size='3' id="module_id" class="form-control">
                                                 {{$mod = \App\Module::all()}}
                                                 @foreach( $mod as $m )
                                                     <option value="{{ $m->module_id }}">{{ $m->nom_module }}</option>
