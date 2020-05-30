@@ -507,12 +507,12 @@ Header
             <form action="{{ route('question.validation') }}" method="POST">
                 @csrf
                 <input type="hidden" name="test_id" value="{{$test->test_id}}">
-                <button >Validate</button>
+                <button >Valider</button>
             </form>
             <form action="{{ route('question.discard') }}" method="POST">
                 @csrf
                 <input type="hidden" name="test_id" value="{{$test->test_id}}">
-                <button>Discard</button>
+                <button>Jeter tout</button>
             </form>
         </div>
 
