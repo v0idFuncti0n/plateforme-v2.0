@@ -44,7 +44,7 @@ class ResultatController extends Controller
      */
     public function store(Request $request)
     {
-        $se = Session::find($request->session_id)->first();
+        $se = Session::find($request->session_id);
         if($se->deleted == 1){
             return redirect()->route('session.index');
         }
@@ -106,8 +106,6 @@ class ResultatController extends Controller
                 $er = false;
                 $somme2 = 0;
                 $somme3 = 0;
-
-
                 $option = DB::table('option')->where('question_id', '=', $qcm->question_id)->get();
                 foreach ($option as $opt) {
                     $somme2 = $somme2 + $opt->point;
