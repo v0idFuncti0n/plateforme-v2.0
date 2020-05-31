@@ -508,12 +508,12 @@ Header
             </div>
             <form action="{{ route('question.validation') }}" method="POST">
                 @csrf
-                <input type="hidden" name="test_id" value="{{$test->test_id}}">
+                <input type="hidden" name="test_id" id="validation">
                 <button >Valider</button>
             </form>
             <form action="{{ route('question.discard') }}" method="POST">
                 @csrf
-                <input type="hidden" name="test_id" value="{{$test->test_id}}">
+                <input type="hidden" name="test_id" id="discardAll">
                 <button>Jeter tout</button>
             </form>
         </div>
@@ -748,6 +748,11 @@ Header
         let random = document.getElementById('random-test_id');
         random.value = id;
         test_id = id;
+
+        let validation = document.getElementById("validation");
+        validation.value = test_id;
+        let discardAll = document.getElementById("discardAll");
+        discardAll.value = test_id;
         firstRun(test_id);
     }
     $('#exampleModal-edit').on('show.bs.modal', function (event) {
