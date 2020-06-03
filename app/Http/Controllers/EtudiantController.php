@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Etudiant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class EtudiantController extends Controller
@@ -66,8 +67,155 @@ class EtudiantController extends Controller
         //
     }
 
+    public function searchniveau(Request $request){
+        {
+            if($request->ajax())
+            {
+                $output = '';
+                $query = $request->get('query');
+                $query1 = $request->get('query1');
+                if($query != '' && $query1=='')
+                {
+                    $etudiants['etudiants'] = Etudiant::OrderBy('etudiant_id', 'asc')
+                        ->where('niveau_id',$query)
+                        ->get();
+
+                }
+                if($query =='' && $query1!='')
+                {
+                    $etudiants['etudiants'] = Etudiant::OrderBy('etudiant_id', 'asc')
+                        ->where('filiere_id',$query1)
+                        ->get();
+
+                }
+                if($query !='' && $query1!='')
+                {
+                    $etudiants['etudiants'] = Etudiant::OrderBy('etudiant_id', 'asc')
+                        ->where('filiere_id',$query1)
+                        ->where('niveau_id',$query)
+                        ->get();
+
+                }
+
+                if($query == '' && $query1=='')
+                {
+                           $etudiants['etudiants'] = Etudiant::OrderBy('etudiant_id', 'asc')->paginate(10);
+
+                }
+
+                foreach($etudiants['etudiants'] as $etudiant)
+                {
+                    $output .= '<tr>
+
+                                                     <td> </td>
+                                                <td>'.$etudiant->cin.'</td>
+                                                <td>'.$etudiant->niveau_id.'</td>
+                                                <td>'.$etudiant->filiere_id.'</td>
+                                                <td>'.$etudiant->cne.'</td>
+                                                <td>'.$etudiant->nom.'</td>
+                                                <td>'.$etudiant->prenom.'</td>
+                                                <td>'.$etudiant->email_address.'</td>
+                                                <td>'.$etudiant->numero.'</td>
+                                                <td>'.$etudiant->num_apologie.'</td>
+                                                <td class="exclude">
+                                                    <a data-id='.$etudiant->etudiant_id.'
+                                                       data-groupe_id='.$etudiant->groupe_id.'
+                                                       data-cin='.$etudiant->cin.'
+                                                       data-cne='.$etudiant->cne.'
+                                                       data-nom='.$etudiant->nom.'
+                                                       data-prenom= '.$etudiant->prenom.'
+                                                       data-id_niveau='.$etudiant->niveau_id.'
+                                                       data-id_filiere='.$etudiant->filiere_id.'
+                                                       data-email_address= '.$etudiant->email_address .'
+                                                       data-numero= '.$etudiant->numero.'
+                                                       data-num_apologie='.$etudiant->num_apologie.'
+                                                       data-toggle="modal"
+                                                       data-target="#exampleModal-edit" type="button"
+                                                       class="btn btn-warning btn-sm" style="width: 100px">modifier</a>
+                                                    <a data-id='.$etudiant->etudiant_id.'
+                                                       data-toggle="modal"
+                                                       data-target="#exampleModal-delete" style="margin-top: 5px" class="btn btn-danger btn-sm">supprimer</a>
+                                                </td>
+                                            </tr>';
+                }
+            }
+
+            $etudiants = array(
+                'table_data'  => $output,
+            );
+            echo json_encode($etudiants);
+
+        }
+    }
+/*
+
+    public function searchniveau(Request $request){
+        {
+            if($request->ajax())
+            {
+                $output = '';
+                $query = $request->get('query');
+                if($query != '')
+                {
+                    $etudiants = DB::table('etudiant')
+                        ->where('niveau_id',$query)
+                        ->get();
+
+                }
+                else
+                {
+                    $etudiants = DB::table('etudiant')
+                        ->get();
+                }
+
+                foreach($etudiants as $etudiant)
+                {
+                    $output .= '                      <tr>
+                                                <td> </td>
+                                                <td>'.$etudiant->cin.'</td>
+                                                <td>'.$etudiant->niveau_id.'</td>
+                                                <td>'.$etudiant->filiere_id.'</td>
+                                                <td>'.$etudiant->cne.'</td>
+                                                <td>'.$etudiant->nom.'</td>
+                                                <td>'.$etudiant->prenom.'</td>
+                                                <td>'.$etudiant->email_address.'</td>
+                                                <td>'.$etudiant->numero.'</td>
+                                                <td>'.$etudiant->num_apologie.'</td>
+                                                <td class="exclude">
+                                                    <a data-id='.$etudiant->etudiant_id.'
+                                                       data-groupe_id='.$etudiant->groupe_id.'
+                                                       data-cin='.$etudiant->cin.'
+                                                       data-cne='.$etudiant->cne.' data-nom='.$etudiant->nom.'
+                                                       data-prenom= '.$etudiant->prenom.'
+                                                       data-id_niveau='.$etudiant->niveau_id.'
+                                                       data-id_filiere='.$etudiant->filiere_id.'
+                                                       data-email_address= '.$etudiant->email_address .'
+                                                       data-numero= '.$etudiant->numero.'
+                                                       data-num_apologie='.$etudiant->num_apologie.'
+                                                       data-toggle="modal"
+                                                       data-target="#exampleModal-edit" type="button"
+                                                       class="btn btn-warning btn-sm" style="width: 100px">modifier</a>
+                                                    <a data-id='.$etudiant->etudiant_id.'
+                                                       data-toggle="modal"
+                                                       data-target="#exampleModal-delete" style="margin-top: 5px" class="btn btn-danger btn-sm">supprimer</a>
+                                                </td>
+                                            </tr>';
+                }
+            }
+
+            $etudiants = array(
+                'table_data'  => $output,
+            );
+
+            echo json_encode($etudiants);
+        }
+    }
+
+*/
+
+
     public function restore(Request $request){
-  
+
         etudiant::withTrashed()->whereIn('etudiant_id',(array_values($request->input('etd'))) )->restore();
       return redirect()->back();
   }
@@ -118,15 +266,15 @@ class EtudiantController extends Controller
     public function destroy(Request $etudiant)
     {
         //
-      
 
 
-        if($etudiant->but=='no'){ 
+
+        if($etudiant->but=='no'){
             $delete = $etudiant->all();
             $deleteetudiant = Etudiant::findOrfail($etudiant->id);
             $deleteetudiant->delete();
             return redirect()->route('etudiant.index');}
-            if($etudiant->but=='dif'){ 
+            if($etudiant->but=='dif'){
                 etudiant::find($etudiant->id)->forceDelete();
                 return redirect()->route('etudiant.index');}
     }

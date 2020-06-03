@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\binaire;
 use App\Etudiant;
 use App\Reponse_text;
 use App\Reponse_Bin;
@@ -10,6 +11,7 @@ use App\Resultat;
 use App\Option;
 use App\qcm;
 use App\Session;
+use App\Test;
 use App\Text_libre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -44,11 +46,43 @@ class ResultatController extends Controller
      */
     public function store(Request $request)
     {
+        $note=0;
         $se = Session::find($request->session_id);
         if($se->deleted == 1){
             return redirect()->route('session.index');
         }
         $test_id = $request->test_id;
+        $test=test::find($test_id);
+        $question_qcm=null;
+        $question_binaire=null ;
+        $question_text_libre=null;
+        if ($request->input('question_qcm') != null) {
+            $question_qcm = qcm::find(array_values($request->input('question_qcm')));}
+
+        if ($request->input('question_binaire') != null) {
+             $question_binaire = binaire::find(array_values($request->input('question_binaire')));}
+        if ($request->input('question_text_libre') != null) {
+             $question_text_libre = text_libre::find(array_values($request->input('question_text_libre')));}
+
+
+if($question_qcm!=null){
+        foreach ($question_qcm as $indice){
+            $note=$note+$indice->note ;
+        }}
+
+
+        if($question_binaire!=null){
+
+            foreach ($question_binaire as $indice){
+                $note=$note+$indice->note ;
+            }}
+        if($question_text_libre!=null){
+
+           foreach ($question_text_libre as $indice){
+                $note=$note+$indice->note ;
+            }}
+
+
         $vrai = 0;
         $faux = 0;
         $qcms = null;
@@ -106,6 +140,8 @@ class ResultatController extends Controller
                 $er = false;
                 $somme2 = 0;
                 $somme3 = 0;
+
+
                 $option = DB::table('option')->where('question_id', '=', $qcm->question_id)->get();
                 foreach ($option as $opt) {
                     $somme2 = $somme2 + $opt->point;
@@ -134,6 +170,7 @@ class ResultatController extends Controller
             }
         }
 
+$somme =($somme*$test->note)/($note) ;
         $etudiant_id = $se->etudiant_id;
         for ($i = 0; $i < $request->nb_ql; $i++) {
             $name = 'fichier' . strval($i);

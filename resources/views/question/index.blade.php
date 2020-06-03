@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,8 +9,6 @@
     <meta name="author" content="AuCreative">
     <meta name="keywords" content="AuThemes Templates">
 
-
-    <!-- Icons font CSS-->
     <link href="{{ asset('/passage_test/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet"
           media="all">
     <link href="{{ asset('/passage_test/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet"
@@ -43,11 +40,85 @@
             background-color: white;
         }
     </style>
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+
+        @keyframes animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+
+        /* The Close Button */
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        .modal-body {padding: 2px 16px;}
+
+        .modal-footer {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
 
 <?php
+
 $test1 = $test->test_id;
 $testObj = \App\Test::query()->find($test1)->first();
 $dif1 = $testObj->d1;
@@ -760,7 +831,55 @@ for ($b = 0; $b < $j; $b++) {
         </li>
     </ul>
 </header>
-<div class=" p-t-150 p-b-80">
+
+
+<!-- Trigger/Open The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2 style="background:none ;">Modal Header</h2>
+        </div>
+        <div class="modal-body">
+            @php $compteur=1; @endphp
+            @for($b=0;$b<$k;$b++)
+                @foreach($qcms[$b] as $item)
+                    <p style="background-color: white" ; color:black ;>{{$compteur++}}) {{$item->question_text}}</p>
+                    <br>
+                    <br>
+
+                @endforeach
+            @endfor
+
+
+            @for($b=0;$b<$i;$b++)
+                @foreach($binaires[$b] as $item)
+                    <p style="background-color: white"; color:black ;>{{$compteur++}}) {{$item->question_text}}</p>
+                    <br>
+                    <br>
+
+                @endforeach
+            @endfor
+            @for($b=0;$b<$j;$b++)
+                @foreach($text_libre[$b] as $item)
+                    <p style="background-color: white" ; color:black ;>{{$compteur++}}) {{$item->question_text}}</p>
+                    <br>
+                    <br>
+                @endforeach
+            @endfor
+
+
+        </div>
+        <div class="modal-footer">
+            <h3 style="background: none">Modal Footer</h3>
+        </div>
+    </div>
+
+</div>
+
+    <div class=" p-t-150 p-b-80">
     <div class="wrapper wrapper--w1070">
         <div class="card card-1">
             <div class="card-heading">
@@ -768,7 +887,9 @@ for ($b = 0; $b < $j; $b++) {
             </div>
 
             <div class="card-body">
-                <?php $test1 = $test->test_id;
+                <button id="myBtn">Open Modal</button>
+
+            <?php $test1 = $test->test_id;
                 $rqs = request()->segment(count(request()->segments()));
                 ?>
                 <form class="wizard-container" method="POST" action="{{ route('Resultat.store')}}" id="js-wizard-form">
@@ -780,6 +901,26 @@ for ($b = 0; $b < $j; $b++) {
                     <?php  $nv = intval(100 / $cou) ?>
                     <?php $vaj = 100 - ($cou * $nv) ?>
                     <?php $final = $vaj + $nv ?>
+
+                    @for($y=0;$y<$k;$y++)
+                    @foreach($qcms[$y] as $qcm)
+                       <input type="hidden" value="{{$qcm->question_id}}" name="question_qcm[]" >
+                    @endforeach
+                    @endfor
+                       <input type="hidden" value="{{$k}}"  name="indice_qcm">
+                   @for($x=0;$x<$i;$x++)
+                       @foreach($binaires[$x] as $item)
+                         <input type="hidden" value="{{$item->binaire_id}}" name="question_binaire[]" >
+                       @endforeach
+                    @endfor
+                    <input type="hidden" value="{{$i}}"  name="indice_binaire">
+                    @for($w=0;$w<$j;$w++)
+                        @foreach($text_libre[$w] as $item)
+                           <input type="hidden" value="{{$item}}" name="question_text_libre[]" >
+                        @endforeach
+                    @endfor
+                    <input type="hidden" value="{{$j}}"  name="indice_text_libre">
+
 
                     <div class="progress" id="js-progress">
                         <div class="numb" role="numb">
@@ -942,11 +1083,41 @@ for ($b = 0; $b < $j; $b++) {
 
 
                 </form>
-            </div>
+ </div>
         </div>
     </div>
+
 </div>
-<script src="{{ asset("js/app.js") }}"></script>
+
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 <script>
     /*window.addEventListener("beforeunload", function (event) {
@@ -1006,7 +1177,31 @@ for ($b = 0; $b < $j; $b++) {
         form.submit();
     }
 
+
+
+
+
 </script>
+<script>
+
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+    $('#exampleModal-test').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget)
+
+
+
+        var modal = $(this)
+
+        modal.find('.modal-title').text('suprimer cet étudiant');
+
+        modal.find('.modal-body #id').val(id);
+    });
+
+</script>
+
 <!-- Jquery JS-->
 <script src="{{ asset('/passage_test/vendor/jquery/jquery.min.js') }}"></script>
 <!-- Vendor JS-->

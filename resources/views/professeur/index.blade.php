@@ -9,6 +9,7 @@
     <title>
         Dashboard
     </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
           name='viewport'/>
     <!--     Fonts and icons     -->
@@ -217,7 +218,16 @@
                                 <a href="" class="btn btn-info" data-toggle="modal"
                                    data-target="#exampleModal">ajouter</a>
                             </div>
+                            @php
+                                use Illuminate\Support\Facades\DB ;
+                                  $departements =DB::table('departement')->get()  ;
 
+                            @endphp
+                            <select  name="search" id="search" class="form-control">
+                                @foreach($departements as $departement)
+                                    <option value="{{$departement->departement_id}}">{{$departement->nom}}</option>
+                                @endforeach
+                            </select>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="myTable">
@@ -235,37 +245,8 @@
                                             <th class="exclude">Action</th>
                                         </tr>
                                         <tbody>
-                                        @foreach($professeurs as $key=>$professeur)
-                                            <tr>
-                                                <td>{{++$key}}</td>
-                                                <td>{{$professeur->cin}}</td>
-                                                <td>{{$professeur->nom}}</td>
-                                                <td>{{$professeur->prenom}}</td>
-                                                <td>{{$professeur->username}}</td>
-                                                <td>{{$professeur->email}}</td>
-                                                <td>{{$professeur->password}}</td>
-                                                <td>{{$professeur->grade}}</td>
-                                                <td>{{$professeur->departement_id}}</td>
-                                                <td class="exclude">
-                                                    <a data-professeur_id="{{$professeur->professeur_id}}"
-                                                       data-cin="{{$professeur->cin}}"
-                                                       data-nom="{{$professeur->nom}}"
-                                                       data-prenom="{{$professeur->prenom}}"
-                                                       data-username="{{$professeur->username}}"
-                                                       data-email="{{$professeur->email}}"
-                                                       data-password="{{$professeur->password}}"
-                                                       data-grade="{{$professeur->grade}}"
-                                                       data-departement_id="{{$professeur->departement_id}}"
-                                                       data-toggle="modal"
-                                                       data-target="#exampleModal-edit" type="button"
-                                                       class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
-                                                    <a data-professeur_id="{{$professeur->professeur_id}}" data-toggle="modal"
-                                                       data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+
                                         </tbody>
-                                        {{$professeurs->links()}}
                                         </thead>
                                     </table>
                                     <a data-toggle="modal" style="margin-left: 889px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
@@ -647,6 +628,32 @@
 
     });
 </script>
+<script>
+    $(document).ready(function(){
+
+        fetch_customer_data();
+
+        function fetch_customer_data(query = '')
+        {
+            $.ajax({
+                url:"{{ route('professeur.search') }}",
+                method:'GET',
+                data:{query:query},
+                dataType:'json',
+                success:function(professeurs)
+                {
+                    $('tbody').html(professeurs.table_data);
+                }
+            })
+        }
+
+        $(document).on('click', '#search', function(){
+            var query = $(this).val();
+            fetch_customer_data(query);
+        });
+    });
+</script>
+
 
 
 <!--   Core JS Files   -->

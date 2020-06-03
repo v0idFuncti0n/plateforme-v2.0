@@ -38,7 +38,13 @@ Route::Resource('filiere', 'FiliereController')->middleware('admin.auth');;
 Route::Resource('filiereNiveau', 'FiliereNiveauController')->middleware('admin.auth');;
 Route::Resource('matiere', 'MatiereController')->middleware('admin.auth');;
 Route::Resource('matiereProf', 'MatiereProfController')->middleware('admin.auth');;
-Route::Resource('module', 'ModuleController')->middleware('admin.auth');;
+Route::Resource('module', 'ModuleController')->middleware('admin.auth');
+Route::get('matieree', 'MatiereController@search')->name('matiere.search')->middleware('admin.auth');;
+Route::get('professeur1', 'professeurController@search')->name('professeur.search')->middleware('admin.auth');;
+
+Route::get('etudiant1', 'etudiantController@searchfiliere')->name('etudiant.searchfiliere')->middleware('admin.auth');;
+Route::get('etudiant2', 'etudiantController@searchniveau')->name('etudiant.searchniveau')->middleware('admin.auth');;
+
 Route::Resource('moduleFiliere', 'ModuleFiliereController')->middleware('admin.auth');;
 Route::Resource('niveau', 'NiveauController')->middleware('admin.auth');;
 Route::Resource('professeur', 'ProfesseurController')->middleware('admin.auth');;

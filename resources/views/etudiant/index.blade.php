@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
@@ -9,12 +8,14 @@
     <title>
         Dashboard
     </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
           name='viewport'/>
     <!--     Fonts and icons     -->
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <!-- Bootstrap core CSS -->
@@ -22,6 +23,7 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.12.0/css/mdb.min.css" rel="stylesheet">
     <!-- JQuery -->
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript"
@@ -39,7 +41,7 @@
     <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
-
+    <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
     <style>
         input[type="file"]{
             height:20px;
@@ -65,15 +67,7 @@
             color: white;
 
         }
-        .pagination .page-item .page-link{
-            color: white;
-        }
     </style>
-
-
-
-    <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
-
 </head>
 
 <body class="dark-edition">
@@ -228,6 +222,30 @@
                                    data-target="#exampleModal">ajouter</a>
 
                             </div>
+                            @php
+                                use Illuminate\Support\Facades\DB ;
+                                  $niveaux =DB::table('niveau')->get()  ;
+
+                            @endphp
+                            <select  name="search" id="search" class="form-control">
+                                @foreach($niveaux as $niveau)
+                                    <option value="{{$niveau->niveau_id}}">{{$niveau->nom}}</option>
+                                @endforeach
+                            </select>
+
+                            @php
+
+                                  $filieres =DB::table('filiere')->get()  ;
+
+                            @endphp
+                            <select  name="search1" id="search1" class="form-control">
+                                @foreach($filieres as $filiere)
+                                    <option value="{{$filiere->filiere_id}}">{{$filiere->nom}}</option>
+                                @endforeach
+                            </select>
+
+
+
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="myTable">
@@ -246,40 +264,8 @@
                                             <th class="exclude">action</th>
                                         </tr>
                                         <tbody>
-                                        @foreach($etudiants as $key=>$etudiant)
-                                            <tr>
-                                                <td>{{++$key}}</td>
-                                                <td>{{$etudiant->cin}}</td>
-                                                <td>{{$etudiant->niveau_id}}</td>
-                                                <td>{{$etudiant->filiere_id}}</td>
-                                                <td>{{$etudiant->cne}}</td>
-                                                <td>{{$etudiant->nom}}</td>
-                                                <td>{{$etudiant->prenom}}</td>
-                                                <td>{{$etudiant->email_address}}</td>
-                                                <td>{{$etudiant->numero}}</td>
-                                                <td>{{$etudiant->num_apologie}}</td>
-                                                <td class="exclude">
-                                                    <a data-id="{{$etudiant->etudiant_id}}"
-                                                       data-groupe_id="{{$etudiant->groupe_id}}"
-                                                       data-cin="{{$etudiant->cin}}"
-                                                       data-cne="{{$etudiant->cne}}" data-nom="{{$etudiant->nom}}"
-                                                       data-prenom="{{$etudiant->prenom}}"
-                                                       data-id_niveau="{{$etudiant->niveau_id}}"
-                                                       data-id_filiere="{{$etudiant->filiere_id}}"
-                                                       data-email_address="{{$etudiant->email_address}}"
-                                                       data-numero="{{$etudiant->numero}}"
-                                                       data-num_apologie="{{$etudiant->num_apologie}}"
-                                                       data-toggle="modal"
-                                                       data-target="#exampleModal-edit" type="button"
-                                                       class="btn btn-warning btn-sm" style="width: 100px">modifier</a>
-                                                    <a data-id="{{$etudiant->etudiant_id}}"
-                                                       data-toggle="modal"
-                                                       data-target="#exampleModal-delete" style="margin-top: 5px" class="btn btn-danger btn-sm">supprimer</a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+
                                         </tbody>
-                                        {{$etudiants->links()}}
                                         </thead>
                                     </table>
                                     <a data-toggle="modal" style="margin-left: 889px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
@@ -746,25 +732,88 @@
     });
 </script>
 
+<script>
+    $(document).ready(function(){
+
+        fetch_customer_data();
+
+        function fetch_customer_data(query = '',query1='')
+        {
+            $.ajax({
+                url:"{{ route('etudiant.searchniveau') }}",
+                method:'GET',
+                data:{query:query,
+                    query1:query1
+                },
+                dataType:'json',
+                success:function(etudiants)
+                {
+                    $('tbody').html(etudiants.table_data);
+                }
+            })
+        }
+
+        $(document).on('click', '#search', function(){
+            var query = $(this).val();
+            var query1 = $("#search1").val();
+            fetch_customer_data(query,query1);
+        });
+
+    });
+</script>
+
+
+
+<script>
+    $(document).ready(function(){
+
+        fetch_customer_data();
+
+        function fetch_customer_data(query = '',query1='')
+        {
+            $.ajax({
+                url:"{{ route('etudiant.searchniveau') }}",
+                method:'GET',
+                data:{query:query,
+                    query1:query1
+                },
+                dataType:'json',
+                success:function(etudiants)
+                {
+                    $('tbody').html(etudiants.table_data);
+                }
+            })
+        }
+
+
+        $(document).on('click', '#search1', function(){
+            var query1 = $("#search1").val();
+            var query = $("#search").val();
+            fetch_customer_data(query,query1);
+        });
+    });
+</script>
+
+
 
 <!--   Core JS Files   -->
-<script src="/public/assets/js/core/jquery.min.js"></script>
-<script src="/public/assets/js/core/popper.min.js"></script>
-<script src="/public/assets/js/core/bootstrap-material-design.min.js"></script>
+<script src="../assets/js/core/jquery.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="https://unpkg.com/default-passive-events"></script>
-<script src="/public/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Chartist JS -->
-<script src="/public/assets/js/plugins/chartist.min.js"></script>
+<script src="../assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
-<script src="/public/assets/js/plugins/bootstrap-notify.js"></script>
+<script src="../assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="/public/assets/js/material-dashboard.js?v=2.1.0"></script>
+<script src="../assets/js/material-dashboard.js?v=2.1.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="/public/assets/demo/demo.js"></script>
+<script src="../assets/demo/demo.js"></script>
 
 
 <script>

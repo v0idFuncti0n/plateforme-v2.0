@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
@@ -70,9 +71,9 @@
 
 </head>
 
-<body class="dark-edition">
+<body>
 <div class="wrapper ">
-    <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="walo" data-image="../assets/img/sidebar-2.jpg">
         <!--
           Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -221,43 +222,32 @@
                                 </div>
                                 <a href="" class="btn btn-info" data-toggle="modal"
                                    data-target="#exampleModal">ajouter</a>
+                                @php
+                                use Illuminate\Support\Facades\DB ;
+                                  $modules =DB::table('module')->get()  ;
+
+                                    @endphp
+                                <select  name="search" id="search" class="form-control">
+                                    @foreach($modules as $module)
+                                    <option value="{{$module->module_id}}">{{$module->nom_module}}</option>
+                                        @endforeach
+                                </select>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="myTable">
                                             <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>module_id</th>
-                                                <th>module</th>
+                                                <th>module id</th>
                                                 <th>nom matiere</th>
                                                 <th>volume horaire</th>
                                                 <th>Action</th>
                                             </tr>
-                                            <tbody>
-                                            @foreach($matieres as $key=>$matiere)
-                                                <tr>
-                                                    <td>{{++$key}}</td>
-                                                    <td>{{$matiere->module_id}}</td>
-                                                    <td>{{\App\Module::query()->find($matiere->module_id)->nom_module}}</td>
-                                                    <td>{{$matiere->nom_matiere}}</td>
-                                                    <td>{{$matiere->volume_horaire}}</td>
-                                                    <td>
-                                                        <a data-matiere_id="{{$matiere->matiere_id}}"
-                                                           data-module_id="{{$matiere->module_id}}"
-                                                           data-nom_matiere="{{$matiere->nom_matiere}}"
-                                                           data-volume_horaire="{{$matiere->volume_horaire}}"
-                                                           data-toggle="modal"
-                                                           data-target="#exampleModal-edit" type="button"
-                                                           class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
-                                                        <a data-matiere_id="{{$matiere->matiere_id}}" data-toggle="modal"
-                                                           data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                            {{$matieres->links()}}
                                             </thead>
-                                        </table>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>>
                                         <a data-toggle="modal" style="margin-left: 889px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
                                     </div>
@@ -513,6 +503,36 @@
     });
 
 </script>
+
+<script>
+    $(document).ready(function(){
+
+        fetch_customer_data();
+
+        function fetch_customer_data(query = '')
+        {
+            $.ajax({
+                url:"{{ route('matiere.search') }}",
+                method:'GET',
+                data:{query:query},
+                dataType:'json',
+                success:function(matiere)
+                {
+                    $('tbody').html(matiere.table_data);
+                }
+            })
+        }
+
+        $(document).on('click', '#search', function(){
+            var query = $(this).val();
+            fetch_customer_data(query);
+        });
+    });
+</script>
+
+
+
+
 <script type="text/javascript"
         src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
 <script>
