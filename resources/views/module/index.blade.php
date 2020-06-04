@@ -40,27 +40,32 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
     <style>
-        input[type="file"]{
-            height:20px;
+        input[type="file"] {
+            height: 20px;
             color: white;
 
         }
-        input[type="file"]::-webkit-file-upload-button{
-            height:20px;
+
+        input[type="file"]::-webkit-file-upload-button {
+            height: 20px;
         }
+
         .dark-edition .form-control {
             color: white;
         }
-        select option{
+
+        select option {
             color: black;
         }
-        select.form-control:not([size]):not([multiple]){
+
+        select.form-control:not([size]):not([multiple]) {
             width: 40px;
             margin-right: 400px;
         }
-        select.form-control:not([size]):not([multiple])  option{
+
+        select.form-control:not([size]):not([multiple]) option {
             text-align: center;
-            background-color:#3C4858;
+            background-color: #3C4858;
             color: white;
 
         }
@@ -244,6 +249,11 @@
                                                        class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
                                                     <a data-module_id="{{$module->module_id}}" data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
+                                                    <a data-module_id="{{$module->module_id}}"
+                                                       data-module_nom="{{$module->nom}}"
+                                                       data-toggle="modal"
+                                                       data-target="#exampleModal-voir"
+                                                       class="btn btn-primary float-right">Voir les matieres</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -251,13 +261,16 @@
                                         {{$modules->links()}}
                                         </thead>
                                     </table>
-                                    <a data-toggle="modal" style="margin-left: 889px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
+                                    <a data-toggle="modal" style="margin-left: 889px"
+                                       data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
                                 </div>
                                 <a href="" class="btn btn-info" data-toggle="modal"
                                    data-target="#filiereModal">ajouter filiere</a>
 
-                                <a href="{{ route("matiere.index") }}"><button class="btn btn-primary float-right">Voir les matieres</button></a>
+                                <a href="{{ route("matiere.index") }}">
+                                    <button class="btn btn-primary float-right">Voir les matieres</button>
+                                </a>
 
                             </div>
                         </div>
@@ -282,7 +295,9 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="nom_module" style="color:#c21db7;">nom module</label>
-                                        <input pattern="[a-zA-Z ]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_module" style="color:black;" class="form-control"
+                                        <input pattern="[a-zA-Z ]{2,255}"
+                                               title="aucun caractère spécial n'est autorisé 4 - 255 max" required
+                                               type="text" name="nom_module" style="color:black;" class="form-control"
                                                placeholder="Nom de module">
                                     </div>
                                     <br>
@@ -292,8 +307,8 @@
                                         use App\filiere;
                                         $filieres = filiere::all();
                                         echo "<select required size='3' id='filiere_id' class='form-control' name=filiere_id>";
-                                        foreach($filieres as $f){
-                                            $id_filiere=$f->filiere_id;
+                                        foreach ($filieres as $f) {
+                                            $id_filiere = $f->filiere_id;
                                             echo "<option value=$id_filiere>$f->nom </option>";
                                         }
                                         echo "</select>";
@@ -301,7 +316,8 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer
+                                        </button>
 
                                         <button type="submit" class="btn btn-success">enregistrer</button>
                                     </div>
@@ -332,7 +348,9 @@
                                     <input required type="hidden" style="color:black;" name="module_id" id="module_id">
                                     <div class="form-group">
                                         <label for="nom_module" style="color:#c21db7;">nom module</label>
-                                        <input pattern="[a-zA-Z ]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_module" id="nom_module" style="color:black;"
+                                        <input pattern="[a-zA-Z ]{4,255}"
+                                               title="aucun caractère spécial n'est autorisé 4 - 255 max" required
+                                               type="text" name="nom_module" id="nom_module" style="color:black;"
                                                class="form-control"
                                                placeholder="Nom de module">
                                     </div>
@@ -344,15 +362,16 @@
 
                                         $filieres = filiere::all();
                                         echo "<select required size='3' id='filiere_id' class='form-control'  name=filiere_id>";
-                                        foreach($filieres as $f){
-                                            $id_filiere=$f->filiere_id;
+                                        foreach ($filieres as $f) {
+                                            $id_filiere = $f->filiere_id;
                                             echo "<option value=$id_filiere>$f->nom</option>";
                                         }
                                         echo "</select>";
                                         ?>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer
+                                        </button>
 
                                         <button type="submit" class="btn btn-success">modifier</button>
                                     </div>
@@ -386,15 +405,46 @@
 
 
                                     <div class="modal-footer">
-                                        <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
+                                        <button type="submit" name="but" value="dif" class="btn btn-warning">supprimer
+                                            définitivement
+                                        </button>
 
-                                        <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
+                                        <button type="submit" name="but" value="no" class="btn btn-danger">supprimer
+                                        </button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Modal voir -->
+                <div class="modal fade-left" id="exampleModal-voir" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" id="module_id">
+                                <table id="myTable">
+                                    <thead>
+                                        <th>nom matiere</th>
+                                        <th>volume horaire</th>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <!-- restore data -->
 
@@ -426,9 +476,9 @@
                                     @endforeach
 
 
-
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer
+                                        </button>
 
                                         <button type="submit" class="btn btn-danger">restaurer</button>
                                     </div>
@@ -455,16 +505,21 @@
                                     <div class="form-group">
                                         <label for="" style="color:#c21db7;">nom de filiere</label>
 
-                                        <input required style="color:black;" type="text" id="nom" name="nom" class="form-control"
-                                               placeholder="Nom de filiere : e.g. Genie Logiciel" pattern="[a-zA-Z ]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                        <input required style="color:black;" type="text" id="nom" name="nom"
+                                               class="form-control"
+                                               placeholder="Nom de filiere : e.g. Genie Logiciel"
+                                               pattern="[a-zA-Z ]{2,255}"
+                                               title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
                                     <input style="color:black;" type="hidden" name="filiere_id" id="filiere_id">
                                     <br>
                                     <div class="form-group">
                                         <label for="" style="color:#c21db7;">Coordinateur</label>
-                                        <input required style="color:black;" type="text" id="coordinateur" name="coordinateur"
+                                        <input required style="color:black;" type="text" id="coordinateur"
+                                               name="coordinateur"
                                                class="form-control"
-                                               placeholder="Coordinatuer" pattern="[a-zA-Z. ]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                               placeholder="Coordinatuer" pattern="[a-zA-Z. ]{4,255}"
+                                               title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
                                     <br>
 
@@ -505,7 +560,7 @@
                                     <div class="form-group">
                                         <label for="niveau_id" style="color:#c21db7;">niveau</label>
                                         <?php $niveau = \App\Niveau::all()?>
-                                        <select required name="niveau_id" size="3" id="niveau_id" class="form-control" >
+                                        <select required name="niveau_id" size="3" id="niveau_id" class="form-control">
                                             @foreach($niveau as $n)
                                                 <option value="{{$n->niveau_id}}">{{$n->nom}}</option>
                                             @endforeach
@@ -513,7 +568,8 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer
+                                        </button>
 
                                         <button type="submit" class="btn btn-success">enregistrer</button>
                                     </div>
@@ -563,6 +619,35 @@
         modal.find('.modal-body #module_id').val(module_id);
     });
 
+    $('#exampleModal-voir').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget)
+
+        var module_id = button.data('module_id')
+        var module_nom = button.data('module_nom')
+        var modal = $(this)
+
+        modal.find('.modal-title').text('Voir les matieres de module : ' + module_nom);
+
+        modal.find('.modal-body #module_id').val(module_id);
+        $.ajax({
+            type: 'GET',
+            url: '/getMatiere/' + module_id,
+            data: {module_id: module_id},
+            success: function (data) {
+                $("#myTable").empty();
+                data = JSON.parse(data);
+                data.forEach(function (item) {
+                    $("#myTable tbody").append("<tr><td>"+item.nom_matiere+"</td><td>"+item.volume_horaire+"</td></tr>");
+                });
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    });
+
 </script>
 <script type="text/javascript"
         src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/r-2.2.3/datatables.min.js"></script>
@@ -572,8 +657,8 @@
     });
     $('#myTable').DataTable({
         responsive: true,
-        language:{
-            url:"//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
+        language: {
+            url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
         }
 
     });

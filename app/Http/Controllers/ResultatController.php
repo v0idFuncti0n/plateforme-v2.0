@@ -46,41 +46,47 @@ class ResultatController extends Controller
      */
     public function store(Request $request)
     {
-        $note=0;
+        $note = 0;
         $se = Session::find($request->session_id);
-        if($se->deleted == 1){
+        if ($se->deleted == 1) {
             return redirect()->route('session.index');
         }
         $test_id = $request->test_id;
-        $test=test::find($test_id);
-        $question_qcm=null;
-        $question_binaire=null ;
-        $question_text_libre=null;
+        $test = test::find($test_id);
+        $question_qcm = null;
+        $question_binaire = null;
+        $question_text_libre = null;
         if ($request->input('question_qcm') != null) {
-            $question_qcm = qcm::find(array_values($request->input('question_qcm')));}
+            $question_qcm = qcm::find(array_values($request->input('question_qcm')));
+        }
 
         if ($request->input('question_binaire') != null) {
-             $question_binaire = binaire::find(array_values($request->input('question_binaire')));}
+            $question_binaire = binaire::find(array_values($request->input('question_binaire')));
+        }
         if ($request->input('question_text_libre') != null) {
-             $question_text_libre = text_libre::find(array_values($request->input('question_text_libre')));}
+            $question_text_libre = text_libre::find(array_values($request->input('question_text_libre')));
+        }
 
 
-if($question_qcm!=null){
-        foreach ($question_qcm as $indice){
-            $note=$note+$indice->note ;
-        }}
+        if ($question_qcm != null) {
+            foreach ($question_qcm as $indice) {
+                $note = $note + $indice->note;
+            }
+        }
 
 
-        if($question_binaire!=null){
+        if ($question_binaire != null) {
 
-            foreach ($question_binaire as $indice){
-                $note=$note+$indice->note ;
-            }}
-        if($question_text_libre!=null){
+            foreach ($question_binaire as $indice) {
+                $note = $note + $indice->note;
+            }
+        }
+        if ($question_text_libre != null) {
 
-           foreach ($question_text_libre as $indice){
-                $note=$note+$indice->note ;
-            }}
+            foreach ($question_text_libre as $indice) {
+                $note = $note + $indice->note;
+            }
+        }
 
 
         $vrai = 0;
@@ -103,7 +109,7 @@ if($question_qcm!=null){
             $choices1 = option::find(array_values($request->input('options')));
         }
         //return dd($choices1);
-        if($choices1 != null) {
+        if ($choices1 != null) {
             foreach ($choices1 as $ch) {
                 $reponse_qcm = array(
                     'test_id' => $test_id,
@@ -170,7 +176,7 @@ if($question_qcm!=null){
             }
         }
 
-$somme =($somme*$test->note)/($note) ;
+        $somme = ($somme * $test->note) / ($note);
         $etudiant_id = $se->etudiant_id;
         for ($i = 0; $i < $request->nb_ql; $i++) {
             $name = 'fichier' . strval($i);
@@ -179,7 +185,7 @@ $somme =($somme*$test->note)/($note) ;
                 $rp = array(
                     'question_id' => $request->question_id[$i],
                     'etudiant_id' => $request->session_id,
-                    'fichier' => "<p>".$text_libre->question_text.": </p><p>     ".$request->$name."</p>",
+                    'fichier' => "<p>" . $text_libre->question_text . ": </p><p>     " . $request->$name . "</p>",
                 );
                 $reponse_text = Reponse_text::query()->create($rp);
             } else {
@@ -187,7 +193,7 @@ $somme =($somme*$test->note)/($note) ;
                 $rp = array(
                     'question_id' => $request->question_id[$i],
                     'etudiant_id' => $request->session_id,
-                    'fichier' => "<p>".$text_libre->question_text.": </p><p>     ".$request->$name . '</p><p> Note de la parti QCM et binaire : ' . strval($somme) . '</p>',
+                    'fichier' => "<p>" . $text_libre->question_text . ": </p><p>     " . $request->$name . '</p><p> Note de la parti QCM et binaire : ' . strval($somme) . '</p>',
                 );
                 $reponse_text = Reponse_text::query()->create($rp);
             }

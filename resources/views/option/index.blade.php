@@ -234,7 +234,7 @@
 
 <body>
 
-<?php $test = \App\Test::find(\App\QCM::find($options['options'][0]->binaire_id)->test_id) ?>
+<?php $test = \App\Test::find(\App\QCM::find($options['options'][0]->question_id)->test_id) ?>
 
 <!--==========================
 Header
