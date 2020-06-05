@@ -16,8 +16,7 @@ class AddOptionImageAndTypeToOptionTemp extends Migration
         Schema::table('option_temp', function (Blueprint $table) {
             $table->string('option_image')->nullable(true);
             $table->string('type');
-            $table->dropColumn('option_text');
-            $table->string('option_text')->nullable(true);
+            $table->string('option_text')->nullable(true)->change();
         });
     }
 
@@ -31,8 +30,6 @@ class AddOptionImageAndTypeToOptionTemp extends Migration
         Schema::table('option_temp', function (Blueprint $table) {
             $table->dropColumn('option_image');
             $table->dropColumn('type');
-            $table->dropColumn('option_text');
-            $table->string('option_text');
         });
     }
 }
