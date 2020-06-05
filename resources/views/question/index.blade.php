@@ -844,9 +844,11 @@ for ($b = 0; $b < $j; $b++) {
         </div>
         <div class="modal-body">
             @php $compteur=1; @endphp
+
             @for($b=0;$b<$k;$b++)
                 @foreach($qcms[$b] as $item)
-                    <p style="background-color: white" ; color:black ;>{{$compteur++}}) {{$item->question_text}}</p>
+
+                    <a style="background-color: white" ; color:black ; >{{$compteur++}}) {{$item->question_text}}</a>
                     <br>
                     <br>
 
@@ -885,6 +887,7 @@ for ($b = 0; $b < $j; $b++) {
             <div class="card-heading">
                 <h2 class="title"></h2>
             </div>
+
 
             <div class="card-body">
                 <button id="myBtn">Open Modal</button>
@@ -948,6 +951,14 @@ for ($b = 0; $b < $j; $b++) {
 
                     </ul>
                     <div class="tab-content">
+                        <div class="tab-content">
+                            <div id="ziad">
+                                @for ($ka=1;$ka<=$nombre;$ka++)
+
+                                    <input type="button" class="pagenum" style="background-color: green" value="{{$ka}}">
+                                    <input type="hidden" name="hiddennum" value="{{$ka}}">
+                                @endfor
+                            </div>
                         <?php $page = 0 ?>
                         @for($n=0;$n<$k ; $n++)
                             @foreach ($qcms[$n]  as $qcm)
@@ -1089,7 +1100,34 @@ for ($b = 0; $b < $j; $b++) {
 
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.pagenum').click(function() {
+            var value=$(this).attr("value");
+            $len=$('#ziad').find($("input[type='hidden']")).length
+            for($i=1;$i<=$len;$i++){
+                $("#tab"+$i).removeClass('tab-pane active').addClass('tab-pane');
+            }
+            $("#tab"+value).addClass('tab-pane active');
+            var questionum = $('#js-progress').find('.numb');
+            var num = parseInt(questionum.text());
+            var shi = $('#js-progress').find('.shi');
+            var shii = parseInt(shi.text());
+            var fin= 100 - (num * shii);
+            var prof=(shii*value)+fin;
+            var progressBar = $('#js-progress').find('.progress-bar');
+            var progressVal = $('#js-progress').find('.progress-val');
+                var val = parseInt(progressBar.text());
+                val = prof;
+                progressBar.css('width', val+ '%');
+                progressVal.text(val+'%');
 
+
+        });
+
+    });
+
+</script>
 
 <script>
     // Get the modal

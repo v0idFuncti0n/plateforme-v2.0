@@ -205,6 +205,7 @@ class ResultatController extends Controller
             );
             Resultat::query()->create($r);
             $se->deleted = 1;
+            $se->ip_address = $this->getUserIpAddr();
             $se->save();
             return view('resultat1.index', ['somme' => $somme, 'vrai' => $vrai, 'faux' => $faux, 'session' => $request->session_id]);
         } else {
@@ -213,7 +214,24 @@ class ResultatController extends Controller
         }
     }
 
-
+    public function getUserIpAddr(){
+        $ipaddress = '';
+        if (isset($_SERVER['HTTP_CLIENT_IP']))
+            $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+        else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        else if(isset($_SERVER['HTTP_X_FORWARDED']))
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+        else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+            $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+        else if(isset($_SERVER['HTTP_FORWARDED']))
+            $ipaddress = $_SERVER['HTTP_FORWARDED'];
+        else if(isset($_SERVER['REMOTE_ADDR']))
+            $ipaddress = $_SERVER['REMOTE_ADDR'];
+        else
+            $ipaddress = 'UNKNOWN';
+        return $ipaddress;
+    }
     public function storeFinal(Request $request)
     {
         for ($i = 0; $i < $request->nbr; $i++) {

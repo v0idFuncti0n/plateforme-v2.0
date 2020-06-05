@@ -95,17 +95,44 @@ class OptionController extends Controller
      */
     public function update(Request $request)
     {
-        if($request->question_id!=null){
-        $option = array(
+        if($request->question_id!=null && $request->option_text !=null){
+            $option = array(
 
 
-            'option_text' => $request->option_text,
-            'point' => $request->point,
-            'question_id' => $request->question_id,
+                'option_text' => $request->option_text,
+                'point' => $request->point,
+                'question_id' => $request->question_id,
 
 
-        );
-        }else{
+            );
+        }
+     else  if($request->question_id!=null && $request->option_text ==null){
+         if($request->hasFile('image_file')) {
+             $image_array = $request->file('image_file');
+             // Get just filename
+             $filenameWithExt = $image_array->getClientOriginalName();
+             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+             // Get just ext
+             $extension = $image_array->getClientOriginalExtension();
+             // Filename to store
+             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+             // Upload Image
+             $path = $image_array->storeAs('public/option_image', $fileNameToStore);
+         $option = array(
+             'option_image' => $fileNameToStore,
+             'point' => $request->point,
+             'question_id' => $request->question_id,
+
+         );}
+         else{
+             $option = array(
+                 'option_image' => $request->option_image,
+                 'point' => $request->point,
+                 'question_id' => $request->question_id,
+
+             );}
+        }
+        else{
             $option = array(
 
 

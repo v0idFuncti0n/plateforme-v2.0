@@ -45,31 +45,22 @@
         input[type="file"]{
             height:20px;
             color: white;
+            margin-right: -170px;
 
         }
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
-        .dark-edition .form-control {
-            color: white;
-        }
-        select option{
-            color: black;
-        }
+
         select.form-control:not([size]):not([multiple]){
             width: 40px;
             margin-right: 400px;
         }
-        select.form-control:not([size]):not([multiple])  option{
-            text-align: center;
-            background-color:#3C4858;
-            color: white;
 
-        }
     </style>
 </head>
 
-<body class="dark-edition">
+<body class="">
 <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
         <!--
@@ -83,46 +74,46 @@
         <div class="sidebar-wrapper">
             <ul class="nav">
 
-                <li class="nav-item">
+                <li class="nav-item  ">
                     <a class="nav-link" href="{{route("departement.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>departement</p>
+                        <p>Département</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("filiere.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>filiere</p>
+                        <p>Filière</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route("etudiant.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>etudiant</p>
+                        <p>Etudiant</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("module.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>module</p>
+                        <p>Module</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("matiere.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>matiere</p>
+                        <p>Matiére</p>
                     </a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{{route("niveau.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>niveau</p>
+                        <p>Niveau</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("professeur.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>professeur</p>
+                        <p>Professeur</p>
                     </a>
                 </li>
 
@@ -135,54 +126,22 @@
                   </li> -->
             </ul>
         </div>
+
     </div>
     <div class="main-panel">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
             <div class="container-fluid">
-                <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:void(0)">Liste des tableaux</a>
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
-                        aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                </button>
+
+
                 <div class="collapse navbar-collapse justify-content-end">
 
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">
-                                <i class="material-icons">dashboard</i>
-                                <p class="d-lg-none d-md-block">
-                                    Stats
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">notifications</i>
-                                <span class="notification">5</span>
-                                <p class="d-lg-none d-md-block">
-                                    Some Actions
-                                </p>
-                            </a>
 
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">
-                                <i class="material-icons">person</i>
-                                <p class="d-lg-none d-md-block">
-                                    Account
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.logout')}}">
-                                <i class="material-icons">logout</i>
+                            <a style="left: -5%" class="nav-link" href="{{route('admin.logout')}}">
+                                <label  style="color: #1ee898;font-weight: bold">Déconnexion</label>
+                                <i style="font-size: 30px;color: #1ee898" class="material-icons">logout</i>
                                 <p class="d-lg-none d-md-block">
                                     Account
                                 </p>
@@ -202,15 +161,7 @@
                                 <h4 class="card-title ">Table des niveaux</h4>
                             </div>
                             <div class="row justify-content-between card-header">
-                                <button id="btn" class="btn btn-info">Exporter la table</button>
-                                <div>
-                                    <form action={{ route('niveau.import') }} method="POST"
-                                          enctype="multipart/form-data">
-                                        @csrf
-                                        <input required type="file" name="file">
-                                        <input class="btn btn-primary" type="submit" name="upload" value="importer">
-                                    </form>
-                                </div>
+                              <a></a>
                                 <a href="" class="btn btn-info" data-toggle="modal"
                                    data-target="#exampleModal">ajouter</a>
                             </div>
@@ -219,9 +170,9 @@
                                     <table class="table table-bordered" id="myTable">
                                         <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>nom</th>
-                                            <th class="exclude">action</th>
+                                            <th>Identifiant</th>
+                                            <th>Nom</th>
+                                            <th style="width: 210px" class="exclude">action</th>
                                         </tr>
                                         <tbody>
                                         @foreach($niveaux as $key=>$niveau)
@@ -243,9 +194,21 @@
                                         {{$niveaux->links()}}
                                         </thead>
                                     </table>
-                                    <a data-toggle="modal" style="margin-left: 889px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
                                 </div>
+
+                            </div>
+                            <div class="row justify-content-between card-header">
+                                <button id="btn" class="btn btn-info">Exporter la table</button>
+                                <div>
+                                    <form action={{ route('niveau.import') }} method="POST"
+                                          enctype="multipart/form-data">
+                                        @csrf
+                                        <input required type="file" name="file">
+                                        <input class="btn btn-info" type="submit" name="upload" value="importer">
+                                    </form>
+                                </div>
+                                <a data-toggle="modal"  data-target="#exampleModal-restore" class="btn btn-success">Réstaurer</a>
 
                             </div>
                         </div>
@@ -257,7 +220,7 @@
                 <!-- Modal add -->
                 <div class="modal fade-right" id="exampleModal" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-info" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Ajouter niveau</h5>
@@ -276,9 +239,9 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
 
-                                        <button type="submit" class="btn btn-success">enregistrer</button>
+                                        <button type="submit" class="btn btn-info">ajouter</button>
                                     </div>
                                 </form>
                             </div>
@@ -290,7 +253,7 @@
                 <!-- Modal edit -->
                 <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-warning" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
@@ -313,9 +276,9 @@
                                     <input required type="hidden" style="color:black;" name="niveau_id" id="niveau_id">
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">fermer</button>
 
-                                        <button type="submit" class="btn btn-success">modifier</button>
+                                        <button type="submit" class="btn btn-warning">modifier</button>
                                     </div>
                                 </form>
                             </div>
@@ -327,7 +290,7 @@
                 <!-- Modal delete -->
                 <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-danger" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
@@ -346,9 +309,10 @@
                                         niveau</p>
 
                                     <div class="modal-footer">
-                                        <button type="submit" name = "but" value="dif" class="btn btn-warning" >supprimer définitivement</button>
+                                        <button type="submit" name = "but" value="no" class="btn btn-warning">supprimer</button>
 
-                                        <button type="submit" name = "but" value="no" class="btn btn-danger">supprimer</button>
+                                        <button type="submit" name = "but" value="dif" class="btn btn-danger" >supprimer définitivement</button>
+
                                     </div>
                                 </form>
                             </div>
@@ -388,9 +352,9 @@
 
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
 
-                                        <button type="submit" class="btn btn-danger">restaurer</button>
+                                        <button type="submit" class="btn btn-success">Réstaurer</button>
                                     </div>
                                 </form>
                             </div>
@@ -416,7 +380,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('Modifier les information');
+        modal.find('.modal-title').text('Modifier niveau');
         modal.find('.modal-body #nom').val(nom);
         modal.find('.modal-body #niveau_id').val(niveau_id);
     });
@@ -431,7 +395,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('Supprimer Niveau');
+        modal.find('.modal-title').text('Supprimer niveau');
 
         modal.find('.modal-body #niveau_id').val(niveau_id);
     });

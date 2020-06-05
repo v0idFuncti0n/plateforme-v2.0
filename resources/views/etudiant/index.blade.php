@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
@@ -8,14 +9,12 @@
     <title>
         Dashboard
     </title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
           name='viewport'/>
     <!--     Fonts and icons     -->
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <!-- Bootstrap core CSS -->
@@ -23,7 +22,6 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.12.0/css/mdb.min.css" rel="stylesheet">
     <!-- JQuery -->
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript"
@@ -41,36 +39,33 @@
     <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
     <style>
         input[type="file"]{
             height:20px;
             color: white;
+            margin-right: -170px;
 
         }
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
-        .dark-edition .form-control {
-            color: white;
-        }
-        select option{
-            color: black;
-        }
+
         select.form-control:not([size]):not([multiple]){
             width: 40px;
             margin-right: 400px;
         }
-        select.form-control:not([size]):not([multiple])  option{
-            text-align: center;
-            background-color:#3C4858;
-            color: white;
 
-        }
     </style>
+
+
+
+    <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
+
 </head>
 
-<body class="dark-edition">
+<body class="">
 <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
         <!--
@@ -87,43 +82,43 @@
                 <li class="nav-item  ">
                     <a class="nav-link" href="{{route("departement.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>departement</p>
+                        <p>Département</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("filiere.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>filiere</p>
+                        <p>Filière</p>
                     </a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{{route("etudiant.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>etudiant</p>
+                        <p>Etudiant</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("module.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>module</p>
+                        <p>Module</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("matiere.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>matiere</p>
+                        <p>Matiére</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("niveau.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>niveau</p>
+                        <p>Niveau</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("professeur.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>professeur</p>
+                        <p>Professeur</p>
                     </a>
                 </li>
 
@@ -136,60 +131,23 @@
                   </li> -->
             </ul>
         </div>
+        <div class="sidebar-background" style="background-image: url(../assets/img/sidebar-2.jpg) "></div>
+
     </div>
     <div class="main-panel">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
             <div class="container-fluid">
-                <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:void(0)">Etudiant</a>
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
-                        aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                </button>
+
+
                 <div class="collapse navbar-collapse justify-content-end">
 
                     <ul class="navbar-nav">
+
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">
-                                <i class="material-icons">dashboard</i>
-                                <p class="d-lg-none d-md-block">
-                                    Stats
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">notifications</i>
-                                <span class="notification">5</span>
-                                <p class="d-lg-none d-md-block">
-                                    Some Actions
-                                </p>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="javascript:void(0)">Mike John responded to your email</a>
-                                <a class="dropdown-item" href="javascript:void(0)">You have 5 new tasks</a>
-                                <a class="dropdown-item" href="javascript:void(0)">You're now friend with Andrew</a>
-                                <a class="dropdown-item" href="javascript:void(0)">Another Notification</a>
-                                <a class="dropdown-item" href="javascript:void(0)">Another One</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">
-                                <i class="material-icons">person</i>
-                                <p class="d-lg-none d-md-block">
-                                    Account
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.logout')}}">
-                                <i class="material-icons">logout</i>
+                            <a style="left: -5%" class="nav-link" href="{{route('admin.logout')}}">
+                                <label  style="color: #1ee898;font-weight: bold">Déconnexion</label>
+                                <i style="font-size: 30px;color: #1ee898" class="material-icons">logout</i>
                                 <p class="d-lg-none d-md-block">
                                     Account
                                 </p>
@@ -206,26 +164,17 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title ">Table Etudiant</h4>
+                                <h4 class="card-title ">Table des étudiant</h4>
                                 <p class="card-category"></p>
                             </div>
                             <div class="row justify-content-between card-header">
-                                <button id="btn" class="btn btn-info">Exporter</button>
-                                <div>
-                                    <form action={{ route('etudiant.import') }} method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <input required type="file" name="file">
-                                        <input class="btn btn-primary" type="submit" name="upload" value="importer">
-                                    </form>
-                                </div>
+                                <a></a>
                                 <a href="" class="btn btn-info" data-toggle="modal"
                                    data-target="#exampleModal">ajouter</a>
-
                             </div>
                             @php
                                 use Illuminate\Support\Facades\DB ;
                                   $niveaux =DB::table('niveau')->get()  ;
-
                             @endphp
                             <select  name="search" id="search" class="form-control">
                                 @foreach($niveaux as $niveau)
@@ -234,33 +183,28 @@
                             </select>
 
                             @php
-
-                                  $filieres =DB::table('filiere')->get()  ;
-
+                                $filieres =DB::table('filiere')->get()  ;
                             @endphp
                             <select  name="search1" id="search1" class="form-control">
                                 @foreach($filieres as $filiere)
                                     <option value="{{$filiere->filiere_id}}">{{$filiere->nom}}</option>
                                 @endforeach
                             </select>
-
-
-
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="myTable">
                                         <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>cin</th>
-                                            <th>niveau</th>
-                                            <th>filiere</th>
-                                            <th>cne</th>
-                                            <th>nom</th>
-                                            <th>prenom</th>
-                                            <th>email</th>
-                                            <th>numero</th>
-                                            <th>num_apologie</th>
+                                            <th>Identifiant</th>
+                                            <th>Cin</th>
+                                            <th>Niveau</th>
+                                            <th>Filière</th>
+                                            <th>Cne</th>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Email</th>
+                                            <th>Numero</th>
+                                            <th>Num_apogie</th>
                                             <th class="exclude">action</th>
                                         </tr>
                                         <tbody>
@@ -268,9 +212,21 @@
                                         </tbody>
                                         </thead>
                                     </table>
-                                    <a data-toggle="modal" style="margin-left: 889px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
                                 </div>
+
+                            </div>
+                            <div class="row justify-content-between card-header">
+                                <button id="btn" class="btn btn-info">Exporter</button>
+                                <div>
+                                    <form action={{ route('etudiant.import') }} method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input required type="file" name="file">
+                                        <input class="btn btn-info" type="submit" name="upload" value="importer">
+                                    </form>
+                                </div>
+                                <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-success">Réstaurer</a>
+
 
                             </div>
                         </div>
@@ -281,10 +237,10 @@
                 <!-- Modal add -->
                 <div class="modal fade-right" id="exampleModal" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-info" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Ajouter etudiant</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Ajouter étudiant</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -389,9 +345,9 @@
                                                placeholder="Numéro d'apologie" min="1">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
 
-                                        <button type="submit" class="btn btn-success">enregistrer</button>
+                                        <button type="submit" class="btn btn-info">ajouter</button>
                                     </div>
                                 </form>
                             </div>
@@ -405,7 +361,7 @@
             <!-- Modal edit -->
             <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                <div class="modal-dialog modal-notify modal-lg modal-right modal-warning" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
@@ -500,9 +456,9 @@
                                            placeholder="Numero d'apologie" min="1">
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">fermer</button>
 
-                                    <button type="submit" class="btn btn-success">modifier</button>
+                                    <button type="submit" class="btn btn-warning">modifier</button>
                                 </div>
                             </form>
                         </div>
@@ -514,7 +470,7 @@
             <!-- Modal delete -->
             <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                <div class="modal-dialog modal-notify modal-lg modal-right modal-danger" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
@@ -534,10 +490,9 @@
 
 
                                 <div class="modal-footer">
+                                    <button type="submit" name = "but" value="no"class="btn btn-warning">supprimer</button>
+                                    <button type="submit" name = "but" value="dif"class="btn btn-danger" >supprimer définitivement</button>
 
-                                    <button type="submit" name = "but" value="dif"class="btn btn-warning" >supprimer définitivement</button>
-
-                                    <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
                                 </div>
                             </form>
                         </div>
@@ -554,7 +509,7 @@
                 <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Réstaurer étudiant</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -579,9 +534,9 @@
 
 
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
 
-                                    <button type="submit" class="btn btn-danger">restaurer</button>
+                                    <button type="submit" class="btn btn-success">Réstaurer</button>
                                 </div>
                             </form>
                         </div>
@@ -598,6 +553,60 @@
 </div>
 
 </body>
+<script>
+    $(document).ready(function(){
+        fetch_customer_data();
+        function fetch_customer_data(query = '',query1='')
+        {
+            $.ajax({
+                url:"{{ route('etudiant.searchniveau') }}",
+                method:'GET',
+                data:{query:query,
+                    query1:query1
+                },
+                dataType:'json',
+                success:function(etudiants)
+                {
+                    $('tbody').html(etudiants.table_data);
+                }
+            })
+        }
+        $(document).on('click', '#search', function(){
+            var query = $(this).val();
+            var query1 = $("#search1").val();
+            fetch_customer_data(query,query1);
+        });
+    });
+</script>
+
+
+
+<script>
+    $(document).ready(function(){
+        fetch_customer_data();
+        function fetch_customer_data(query = '',query1='')
+        {
+            $.ajax({
+                url:"{{ route('etudiant.searchniveau') }}",
+                method:'GET',
+                data:{query:query,
+                    query1:query1
+                },
+                dataType:'json',
+                success:function(etudiants)
+                {
+                    $('tbody').html(etudiants.table_data);
+                }
+            })
+        }
+        $(document).on('click', '#search1', function(){
+            var query1 = $("#search1").val();
+            var query = $("#search").val();
+            fetch_customer_data(query,query1);
+        });
+    });
+</script>
+
 
 <script>$(".toggle-password").click(function() {
 
@@ -629,7 +638,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('modifier');
+        modal.find('.modal-title').text('Modifier étudiant');
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #cin').val(cin);
         modal.find('.modal-body #cne').val(cne);
@@ -644,19 +653,6 @@
 
 
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
     $('#exampleModal-edit').on('show.bs.modal', function (event) {
 
         var button = $(event.relatedTarget);
@@ -690,19 +686,6 @@
 
 
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
     $('#exampleModal-delete').on('show.bs.modal', function (event) {
 
         var button = $(event.relatedTarget)
@@ -711,7 +694,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('suprimer cet étudiant');
+        modal.find('.modal-title').text('suprimer étudiant');
 
         modal.find('.modal-body #id').val(id);
     });
@@ -732,88 +715,25 @@
     });
 </script>
 
-<script>
-    $(document).ready(function(){
-
-        fetch_customer_data();
-
-        function fetch_customer_data(query = '',query1='')
-        {
-            $.ajax({
-                url:"{{ route('etudiant.searchniveau') }}",
-                method:'GET',
-                data:{query:query,
-                    query1:query1
-                },
-                dataType:'json',
-                success:function(etudiants)
-                {
-                    $('tbody').html(etudiants.table_data);
-                }
-            })
-        }
-
-        $(document).on('click', '#search', function(){
-            var query = $(this).val();
-            var query1 = $("#search1").val();
-            fetch_customer_data(query,query1);
-        });
-
-    });
-</script>
-
-
-
-<script>
-    $(document).ready(function(){
-
-        fetch_customer_data();
-
-        function fetch_customer_data(query = '',query1='')
-        {
-            $.ajax({
-                url:"{{ route('etudiant.searchniveau') }}",
-                method:'GET',
-                data:{query:query,
-                    query1:query1
-                },
-                dataType:'json',
-                success:function(etudiants)
-                {
-                    $('tbody').html(etudiants.table_data);
-                }
-            })
-        }
-
-
-        $(document).on('click', '#search1', function(){
-            var query1 = $("#search1").val();
-            var query = $("#search").val();
-            fetch_customer_data(query,query1);
-        });
-    });
-</script>
-
-
 
 <!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-<script src="../assets/js/core/popper.min.js"></script>
-<script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+<script src="/public/assets/js/core/jquery.min.js"></script>
+<script src="/public/assets/js/core/popper.min.js"></script>
+<script src="/public/assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="https://unpkg.com/default-passive-events"></script>
-<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<script src="/public/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Chartist JS -->
-<script src="../assets/js/plugins/chartist.min.js"></script>
+<script src="/public/assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+<script src="/public/assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../assets/js/material-dashboard.js?v=2.1.0"></script>
+<script src="/public/assets/js/material-dashboard.js?v=2.1.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/demo/demo.js"></script>
+<script src="/public/assets/demo/demo.js"></script>
 
 
 <script>

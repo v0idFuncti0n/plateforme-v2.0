@@ -275,7 +275,7 @@ Header
                 <thead>
                 <tr>
                     <th class="exclude">#</th>
-                    <th>option text</th>
+                    <th>option</th>
                     <th>point</th>
                     <th>id question</th>
                     <th class="exclude">Action</th>
@@ -284,13 +284,22 @@ Header
                 @foreach($options['options'] as $key=>$option)
                     <tr>
                         <td class="exclude">{{++$key}}</td>
+                        @if ($option->type =='text')
                         <td>{{$option->option_text}}</td>
+                        @elseif ($option->type =='image')
+                        <td>{{$option->option_image}}</td>
+                        @endif
                         <td>{{$option->point}}</td>
                         <td>{{$option->question_id}}</td>
 
                         <td class="exclude">
                             <a data-option_id="{{$option->option_id}}"
+                               @if ($option->type =='text')
                                data-option_text="{{$option->option_text}}"
+                               @elseif ($option->type =='image')
+                               data-option_image="{{$option->option_image}}"
+                               @endif
+                               data-type="{{$option->type}}"
                                data-point="{{$option->point}}"
                                data-question_id="{{$option->question_id}}"
                                data-toggle="modal" href=""
@@ -327,24 +336,29 @@ Header
                 </button>
             </div>
             <div class="modal-body">
+                <?php if (isset($_POST['btnClickedValue'])) {  $username = $_POST['btnClickedValue']; }?>
 
-                <form action="{{route('option.update','option_id')}}" method="POST">
+                <form action="{{route('option.update','option_id')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="form-group">
 
+                    <div class="form-group">
+                        <input type="hidden" id="btnClickedValue" name="btnClickedValue" value="" />
                         <label for="" style="color:#c21db7;">nom</label>
 
-                        <input type="text" style="color:black;" id="option_text" name="option_text" class="form-control"
-                               placeholder="option">
+                            <input type="text" style="color:black;" id="option_text" name="option_text" class="form-control"
+                                   placeholder="option">
+                        <input type="text" src="www.google.com" style="color:black;" id="option_image" name="option_image" class="form-control"
+                               placeholder="option" readonly>
+                        <input  type="file" style="display: none" id="image_file" name="image_file" onclick="showFileName()" >
+
+
                     </div>
                     <input type="hidden" style="color:black;" name="option_id" id="option_id">
                     <br>
                     <div class="form-group">
 
                         <label for="" style="color:#c21db7;">point</label>
-
-
                         <input type="number" style="color:black;" id="point" name="point" class="form-control"
                                placeholder="option">
                     </div>
@@ -397,7 +411,7 @@ Header
                 <form action="{{action("OptionController@forceDelete")}}" method="POST">
                     @csrf
                     <input required type="hidden" name="force_option_id" id="force_option_id">
-                    <button type="submit" class="btn btn-danger">fsupprimer définitivement</button>
+                    <button type="submit" class="btn btn-danger">supprimer définitivement</button>
                 </form>
                 <button type="submit" class="btn btn-danger">supprimer</button>
                 <button type="button" class="btn btn-warning" data-dismiss="modal">fermer</button>
@@ -453,7 +467,15 @@ Header
 </body>
 </html>
 
+<script>
+    $(document).ready(function(){
+        $('input[type="file"]').change(function(e){
+            var fileName = e.target.files[0].name;
+            document.getElementById("option_image").value =fileName;
 
+        });
+    });
+</script>
 <script>
     $("#restore").click(function() {
         $("#form").attr("action", "{{route("option.restore")}}");
@@ -473,18 +495,33 @@ Header
 
         var button = $(event.relatedTarget)
         var option_text = button.data('option_text')
+        var option_image = button.data('option_image')
         var point = button.data('point')
         var question_id = button.data('question_id')
         var option_id =  button.data('option_id')
+        var type =  button.data('type')
+        document.getElementById("btnClickedValue").value = option_id;
+   if(type=='text'){
+       $("#option_text").show();
+       $("#option_image").hide();
+       $("#image_file").hide();
 
+   }
+   else if(type=='image'){
+       $("#option_image").show();
+       $("#image_file").show();
+       $("#option_text").hide();
 
+   }
         var modal = $(this)
 
         modal.find('.modal-title').text('modifier');
         modal.find('.modal-body #option_text').val(option_text);
+        modal.find('.modal-body #option_image').val(option_image);
         modal.find('.modal-body #point').val(point);
         modal.find('.modal-body #question_id').val(question_id);
         modal.find('.modal-body #option_id').val(option_id);
+
     });
 
 

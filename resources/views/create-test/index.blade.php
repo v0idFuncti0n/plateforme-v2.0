@@ -145,7 +145,7 @@
                                     <div class="form-holder form-holder-2">
                                         <label class="form-row-inner">
                                             <?php
-
+                                            use App\filiere;
                                             $filieres = filiere::query()->where('departement_id',$departements->first()->departement_id)->get();
                                             echo "<select size='1' style='width: 235px;margin-bottom:-80px ' id='filiere_id' name='filiere_id'>";
                                             foreach ($filieres as $f) {
@@ -438,6 +438,7 @@
 
         <h1 class="wizard__congrats-message">
             Un nouveau test est créé, n'oubliez pas de créer les questions!
+
         </h1>
     </div>
 

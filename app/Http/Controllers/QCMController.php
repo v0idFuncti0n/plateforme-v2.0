@@ -55,50 +55,103 @@ class QCMController extends Controller
      */
     public function store(Request $request)
     {
-        $i = 0;
+        $i=0;
         $question = $request->question;
         $test_id = $request->test_id;
-        $options = $request->input('option_text');
-        $nbrs = $request->input('hidden');
-
-        $nbrs2 = array($nbrs);
         $point = $request->input('point');
         $QCM = array(
             'question_text' => $question,
+            'type' => 'qcm',
             'difficulty' => $request->difficulty,
             'test_id' => $test_id,
-            'note' => $request->note,
-            'type' => 'qcm'
+            'note' => $request->note
         );
         $id = QuestionTemp::create($QCM);
-        for ($i = 1; $i <= count($nbrs); $i++) {
 
-            $test = in_array($i + 0, $point);
-            if ($test == true) {
-                $option = array(
-                    'option_text' => $options[$i - 1],
-                    'question_id' => $id->question_id,
-                    'point' => '1'
-                );
-                OptionTemp::create($option);
+        $array_length = $request->input('hidden');
+        $opttext=$request->input('option_text');
+
+        for($i=1;$i<= count($array_length);$i++) {
+            if (!empty($opttext[$i-1])) {
+
+                $options = $request->input('option_text');
+
+                $radio = $request->input('textimg');
+
+                $test = in_array($i + 0, $point);
+                if ($test == true) {
+                    $option = array(
+                        'option_text' => $options[$i - 1],
+                        'option_image' => Null,
+                        'question_id' => $id->question_id,
+                        'point' => '1',
+                        'type' => 'text'
+
+                    );
+                    OptionTemp::create($option);
+
+                }
+                if ($test == false) {
+                    $option = array(
+                        'option_text' => $options[$i - 1],
+                        'option_image' => Null,
+                        'question_id' => $id->question_id,
+                        'point' => '0',
+                        'type' => 'text'
+
+                    );
+                    OptionTemp::create($option);
+
+
+                }
+
+
 
             }
-            if ($test == false) {
-                $option = array(
-                    'option_text' => $options[$i - 1],
-                    'question_id' => $id->question_id,
-                    'point' => '0'
-                );
-                OptionTemp::create($option);
+            else if (empty($opttext[$i-1])){
+
+                // Get filename with the extension
+                $image_array = $request->file('option_image');
+
+                // Get just filename
+                $filenameWithExt = $image_array[$i-1]->getClientOriginalName();
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just ext
+                $extension = $image_array[$i-1]->getClientOriginalExtension();
+                // Filename to store
+                $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+                // Upload Image
+                $path = $image_array[$i-1]->storeAs('public/option_image', $fileNameToStore);
+                $test = in_array($i + 0, $point);
+                if ($test == true) {
+                    $option = array(
+                        'option_text' => NULL,
+                        'option_image' => $fileNameToStore,
+                        'question_id' => $id->question_id,
+                        'point' => '1',
+                        'type' => 'image'
+                    );
+                    OptionTemp::create($option);
+
+                }
+                if ($test == false) {
+                    $option = array(
+                        'option_text' => NULL,
+                        'option_image' => $fileNameToStore,
+                        'question_id' => $id->question_id,
+                        'point' => '0',
+                        'type' => 'image'
+
+                    );
+                    OptionTemp::create($option);
+
+
+                }
+                $count = count($array_length);
 
 
             }
-
-
         }
-
-        $count = count($nbrs);
-
         return redirect()->back();
     }
 

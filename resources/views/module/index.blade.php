@@ -40,41 +40,28 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
     <style>
-        input[type="file"] {
-            height: 20px;
+        input[type="file"]{
+            height:20px;
             color: white;
+            margin-right: -170px;
 
         }
-
-        input[type="file"]::-webkit-file-upload-button {
-            height: 20px;
+        input[type="file"]::-webkit-file-upload-button{
+            height:20px;
         }
 
-        .dark-edition .form-control {
-            color: white;
-        }
-
-        select option {
-            color: black;
-        }
-
-        select.form-control:not([size]):not([multiple]) {
+        select.form-control:not([size]):not([multiple]){
             width: 40px;
             margin-right: 400px;
-        }
-
-        select.form-control:not([size]):not([multiple]) option {
-            text-align: center;
-            background-color: #3C4858;
-            color: white;
 
         }
+
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 
 </head>
 
-<body class="dark-edition">
+<body class="">
 <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
         <!--
@@ -91,44 +78,43 @@
                 <li class="nav-item  ">
                     <a class="nav-link" href="{{route("departement.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>departement</p>
+                        <p>Département</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("filiere.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>filiere</p>
+                        <p>Filière</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route("etudiant.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>etudiant</p>
+                        <p>Etudiant</p>
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item active ">
                     <a class="nav-link" href="{{route("module.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>module</p>
+                        <p>Module</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("matiere.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>matiere</p>
+                        <p>Matiére</p>
                     </a>
                 </li>
                 <li class="nav-item ">
-
                     <a class="nav-link" href="{{route("niveau.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>niveau</p>
+                        <p>Niveau</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("professeur.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>professeur</p>
+                        <p>Professeur</p>
                     </a>
                 </li>
 
@@ -146,54 +132,16 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
             <div class="container-fluid">
-                <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:void(0)">Module</a>
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
-                        aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                </button>
+
+
                 <div class="collapse navbar-collapse justify-content-end">
+
                     <ul class="navbar-nav">
+
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">
-                                <i class="material-icons">dashboard</i>
-                                <p class="d-lg-none d-md-block">
-                                    Stats
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">notifications</i>
-                                <span class="notification">5</span>
-                                <p class="d-lg-none d-md-block">
-                                    Some Actions
-                                </p>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="javascript:void(0)">Mike John responded to your email</a>
-                                <a class="dropdown-item" href="javascript:void(0)">You have 5 new tasks</a>
-                                <a class="dropdown-item" href="javascript:void(0)">You're now friend with Andrew</a>
-                                <a class="dropdown-item" href="javascript:void(0)">Another Notification</a>
-                                <a class="dropdown-item" href="javascript:void(0)">Another One</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">
-                                <i class="material-icons">person</i>
-                                <p class="d-lg-none d-md-block">
-                                    Account
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.logout')}}">
-                                <i class="material-icons">logout</i>
+                            <a style="left: -5%" class="nav-link" href="{{route('admin.logout')}}">
+                                <label  style="color: #1ee898;font-weight: bold">Déconnexion</label>
+                                <i style="font-size: 30px;color: #1ee898" class="material-icons">logout</i>
                                 <p class="d-lg-none d-md-block">
                                     Account
                                 </p>
@@ -210,19 +158,15 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title ">Table module</h4>
+                                <h4 class="card-title ">Table des modules</h4>
                                 <p class="card-category"></p>
                             </div>
                             <div class="row justify-content-between card-header">
-                                <button id="btn" class="btn btn-info">Exporter</button>
-                                <div>
-                                    <form action={{ route('module.import') }} method="POST"
-                                          enctype="multipart/form-data">
-                                        @csrf
-                                        <input required type="file" name="file">
-                                        <input class="btn btn-primary" type="submit" name="upload" value="importer">
-                                    </form>
-                                </div>
+                                <a href="" class="btn btn-info" data-toggle="modal"
+                                   data-target="#filiereModal">ajouter filiere</a>
+
+                                <a href="{{ route("matiere.index") }}"><button class="btn btn-info float-right">Voir les matieres</button></a>
+
                                 <a href="" class="btn btn-info" data-toggle="modal"
                                    data-target="#exampleModal">ajouter </a>
 
@@ -232,9 +176,9 @@
                                     <table class="table table-bordered" id="myTable">
                                         <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>nom module</th>
-                                            <th class="exclude">Action</th>
+                                            <th>Identifiant</th>
+                                            <th>Nom module</th>
+                                            <th style="width: 220px;" class="exclude">Action</th>
                                         </tr>
                                         <tbody>
                                         @foreach($modules as $key=>$module)
@@ -249,11 +193,6 @@
                                                        class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
                                                     <a data-module_id="{{$module->module_id}}" data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
-                                                    <a data-module_id="{{$module->module_id}}"
-                                                       data-module_nom="{{$module->nom}}"
-                                                       data-toggle="modal"
-                                                       data-target="#exampleModal-voir"
-                                                       class="btn btn-primary float-right">Voir les matieres</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -261,19 +200,23 @@
                                         {{$modules->links()}}
                                         </thead>
                                     </table>
-                                    <a data-toggle="modal" style="margin-left: 889px"
-                                       data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
                                 </div>
-                                <a href="" class="btn btn-info" data-toggle="modal"
-                                   data-target="#filiereModal">ajouter filiere</a>
-
-                                <a href="{{ route("matiere.index") }}">
-                                    <button class="btn btn-primary float-right">Voir les matieres</button>
-                                </a>
 
                             </div>
-                        </div>
+                            <div class="row justify-content-between card-header">
+                                <button id="btn" class="btn btn-info">Exporter</button>
+                                <div>
+                                    <form action={{ route('module.import') }} method="POST"
+                                          enctype="multipart/form-data">
+                                        @csrf
+                                        <input required type="file" name="file">
+                                        <input class="btn btn-info" type="submit" name="upload" value="importer">
+                                    </form>
+                                </div>
+                                <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-success ">Réstaurer</a>
+
+                            </div>
                     </div>
 
                 </div>
@@ -281,7 +224,7 @@
                 <!-- Modal add -->
                 <div class="modal fade-right" id="exampleModal" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-info" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Ajouter module</h5>
@@ -295,9 +238,7 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="nom_module" style="color:#c21db7;">nom module</label>
-                                        <input pattern="[a-zA-Z ]{2,255}"
-                                               title="aucun caractère spécial n'est autorisé 4 - 255 max" required
-                                               type="text" name="nom_module" style="color:black;" class="form-control"
+                                        <input pattern="[a-zA-Z ]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_module" style="color:black;" class="form-control"
                                                placeholder="Nom de module">
                                     </div>
                                     <br>
@@ -307,8 +248,8 @@
                                         use App\filiere;
                                         $filieres = filiere::all();
                                         echo "<select required size='3' id='filiere_id' class='form-control' name=filiere_id>";
-                                        foreach ($filieres as $f) {
-                                            $id_filiere = $f->filiere_id;
+                                        foreach($filieres as $f){
+                                            $id_filiere=$f->filiere_id;
                                             echo "<option value=$id_filiere>$f->nom </option>";
                                         }
                                         echo "</select>";
@@ -316,10 +257,9 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer
-                                        </button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
 
-                                        <button type="submit" class="btn btn-success">enregistrer</button>
+                                        <button type="submit" class="btn btn-info">ajouter</button>
                                     </div>
                                 </form>
                             </div>
@@ -331,7 +271,7 @@
                 <!-- Modal edit -->
                 <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-warning" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
@@ -348,9 +288,7 @@
                                     <input required type="hidden" style="color:black;" name="module_id" id="module_id">
                                     <div class="form-group">
                                         <label for="nom_module" style="color:#c21db7;">nom module</label>
-                                        <input pattern="[a-zA-Z ]{4,255}"
-                                               title="aucun caractère spécial n'est autorisé 4 - 255 max" required
-                                               type="text" name="nom_module" id="nom_module" style="color:black;"
+                                        <input pattern="[a-zA-Z ]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" required type="text" name="nom_module" id="nom_module" style="color:black;"
                                                class="form-control"
                                                placeholder="Nom de module">
                                     </div>
@@ -362,18 +300,17 @@
 
                                         $filieres = filiere::all();
                                         echo "<select required size='3' id='filiere_id' class='form-control'  name=filiere_id>";
-                                        foreach ($filieres as $f) {
-                                            $id_filiere = $f->filiere_id;
+                                        foreach($filieres as $f){
+                                            $id_filiere=$f->filiere_id;
                                             echo "<option value=$id_filiere>$f->nom</option>";
                                         }
                                         echo "</select>";
                                         ?>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer
-                                        </button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">fermer</button>
 
-                                        <button type="submit" class="btn btn-success">modifier</button>
+                                        <button type="submit" class="btn btn-warning">modifier</button>
                                     </div>
                                 </form>
                             </div>
@@ -385,7 +322,7 @@
                 <!-- Modal delete -->
                 <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-danger" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
@@ -401,50 +338,20 @@
 
                                     <input required type="hidden" name="module_id" id="module_id">
                                     <p class="text-center" width="50px"> vous ete sûre que vous voulez supprimer ce
-                                        matiere</p>
+                                        module</p>
 
 
                                     <div class="modal-footer">
-                                        <button type="submit" name="but" value="dif" class="btn btn-warning">supprimer
-                                            définitivement
-                                        </button>
+                                        <button type="submit" name = "but" value="no"class="btn btn-warning">supprimer</button>
 
-                                        <button type="submit" name="but" value="no" class="btn btn-danger">supprimer
-                                        </button>
+                                        <button type="submit" name = "but" value="dif"class="btn btn-danger" >supprimer définitivement</button>
+
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Modal voir -->
-                <div class="modal fade-left" id="exampleModal-voir" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <input type="hidden" id="module_id">
-                                <table id="myTable">
-                                    <thead>
-                                        <th>nom matiere</th>
-                                        <th>volume horaire</th>
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
 
                 <!-- restore data -->
 
@@ -453,7 +360,7 @@
                     <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Réstaurer module</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -476,11 +383,11 @@
                                     @endforeach
 
 
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer
-                                        </button>
 
-                                        <button type="submit" class="btn btn-danger">restaurer</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+
+                                        <button type="submit" class="btn btn-success">Reéstaurer</button>
                                     </div>
                                 </form>
                             </div>
@@ -490,7 +397,7 @@
 
                 <div class="modal fade-right" id="filiereModal" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-info" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Ajouter filiére</h5>
@@ -505,21 +412,16 @@
                                     <div class="form-group">
                                         <label for="" style="color:#c21db7;">nom de filiere</label>
 
-                                        <input required style="color:black;" type="text" id="nom" name="nom"
-                                               class="form-control"
-                                               placeholder="Nom de filiere : e.g. Genie Logiciel"
-                                               pattern="[a-zA-Z ]{2,255}"
-                                               title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                        <input required style="color:black;" type="text" id="nom" name="nom" class="form-control"
+                                               placeholder="Nom de filiere : e.g. Genie Logiciel" pattern="[a-zA-Z ]{2,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
                                     <input style="color:black;" type="hidden" name="filiere_id" id="filiere_id">
                                     <br>
                                     <div class="form-group">
                                         <label for="" style="color:#c21db7;">Coordinateur</label>
-                                        <input required style="color:black;" type="text" id="coordinateur"
-                                               name="coordinateur"
+                                        <input required style="color:black;" type="text" id="coordinateur" name="coordinateur"
                                                class="form-control"
-                                               placeholder="Coordinatuer" pattern="[a-zA-Z. ]{4,255}"
-                                               title="aucun caractère spécial n'est autorisé 4 - 255 max">
+                                               placeholder="Coordinatuer" pattern="[a-zA-Z. ]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
                                     </div>
                                     <br>
 
@@ -560,7 +462,7 @@
                                     <div class="form-group">
                                         <label for="niveau_id" style="color:#c21db7;">niveau</label>
                                         <?php $niveau = \App\Niveau::all()?>
-                                        <select required name="niveau_id" size="3" id="niveau_id" class="form-control">
+                                        <select required name="niveau_id" size="3" id="niveau_id" class="form-control" >
                                             @foreach($niveau as $n)
                                                 <option value="{{$n->niveau_id}}">{{$n->nom}}</option>
                                             @endforeach
@@ -568,10 +470,9 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer
-                                        </button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">fermer</button>
 
-                                        <button type="submit" class="btn btn-success">enregistrer</button>
+                                        <button type="submit" class="btn btn-info">ajouter</button>
                                     </div>
                                 </form>
                             </div>
@@ -599,7 +500,7 @@
         var id_filiere = button.data('id_filiere')
         var modal = $(this)
 
-        modal.find('.modal-title').text('EDIT STUDENT INFORMATION');
+        modal.find('.modal-title').text('Modifier module');
         modal.find('.modal-body #module_id').val(module_id);
         modal.find('.modal-body #nom_module').val(nom_module);
         modal.find('.modal-body #id_filiere').val(id_filiere);
@@ -614,38 +515,9 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('delete STUDENT INFORMATION');
+        modal.find('.modal-title').text('Supprimer module');
 
         modal.find('.modal-body #module_id').val(module_id);
-    });
-
-    $('#exampleModal-voir').on('show.bs.modal', function (event) {
-
-        var button = $(event.relatedTarget)
-
-        var module_id = button.data('module_id')
-        var module_nom = button.data('module_nom')
-        var modal = $(this)
-
-        modal.find('.modal-title').text('Voir les matieres de module : ' + module_nom);
-
-        modal.find('.modal-body #module_id').val(module_id);
-        $.ajax({
-            type: 'GET',
-            url: '/getMatiere/' + module_id,
-            data: {module_id: module_id},
-            success: function (data) {
-                $("#myTable").empty();
-                data = JSON.parse(data);
-                data.forEach(function (item) {
-                    $("#myTable tbody").append("<tr><td>"+item.nom_matiere+"</td><td>"+item.volume_horaire+"</td></tr>");
-                });
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.status);
-                alert(thrownError);
-            }
-        });
     });
 
 </script>
@@ -657,8 +529,8 @@
     });
     $('#myTable').DataTable({
         responsive: true,
-        language: {
-            url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
+        language:{
+            url:"//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
         }
 
     });

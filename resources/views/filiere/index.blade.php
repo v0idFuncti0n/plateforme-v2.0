@@ -42,33 +42,23 @@
         input[type="file"]{
             height:20px;
             color: white;
+            margin-right: -170px;
 
         }
         input[type="file"]::-webkit-file-upload-button{
             height:20px;
         }
-        .dark-edition .form-control {
-            color: white;
-        }
-        select option{
-            color: black;
-        }
         select.form-control:not([size]):not([multiple]){
             width: 40px;
             margin-right: 400px;
         }
-        select.form-control:not([size]):not([multiple])  option{
-            text-align: center;
-            background-color:#3C4858;
-            color: white;
 
-        }
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 
 </head>
 
-<body class="dark-edition">
+<body class="">
 <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
         <!--
@@ -77,7 +67,7 @@
           Tip 2: you can also add an image using data-image tag
       -->
         <div class="logo"><a href="javascript:void(0)" class="simple-text logo-normal">
-                filiere
+                Filière
             </a></div>
         <div class="sidebar-wrapper">
             <ul class="nav">
@@ -85,43 +75,43 @@
                 <li class="nav-item  ">
                     <a class="nav-link" href="{{route("departement.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>departement</p>
+                        <p>Département</p>
                     </a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{{route("filiere.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>filiere</p>
+                        <p>Filière</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route("etudiant.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>etudiant</p>
+                        <p>Etudiant</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("module.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>module</p>
+                        <p>Module</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("matiere.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>matiere</p>
+                        <p>Matiére</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("niveau.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>niveau</p>
+                        <p>Niveau</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route("professeur.index")}}">
                         <i class="material-icons">content_paste</i>
-                        <p>professeur</p>
+                        <p>Professeur</p>
                     </a>
                 </li>
 
@@ -139,55 +129,16 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
             <div class="container-fluid">
-                <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:void(0)">Filiere</a>
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
-                        aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                </button>
+
+
                 <div class="collapse navbar-collapse justify-content-end">
 
                     <ul class="navbar-nav">
+
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">
-                                <i class="material-icons">dashboard</i>
-                                <p class="d-lg-none d-md-block">
-                                    Stats
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">notifications</i>
-                                <span class="notification">5</span>
-                                <p class="d-lg-none d-md-block">
-                                    Some Actions
-                                </p>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="javascript:void(0)">Mike John responded to your email</a>
-                                <a class="dropdown-item" href="javascript:void(0)">You have 5 new tasks</a>
-                                <a class="dropdown-item" href="javascript:void(0)">You're now friend with Andrew</a>
-                                <a class="dropdown-item" href="javascript:void(0)">Another Notification</a>
-                                <a class="dropdown-item" href="javascript:void(0)">Another One</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">
-                                <i class="material-icons">person</i>
-                                <p class="d-lg-none d-md-block">
-                                    Account
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.logout')}}">
-                                <i class="material-icons">logout</i>
+                            <a style="left: -5%" class="nav-link" href="{{route('admin.logout')}}">
+                                <label  style="color: #1ee898;font-weight: bold">Déconnexion</label>
+                                <i style="font-size: 30px;color: #1ee898" class="material-icons">logout</i>
                                 <p class="d-lg-none d-md-block">
                                     Account
                                 </p>
@@ -204,19 +155,11 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title ">table filiere</h4>
+                                <h4 class="card-title ">Table des filières</h4>
                                 <p class="card-category"></p>
                             </div>
                             <div class="row justify-content-between card-header">
-                                <button id="btn" class="btn btn-info">Exporter la table</button>
-                                <div>
-                                    <form action={{ route('filiere.import') }} method="POST"
-                                          enctype="multipart/form-data">
-                                        @csrf
-                                        <input required type="file" name="file">
-                                        <input class="btn btn-primary" type="submit" name="upload" value="importer">
-                                    </form>
-                                </div>
+                             <a></a>
                                 <a href="" class="btn btn-info" data-toggle="modal"
                                    data-target="#exampleModal">ajouter</a>
 
@@ -226,13 +169,13 @@
                                     <table class="table table-bordered" id="myTable">
                                         <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>nom</th>
-                                            <th>coordinateur</th>
-                                            <th>date_de_debut</th>
-                                            <th>date_de_fin</th>
-                                            <th>departement_id</th>
-                                            <th class="exclude">Action</th>
+                                            <th>Identifiant</th>
+                                            <th>Nom</th>
+                                            <th>Coordinateur</th>
+                                            <th>Date_de_debut</th>
+                                            <th>Date_de_fin</th>
+                                            <th>Département_id</th>
+                                            <th style="width: 207px;" class="exclude">Action</th>
                                         </tr>
                                         <tbody>
                                         @foreach($filieres as $key=>$filiere)
@@ -262,9 +205,21 @@
                                         {{$filieres->links()}}
                                         </thead>
                                     </table>
-                                    <a data-toggle="modal" style="margin-left: 905px" data-target="#exampleModal-restore" class="btn btn-danger btn-sm">restaurer</a>
 
                                 </div>
+
+                            </div>
+                            <div class="row justify-content-between card-header">
+                                <button id="btn" class="btn btn-info">Exporter la table</button>
+                                <div>
+                                    <form action={{ route('filiere.import') }} method="POST"
+                                          enctype="multipart/form-data">
+                                        @csrf
+                                        <input required type="file" name="file">
+                                        <input class="btn btn-info" type="submit" name="upload" value="importer">
+                                    </form>
+                                </div>
+                                <a data-toggle="modal"  data-target="#exampleModal-restore" class="btn btn-success ">réstaurer</a>
 
                             </div>
                         </div>
@@ -275,10 +230,10 @@
 
                 <div class="modal fade-right" id="exampleModal" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-info" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Ajouter filiére</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Ajouter filière</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -348,9 +303,9 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">fermer</button>
 
-                                        <button type="submit" class="btn btn-success">enregistrer</button>
+                                        <button type="submit" class="btn btn-info">Ajouter</button>
                                     </div>
                                 </form>
                             </div>
@@ -362,7 +317,7 @@
                 <!-- Modal edit -->
                 <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-warning" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -437,9 +392,9 @@
                                         </select>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">fermer</button>
 
-                                        <button type="submit" class="btn btn-success">Modifier</button>
+                                        <button type="submit" class="btn btn-warning">Modifier</button>
                                     </div>
                                 </form>
                             </div>
@@ -452,7 +407,7 @@
 
                 <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-danger" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">supprimer filiere</h5>
@@ -467,14 +422,13 @@
                                     @method('DELETE')
 
                                     <input required type="hidden" name="filiere_id" id="filiere_id">
-                                    <p class="text-center" width="50px"> vous ete sur que vous voulez supprimer ce
+                                    <p class="text-center" width="50px"> vous ete sur que vous voulez supprimer cette
                                         filiere</p>
 
 
                                     <div class="modal-footer">
-                                        <button type="submit" name = "but" value="dif"class="btn btn-warning" >Supprimer définitivement</button>
-
-                                        <button type="submit" name = "but" value="no"class="btn btn-danger">supprimer</button>
+                                        <button type="submit" name = "but" value="no"class="btn btn-warning">supprimer</button>
+                                        <button type="submit" name = "but" value="dif"class="btn btn-danger" >Supprimer définitivement</button>
                                     </div>
                                 </form>
                             </div>
@@ -489,7 +443,7 @@
                     <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Supprimer filière</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -514,9 +468,9 @@
 
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
 
-                                        <button type="submit" class="btn btn-danger">restaurer</button>
+                                        <button type="submit" class="btn btn-success">réstaurer</button>
                                     </div>
                                 </form>
                             </div>
@@ -545,7 +499,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('modifier');
+        modal.find('.modal-title').text('Modifier filière');
         modal.find('.modal-body #nom').val(nom);
         modal.find('.modal-body #coordinateur').val(coordinateur);
         modal.find('.modal-body #datedebut').val(datedebut);
@@ -564,7 +518,7 @@
 
         var modal = $(this)
 
-        modal.find('.modal-title').text('supprimer');
+        modal.find('.modal-title').text('Supprimer filière');
 
         modal.find('.modal-body #filiere_id').val(filiere_id);
     });

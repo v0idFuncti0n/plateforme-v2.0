@@ -30,8 +30,10 @@ class QuestionTempController extends Controller
                 foreach ($options as $option) {
                     $option = array(
                         'option_text' => $option->option_text,
+                        'option_image' => $option->option_image,
                         'question_id' => $id->question_id,
-                        'point' => $option->point
+                        'point' => $option->point,
+                        'type'=>$option->type
                     );
                     Option::create($option);
                 }
@@ -50,7 +52,8 @@ class QuestionTempController extends Controller
                     $option = array(
                         'option_text' => $option->option_text,
                         'binaire_id' => $id->binaire_id,
-                        'point' => $option->point
+                        'point' => $option->point,
+                        'type'=>$question->type
                     );
                     Option::create($option);
                 }

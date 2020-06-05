@@ -77,10 +77,10 @@ class ProfesseurController extends Controller
                         ->get();
                 }
 
-                foreach($professeurs as $professeur)
+                foreach($professeurs as $key => $professeur)
                 {
                     $output .= ' <tr>
-                                                <td></td>
+                                                <td class="exclude">'.++$key.'</td>
                                                 <td>'.$professeur->cin.'</td>
                                                 <td>'.$professeur->nom.'</td>
                                                 <td>'.$professeur->prenom.'</td>
@@ -103,7 +103,7 @@ class ProfesseurController extends Controller
                                                        data-target="#exampleModal-edit" type="button"
                                                        class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
                                                     <a data-professeur_id='.$professeur->professeur_id.' data-toggle="modal"
-                                                       data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
+                                                       data-target="#exampleModal-delete" style="margin-top: 5px" class="btn btn-danger btn-sm">supprimer</a>
                                                 </td>
                                             </tr> ';
                 }
