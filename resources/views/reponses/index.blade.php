@@ -1,251 +1,338 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Theme included stylesheets -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+    <!-- Title Page-->
+    <title>Dashboard 3</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.12.0/css/mdb.min.css" rel="stylesheet">
-    <link href="{{asset('/img/favicon.png')}}" rel="icon">
-    <link href="{{asset('/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link
-        href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700')}}"
-        rel="stylesheet">
-
-    <!-- Bootstrap CSS File -->
-    <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')}}"></script>
-    <link href="{{asset('/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-
-    <!-- Libraries CSS Files -->
-    <link href="{{asset('/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('/lib/animate/animate.min.css')}}" rel="stylesheet">
-
-    <!-- Main Stylesheet File -->
-    <link href="{{asset('/css/style1.css')}}" rel="stylesheet">
-
-    <link rel="stylesheet"
-          href="{{asset('http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css')}}">
-    <!-- level-->
-    <link rel="stylesheet" href="{{asset('/css/form.css')}}">
-
-    <link rel="stylesheet" href="{{asset('https://use.fontawesome.com/releases/v5.7.2/css/all.css')}}">
-    <link rel="stylesheet" href="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')}}"/>
-    <script src="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')}}"></script>
-
-    <link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
-
-    <link href="{{asset('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900')}}"
-          rel="stylesheet">
-
-    <link rel="stylesheet"
-          href="{{asset('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
-
-
-    <link rel="stylesheet" href="{{asset('/css/themes/bars-movie.css')}}">
-    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <!-- Main Quill library -->
-    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script
-        src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-        crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href=" https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="/managetest/css/font-face.css" rel="stylesheet" media="all">
+    <link href="/managetest/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <!-- Bootstrap CSS-->
+    <!-- Main CSS-->
+    <link href="/managetest/css/theme.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="{{asset('/managetest/css/sidebar.css')}}">
     <script src="/js/jspdf.min.js"></script>
     <title>Document</title>
     <style>
-       .table th{
+        .table th{
             font-size: 18px;
-           font-weight: bold;
-           color: #333;
+            font-weight: bold;
+            color: #333;
         }
         .table td{
             font-size: 15px;
             font-weight: normal;
         }
     </style>
+    <style>
+        .d-none{display:none!important}
+        .d-lg-block{display:block!important}
+        .d-block{display:block!important}
+        @media (min-width:992px){.d-lg-none{display:none!important}}
+
+    </style>
 </head>
 <body>
-<header id="header">
-    <div class="container">
+<div class="page-wrapper">
+    <!-- HEADER DESKTOP-->
+    <header class="header-desktop3 d-none d-lg-block">
+        <div class="section__content section__content--p35">
+            <div class="header3-wrap">
+                <div class="header__logo">
+                    <a href="#">
+                        <img src="/managetest/images/logo.png" alt="CoolAdmin" />
+                    </a>
+                </div>
 
-        <div id="logo" class="pull-left">
-            <a href="#hero"><img src="{{asset('/managetest/img/logoapp.png')}}" alt="" title=""/></a>
-            <!-- Uncomment below if you prefer to use a text logo -->
-            <!--<h1><a href="#hero">Regna</a></h1>-->
-        </div>
-
-        <nav id="nav-menu-container">
-            <ul class="nav-menu">
-                <li><a href="{{ route('profauth.test') }}" style="text-decoration: none;color: #fff">Accueil</a></li>
-                <li><a href="{{ route("create-test.index",$prof->professeur_id)}}" style=" text-decoration: none;color: #fff">Créer test</a></li>
-                <li ><a href="{{ route('manager-test',$prof) }}" style=" text-decoration: none;color: #fff">Gérer test</a></li>
-                <li style="margin-right: -90px;margin-left: 100px" class="profile-dropdown image" > <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
-                    <a  style="text-decoration: none;color: #fff;position: relative;top: -16px">
-                        {{ $prof->nom ." ". $prof->prenom }}</a><ul style="left: -170px" >
-                        <li>   <div class="info clearfix">
-                                <div class="image">
-                                    <a href="#">
-                                        <img src="/managetest/icon/avatar-01.jpg" alt="John Doe" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="name">
-                                        <a href="#">{{ $prof->nom ." ". $prof->prenom }}</a>
-                                    </h5>
-                                    <span class="email">{{ $prof->email}}</span>
-                                </div>
-                            </div></li>
-
-                        <li><a href="{{route('profauth.logout')}}"><i style="font-size: 15px" class="mdi mdi-logout"></i>Déconnexion</a></li>
-                    </ul>
-                </li>
-
-            </ul>
-        </nav><!-- #nav-menu-container -->
-
-    </div>
-</header><!-- #header -->
-<section id="hero">
-
-</section><!-- #hero -->
-<?php $test['test']= \App\Test::find($session[0]->test_id)?>
-<main id="main">
-
-    <!--==========================
-      Services Section
-    ============================-->
-    <div class="container d-flex align-items-stretch" style="margin-left: 0rem;">
-        <nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">
-            <div class="p-4">
-                <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
-                <ul class="list-unstyled components mb-5">
-                    <li>
-                        <a href="{{ route('profauth.test') }}" style="text-decoration: none"><span class="fa fa-home mr-3"></span> Acceuil</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('create-test.index',$prof) }}" style="text-decoration: none"><span class="fa fa-plus-square-o mr-3"></span> Création un test</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('manager-test',$prof->professeur_id) }}" style="text-decoration: none"><span class="fa fa-table mr-3"></span>Gérer les tests</a>
-                    </li>
-                    <li>
-                        <a href="/create-qcm1/{{$test['test']->test_id }}"><span class="fa fa-list mr-3"></span> création question qcm</a>
-                    </li>
-                    <li>
-                        <a href="/create-bin/{{$test['test']->test_id}}"><span class="fa fa-question mr-3"></span> Création question binaire </a>
-                    </li>
-                    <li>
-                        <a href="/create-text-libre/{{$test['test']->test_id}}"><span class="fa fa-file-text-o mr-3"></span> Création question text </a>
-                    </li>
-
-                    </li>
-                </ul>
-
-            </div>
-        </nav>
-
-        <div class="table-wrapper" style="width: 150rem; margin-top: 3.125rem">
-            <table class="table table-bordered" id="myTable" style="width: 1000px;">
-                <thead >
-                <tr >
-                    <th>nom</th>
-                    <th>reponses (PDF)</th>
-                    <th>note final</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <form action="{{action('ResultatController@storeFinal')}}" method="POST">
-                    @csrf
-                    @php
-                        $i = 0;
-                    @endphp
-                    @foreach($session as $s)
-                        <tr>
-                            <td>{{$s->username}}</td>
-                            <td style="font-weight: bold;color: #20df80">
-                                @php $reponses = \App\Reponse_text::query()->where('etudiant_id','=',$s->session_id)->get() @endphp
-                                <button value="{{$reponses}}" type="button" class="word" onclick="getWord(this)">
-                                    reponses
-                                </button>
-                            </td>
-                            <td>
-                                @php
-                                    $resultat = DB::table('resultat')->where('session_id',$s->session_id)->first();
-                                @endphp
-                                @if($resultat != null)
-                                    {{$resultat->note_total}}
-                                @endif
-                            </td>
-                            <td>
-                                @php
-                                    $resultat = DB::table('resultat')->where('session_id',$s->session_id)->first();
-                                @endphp
-                                <a data-session_id="{{$s->session_id}}"
-                                   data-note_total="@if($resultat != null){{$resultat->note_total}} @else 0 @endif"
-                                   data-toggle="modal"
-                                   data-target="#exampleModal-edit">
-                                    <button type="button" class="btn btn-warning">Modifier</button>
-                                </a>
-                            </td>
-                        </tr>
-                        @php
-                            $i++;
-                        @endphp
-
-                    @endforeach
-                    <input type="hidden" name="nbr" value="{{$i}}">
-
-                </form>
-            </table>
-        </div>
-
-        <!-- Modal edit -->
-        <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
-             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{action('ResultatController@update')}}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" id="session_id" name="session_id"/>
-
-                            <input required type="hidden" name="id" id="id">
-                            <div class="form-group">
-                                <label for="note_final" style="color:#c21db7;">Note Final</label>
-                                <input type="number" id="note_final" name="note_final" class="form-control" min="0" value="" required />
+                <div class="header__tool">
+                    <div class="header-button">
+                        <div class="noti-wrap account-item--style2 ">
+                            <div class="content noti__item ">
+                                <a class="js-acc-btn" href="{{ route('profauth.test') }}" >Accueil</a>
                             </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-
-                        <button type="submit" class="btn btn-success">modifier</button>
+                            <div class="content noti__item ">
+                                <a class="js-acc-btn" href="{{ route("create-test.index",$prof->professeur_id)}}">Créer test</a>
+                            </div>
+                            <div class="content noti__item ">
+                                <a class="js-acc-btn " href="{{ route('manager-test',$prof) }}">Gérer les tests</a>
+                            </div>
+                        </div>
                     </div>
-                    </form>
-                    </div>
+                    <div class="account-wrap">
+                        <div class="account-item account-item--style2 clearfix js-item-menu">
+                            <div class="image">
+                                <img src="/managetest/images/icon/avatar-01.jpg" alt="John Doe" />
+                            </div>
+                            <div class="content">
+                                <a class="js-acc-btn" href="#">{{ $prof->nom ." ". $prof->prenom }}</a>
+                            </div>
+                            <div class="account-dropdown js-dropdown">
+                                <div class="info clearfix">
+                                    <div class="image">
+                                        <a href="#">
+                                            <img src="/managetest/images/icon/avatar-01.jpg" alt="John Doe" />
 
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h5 class="name">
+                                            <a href="#">{{ $prof->nom ." ". $prof->prenom }}</a>
+                                        </h5>
+                                        <span class="email">{{ $prof->email}}</span>
+                                    </div>
+                                </div>
+                                <div class="account-dropdown__body">
+                                    <div class="account-dropdown__item">
+                                        <a href="#">
+                                            <i class="zmdi zmdi-account"></i>Account</a>
+                                    </div>
+                                    <div class="account-dropdown__item">
+                                        <a href="#">
+                                            <i class="zmdi zmdi-settings"></i>Setting</a>
+                                    </div>
+                                    <div class="account-dropdown__item">
+                                        <a href="#">
+                                            <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                    </div>
+                                </div>
+                                <div class="account-dropdown__footer">
+                                    <a href="{{route('profauth.logout')}}">
+                                        <i class="zmdi zmdi-power"></i>Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- END HEADER DESKTOP-->
+
+    <!-- HEADER MOBILE-->
+    <div class="sub-header-mobile-2 d-block d-lg-none" >
+        <div class="header__tool">
+
+            <div class="account-wrap">
+                <div class="account-item account-item--style2 clearfix js-item-menu">
+                    <div class="image">
+                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                    </div>
+                    <div class="content">
+                        <a class="js-acc-btn" href="#">john doe (nom d'etudiant)</a>
+                    </div>
+                    <div class="account-dropdown js-dropdown">
+                        <div class="info clearfix">
+                            <div class="image">
+                                <a href="#">
+                                    <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h5 class="name">
+                                    <a href="#">john doe</a>
+                                </h5>
+                                <span class="email">johndoe@example.com</span>
+                            </div>
+                        </div>
+                        <div class="account-dropdown__body">
+                            <div class="account-dropdown__item">
+                                <a href="#">
+                                    <i class="zmdi zmdi-account"></i>Account</a>
+                            </div>
+                            <div class="account-dropdown__item">
+                                <a href="#">
+                                    <i class="zmdi zmdi-settings"></i>Setting</a>
+                            </div>
+                            <div class="account-dropdown__item">
+                                <a href="#">
+                                    <i class="zmdi zmdi-money-box"></i>Billing</a>
+                            </div>
+                        </div>
+                        <div class="account-dropdown__footer">
+                            <a href="#">
+                                <i class="zmdi zmdi-power"></i>Logout</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</main>
-</body>
-</html>
-<script src="{{asset('/lib/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('/lib/jquery/jquery-migrate.min.js')}}"></script>
-<script src="{{asset('/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.12.0/js/mdb.min.js"></script>
+    <!-- END HEADER MOBILE -->
+    <?php $test['test']= \App\Test::find($session[0]->test_id)?>
+    <div class="page-content--bgf7">
+
+        <div class="container d-flex align-items-stretch" style="margin-left: 0rem;">
+            <nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">
+                <div class="p-4">
+                    <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
+                    <ul class="list-unstyled components mb-5">
+                        <li>
+                            <a href="{{ route('profauth.test') }}" style="text-decoration: none"><span class="fa fa-home mr-3"></span> Acceuil</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('create-test.index',$prof) }}" style="text-decoration: none"><span class="fa fa-plus-square-o mr-3"></span> Création un test</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('manager-test',$prof->professeur_id) }}" style="text-decoration: none"><span class="fa fa-table mr-3"></span>Gérer les tests</a>
+                        </li>
+                        <li>
+                            <a href="/create-qcm1/{{$test['test']->test_id }}"><span class="fa fa-list mr-3"></span> création question qcm</a>
+                        </li>
+                        <li>
+                            <a href="/create-bin/{{$test['test']->test_id}}"><span class="fa fa-question mr-3"></span> Création question binaire </a>
+                        </li>
+                        <li>
+                            <a href="/create-text-libre/{{$test['test']->test_id}}"><span class="fa fa-file-text-o mr-3"></span> Création question text </a>
+                        </li>
+
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+            <section class="welcome p-t-10">
+                <div class="container">
+                    <div class="row">
+                        <div class="table-wrapper" style="width: 150rem; margin-top: -5rem">
+                            <!-- BREADCRUMB-->
+                            <section class="au-breadcrumb2">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="au-breadcrumb-content">
+                                                <div class="au-breadcrumb-left">
+                                                    <span class="au-breadcrumb-span">Vous êtes ici:</span>
+                                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                                        <li class="list-inline-item active">
+                                                            <a href="{{ route('profauth.test') }}">Accueil</a>
+                                                        </li>
+                                                        <li class="list-inline-item seprate">
+                                                            <span>/</span>
+                                                        </li>
+                                                        <li class="list-inline-item active">
+                                                            <a href="{{ route('manager-test',$prof) }}">Gérer les tests</a>
+                                                        </li>
+                                                        <li class="list-inline-item seprate">
+                                                            <span>/</span>
+                                                        </li>
+                                                        <li class="list-inline-item">{{$test['test']->nom}}</li>
+                                                        <li class="list-inline-item seprate">
+                                                            <span>/</span>
+                                                        </li>
+                                                        <li class="list-inline-item">Gérer les réponses</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- END BREADCRUMB-->
+                            <table class="table table-bordered" id="myTable" style="width: 1000px;">
+                                <thead >
+                                <tr >
+                                    <th>nom</th>
+                                    <th>reponses (PDF)</th>
+                                    <th>note final</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <form action="{{action('ResultatController@storeFinal')}}" method="POST">
+                                    @csrf
+                                    @php
+                                        $i = 0;
+                                    @endphp
+                                    @foreach($session as $s)
+                                        <tr>
+                                            <td>{{$s->username}}</td>
+                                            <td id="rep">
+                                                @php $reponses = \App\Reponse_text::query()->where('etudiant_id','=',$s->session_id)->get() @endphp
+                                                <button value="{{$reponses}}" type="button" class="word" onclick="getWord(this)">
+                                                    reponses
+                                                </button>
+                                            </td>
+                                            <td>
+                                                @php
+                                                    $resultat = DB::table('resultat')->where('session_id',$s->session_id)->first();
+                                                @endphp
+                                                @if($resultat != null)
+                                                    {{$resultat->note_total}}
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @php
+                                                    $resultat = DB::table('resultat')->where('session_id',$s->session_id)->first();
+                                                @endphp
+                                                <a data-session_id="{{$s->session_id}}"
+                                                   data-note_total="@if($resultat != null){{$resultat->note_total}} @else 0 @endif"
+                                                   data-toggle="modal"
+                                                   data-target="#exampleModal-edit">
+                                                    <button type="button" class="btn btn-info">Modifier</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        @php
+                                            $i++;
+                                        @endphp
+
+                                    @endforeach
+                                    <input type="hidden" name="nbr" value="{{$i}}">
+
+                                </form>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Modal edit -->
+            <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-lg modal-right modal-info" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{action('ResultatController@update')}}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" id="session_id" name="session_id"/>
+
+                                <input required type="hidden" name="id" id="id">
+                                <div class="form-group">
+                                    <label for="note_final" id="repedit">Note Final</label>
+                                    <input type="number" id="note_final" name="note_final" class="form-control" min="0" value="" required />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">fermer</button>
+
+                                    <button type="submit" class="btn btn-info">modifier</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     $('#exampleModal-edit').on('show.bs.modal', function (event) {
 
@@ -260,6 +347,12 @@
         modal.find('.modal-body #note_final').val(note_total);
     });
 </script>
+<!-- Jquery JS-->
+
+<script src="/managetest/vendor/jquery-3.2.1.min.js"></script>
+<script src="/managetest/vendor/animsition/animsition.min.js"></script>
+<!-- Main JS-->
+<script src="/managetest/js/main.js"></script>
 <script>
     function getWord(elm) {
         var doc = new jsPDF();
@@ -277,24 +370,6 @@
         doc.save($(elm).closest('tr').find("td:first-child").text() + '.pdf');
     }
 </script>
-<!-- JavaScript Libraries -->
-
-<script src="{{asset('/lib/easing/easing.min.js')}}"></script>
-<script src="{{asset('/lib/wow/wow.min.js')}}"></script>
-<script src="{{asset('/lib/waypoints/waypoints.min.js')}}"></script>
-<script src="{{asset('/lib/counterup/counterup.min.js')}}"></script>
-<script src="{{asset('/lib/superfish/hoverIntent.js')}}"></script>
-<script src="{{asset('/lib/superfish/superfish.min.js')}}"></script>
-
-<!-- Contact Form JavaScript File -->
-<script src="{{asset('/contactform/contactform.js')}}"></script>
-
-<!-- Template Main Javascript File -->
-
-<script src="{{asset('/js/main.js')}}"></script>
-
-<script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')}}"></script>
-<script src="{{asset( '/jquery.barrating.min.js' )}}"></script>
 <script type="text/javascript">
     $(function () {
         $('#example').barrating({
@@ -302,8 +377,5 @@
         });
     });
 </script>
-<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-<script src="{{asset( '/js/jquery.barrating.min.js' )}}"></script>
-<script src="{{asset( '/js/examples.js' )}}"></script>
-
-
+</body>
+</html>

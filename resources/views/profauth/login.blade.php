@@ -38,7 +38,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <li>
                             <div class="banner-bottom-2">
                                 <div class="about-midd-main">
-                                    <img class="agile-img" src="/managetest/icon/avatar-01.jpg" alt=" "
+                                    <img class="agile-img" src="/managetest/images/icon/avatar-01.jpg" alt=" "
                                          class="img-responsive">
                                 </div>
                                 <div class="new-account-form">

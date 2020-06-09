@@ -42,7 +42,7 @@ section > div {
  .stl  {
   display: block;
   background: white;
-  border: 1px solid #20df80;
+  border: 1px solid #43c4da;
   border-radius: 2px;
   margin-bottom: 1rem;
   text-align: center;
@@ -51,13 +51,13 @@ section > div {
 }
 
 .sty:checked + .stl {
-  background: #20df80;
+  background: #43c4da;
   color: white;
 }
 .sty:checked + .stl::after {
   color: #3d3f43;
   font-family: FontAwesome;
-  border: 2px solid #1dc973;
+  border: 2px solid #43c4da;
   content: "\f00c";
   font-size: 24px;
   position: absolute;
@@ -100,7 +100,7 @@ p {
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: 2px solid #9b9b9b;
+  border-bottom: 2px solid #43c4da;
   outline: 0;
   font-size: 1.6rem;
   color: black;
@@ -160,14 +160,15 @@ p {
   z-index: -1;
   width: 100%;
   height: 4rem;
-  background: #20df80;
+  background: #43c4da;
   border-radius: 30px;
 }
 .switch__label {
   display: inline-block;
-  width: 85px;
-  padding: 1rem;
+  width: 89px;
+  padding: 0.7rem;
   text-align: center;
+  color: #fff;
   cursor: pointer;
   transition: color 200ms ease-out;
 }
@@ -190,7 +191,7 @@ p {
   transform: translate3d(2.9rem, 0, 0);
 }
 .switch input#two:checked ~ .switch__indicator {
-  background: MediumTurquoise;
+  background: #1ee898;
   transform: translate3d(12.5rem, 0, 0);
 }
 .switch input#three:checked ~ .switch__indicator {
@@ -213,7 +214,7 @@ p {
   z-index: -1;
   width: 100%;
   height: 4rem;
-  background: #20df80;
+  background: #43c4da;
   border-radius: 30px;
 }
 .switch__label2 {
@@ -266,14 +267,15 @@ p {
   z-index: -1;
   width: 100%;
   height: 4rem;
-  background: #20df80;
+  background: #43c4da;
   border-radius: 30px;
 }
 .switch__label3 {
   display: inline-block;
-  width: 85px;
-  padding: 1rem;
+ width: 89px;
+  padding: 0.7rem;
   text-align: center;
+  color: #fff;
   cursor: pointer;
   transition: color 200ms ease-out;
 }
@@ -296,7 +298,7 @@ p {
   transform: translate3d(2.9rem, 0, 0);
 }
 .switch3 input#two3:checked ~ .switch__indicator3 {
-  background: MediumTurquoise;
+  background: #1ee898;
   transform: translate3d(12.5rem, 0, 0);
 }
 .switch3 input#three3:checked ~ .switch__indicator3 {

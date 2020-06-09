@@ -90,11 +90,14 @@ class question extends Controller
 
                     'point' => $option->point,
                     'question_id' => $option->question_id,
-                    'option_text' => $option->option_text
+                    'option_text' => $option->option_text,
+                    'option_image' => $option->option_text,
+                    'type' => $option->type
 
                 );
 
                 Option::create($opt);
+
             }
 
         }
