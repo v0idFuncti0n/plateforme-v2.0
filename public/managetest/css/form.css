@@ -177,8 +177,9 @@ textarea {
   -moz-border-radius: 3px;
   border-radius: 3px;
   color: #666;
-  font-size: 15px;
-  -webkit-transition: all 0.4s ease;
+  font-size: 18px !important;   
+   font-weight: bold !important;
+    -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   transition: all 0.4s ease;
@@ -370,4 +371,3 @@ textarea {
     padding: 50px 30px;
   }
 }
-

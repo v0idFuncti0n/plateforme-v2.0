@@ -1,80 +1,215 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
-
     <!-- Title Page-->
     <title>Dashboard 3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.12.0/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="/managetest/css/font-face.css" rel="stylesheet" media="all">
+    <link href="/managetest/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <!-- your css-->
+    <link rel="stylesheet" href="/managetest/css/selectStyle.css">
+    <link rel="stylesheet" href="/managetest/css/form.css">
+    <link href="/managetest/css/theme.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="{{asset('/managetest/css/sidebar.css')}}">
+    <style>
+        $
+        green: #2ecc71
 
-    <!-- Fontfaces CSS-->
-    <link href="{{asset('header V2/css/font-face.css')}}" rel="stylesheet" media="all">
-    <link href="{{asset('header V2/vendor/mdi-font/css/material-design-iconic-font.css')}}" rel="stylesheet"
-          media="all">
+        ;
+        $
+        red: #e74c3c
 
-    <!-- Bootstrap CSS-->
-    <link href="{{asset('header V2/vendor/bootstrap-4.1/bootstrap.min.css')}}" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
+        ;
+        $
+        blue: #3498db
 
-    <!-- Vendor CSS-->
+        ;
+        $
+        yellow: #f1c40f
 
-    <!-- Main CSS-->
-    <link href="{{asset('header V2/css/theme.css')}}" rel="stylesheet" media="all">
-    <link rel="stylesheet" href="{{asset('/css/form.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/themes/bars-movie.css')}}">
-    <link
-        href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700')}}"
-        rel="stylesheet">
-    <link href="{{asset('/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('https://use.fontawesome.com/releases/v5.7.2/css/all.css')}}">
-    <link rel="stylesheet" href="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')}}"/>
-    <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')}}"></script>
-    <script src="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')}}"></script>
-    <!-- Favicons -->
-    <link href="{{asset('img/favicon.png')}}" rel="icon">
-    <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
-    <link href="{{asset( 'css/style.css' )}}" rel="stylesheet">
+        ;
+        $
+        purple: #8e44ad
 
-    <!-- Google Fonts -->
-    <link
-        href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700')}}"
-        rel="stylesheet">
+        ;
+        $
+        turquoise: #1abc9c
 
-    <!-- Bootstrap CSS File -->
-    <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')}}"></script>
-    <link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        ;
 
-    <!-- Libraries CSS Files -->
-    <link href="{{asset('lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('lib/animate/animate.min.css')}}" rel="stylesheet">
 
-    <!-- Main Stylesheet File -->
-    <link href="{{asset('css/style1.css')}}" rel="stylesheet">
+        h1 {
+            color: $ yellow;
+            font-size: 4rem;
+            text-transform: uppercase;
+            display: block;
+            width: 100%;
+            text-align: center;
 
-    <link rel="stylesheet"
-          href="{{asset('http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css')}}">
-    <!-- level-->
-    <link rel="stylesheet" href="{{asset('css/form.css')}}">
+        @media screen and (max-width: 600px) {
+            font-size:
 
-    <link rel="stylesheet" href="{{asset('https://use.fontawesome.com/releases/v5.7.2/css/all.css')}}">
-    <link rel="stylesheet" href="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')}}"/>
-    <script src="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')}}"></script>
+        3rem
 
-    <link rel="stylesheet" href="{{asset('https://fonts.googleapis.com/icon?family=Material+Icons')}}">
+        ;
+        }
 
-    <link href="{{asset('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900')}}"
-          rel="stylesheet">
+        }
 
-    <link rel="stylesheet"
-          href="{{asset('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
+        p {
+            color: $ yellow;
+            font-size: 1.2rem;
+        / / text-transform: uppercase;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+
+        /
+        /
+        Basic Button Style
+        .btn {
+            box-sizing: border-box;
+            appearance: none;
+            background-color: transparent;
+            border: 2px solid $ red;
+            border-radius: 0.6em;
+            color: $ red;
+            cursor: pointer;
+            display: flex;
+            align-self: center;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1;
+            margin: 20px;
+            padding: 1.2em 2.8em;
+            text-decoration: none;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+
+        &
+        :hover,
+
+        &
+        :focus {
+            color: #fff;
+            outline: 0;
+        }
+
+        }
+
+        /
+        /
+        BUTTON
+
+        1
+        .first {
+            transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+
+        &
+        :hover {
+            box-shadow: 0 0 40px 40px $ red inset;
+        }
+
+        }
+
+        /
+        /
+        BUTTON
+
+        2
+        .second {
+            border-radius: 3em;
+            border-color: $ turquoise;
+            color: #fff;
+
+        background: {
+            image: linear-gradient(to right,
+            transparentize($ turquoise, 0.4),
+            transparentize($ turquoise, 0.4) 5%,
+            $ turquoise 5%,
+            $ turquoise 10%,
+            transparentize($ turquoise, 0.4) 10%,
+            transparentize($ turquoise, 0.4) 15%,
+            $ turquoise 15%,
+            $ turquoise 20%,
+            transparentize($ turquoise, 0.4) 20%,
+            transparentize($ turquoise, 0.4) 25%,
+            $ turquoise 25%,
+            $ turquoise 30%,
+            transparentize($ turquoise, 0.4) 30%,
+            transparentize($ turquoise, 0.4) 35%,
+            $ turquoise 35%,
+            $ turquoise 40%,
+            transparentize($ turquoise, 0.4) 40%,
+            transparentize($ turquoise, 0.4) 45%,
+            $ turquoise 45%,
+            $ turquoise 50%,
+            transparentize($ turquoise, 0.4) 50%,
+            transparentize($ turquoise, 0.4) 55%,
+            $ turquoise 55%,
+            $ turquoise 60%,
+            transparentize($ turquoise, 0.4) 60%,
+            transparentize($ turquoise, 0.4) 65%,
+            $ turquoise 65%,
+            $ turquoise 70%,
+            transparentize($ turquoise, 0.4) 70%,
+            transparentize($ turquoise, 0.4) 75%,
+            $ turquoise 75%,
+            $ turquoise 80%,
+            transparentize($ turquoise, 0.4) 80%,
+            transparentize($ turquoise, 0.4) 85%,
+            $ turquoise 85%,
+            $ turquoise 90%,
+            transparentize($ turquoise, 0.4) 90%,
+            transparentize($ turquoise, 0.4) 95%,
+            $ turquoise 95%,
+            $ turquoise 100%);
+            position: 0 0;
+            size: 100%;
+        }
+
+        transition: background
+
+        300
+        ms ease-in-out
+
+        ;
+
+        &
+        :hover {
+            background-position: 100px;
+        }
+
+        }
+
+    </style>
+    <style>
+        .d-none{display:none!important}
+        .d-lg-block{display:block!important}
+        .d-block{display:block!important}
+        @media (min-width:992px){.d-lg-none{display:none!important}}
+
+    </style>
 </head>
 
-<body class="animsition">
+<body>
+
+<?php $test = \App\Test::find(\App\binaire::find($options['options'][0]->binaire_id)->test_id) ?>
 <div class="page-wrapper">
     <!-- HEADER DESKTOP-->
     <header class="header-desktop3 d-none d-lg-block">
@@ -82,21 +217,28 @@
             <div class="header3-wrap">
                 <div class="header__logo">
                     <a href="#">
-                        <img src="{{asset('header V2/images/icon/logo.png')}}" alt="CoolAdmin"/>
+                        <img src="/managetest/images/logo.png" alt="CoolAdmin" />
                     </a>
                 </div>
 
                 <div class="header__tool">
-                    <li><a href="{{ route('profauth.test') }}" style="text-decoration: none;color: #fff">Accueil</a>
-                    </li>
-                    <li><a href="{{ route("create-test.index",$prof->professeur_id)}}"
-                           style=" text-decoration: none;color: #fff">Créer test</a></li>
-                    <li><a href="{{ route('manager-test',$prof) }}" style=" text-decoration: none;color: #fff">Gérer
-                            test</a></li>
+                    <div class="header-button">
+                        <div class="noti-wrap account-item--style2 ">
+                            <div class="content noti__item ">
+                                <a class="js-acc-btn" href="{{ route('profauth.test') }}" >Accueil</a>
+                            </div>
+                            <div class="content noti__item ">
+                                <a class="js-acc-btn" href="{{ route("create-test.index",$prof->professeur_id)}}">Créer test</a>
+                            </div>
+                            <div class="content noti__item ">
+                                <a class="js-acc-btn " href="{{ route('manager-test',$prof) }}">Gérer les tests</a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="account-wrap">
                         <div class="account-item account-item--style2 clearfix js-item-menu">
                             <div class="image">
-                                <img src="{{asset('header V2/images/icon/avatar-01.jpg')}}" alt="John Doe"/>
+                                <img src="/managetest/images/icon/avatar-01.jpg" alt="John Doe" />
                             </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#">{{ $prof->nom ." ". $prof->prenom }}</a>
@@ -105,8 +247,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="{{asset('header V2/images/icon/avatar-01.jpg')}}"
-                                                 alt="{{ $prof->nom ." ". $prof->prenom }}"/>
+                                            <img src="/managetest/images/icon/avatar-01.jpg" alt="John Doe" />
 
                                         </a>
                                     </div>
@@ -117,9 +258,23 @@
                                         <span class="email">{{ $prof->email}}</span>
                                     </div>
                                 </div>
+                                <div class="account-dropdown__body">
+                                    <div class="account-dropdown__item">
+                                        <a href="#">
+                                            <i class="zmdi zmdi-account"></i>Account</a>
+                                    </div>
+                                    <div class="account-dropdown__item">
+                                        <a href="#">
+                                            <i class="zmdi zmdi-settings"></i>Setting</a>
+                                    </div>
+                                    <div class="account-dropdown__item">
+                                        <a href="#">
+                                            <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                    </div>
+                                </div>
                                 <div class="account-dropdown__footer">
                                     <a href="{{route('profauth.logout')}}">
-                                        <i class="zmdi zmdi-power"></i>Déconnexion</a>
+                                        <i class="zmdi zmdi-power"></i>Logout</a>
                                 </div>
                             </div>
                         </div>
@@ -129,44 +284,135 @@
         </div>
     </header>
     <!-- END HEADER DESKTOP-->
-<?php $test = \App\Test::find(\App\binaire::find($options['options'][0]->binaire_id)->test_id) ?>
-    <!-- PAGE CONTENT-->
+
+    <!-- HEADER MOBILE-->
+    <div class="sub-header-mobile-2 d-block d-lg-none" >
+        <div class="header__tool">
+
+            <div class="account-wrap">
+                <div class="account-item account-item--style2 clearfix js-item-menu">
+                    <div class="image">
+                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                    </div>
+                    <div class="content">
+                        <a class="js-acc-btn" href="#">john doe (nom d'etudiant)</a>
+                    </div>
+                    <div class="account-dropdown js-dropdown">
+                        <div class="info clearfix">
+                            <div class="image">
+                                <a href="#">
+                                    <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h5 class="name">
+                                    <a href="#">john doe</a>
+                                </h5>
+                                <span class="email">johndoe@example.com</span>
+                            </div>
+                        </div>
+                        <div class="account-dropdown__body">
+                            <div class="account-dropdown__item">
+                                <a href="#">
+                                    <i class="zmdi zmdi-account"></i>Account</a>
+                            </div>
+                            <div class="account-dropdown__item">
+                                <a href="#">
+                                    <i class="zmdi zmdi-settings"></i>Setting</a>
+                            </div>
+                            <div class="account-dropdown__item">
+                                <a href="#">
+                                    <i class="zmdi zmdi-money-box"></i>Billing</a>
+                            </div>
+                        </div>
+                        <div class="account-dropdown__footer">
+                            <a href="#">
+                                <i class="zmdi zmdi-power"></i>Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END HEADER MOBILE -->
+    <div class="page-content--bgf7">
     <div class="container d-flex align-items-stretch" style="margin-left: 0rem;">
-        <!-- BREADCRUMB-->
         <nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">
             <div class="p-4">
                 <h1 style="margin-bottom: 60px;"><a class="logo">Services</a></h1>
                 <ul class="list-unstyled components mb-5">
-                    <ul class="list-unstyled components mb-5">
-                        <li>
-                            <a href="{{ route('manager-test',$prof->professeur_id) }}"><span class="fa fa-home mr-3"></span> Acceuil</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('create-test.index',$prof) }}"><span class="fa fa-plus-square-o mr-3"></span> Création des test</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('profauth.test') }}"><span class="fa fa-table mr-3"></span> table des test</a>
-                        </li>
-                        <li>
-                            <a href="/create-qcm1/{{$test->test_id }}"><span class="fa fa-list mr-3"></span> création question qcm</a>
-                        </li>
-                        <li>
-                            <a href="/create-bin/{{$test->test_id}}"><span class="fa fa-question mr-3"></span> Création question binaire </a>
-                        </li>
-                        <li>
-                            <a href="/create-text-libre/{{$test->test_id}}"><span class="fa fa-file-text-o mr-3"></span> Création question text </a>
-                        </li>
+                    <li>
+                        <a href="{{ route('manager-test',$prof->professeur_id) }}"><span class="fa fa-home mr-3"></span> Acceuil</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('create-test.index',$prof) }}"><span class="fa fa-plus-square-o mr-3"></span> Création des test</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('profauth.test') }}"><span class="fa fa-table mr-3"></span> table des test</a>
+                    </li>
+                    <li>
+                        <a href="/create-qcm1/{{$test->test_id }}"><span class="fa fa-list mr-3"></span> création question qcm</a>
+                    </li>
+                    <li>
+                        <a href="/create-bin/{{$test->test_id}}"><span class="fa fa-question mr-3"></span> Création question binaire </a>
+                    </li>
+                    <li>
+                        <a href="/create-text-libre/{{$test->test_id}}"><span class="fa fa-file-text-o mr-3"></span> Création question text </a>
+                    </li>
 
-                        </li>
+                    </li>
                 </ul>
             </div>
         </nav>
         <div id="content" class="p-4 p-md-5 pt-5" style="width: 100rem; margin-top: 3.125rem">
-            <div class="table-responsive">
-                <table class="table table-bordered" style=" border-top: 2px solid #DCDCDC;" id="myTable">
+            <!-- BREADCRUMB-->
+            <section class="au-breadcrumb2" style=" margin-top: -5rem">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="au-breadcrumb-content">
+                                <div class="au-breadcrumb-left">
+                                    <span class="au-breadcrumb-span">Vous êtes ici:</span>
+                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                        <li class="list-inline-item active">
+                                            <a href="{{ route('profauth.test') }}">Accueil</a>
+                                        </li>
+                                        <li class="list-inline-item seprate">
+                                            <span>/</span>
+                                        </li>
+                                        <li class="list-inline-item active">
+                                            <a href="{{ route('manager-test',$prof) }}">Gérer les tests</a>
+                                        </li>
+                                        <li class="list-inline-item seprate">
+                                            <span>/</span>
+                                        </li>
+                                        <li class="list-inline-item">{{$test->nom}}</li>
+                                        <li class="list-inline-item seprate">
+                                            <span>/</span>
+                                        </li>
+                                        <li class="list-inline-item active">
+                                            <a href="/create-bin/{{$test->test_id}}">Création des questions binaire</a>
+                                        </li>
+                                        <li class="list-inline-item seprate">
+                                            <span>/</span>
+                                        </li>
+                                        <li class="list-inline-item">{{request()->route('binaire_id')}}</li>
+                                        <li class="list-inline-item seprate">
+                                            <span>/</span>
+                                        </li>
+                                        <li class="list-inline-item">Gérer les options</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="table-wrapper" >
+                <table class="table table-bordered" style="width: 1000px;"id="myTable">
                     <thead>
                     <tr>
-                        <th class="exclude">#</th>
+                        <th class="exclude">Identification</th>
                         <th>option text</th>
                         <th>point</th>
                         <th>id question</th>
@@ -200,108 +446,105 @@
                     </thead>
 
                 </table>
-                <a class="btn btn-success" title="restaurer"
-                   data-target="#exampleModal-restore" data-toggle="modal">Restaurer</a>
+                <a class="btn btn-success" title="restaurer" style="margin-left: 890px"
+                   data-target="#exampleModal-restore" data-toggle="modal">Réstaurer</a>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Modal edit -->
-<div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
+    <!-- Modal edit -->
+    <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-lg modal-right modal-warning" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
-                <form action="{{route('option.update','option_id')}}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="form-group">
+                    <form action="{{route('option.update','option_id')}}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group">
 
-                        <label for="" style="color:#c21db7;">nom</label>
+                            <label for=""  >nom</label>
 
-                        <input type="text" style="color:black;" id="option_text" name="option_text"
-                               class="form-control"
-                               placeholder="option">
-                    </div>
-                    <input type="hidden" style="color:black;" name="option_id" id="option_id">
-                    <br>
-                    <div class="form-group">
+                            <input type="text" style="color:black;" id="option_text" name="option_text"
+                                   class="form-control"
+                                   placeholder="option">
+                        </div>
+                        <input type="hidden" style="color:black;" name="option_id" id="option_id">
+                        <br>
+                        <div class="form-group">
 
-                        <label for="" style="color:#c21db7;">point</label>
-
-
-                        <input type="number" style="color:black;" id="point" name="point" class="form-control"
-                               placeholder="option">
-                    </div>
-                    <br>
-
-                    <div class="form-group">
-
-                        <label for="" style="color:#c21db7;">id binaire</label>
-
-                        <input type="text" id="binaire_id" style="color:black;" name="binaire_id"
-                               class="form-control" placeholder="binaire id">
-                    </div>
-                    <br>
+                            <label for=""  >point</label>
 
 
-                    <br>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                            <input type="number" style="color:black;" id="point" name="point" class="form-control"
+                                   placeholder="option">
+                        </div>
+                        <br>
 
-                <button type="submit" class="btn btn-success">modifier</button>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Modal delete -->
-<div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
+                        <div class="form-group">
 
-                <form action="{{route('option.destroy','option_id')}}" method="POST">
-                    @csrf
-                    @method('DELETE')
+                            <label for=""  >id binaire</label>
 
-                    <input type="hidden" name="option_id" id="option_id">
-                    <p class="text-center" width="50px"> vous ete sûre que vous voulez supprimer cette question</p>
+                            <input type="text" id="binaire_id" style="color:black;" name="binaire_id"
+                                   class="form-control" placeholder="binaire id">
+                        </div>
+                        <br>
 
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">fermer</button>
+                        <br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">fermer</button>
 
-                <button type="submit" class="btn btn-danger">supprimer</button>
-                </form>
-                <form action="{{action("OptionController@forceDelete")}}" method="POST">
-                    @csrf
-                    <input required type="hidden" name="force_option_id" id="force_option_id">
-                    <button type="submit" class="btn btn-danger">supprimer définitivement</button>
+                    <button type="submit" class="btn btn-warning">modifier</button>
+                </div>
                 </form>
             </div>
-
         </div>
     </div>
-</div>
-</main>
+    <!-- Modal delete -->
+    <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-lg modal-right modal-danger" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form action="{{route('option.destroy','option_id')}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+
+                        <input type="hidden" name="option_id" id="option_id">
+                        <p class="text-center textsupp" width="50px"> vous ete sûre que vous voulez supprimer cette question</p>
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="submit" class="btn btn-success">supprimer</button>
+                    </form>
+                    <form action="{{action("OptionController@forceDelete")}}" method="POST">
+                        @csrf
+                        <input required type="hidden" name="force_option_id" id="force_option_id">
+                        <button type="submit" class="btn btn-danger" style="margin-right: 122px!important;margin-top: -35px!important;">supprimer définitivement</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 <!-- Modal Restore -->
 <div class="modal fade-left" id="exampleModal-restore" tabindex="-1" role="dialog"
@@ -335,6 +578,9 @@
                 </form>
             </div>
         </div>
+    </div>
+</div>
+
     </div>
 </div>
 
@@ -390,7 +636,11 @@
     });
 
 </script>
-</body>
 
+<!-- Jquery JS-->
+<script src="/managetest/vendor/jquery-3.2.1.min.js"></script>
+<script src="/managetest/vendor/animsition/animsition.min.js"></script>
+<!-- Main JS-->
+<script src="/managetest/js/main.js"></script>
+</body>
 </html>
-<!-- end document-->

@@ -81,13 +81,17 @@ class BinaireController extends Controller
                 'option_text' => 'faux',
 
                 'binaire_id' => $id->question_id ,
-                'point' => '1'
+                'point' => '1',
+                 'type'=>'binaire'
+
             );
             OptionTemp::create($option);
             $option1 = array(
                 'option_text' => 'vrai',
                 'binaire_id' => $id->question_id ,
-                'point' => '0'
+                'point' => '0',
+                'type'=>'binaire'
+
             );
             OptionTemp::create($option1);
         }

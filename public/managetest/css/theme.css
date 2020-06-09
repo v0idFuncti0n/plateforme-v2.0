@@ -14832,6 +14832,7 @@ margin-bottom: -80px;
 }
 .textsupp  {
     color: #ff3547!important;
+    font-weight:bold ;font-size: 14px;
 }
 select.form-control:not([size]):not([multiple]) {
             height: 32px;

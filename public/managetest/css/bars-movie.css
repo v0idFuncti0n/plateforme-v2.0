@@ -12,7 +12,7 @@
 }
 .br-theme-bars-movie .br-widget a.br-active,
 .br-theme-bars-movie .br-widget a.br-selected {
-  background-color: #20df80;
+  background-color: #43c4da;
 }
 .br-theme-bars-movie .br-widget .br-current-rating {
   clear: both;
@@ -21,7 +21,7 @@
   font-weight: 600;
   display: block;
   padding: .5em 0;
-  color: #20df80;
+  color: #43c4da;
   font-weight: 400;
   font-size: 17px;
 }

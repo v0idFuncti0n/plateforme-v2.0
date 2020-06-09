@@ -41,6 +41,7 @@ class QuestionTempController extends Controller
                     'test_id' => $question->test_id,
                     'difficulty' => $question->difficulty,
                     'note' => $question->note,
+                    'type'=>'binaire'
 
                 );
                 $id = binaire::create($binaire);

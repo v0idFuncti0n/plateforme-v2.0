@@ -1,6 +1,5 @@
 <html>
     <head>
-
         <!-- Required meta tags-->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,6 +17,7 @@
         <link href="/managetest/css/font-face.css" rel="stylesheet" media="all">
         <link href="/managetest/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
         <!-- your css-->
+        <link rel="stylesheet" href="/managetest/css/selectStyle.css">
         <link rel="stylesheet" href="/managetest/css/form.css">
         <link href="/managetest/css/theme.css" rel="stylesheet" media="all">
         <link rel="stylesheet" href="{{asset('/managetest/css/sidebar.css')}}">
@@ -366,7 +366,7 @@
             <table class="table table-bordered"style="width: 1000px;" id="myTable">
                 <thead>
                 <tr>
-                    <th class="exclude">#</th>
+                    <th class="exclude">Identification</th>
                     <th>option</th>
                     <th>point</th>
                     <th>id question</th>

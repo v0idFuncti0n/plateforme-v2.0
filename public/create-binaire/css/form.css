@@ -862,21 +862,7 @@ textarea {
   .mb-4,
 .my-4 {
   margin-bottom: 1.5rem !important; }
-  h1 {
-  color: #18191b;
-  margin-bottom: 2rem;
-
-}
-
-section {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-section > div {
-  flex: 1;
-  padding: 0.5rem;
-}
+ 
 
 input[type="radio"] {
   display: none;
@@ -960,12 +946,3 @@ input[type="radio"]#control_05:checked + label::after {
   box-shadow: 0px 2px 5px -2px red;
 }
 
-p {
-  font-weight: 900;
-}
-
-@media only screen and (max-width: 700px) {
-  section {
-    flex-direction: column;
-  }
-}

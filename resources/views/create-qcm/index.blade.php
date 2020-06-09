@@ -475,7 +475,7 @@
                         <table class="table table-bordered" id="myTable">
                             <thead>
                             <tr>
-                                <th class="exclude">#</th>
+                                <th class="exclude">Identification</th>
                                 <th>question text</th>
                                 <th>note</th>
                                 <th>difficultes</th>
@@ -664,7 +664,7 @@
 
 
                             <div class="modal-footer">
-                                <button type="button" id="restore" class="btn btn-success">restaurer</button>
+                                <button type="button" id="restore" class="btn btn-success">réstaurer</button>
                                 <button type="button" id="force-delete" class="btn btn-danger">supprimer définitivement</button>
                             </div>
                         </form>
