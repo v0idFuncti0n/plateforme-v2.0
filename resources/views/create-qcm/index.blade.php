@@ -51,22 +51,30 @@
     <style>
         $
         green: #2ecc71
+
         ;
         $
         red: #e74c3c
+
         ;
         $
         blue: #3498db
+
         ;
         $
         yellow: #f1c40f
+
         ;
         $
         purple: #8e44ad
+
         ;
         $
         turquoise: #1abc9c
+
         ;
+
+
         h1 {
             color: $ yellow;
             font-size: 4rem;
@@ -74,12 +82,17 @@
             display: block;
             width: 100%;
             text-align: center;
+
         @media screen and (max-width: 600px) {
             font-size:
+
         3rem
+
         ;
         }
+
         }
+
         p {
             color: $ yellow;
             font-size: 1.2rem;
@@ -88,6 +101,8 @@
             padding: 20px;
             text-align: center;
         }
+
+
         /
         /
         Basic Button Style
@@ -111,33 +126,43 @@
             text-transform: uppercase;
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
+
         &
         :hover,
+
         &
         :focus {
             color: #fff;
             outline: 0;
         }
+
         }
+
         /
         /
         BUTTON
+
         1
         .first {
             transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+
         &
         :hover {
             box-shadow: 0 0 40px 40px $ red inset;
         }
+
         }
+
         /
         /
         BUTTON
+
         2
         .second {
             border-radius: 3em;
             border-color: $ turquoise;
             color: #fff;
+
         background: {
             image: linear-gradient(to right,
             transparentize($ turquoise, 0.4),
@@ -183,15 +208,21 @@
             position: 0 0;
             size: 100%;
         }
+
         transition: background
+
         300
         ms ease-in-out
+
         ;
+
         &
         :hover {
             background-position: 100px;
         }
+
         }
+
     </style>
     <link rel="stylesheet" href="{{asset('css/selectStyle.css')}}">
 </head>
@@ -293,10 +324,11 @@ Header
 
                     <div class=" card-6" style="margin-left: -3.75rem;">
                         <div class="">
-                            <form action="{{action('QCMController@store')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{action('QCMController@store')}}" method="post">
                                 @csrf
 
-                            <div class="form-row">
+
+                                <div class="form-row">
                                     <div class="name">Question</div>
                                     <div class="value">
                                         <div class="input-group">
@@ -333,7 +365,6 @@ Header
                                     </div>
                                 </div>
 
-
                                 <div class=" form-row ">
 
                                     <div class="name">Option</div>
@@ -342,18 +373,12 @@ Header
                                             <tr>
 
                                                 <?php $i = 0;?>
-                                                    <div >
-                                                        <input type="radio" id="text1" style="width: 17rem" name="textimg[]" value="1" class="sh" checked> <label for="text">text</label>
-                                                        <input type="radio" id="img1" style="width: 17rem" name="textimg[]" value="1" class="sh">  <label for="img">image</label>
-                                                    </div>
                                                 <input type="checkbox"
                                                        style="height: 17rem;width: 1.6rem;margin-right: 0.625rem"
                                                        name="point[]" value="1">
-                                                <textarea class="textarea--style-6" name="option_text[]" id="textt1"
+                                                <textarea class="textarea--style-6" name="option_text[]"
                                                           style=" margin-bottom: 1.25rem;" placeholder=""></textarea>
-                                                <input  type="file" style="display: none" id="imgg1" name="option_image[]" >
-                                                    <input type="hidden" name="hidden[]" value="1">
-
+                                                <input type="hidden" name="hidden[]" value="1">
                                             </tr>
                                         </div>
                                     </div>
@@ -592,14 +617,6 @@ Header
   Footer
 ============================-->
 <script>
-    jQuery("#bttn .btn").click(function(){
-        jQuery("#bttn .btn").removeClass('btn btn-success').addClass('btn btn-default');
-        jQuery(this).removeClass('btn btn-default').addClass('btn btn-success');
-    });
-</script>
-
-
-<script>
     $("#restore").click(function () {
         $("#form").attr("action", "{{route("qcm.restore")}}");
         $("form").submit();
@@ -611,13 +628,16 @@ Header
 </script>
 <script>
     $('#exampleModal-edit').on('show.bs.modal', function (event) {
+
         var button = $(event.relatedTarget)
         var question_text = button.data('question_text')
         var note = button.data('note')
         var difficulty = button.data('difficulty')
         var test_id = button.data('test_id')
         var question_id = button.data('question_id')
+
         var modal = $(this)
+
         modal.find('.modal-title').text('modifier');
         modal.find('.modal-body #question_text').val(question_text);
         modal.find('.modal-body #note').val(note);
@@ -625,47 +645,41 @@ Header
         modal.find('.modal-body #test_id').val(test_id);
         modal.find('.modal-body #question_id').val(question_id);
     });
+
+
     $('#exampleModal-delete').on('show.bs.modal', function (event) {
+
         var button = $(event.relatedTarget)
+
         var question_id = button.data('question_id')
         var force_question_id = question_id;
+
         var modal = $(this)
+
         modal.find('.modal-title').text('supprimer');
+
         modal.find('.modal-body #question_id').val(question_id);
         modal.find('.modal-footer #force_question_id').val(force_question_id);
     });
+
 </script>
 
 
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 <script>
-    var i = 1;
-    var j;
     $(document).ready(function () {
+        var i = 1;
         $('#add').click(function () {
             i++;
-            j=i-1;
-            if ($("#text"+(i-1)).is(':checked')) {
-                $('#dynamic_field').append('<tr id="row' + i + '"><td><div >\n' +
-                    '                                <input type="radio" id="text' + i + '" style="width: 17rem" name="textimg' + i + '[]"  value="' + i + '"  class="sh" checked> <label for="text' + i + '">text</label>\n' +
-                    '                                <input type="radio" id="img' + i + '"  style="width: 17rem" name="textimg' + i + '[]"  value="' + i + '"  class="sh">  <label for="img' + i + '">image</label>\n' +
-                    '                            </div><input type="checkbox" style="height: 17rem;width: 1.6rem;margin-right: 0.375rem"  name="point[]"  value="' + i + '" > <textarea id="textt' + i + '"  placeholder="" class="textarea--style-6 "name="option_text[]" style=" margin-bottom: 1.25rem;"></textarea><input type="hidden" name="hidden[]" value="' + i + '" ><input id="imgg' + i + '" style="display: none"  type="file"  name="option_image[]" >  <i type="button" name="remove" id="' + i + '" style="top: -9.6rem;left: 47rem;" class="glyphicon glyphicon-trash btn_remove"></i></td></tr>');
-
-            }
-          else  if ($("#img"+(i-1)).is(':checked')) {
-                $('#dynamic_field').append('<tr id="row' + i + '"><td><div >\n' +
-                    '                                <input type="radio" id="text' + i + '" style="width: 17rem" name="textimg' + i + '[]"  value="' + i + '"  class="sh" > <label for="text' + i + '">text</label>\n' +
-                    '                                <input type="radio" id="img' + i + '"  style="width: 17rem" name="textimg' + i + '[]"  value="' + i + '"  class="sh" checked>  <label for="img' + i + '">image</label>\n' +
-                    '                            </div><input type="checkbox" style="height: 17rem;width: 1.6rem;margin-right: 0.375rem"  name="point[]"  value="' + i + '" > <textarea id="textt' + i + '"  style="display: none" placeholder="" class="textarea--style-6 "name="option_text[]" style=" margin-bottom: 1.25rem;"></textarea><input type="hidden" name="hidden[]" value="' + i + '" ><input id="imgg' + i + '"   type="file"  name="option_image[]" >  <i type="button" name="remove" id="' + i + '" style="top: -9.6rem;left: 47rem;" class="glyphicon glyphicon-trash btn_remove"></i></td></tr>');
-
-            }
+            $('#dynamic_field').append('<tr id="row' + i + '"><td><input type="checkbox" style="height: 17rem;width: 1.6rem;margin-right: 0.375rem"  name="point[]"  value="' + i + '" > <textarea  placeholder="" class="textarea--style-6 "name="option_text[]" style=" margin-bottom: 1.25rem;"></textarea><input type="hidden" name="hidden[]" value="' + i + '" ><i type="button" name="remove" id="' + i + '" style="top:-7.8rem;left:0.625rem" class="glyphicon glyphicon-trash btn_remove"></i></td></tr>');
         });
+
         $(document).on('click', '.btn_remove', function () {
             var button_id = $(this).attr("id");
             $('#row' + button_id + '').remove();
-             i--;
-                });
+        });
+
         $('#submit').click(function () {
             $.ajax({
                 url: "name.php",
@@ -677,28 +691,9 @@ Header
                 }
             });
         });
+
     });
 </script>
-<script>
-    $(document).on('click','.sh',function () {
-        var k = $(this).attr('value');
-
-
-        if ($("#img"+k).is(':checked')) {
-            $("#textt"+k ).hide();
-            $("#imgg"+k ).show();
-            $("#textt"+k ).val('');
-
-        }
-        else if ($("#text"+k).is(':checked')) {
-            $("#imgg"+k).hide();
-            $("#textt"+k).show();
-            $("#imgg"+k).val(null);
-
-        }
-    });
-</script>
-
 <!-- JavaScript Libraries -->
 <script src="/create-qcmd/lib/jquery/jquery.min.js"></script>
 <script src="/create-qcmd/lib/jquery/jquery-migrate.min.js"></script>

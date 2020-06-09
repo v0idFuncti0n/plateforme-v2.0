@@ -157,3 +157,4 @@ Route::post('question/validate','QuestionTempController@validation')->name('ques
 Route::post('question/discardAll','QuestionTempController@discardAll')->name('question.discard');
 
 Route::get('/getMatiere/{module_id}','AjaxController@matiereDansModule');
+

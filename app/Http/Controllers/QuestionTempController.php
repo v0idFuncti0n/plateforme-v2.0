@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class QuestionTempController extends Controller
 {
-    public function validation(Request $request)
-    {
-        $test_id = $request->test_id;
-        $questions = QuestionTemp::query()->where('test_id', $test_id)->get();
+    public function copyQuestionToDB($questions){
         foreach ($questions as $question) {
             if ($question->type == 'qcm') {
                 $QCM = array(
@@ -67,16 +64,33 @@ class QuestionTempController extends Controller
                 Text_libre::query()->create($text_libre);
             }
         }
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        OptionTemp::query()->truncate();
-        QuestionTemp::query()->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+    }
+
+    public function validation(Request $request)
+    {
+        $test_id = $request->test_id;
+        $questions = QuestionTemp::query()->where('test_id', $test_id)->get();
+        $this->copyQuestionToDB($questions);
+//        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+//        OptionTemp::query()->truncate();
+//        QuestionTemp::query()->truncate();
+//        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        QuestionTemp::query()->where('test_id',$test_id)->delete();
         return redirect()->back();
     }
 
     public function discardAll(Request $request)
     {
         QuestionTemp::query()->where('test_id',$request->test_id)->delete();
+        return redirect()->back();
+    }
+
+    public function validationOf(Request $request){
+        $questionsIds = $request->questions;
+        $testId = $request->test_id;
+        $questions = QuestionTemp::query()->whereIn('question_id',$questionsIds)->get();
+        $this->copyQuestionToDB($questions);
+        QuestionTemp::query()->whereIn('test_id',$testId)->delete();
         return redirect()->back();
     }
 

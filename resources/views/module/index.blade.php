@@ -193,6 +193,11 @@
                                                        class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
                                                     <a data-module_id="{{$module->module_id}}" data-toggle="modal"
                                                        data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
+                                                    <a data-module_id="{{$module->module_id}}"
+                                                       data-module_nom="{{$module->nom}}"
+                                                       data-toggle="modal"
+                                                       data-target="#exampleModal-voir"
+                                                       class="btn btn-primary btn-sm">Voir les matieres</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -352,6 +357,34 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Modal voir -->
+                <div class="modal fade-left" id="exampleModal-voir" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" id="module_id">
+                                <table id="myTable">
+                                    <thead>
+                                        <th>nom matiere</th>
+                                        <th>volume horaire</th>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <!-- restore data -->
 
@@ -518,6 +551,36 @@
         modal.find('.modal-title').text('Supprimer module');
 
         modal.find('.modal-body #module_id').val(module_id);
+    });
+
+    $('#exampleModal-voir').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget)
+
+        var module_id = button.data('module_id')
+        var module_nom = button.data('module_nom')
+        var modal = $(this)
+
+        modal.find('.modal-title').text('Voir les matieres de module : ' + module_nom);
+
+        modal.find('.modal-body #module_id').val(module_id);
+        $.ajax({
+            type: 'GET',
+            url: '/getMatiere/' + module_id,
+            data: {module_id: module_id},
+            success: function (data) {
+                $("#myTable").empty();
+                data = JSON.parse(data);
+                console.log(data);
+                data.forEach(function (item) {
+                    $("#myTable tbody").append("<tr><td>"+item.nom_matiere+"</td><td>"+item.volume_horaire+"</td></tr>");
+                });
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
     });
 
 </script>
