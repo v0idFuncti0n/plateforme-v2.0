@@ -19,12 +19,16 @@
     <!-- Fontfaces CSS-->
     <link href="/managetest/css/font-face.css" rel="stylesheet" media="all">
     <link href="/managetest/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
     <!-- Bootstrap CSS-->
     <!-- Main CSS-->
     <link href="/managetest/css/theme.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="{{asset("/managetest/css/stylemodal.css")}}">
     <link rel="stylesheet" href="/managetest/css/stylechoice.css">
     <link rel="stylesheet" href="/managetest/css/selectStyle.css">
+
+    <link rel="stylesheet" href="/managetest/css/style.css">
+    <link rel="stylesheet" href="/managetest/css/style.css">
 
     <style>
         $
@@ -194,8 +198,87 @@
         @media (min-width:992px){.d-lg-none{display:none!important}}
 
     </style>
+
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+
+        @keyframes animatetop {
+            from {top:-300px; opacity:0}
+            to {top:0; opacity:1}
+        }
+
+        /* The Close Button */
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        .modal-body {padding: 2px 16px;}
+
+        .modal-footer {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
+    </style>
 </head>
 <body>
+
+   
+    
+
+
 <div class="page-wrapper">
     <!-- HEADER DESKTOP-->
     <header class="header-desktop3 d-none d-lg-block">
@@ -353,11 +436,11 @@
             <div class="container">
                 <div class="section-header" >
                     <a href=""><h3 class="section-title">Gérer test</h3></a>
-                </div>
+                    <button id="myBtn">Open Modal</button>
                 <div class="row">
                     <div  style="margin-left: 20px;margin-right: 20px" >
                     <div class="table-wrapper" >
-                        <table id="myTable" class="table table-bordered"  >
+                        <table id="myTable" class="table table-bordered"  style="color: black;"  >
 
 
                             <thead>
@@ -462,6 +545,40 @@
             <div class="modal1">
                 <div class="modal1-container">
                     <div class="modal1-left">
+                        <a href="#0"  class="btn btn-info js-cd-panel-trigger" class="" style="width: 20rem" data-panel="main">valider</a>
+                        <div class="cd-panel cd-panel--from-right js-cd-panel-main">
+                            <header class="cd-panel__header">
+                                <h5>valider la création des questions</h5>
+                                <a href="#0" class="cd-panel__close js-cd-close">Close</a>
+                            </header>
+                    
+                            <div class="cd-panel__container">
+                                <div class="cd-panel__content">
+                                  @php 
+                                  
+                                     $question['question']=DB::table('question_temp')->get();
+                                     @endphp
+                                     <form action="{{ route('question.validation') }}" method="POST">
+                                        @csrf
+                                     @foreach($question['question'] as $item)
+
+                                           <label class="switcher" style="margin-left:10px;">
+                                               <input name="questions[]" type="checkbox" value="{{$item->question_id}}"/>
+                                                  <div class="switcher__indicator"></div>
+                                                 <span style="font-size: 15px;">{{$item->question_text}}</span>
+                                                 
+                                                   </label><br>
+                                                   
+<br>
+  @endforeach
+                                                <input type="hidden" name="test_id" value="{{$test->test_id}}">
+                                                <input type="submit" class="btn btn-info" value="valider">
+
+                                            </form>
+                                </div> <!-- cd-panel__content -->
+                            </div> <!-- cd-panel__container -->
+                        </div> <!-- cd-panel -->
+                        
                         <div class="input-block">
                             <input type="radio" id="al" class="sty" name="select" value="1">
                             <label for="al" class="stl">
@@ -570,16 +687,12 @@
                     </div>
                 </div>
 
-                <form action="{{ route('question.validation') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="test_id" id="validation">
-                    <button >Valider</button>
-                </form>
-                <form action="{{ route('question.discard') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="test_id" id="discardAll">
-                    <button>Jeter tout</button>
-                </form>
+
+
+
+              
+                <!-- Trigger/Open The Modal -->
+ 
             </div>
 
             <button class="icon-button close-button">
@@ -798,6 +911,7 @@
 </div>
 </div>
 
+    
 <script>
     var test_id;
     function getSelectionnerTestId(){
@@ -857,6 +971,7 @@
         //alert(document.getElementById('force_test_id').value);
     });
 </script>
+
 <script>
     const st = {};
     st.flap = document.querySelector('#flap');
@@ -928,6 +1043,7 @@
 <script src="/managetest/vendor/animsition/animsition.min.js"></script>
 <!-- Main JS-->
 <script src="/managetest/js/main.js"></script>
+<script src="/managetest/js/mainjs.js"></script>
 <script src="{{asset("/managetest/js/scriptmodal.js")}}"></script>
 
 <script>
@@ -1006,6 +1122,7 @@
             '</div>');
     } );
 </script>
+
 <script>
     $("#restore").click(function () {
         $(this).closest("form").attr("action", "{{route("test.restore")}}");
@@ -1016,5 +1133,6 @@
         $("form").submit();
     });
 </script>
+
 </body>
 </html>

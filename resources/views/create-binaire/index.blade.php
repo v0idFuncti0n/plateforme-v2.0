@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="/managetest/css/radiocss.css">
     <link href="/managetest/css/theme.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="{{asset('/managetest/css/sidebar.css')}}">
+    <link rel="stylesheet" href="/managetest/css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="/managetest/css/style.css"> <!-- Resource style -->
     <style>
         $
         green: #2ecc71
@@ -284,7 +286,7 @@
             </div>
         </header>
         <!-- END HEADER DESKTOP-->
-
+        
         <!-- HEADER MOBILE-->
         <div class="sub-header-mobile-2 d-block d-lg-none" >
             <div class="header__tool">
@@ -402,6 +404,10 @@
             <!-- END BREADCRUMB-->
             <h2 class="mb-4">Création des questions binaire</h2>
             <section id="services">
+
+     
+
+
                 <div class="container ">
 
 
@@ -435,6 +441,7 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
+
                                     <div class="name">Difficulté</div>
                                     <div class="value">
                                         <div class="input-group">
@@ -468,6 +475,8 @@
                                 <input type="hidden" name="test_id" value="{{$test->test_id}}">
                                 <input type="submit" class="btn btn-success" style="width: 20rem"
                                        value="Enregistrer et quitter">
+                                       <a href="#0"  class="btn btn-info js-cd-panel-trigger" class="" style="width: 20rem" data-panel="main">valider</a>
+
 
 
                             </form>
@@ -475,11 +484,52 @@
                     </div>
                     <h2 class="mb-1" style=" margin-top: 10rem">Table des questions</h2>
 
+
+
+
+                    <div class="cd-panel cd-panel--from-right js-cd-panel-main">
+                        <header class="cd-panel__header">
+                            <h1>valider la création des questions</h1>
+                            <a href="#0" class="cd-panel__close js-cd-close">Close</a>
+                        </header>
+                
+                        <div class="cd-panel__container">
+                            <div class="cd-panel__content">
+                              @php 
+                              
+                                 $question['question']=DB::table('question_temp')->get();
+                                 @endphp
+                                 <form action="{{ route('question.validation') }}" method="POST">
+                                    @csrf
+                                 @foreach($question['question'] as $item)
+    
+                                       <label class="switcher" style="margin-left:10px;">
+                                           <input name="questions[]" type="checkbox" value="{{$item->question_id}}"/>
+                                              <div class="switcher__indicator"></div>
+                                             <span style="font-size: 15px;">{{$item->question_text}}</span>
+                                             
+                                               </label><br>
+                                               
+    <br>
+    @endforeach
+                                            <input type="hidden" name="test_id" value="{{$test->test_id}}">
+                                            <input type="submit" class="btn btn-info" value="valider">
+
+                                        </form>
+                            </div> <!-- cd-panel__content -->
+                        </div> <!-- cd-panel__container -->
+                    </div> <!-- cd-panel -->
+    
+    
+
+
+
+
                     @php
                         //  use \App
                             $binaires = App\binaire::OrderBy('binaire_id','asc')->where('test_id',$test->test_id)->get(); @endphp
                     <div class="table-wrapper" style="width: 100rem;">
-                        <table class="table table-bordered" id="myTable">
+                        <table class="table table-bordered" id="myTable" style="color :black;">
                             <thead>
                             <tr>
                                 <th class="exclude">Identification</th>
@@ -688,6 +738,7 @@
 <!--==========================
   Footer
 ============================-->
+<script src="/managetest/js/mainjs.js"></script>
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.12.0/js/mdb.min.js"></script>
 <script>

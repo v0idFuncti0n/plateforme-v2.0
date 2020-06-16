@@ -87,12 +87,17 @@ class QuestionTempController extends Controller
     }
 
     public function validationOf(Request $request){
-        $questionsIds = $request->questions;
+    if($request->input('questions')!=null){ 
+        $questionsIds= $request->questions;
+        
         $testId = $request->test_id;
-        $questions = QuestionTemp::query()->whereIn('question_id',$questionsIds)->get();
-        $this->copyQuestionToDB($questions);
-        QuestionTemp::query()->whereIn('test_id',$testId)->delete();
-        return redirect()->back();
-    }
+        $questions = DB::table('Question_Temp')->whereIn('question_id',$questionsIds)->get();
+        
 
+        $this->copyQuestionToDB($questions);
+        DB::table('question_temp')->delete();
+        return redirect()->back();
+       
+    }
+    }
 }

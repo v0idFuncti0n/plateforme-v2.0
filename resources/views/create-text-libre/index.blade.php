@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="/managetest/css/bars-movie.css">
     <link href="/managetest/css/theme.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="{{asset('/managetest/css/sidebar.css')}}">
+    <link rel="stylesheet" href="/managetest/css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="/managetest/css/style.css"> <!-- Resource style -->
     <style>
         $
         green: #2ecc71
@@ -456,14 +458,52 @@
                                 <input type="submit" name="submit" id="submit" style="width: 20rem; margin-left:7rem; "
                                        class="btn btn-info" value="Enregistrer et Ajouter"/>
                                 <input  class="btn btn-success" style="width: 20rem" value="Enregistrer et quitter">
+                                <a href="#0"  class="btn btn-info js-cd-panel-trigger" class="" style="width: 20rem" data-panel="main">valider</a>
 
                             </form>
                         </div>
                     </div>
                     <h2 class="mb-1" style=" margin-top: 10rem">Table des questions</h2>
 
+
+
+
+                    <div class="cd-panel cd-panel--from-right js-cd-panel-main">
+                        <header class="cd-panel__header">
+                            <h1>valider la création des questions</h1>
+                            <a href="#0" class="cd-panel__close js-cd-close">Close</a>
+                        </header>
+                
+                        <div class="cd-panel__container">
+                            <div class="cd-panel__content">
+                              @php 
+                              
+                                 $question['question']=DB::table('question_temp')->get();
+                                 @endphp
+                                 <form action="{{ route('question.validation') }}" method="POST">
+                                    @csrf
+                                 @foreach($question['question'] as $item)
+    
+                                       <label class="switcher" style="margin-left:10px;">
+                                           <input name="questions[]" type="checkbox" value="{{$item->question_id}}"/>
+                                              <div class="switcher__indicator"></div>
+                                             <span style="font-size: 15px;">{{$item->question_text}}</span>
+                                             
+                                               </label><br>
+                                               
+    <br>
+    @endforeach
+                                            <input type="hidden" name="test_id" value="{{$test->test_id}}">
+                                            <input type="submit" class="btn btn-info" value="valider">
+                                        </form>
+                            </div> <!-- cd-panel__content -->
+                        </div> <!-- cd-panel__container -->
+                    </div> <!-- cd-panel -->
+    
+
+
                     <div class="table-wrapper" style="width: 100rem; margin-top: 3.125rem">
-                        <table class="table table-bordered" id="myTable">
+                        <table class="table table-bordered" style="color: black;" id="myTable">
                             <thead>
                             <tr>
                                 <th>question_id</th>
@@ -690,6 +730,7 @@
     });
 
 </script>
+<script src="/managetest/js/mainjs.js"></script>
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 <script>
