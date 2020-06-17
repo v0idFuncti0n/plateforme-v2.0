@@ -371,7 +371,7 @@
                             </div>
                             <div class="modal-body">
                                 <input type="hidden" id="module_id">
-                                <table id="myTable">
+                                <table id="matiereTable">
                                     <thead>
                                         <th>nom matiere</th>
                                         <th>volume horaire</th>
@@ -569,11 +569,10 @@
             url: '/getMatiere/' + module_id,
             data: {module_id: module_id},
             success: function (data) {
-                $("#myTable").empty();
+                $('#matiereTable tbody').empty();
                 data = JSON.parse(data);
-                console.log(data);
                 data.forEach(function (item) {
-                    $("#myTable tbody").append("<tr><td>"+item.nom_matiere+"</td><td>"+item.volume_horaire+"</td></tr>");
+                    $("#matiereTable tbody").append("<tr><td>"+item.nom_matiere+"</td><td>"+item.volume_horaire+"</td></tr>");
                 });
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -595,7 +594,6 @@
         language:{
             url:"//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
         }
-
     });
 </script>
 
