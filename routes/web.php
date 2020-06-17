@@ -85,6 +85,8 @@ Route::resource('option', 'optionController');
 Route::get('create-bin/option12/binaire/{binaire_id}', 'optionController@index1');
 Route::get('create-qcm1/option/qcm/{question_id}', 'optionController@index2');
 
+Route::post('session/facelogin', 'Auth\SessionController@facelogin')->name('facelogin');
+Route::get('loginface', 'TestController@loginface')->name('session.loginface');
 Route::get('session', 'Auth\SessionController@index')->name('session.index');
 Route::post('session/login', 'Auth\SessionController@sessionLogin')->name('session.login');
 Route::get('session/logout', 'Auth\SessionController@sessionLogout')->name('session.logout');

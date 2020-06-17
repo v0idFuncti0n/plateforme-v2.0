@@ -172,7 +172,7 @@
                                   $modules =DB::table('module')->get()  ;
 
                                     @endphp
-                                <select  name="search" id="search" class="form-control">
+                                <select style=" width: 100px;margin-top: -20px;margin-left: 20px;" name="search" id="search" class="form-control">
                                     @foreach($modules as $module)
                                     <option value="{{$module->module_id}}">{{$module->nom_module}}</option>
                                         @endforeach
@@ -273,7 +273,7 @@
                                         <div class="form-group">
                                             <label for="professeur_id" style="color:#c21db7;">Professeur</label>
                                             <?php $professeur = \App\Professeur::all()?>
-                                            <select required name="professeur_id" id="professeur_id" class="form-control" size="3">
+                                            <select  required name="professeur_id" id="professeur_id" class="form-control" size="3">
                                                 @foreach($professeur as $p)
                                                     <option value={{$p->professeur_id}}>{{$p->nom}}</option>
                                                 @endforeach

@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="/managetest/css/selectStyle.css">
 
     <link rel="stylesheet" href="/managetest/css/style.css">
-    <link rel="stylesheet" href="/managetest/css/style.css">
 
     <style>
         $
@@ -268,15 +267,14 @@
 
         .modal-footer {
             padding: 2px 16px;
-            background-color: #5cb85c;
             color: white;
         }
     </style>
 </head>
 <body>
 
-   
-    
+
+
 
 
 <div class="page-wrapper">
@@ -436,7 +434,6 @@
             <div class="container">
                 <div class="section-header" >
                     <a href=""><h3 class="section-title">Gérer test</h3></a>
-                    <button id="myBtn">Open Modal</button>
                 <div class="row">
                     <div  style="margin-left: 20px;margin-right: 20px" >
                     <div class="table-wrapper" >
@@ -537,6 +534,7 @@
                 </div>
             </div>
             </div>
+            </div>
         </section>
         <?php
         if(isset($test)){
@@ -545,17 +543,16 @@
             <div class="modal1">
                 <div class="modal1-container">
                     <div class="modal1-left">
-                        <a href="#0"  class="btn btn-info js-cd-panel-trigger" class="" style="width: 20rem" data-panel="main">valider</a>
-                        <div class="cd-panel cd-panel--from-right js-cd-panel-main">
-                            <header class="cd-panel__header">
-                                <h5>valider la création des questions</h5>
+                        <div class="cd-panel cd-panel--from-right js-cd-panel-main" >
+                            <header class="cd-panel__header" style="margin-top: 131px;">
+                                <h1 id="hh3">Valider les questions</h1>
                                 <a href="#0" class="cd-panel__close js-cd-close">Close</a>
                             </header>
-                    
-                            <div class="cd-panel__container">
+
+                            <div class="cd-panel__container" style="height: 72%;margin-top: 131px;">
                                 <div class="cd-panel__content">
-                                  @php 
-                                  
+                                  @php
+
                                      $question['question']=DB::table('question_temp')->get();
                                      @endphp
                                      <form action="{{ route('question.validation') }}" method="POST">
@@ -565,10 +562,10 @@
                                            <label class="switcher" style="margin-left:10px;">
                                                <input name="questions[]" type="checkbox" value="{{$item->question_id}}"/>
                                                   <div class="switcher__indicator"></div>
-                                                 <span style="font-size: 15px;">{{$item->question_text}}</span>
-                                                 
+                                                 <span class="butttext">{{$item->question_text}}</span>
+
                                                    </label><br>
-                                                   
+
 <br>
   @endforeach
                                                 <input type="hidden" name="test_id" value="{{$test->test_id}}">
@@ -578,7 +575,7 @@
                                 </div> <!-- cd-panel__content -->
                             </div> <!-- cd-panel__container -->
                         </div> <!-- cd-panel -->
-                        
+
                         <div class="input-block">
                             <input type="radio" id="al" class="sty" name="select" value="1">
                             <label for="al" class="stl">
@@ -623,11 +620,12 @@
                                     </div>
 
                                     <button id="random" class="btn btn-info">Ajouter les questions</button>
+                                    <a href="#0"  class="btn btn-info js-cd-panel-trigger" class="" style="width: 20rem" data-panel="main">valider</a>
+
                                 </form>
                             </div>
                         </div>
                     </div>
-
                     <div class="input-block">
                         <input type="radio" id="se" name="select" class="sty" value="2">
                         <label for="se" class="stl">
@@ -680,6 +678,7 @@
                                 <label for="three3" class="switch__label3">Text</label>
                                 <div class="switch__indicator3"/>
                             </div>
+
                             <a id="teleport-a" href="/create-qcm1/{{$test->test_id}}">
                                 <button id="teleport" class="btn btn-info">ajouter QCM</button>
                             </a>
@@ -687,12 +686,14 @@
                     </div>
                 </div>
 
-
-
-
-              
-                <!-- Trigger/Open The Modal -->
- 
+                <form action="{{ route('question.validation') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="test_id" id="validation">
+                </form>
+                <form action="{{ route('question.discard') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="test_id" id="discardAll">
+                </form>
             </div>
 
             <button class="icon-button close-button">
@@ -863,7 +864,7 @@
                         <form action="{{action("TestController@forceDelete",['test_id'=>$test->test_id])}}" method="POST">
                             @csrf
                             <input required type="hidden" name="force_test_id" id="force_test_id">
-                            <button type="submit"  class="btn btn-danger supp">supprimer définitivement</button>
+                            <button type="submit"  class="btn btn-danger supp2">supprimer définitivement</button>
                         </form>
 
                     </div>
@@ -911,7 +912,7 @@
 </div>
 </div>
 
-    
+
 <script>
     var test_id;
     function getSelectionnerTestId(){

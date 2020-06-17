@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="/managetest/css/radiocss.css">
     <link href="/managetest/css/theme.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="{{asset('/managetest/css/sidebar.css')}}">
-    <link rel="stylesheet" href="/managetest/css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="/managetest/css/style.css"> <!-- Resource style -->
     <style>
         $
@@ -286,7 +285,7 @@
             </div>
         </header>
         <!-- END HEADER DESKTOP-->
-        
+
         <!-- HEADER MOBILE-->
         <div class="sub-header-mobile-2 d-block d-lg-none" >
             <div class="header__tool">
@@ -405,7 +404,7 @@
             <h2 class="mb-4">Création des questions binaire</h2>
             <section id="services">
 
-     
+
 
 
                 <div class="container ">
@@ -489,27 +488,27 @@
 
                     <div class="cd-panel cd-panel--from-right js-cd-panel-main">
                         <header class="cd-panel__header">
-                            <h1>valider la création des questions</h1>
+                            <h1 id="hh4">Valider la création des questions</h1>
                             <a href="#0" class="cd-panel__close js-cd-close">Close</a>
                         </header>
-                
+
                         <div class="cd-panel__container">
                             <div class="cd-panel__content">
-                              @php 
-                              
+                              @php
+
                                  $question['question']=DB::table('question_temp')->get();
                                  @endphp
                                  <form action="{{ route('question.validation') }}" method="POST">
                                     @csrf
                                  @foreach($question['question'] as $item)
-    
+
                                        <label class="switcher" style="margin-left:10px;">
                                            <input name="questions[]" type="checkbox" value="{{$item->question_id}}"/>
                                               <div class="switcher__indicator"></div>
-                                             <span style="font-size: 15px;">{{$item->question_text}}</span>
-                                             
+                                             <span class="butttext">{{$item->question_text}}</span>
+
                                                </label><br>
-                                               
+
     <br>
     @endforeach
                                             <input type="hidden" name="test_id" value="{{$test->test_id}}">
@@ -519,8 +518,8 @@
                             </div> <!-- cd-panel__content -->
                         </div> <!-- cd-panel__container -->
                     </div> <!-- cd-panel -->
-    
-    
+
+
 
 
 
@@ -581,7 +580,7 @@
                 <!-- Modal edit -->
                 <div class="modal fade-left" id="exampleModal-edit" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-warning" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
@@ -596,7 +595,7 @@
                                     @method('PUT')
                                     <div class="form-group">
 
-                                        <label for="" style="color:#c21db7;">question text</label>
+                                        <label for=""  >question text</label>
 
                                         <input type="text" style="color:black;" id="question_text" name="question_text"
                                                class="form-control"
@@ -606,7 +605,7 @@
                                     <br>
                                     <div class="form-group">
 
-                                        <label for="" style="color:#c21db7;">difficultes </label>
+                                        <label for=""  >difficultes </label>
 
 
                                         <select name="difficulty" id="difficulty" style="height: 34px;"
@@ -622,7 +621,7 @@
 
                                     <div class="form-group">
 
-                                        <label for="" style="color:#c21db7;">note</label>
+                                        <label for=""  >note</label>
 
                                         <input type="text" id="note" style="color:black;" name="note"
                                                class="form-control" placeholder="note">
@@ -632,7 +631,7 @@
                                     <div class="form-group">
 
 
-                                        <label for="" style="color:#c21db7;">id test</label>
+                                        <label for=""  >id test</label>
 
                                         <input type="number" style="color:black;" id="test_id" name="test_id"
                                                class="form-control"
@@ -640,10 +639,10 @@
                                     </div>
                                     <br>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">fermer
                                         </button>
 
-                                        <button type="submit" class="btn btn-success">modifier</button>
+                                        <button type="submit" class="btn btn-warning">modifier</button>
                                     </div>
                                 </form>
                             </div>
@@ -653,7 +652,7 @@
                 <!-- Modal delete -->
                 <div class="modal fade-left" id="exampleModal-delete" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-notify modal-lg modal-right modal-success" role="document">
+                    <div class="modal-dialog modal-notify modal-lg modal-right modal-danger" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">supprimer</h5>
@@ -668,20 +667,19 @@
                                     @method('DELETE')
 
                                     <input type="hidden" name="binaire_id" id="binaire_id">
-                                    <p class="text-center" width="50px" style="font-weight:900 ;font-size: 14px;"> vous
+                                    <p class="text-center textsupp " width="50px" style="font-weight:bold ;font-size: 14px;"> vous
                                         ete sûre que
                                         vous voulez supprimer cette question</p>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal">fermer
-                                        </button>
-                                        <button type="submit" class="btn btn-danger">supprimer</button>
+
+                                        <button type="submit" class="btn btn-success">supprimer</button>
                                 </form>
                                 <form action="{{action("BinaireController@forceDelete")}}" method="POST">
                                     @csrf
                                     <input required type="hidden" name="force_question_id"
                                            id="force_question_id">
-                                    <button type="submit" class="btn btn-danger">supprimer définitivement</button>
+                                    <button type="submit" class="btn btn-danger supp">supprimer définitivement</button>
                                 </form>
 
 

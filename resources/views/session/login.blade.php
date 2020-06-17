@@ -36,10 +36,10 @@
     <link rel="stylesheet" href="/sessionLogin/css/font-awesome.min.css" type="text/css" media="all">
     <!-- //Font-Awesome-File-Links -->
 
-	<!-- Google fonts -->
-	<link href="//fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700,800" rel="stylesheet">
-	<!-- Google fonts -->
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700,800" rel="stylesheet">
+    <!-- Google fonts -->
 
 </head>
 <!-- //Head -->
@@ -48,55 +48,55 @@
 <body>
 
 <section class="main">
-	<div class="layer">
+    <div class="layer">
 
-		<div class="bottom-grid">
-			<div class="logo">
-				<h1> <a href="{{route('session.login')}}"><span class="fa fa-key"></span>T-EST</a></h1>
-			</div>
-			<div class="links">
-				<ul class="links-unordered-list">
-					<li class="active">
-						<a href="#" class="">Connexion</a>
-					</li>
-					<li class="">
-						<a href="#" class="">A propos de nous</a>
-					</li>
-					<li class="">
-						<a href="#" class="">Contact</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="content-w3ls">
-			<br>
+        <div class="bottom-grid">
+            <div class="logo">
+                <h1> <a href="{{route('session.login')}}"><span class="fa fa-key"></span>T-EST</a></h1>
+            </div>
+            <div class="links">
+                <ul class="links-unordered-list">
+                    <li class="active">
+                        <a href="#" class="">Connexion</a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="">A propos de nous</a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-w3ls">
             <br>
             <br>
-			<div class="content-bottom">
+            <br>
+            <div class="content-bottom">
                 <form method="POST" action="{{ action('Auth\SessionController@sessionLogin') }}">
                     @csrf
-					<div class="field-group">
-						<span class="fa fa-user" aria-hidden="true"></span>
-						<div class="wthree-field">
+                    <div class="field-group">
+                        <span class="fa fa-user" aria-hidden="true"></span>
+                        <div class="wthree-field">
                             <input title="aucun caractère spécial n'est autorisé 4 - 255 max" id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autocomplete="off" autofocus placeholder="Nom d'utilsateur">
-						</div>
-					</div>
-					<div class="field-group">
-						<span class="fa fa-lock" aria-hidden="true"></span>
-						<div class="wthree-field">
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <span class="fa fa-lock" aria-hidden="true"></span>
+                        <div class="wthree-field">
                             <input title="aucun caractère spécial n'est autorisé 4 - 255 max" id="password" type="password" class="form-control @if(!empty(Session::get('error'))) is-invalid @endif" name="password" required autocomplete="off" placeholder="Mot de passe">
                             <span style="color: red;" class="invalid-feedback" role="alert">
                                         <strong>{{ Session::get('error') }}</strong>
                                     </span>
-						</div>
-					</div>
-					<div class="wthree-field">
-						<button type="submit" class="btn">s'identifier</button>
-					</div>
+                        </div>
+                    </div>
+                    <div class="wthree-field">
+                        <button type="submit" class="btn">s'identifier</button>
+                    </div>
 
-				</form>
-			</div>
-		</div>
+                </form>
+            </div>
+        </div>
     </div>
 </section>
 

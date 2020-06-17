@@ -169,7 +169,7 @@
                                   $departements =DB::table('departement')->get()  ;
 
                             @endphp
-                            <select  name="search" id="search" class="form-control">
+                            <select  style=" width: 100px;margin-top: -20px;margin-left: 20px;" name="search" id="search" class="form-control">
                                 @foreach($departements as $departement)
                                     <option value="{{$departement->departement_id}}">{{$departement->nom}}</option>
                                 @endforeach
@@ -607,6 +607,7 @@
         $('#myTable').DataTable();
     });
     $('#myTable').DataTable({
+        "ordering": false,
         responsive: true,
         language:{
             url:"//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"

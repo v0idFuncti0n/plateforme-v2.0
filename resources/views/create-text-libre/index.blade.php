@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="/managetest/css/bars-movie.css">
     <link href="/managetest/css/theme.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="{{asset('/managetest/css/sidebar.css')}}">
-    <link rel="stylesheet" href="/managetest/css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="/managetest/css/style.css"> <!-- Resource style -->
     <style>
         $
@@ -470,27 +469,27 @@
 
                     <div class="cd-panel cd-panel--from-right js-cd-panel-main">
                         <header class="cd-panel__header">
-                            <h1>valider la création des questions</h1>
+                            <h1 id="hh4">Valider la création des questions</h1>
                             <a href="#0" class="cd-panel__close js-cd-close">Close</a>
                         </header>
-                
+
                         <div class="cd-panel__container">
                             <div class="cd-panel__content">
-                              @php 
-                              
+                              @php
+
                                  $question['question']=DB::table('question_temp')->get();
                                  @endphp
                                  <form action="{{ route('question.validation') }}" method="POST">
                                     @csrf
                                  @foreach($question['question'] as $item)
-    
+
                                        <label class="switcher" style="margin-left:10px;">
                                            <input name="questions[]" type="checkbox" value="{{$item->question_id}}"/>
                                               <div class="switcher__indicator"></div>
-                                             <span style="font-size: 15px;">{{$item->question_text}}</span>
-                                             
+                                             <span class="butttext">{{$item->question_text}}</span>
+
                                                </label><br>
-                                               
+
     <br>
     @endforeach
                                             <input type="hidden" name="test_id" value="{{$test->test_id}}">
@@ -499,7 +498,7 @@
                             </div> <!-- cd-panel__content -->
                         </div> <!-- cd-panel__container -->
                     </div> <!-- cd-panel -->
-    
+
 
 
                     <div class="table-wrapper" style="width: 100rem; margin-top: 3.125rem">
@@ -571,7 +570,7 @@
                                     <div class="form-group">
 
                                         <label for="question_text"  />
-                                            Question : </label>
+                                            Question  </label>
 
                                         <textarea class="form-control" rows="3" style="color: black"
                                                   name="question_text" id="question_text"></textarea>
@@ -580,7 +579,7 @@
                                     <div class="form-group">
 
                                         <label for="note"  />
-                                            Note : </label>
+                                            Note  </label>
 
                                         <input type="number" name="note" id="note" min="1" class="form-control"
                                                style="color: black">
@@ -588,7 +587,7 @@
                                     <br>
                                     <div class="form-group">
                                         <label for="question_text"  />
-                                            Difficulty : </label>
+                                            Difficulty  </label>
 
                                         <select required name="difficulty" size="1" class="form-control"
                                                 style="color: black">
@@ -732,7 +731,6 @@
 </script>
 <script src="/managetest/js/mainjs.js"></script>
 
-<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 <script>
     $(document).ready(function () {
         var i = 1;

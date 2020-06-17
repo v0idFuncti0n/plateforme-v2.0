@@ -150,6 +150,7 @@ var bootstrapWizardCreate = function(element, options) {
 
 	this.currentIndex = function() {
 		return $navigation.find(baseItemSelector + ($settings.withVisible ? ':visible' : '')).index($activeTab);
+
 	};
 
 	this.firstIndex = function() {
@@ -165,7 +166,16 @@ var bootstrapWizardCreate = function(element, options) {
 	};
 	
 	this.nextIndex = function() {
-		var nextIndexCandidate=this.currentIndex();
+var questionum = $('#js-progress').find('.numb');
+     var num = parseInt(questionum.text());
+     var i=0;
+     var cun;
+     for(i=1;i<=num;i++){
+if ($("#tab"+i).hasClass("active")) {
+     cun=i-1;
+}
+     }
+		var nextIndexCandidate=cun;
 		var nextTabCandidate=null;
 		do {
 			nextIndexCandidate++;
@@ -174,7 +184,16 @@ var bootstrapWizardCreate = function(element, options) {
 		return nextIndexCandidate;
 	};
 	this.previousIndex = function() {
-		var prevIndexCandidate=this.currentIndex();
+		var questionum = $('#js-progress').find('.numb');
+     var num = parseInt(questionum.text());
+     var j=0;
+     var cup;
+     for(j=1;j<=num;j++){
+if ($("#tab"+j).hasClass("active")) {
+     cup=j-1;
+}
+     }
+		var prevIndexCandidate=cup;
 		var prevTabCandidate=null;
 		do {
 			prevIndexCandidate--;

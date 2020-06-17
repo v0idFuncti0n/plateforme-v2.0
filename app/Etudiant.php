@@ -11,7 +11,7 @@ class Etudiant extends Model implements ToModel, WithHeadingRow
 {
     use SoftDeletes;
     protected $table = "etudiant";
-    protected $fillable = ['cin', 'niveau_id', 'filiere_id', 'cne', 'nom', 'prenom', 'email_address', 'username', 'password', 'numero', 'num_apologie'];
+    protected $fillable = ['cin', 'niveau_id', 'filiere_id', 'cne', 'nom', 'prenom', 'email_address', 'username', 'password', 'numero', 'num_apologie', 'image'];
     protected $primaryKey = 'etudiant_id';
 
     /**
@@ -32,6 +32,8 @@ class Etudiant extends Model implements ToModel, WithHeadingRow
             'email_address' => $row['email'],
             'numero' => $row['numero'],
             'num_apologie' => $row['num_apologie'],
+            'image' => $row['image'],
+
         ));
     }
 

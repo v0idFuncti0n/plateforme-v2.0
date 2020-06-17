@@ -125,7 +125,8 @@
                                     </div>
                                 </div>
                                 <div class="overview-chart">
-                                    <h1 style="color: white; text-align: center;margin-top: 20px;">{{$somme}}</h1>
+                                    <?php $bartest = DB::table('Test')->where('test_id',$s->test_id)->first() ?>
+                                    <h1 style="color: white; text-align: center;margin-top: 20px;">{{$somme.'/'.$bartest->note}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -138,8 +139,8 @@
                                     <div class="icon">
                                         <i class="zmdi zmdi-calendar-note"></i>
                                     </div>
-                                    <div class="text">
-                                        <h2>correct</h2>
+                                    <div class="text" >
+                                        <h2 >correct</h2>
                                     </div>
                                 </div>
                                 <div class="overview-chart">
@@ -175,142 +176,47 @@
                             <span class="fau" style="display:none">{{$faux}}</span>
                         </div>
                     </div>
-                    <div class="col-md-10 col-lg-6"  style="margin-left: 300px;">
-                        <div class="chart-percent-2">
-                            <h3 class="title-3 m-b-30" style="text-align: center">Pourcentage des correct et faux reponse %</h3>
-                            <div class="chart-wrap">
-                                <canvas id="percent-chart2"></canvas>
-                                <div id="chartjs-tooltip">
-                                    <table></table>
-                                </div>
-                            </div>
-                            <div class="chart-info">
-                                <div class="chart-note">
-                                    <span class="dot dot--blue"></span>
-                                    <span>correct</span>
-                                </div>
-                                <div class="chart-note">
-                                    <span class="dot dot--red"></span>
-                                    <span>faux</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END CHART PERCENT-->
-                    </div>
+
                 </div>
             </div>
     </section>
     <!-- END STATISTIC-->
-        <section class="p-t-20">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3 class="title-5 m-b-35">Vos réponses</h3>
-
-                        <div class="table-responsive table-responsive-data2">
-                            <table class="table table-data2">
-                                <thead>
-                                <tr>
-
-                                    <th>Test</th>
-                                    <th>question</th>
-                                    <th>reponse</th>
-                                    <th>correcte reponse</th>
-                                    <th>note</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php $ntests = DB::table('Test')->where('test_id',$s->test_id)->first() ?>
-                                <?php $qcms = DB::table('QCM')->where('test_id',$s->test_id)->whereNull('deleted_at')->get() ; ?>
-                                @foreach($qcms as $q)
-                                    <tr class="tr-shadow">
-
-                                        <td>{{$ntests->nom}}</td>
-                                        <td>
-                                            <span class="block-email">{{$q->question_text}}</span>
-                                        </td>
-                                        <?php $options = DB::table('Reponse_QCM')->where('question_id',$q->question_id)->get(['option_id']); ?>
-                                        <td class="desc">
-                                            @foreach($options as $oid)
-                                                <?php $optte = DB::table('Option')->where('option_id',$oid->option_id )->value('option_text'); ?>
-                                                -{{$optte}}
-                                                <br>
-                                            @endforeach
-                                        </td>
-
-                                        <?php $corr = DB::table('Option')->where('question_id',$q->question_id)->where('point','>',0)->get(); ?>
-                                        <td>
-                                            @foreach($corr as $co)
-                                                -{{$co->option_text}}
-                                                <br>
-                                                @endforeach
-                                        </td>
-                                        <?php $repcountall = DB::table('Reponse_QCM')->where('question_id',$q->question_id)->count() ?>
-                                        <?php $repcount = DB::table('Reponse_QCM')->where('question_id',$q->question_id)->where('note',1)->count() ?>
-                                    <?php $optcount = DB::table('option')->where('question_id',$q->question_id)->where('point',1)->count() ?>
-
-                                    <?php if ( $repcount==$repcountall && $repcount==$optcount) {?>
-                                        <?php $notesq = DB::table('QCM')->where('question_id',$q->question_id)->value('note'); ?>
-                                        <td>
-                                            <span class="status--process">{{$notesq}}</span>
-                                        </td>
-                                        <?php } else {?>
-                                        <td>
-                                            <span class="status--process">0</span>
-                                        </td>
-                                        <?php } ?>
-
-                                @endforeach
-                                <?php $binaires = DB::table('binaire')->where('test_id',$s->test_id)->whereNull('deleted_at')->get() ; $j=0 ?>
-                                @foreach($binaires as $b)
-                                    <tr class="tr-shadow">
-
-                                        <td>{{$ntests->nom}}</td>
-                                        <td>
-                                            <span class="block-email">{{$b->question_text}}</span>
-                                        </td>
-                                        <?php $optionbs = DB::table('Reponse_Bin')->where('binaire_id',$b->binaire_id)->value('option_id'); ?>
-                                        <?php $optionbid = DB::table('Option')->where('option_id',$optionbs)->value('option_text'); ?>
-                                        <td class="desc">{{$optionbid}}</td>
-                                        <?php $corrb = DB::table('Option')->where('binaire_id',$b->binaire_id)->where('point','>',0)->value('option_text'); ?>
-                                        <td>{{$corrb}}</td>
-                                        <?php $notesb = DB::table('Reponse_Bin')->where('binaire_id',$b->binaire_id)->value('note'); ?>
-                                        <?php if($notesb==0) { ?>
-                                        <td>
-                                            <span class="status--process">{{$notesb}}</span>
-                                        </td>
-                                        <?php } else if ($notesb==1) {?>
-                                        <?php $notesbn = DB::table('Binaire')->where('binaire_id',$b->binaire_id)->value('note'); ?>
-
-                                        <td>
-                                            <span class="status--process">{{$notesbn}}</span>
-                                        </td>
-                                    <?php }  ?>
-
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- END DATA TABLE-->
 
     <!-- STATISTIC CHART-->
     <section class="statistic-chart">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="title-5 m-b-35">Statistiques</h3>
+                    <h3 class="title-5 m-b-35" style="color: #43c4da">Statistiques</h3>
                 </div>
             </div>
-
-                <div class="col-md-12 col-lg-6"  style="margin-left: 300px">
+            <div class="row">
+            <div class="col-md-6 col-lg-6" >
+                <div class="chart-percent-2">
+                    <h3 class="title-3 m-b-30" style="text-align: center;color: #43c4da">Pourcentage des correct et faux reponse %</h3>
+                    <div class="chart-wrap">
+                        <canvas id="percent-chart2"></canvas>
+                        <div id="chartjs-tooltip">
+                            <table></table>
+                        </div>
+                    </div>
+                    <div class="chart-info">
+                        <div class="chart-note">
+                            <span class="dot dot--blue"></span>
+                            <span style="color: #00b5e9">correct</span>
+                        </div>
+                        <div class="chart-note">
+                            <span class="dot dot--red"></span>
+                            <span>faux</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- END CHART PERCENT-->
+            </div>
+                <div class="col-md-6 col-lg-6"  >
                     <!-- TOP CAMPAIGN-->
                     <div class="top-campaign">
-                        <h3 class="title-3 m-b-30" style="text-align: center">vos meilleur note</h3>
+                        <h3 class="title-3 m-b-30" style="text-align: center;color: #43c4da">vos meilleur note</h3>
                         <div class="table-responsive">
                             <table class="table table-top-campaign">
                                 <tbody>
@@ -331,7 +237,7 @@
 
                                 <tr>
                                     <td> {{$nomtest." ".$distest}}</td>
-                                    <td>{{$t->note_total}}</td>
+                                    <td style="color: #1ee898">{{$t->note_total}}</td>
                                 </tr>
                               @endforeach
                                 </tbody>
@@ -340,10 +246,7 @@
                     </div>
                     <!-- END TOP CAMPAIGN-->
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <!-- CHART PERCENT-->
-
-                </div>
+            </div>
             </div>
     </section>
 
