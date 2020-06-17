@@ -173,7 +173,7 @@
                                 use Illuminate\Support\Facades\DB ;
                                   $niveaux =DB::table('niveau')->get()  ;
                             @endphp
-                            <select  name="search" id="search" class="form-control">
+                            <select  style=" width: 70px;margin-top: -20px;margin-left: 20px;" name="search" id="search" class="form-control">
                                 @foreach($niveaux as $niveau)
                                     <option value="{{$niveau->niveau_id}}">{{$niveau->nom}}</option>
                                 @endforeach
@@ -182,7 +182,7 @@
                             @php
                                 $filieres =DB::table('filiere')->get()  ;
                             @endphp
-                            <select  name="search1" id="search1" class="form-control">
+                            <select  style=" width: 100px;margin-top: 0px;margin-left: 20px;"  name="search1" id="search1" class="form-control">
                                 @foreach($filieres as $filiere)
                                     <option value="{{$filiere->filiere_id}}">{{$filiere->nom}}</option>
                                 @endforeach
@@ -277,7 +277,7 @@
                             </div>
                             <div class="modal-body">
 
-                                <form action="{{route('etudiant.store')}}" method="POST">
+                                <form action="{{route('etudiant.store')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="cin" style="color:#c21db7;">cin</label>
@@ -359,6 +359,11 @@
                                         <input required type="number" style="color:black;" name="num_apologie"
                                                class="form-control"
                                                placeholder="Numéro d'apologie" min="1">
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="image" style="color:#c21db7;">image</label>
+                                        <input type="file" id="image" name="image" >
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>

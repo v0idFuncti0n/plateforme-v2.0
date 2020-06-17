@@ -23,9 +23,8 @@
     <link rel="stylesheet" href="/managetest/css/bars-movie.css">
     <link href="/managetest/css/theme.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="{{asset('/managetest/css/sidebar.css')}}">
-
-    <link rel="stylesheet" href="/managetest/css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="/managetest/css/style.css"> <!-- Resource style -->
+
 
     <!-- =======================================================
       Theme Name: Regna
@@ -475,27 +474,27 @@
 
                     <div class="cd-panel cd-panel--from-right js-cd-panel-main">
                         <header class="cd-panel__header">
-                            <h1>valider la création des questions</h1>
+                            <h1 id="hh4">Valider la création des questions</h1>
                             <a href="#0" class="cd-panel__close js-cd-close">Close</a>
                         </header>
-                
+
                         <div class="cd-panel__container">
                             <div class="cd-panel__content">
-                              @php 
-                              
+                              @php
+
                                  $question['question']=DB::table('question_temp')->get();
                                  @endphp
                                  <form action="{{ route('question.validation') }}" method="POST">
                                     @csrf
                                  @foreach($question['question'] as $item)
-    
+
                                        <label class="switcher" style="margin-left:10px;">
                                            <input name="questions[]" type="checkbox" value="{{$item->question_id}}"/>
                                               <div class="switcher__indicator"></div>
-                                             <span style="font-size: 15px;">{{$item->question_text}}</span>
-                                             
+                                             <span class="butttext">{{$item->question_text}}</span>
+
                                                </label><br>
-                                               
+
     <br>
     @endforeach
     <input type="submit" class="btn btn-info" value="valider">
@@ -503,7 +502,7 @@
                             </div> <!-- cd-panel__content -->
                         </div> <!-- cd-panel__container -->
                     </div> <!-- cd-panel -->
-    
+
 
 
 

@@ -286,7 +286,7 @@
                                     </div>
                                     <br>
                                     <div class="form-group">
-                                        <label for="date" style="color:#c21db7;">date de creation</label>
+                                        <label for="date" style="color:#c21db7;">date de création</label>
 
                                         <input required type="date" name="date_cr" style="color:black;" class="form-control"
                                                placeholder="date de creation">

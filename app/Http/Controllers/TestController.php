@@ -398,7 +398,10 @@ class TestController extends Controller
     {
         return view('create-test.restore');
     }
-
+    public function loginface($s)
+    {
+       return view('session.loginface',compact('s'));
+    }
     public function forceDeleteMass(Request $request)
     {
         $test_ids = $request->tests;

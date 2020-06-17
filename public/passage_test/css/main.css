@@ -68,16 +68,10 @@ html {
 /**
  * A very simple reset that sits on top of Normalize.css.
  */
-body,
-h1, h2, h3, h4, h5, h6,
-blockquote, p, pre,
-dl, dd, ol, ul,
-figure,
-hr,
-fieldset, legend {
+body{
   margin: 0;
   padding: 0;
-  background-color: #6666;
+  background-color: #c4ffe8;
 }
 
 /**
@@ -350,7 +344,7 @@ a:active {
   -webkit-border-radius: 22.5px;
   -moz-border-radius: 22.5px;
   border-radius: 22.5px;
-  background: #36c240;
+  background: #43c4da;
   font-size: 16px;
   color: #fff;
   font-family: inherit;
@@ -361,7 +355,7 @@ a:active {
 .btn-next:hover,
 .btn-back:hover,
 .btn-last:hover {
-  background: #22ae2c;
+  background: #43c4da;
 }
 
 @media (max-width: 767px) {
@@ -377,12 +371,12 @@ a:active {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  background: #999;
+  background: #ff3547;
   margin-right: 10px;
 }
 
 .btn-back:hover {
-  background: #666;
+  background: #ff3547;
 }
 
 @media (max-width: 767px) {
@@ -467,11 +461,15 @@ button {
   text-transform: capitalize;
   display: block;
   margin-bottom: 11px;
+  line-height: 30px;
+}
+.ques{
+  color: #43c4da;
 }
 .opti{
     font-size: 16px;
   font-weight: bold;
-    line-height: 30px;
+    line-height: 50px;
 
 }
 }
@@ -634,7 +632,7 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-border-radius: 17.5px;
   -moz-border-radius: 17.5px;
   border-radius: 17.5px;
-  background-color: #36c240;
+  background-color: #43c4da;
   -webkit-transition: width .6s ease;
   -o-transition: width .6s ease;
   -moz-transition: width .6s ease;
@@ -750,7 +748,7 @@ input[type=number]::-webkit-outer-spin-button {
 .numquestion{
   text-align: center; 
   margin-bottom: 40px;  
-  text-shadow: 2px 2px 6px #36c240;
+  text-shadow: 2px 2px 6px #43c4da;
   font-size: 22px;
   font-weight: bolder;
   color: #121a14;
@@ -776,7 +774,7 @@ input[type=number]::-webkit-outer-spin-button {
 .labelogo{
     font-size: 22px;
   font-weight: bolder;
-  color: #121a14;
+  color: #43c4da;
   font-family: Comic Sans MS ;
 }
 ul.countdown {
@@ -792,28 +790,39 @@ ul.countdown {
   top: -70px;
   right: 5%;
 }
-ul.countdown li { display: inline-block; }
+ul.countdown li { display: inline-block!important; }
 
 ul.countdown li span {
   font-size: 40px;
   font-weight: 100;
   padding: 0 20px;
-  border-top: 1px solid #36c240;
-  border-bottom: 1px solid #36c240;
+  border-top: 1px solid #43c4da;
+  border-bottom: 1px solid #43c4da;
   margin-left: -4px;
 }
 
 ul.countdown li p {
-  color: #a7abb1;
+  color: #43c4da;
   font-size: 14px;
+  font-weight: bold;
   text-transform: uppercase;
    background: #ffffff;
-}
+margin-top: 5px;}
 
 .hours {
-  background-color: #36c240;
+  background-color: #43c4da;
   padding: 0 10px;
   color: #fff;
 }
 
-.last { border-right: 1px solid #36c240;  }
+.last { border-right: 1px solid #43c4da;  }
+.checkboximg{
+  top:-165px!important;
+}
+.qcmimg{
+      width: 500px;
+      height: 400px;
+    margin-left: 10px;
+    margin-top:30px;
+    
+}

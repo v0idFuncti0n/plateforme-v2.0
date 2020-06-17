@@ -1507,7 +1507,7 @@ section {
 }
 
 .account-dropdown .info .content .name a:hover {
-    color: #43c4da;
+    color: #ff3547;
 }
 
 .account-dropdown .info .content .email {
@@ -14825,7 +14825,13 @@ margin-bottom: -80px;
 }
 .supp{
     margin-right: 122px!important;
-    margin-top: -63px!important;
+    margin-top: -55px!important;
+}
+.supp2{
+	    margin-right: 122px!important;
+
+	    margin-top: -62px!important;
+
 }
 #exampleModal-edit label {
     color: #fb3;

@@ -118,5 +118,6 @@
     <orderEntry type="library" name="quill" level="application" />
     <orderEntry type="library" name="filesaver" level="application" />
     <orderEntry type="library" name="mdb" level="application" />
+    <orderEntry type="library" name="datatables" level="application" />
   </component>
 </module>

@@ -39,7 +39,20 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Get filename with the extension
+        $image_array = $request->file('image');
+  echo($request->file('image'));
+        // Get just filename
+        $filenameWithExt = $image_array->getClientOriginalName();
+        $filename = $request->cin ;
+        // Get just ext
+        $extension = $image_array->getClientOriginalExtension();
+        // Filename to store
+        $fileNameToStore = $filename .'.' . $extension;
+        // Upload Image
+            $nomfiliere=DB::table('filiere')->where('filiere_id', $request->filiere_id)->get('nom');
+        $path = $image_array->storeAs('public/option_image/etudiant/'.$nomfiliere[0]->nom.'/'.$request->prenom.' '.$request->nom, $fileNameToStore);
+
         $etudiant = array(
             'cin' => $request->cin,
             'cne' => $request->cne,
@@ -49,11 +62,14 @@ class EtudiantController extends Controller
             'filiere_id' => $request->filiere_id,
             'email_address' => $request->email_address,
             'numero' => $request->numero,
-            'num_apologie' => $request->num_apologie
+            'num_apologie' => $request->num_apologie,
+            'image'=>$fileNameToStore,
         );
+            Etudiant::create($etudiant);
 
-        Etudiant::create($etudiant);
+
         return redirect()->route('etudiant.index');
+
     }
 
     /**
@@ -107,7 +123,7 @@ class EtudiantController extends Controller
                 {
                     $output .= '<tr>
 
-                                                 <td>'.$etudiant->etudiant_id.'</td>
+                                                     <td> </td>
                                                 <td>'.$etudiant->cin.'</td>
                                                 <td>'.$etudiant->niveau_id.'</td>
                                                 <td>'.$etudiant->filiere_id.'</td>
@@ -240,23 +256,48 @@ class EtudiantController extends Controller
      */
     public function update(Request $request,$id)
     {
+        if($request->hasFile('image')){
+            // Get filename with the extension
+            $image_array = $request->file('image');
 
-        //
-        $etudiant = array(
-            'cin' => $request->cin,
-            'cne' => $request->cne,
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
-            'niveau_id' => $request->niveau_id,
-            'filiere_id' => $request->filiere_id,
-            'email_address' => $request->email_address,
-            'numero' => $request->numero,
-            'num_apologie' => $request->num_apologie
-        );
-
-
-        Etudiant::find($request->etudiant_id)->update($etudiant);
-        return redirect()->back();
+            // Get just filename
+            $filenameWithExt = $image_array->getClientOriginalName();
+            $filename = $request->cin ;
+            // Get just ext
+            $extension = $image_array->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore = $filename .'.' . $extension;
+            // Upload Image
+            $nomfiliere=DB::table('filiere')->where('filiere_id', $request->filiere_id)->get();
+            $path = $image_array->storeAs('public/option_image/etudiant/'.$nomfiliere.'/'.$request->prenom.' '.$request->nom, $fileNameToStore);
+            $etudiant = array(
+                'cin' => $request->cin,
+                'cne' => $request->cne,
+                'nom' => $request->nom,
+                'prenom' => $request->prenom,
+                'niveau_id' => $request->niveau_id,
+                'filiere_id' => $request->filiere_id,
+                'email_address' => $request->email_address,
+                'numero' => $request->numero,
+                'num_apologie' => $request->num_apologie,
+                'image'=>$fileNameToStore,
+            ); }
+        else {
+            $etudiant = array(
+                'cin' => $request->cin,
+                'cne' => $request->cne,
+                'nom' => $request->nom,
+                'prenom' => $request->prenom,
+                'niveau_id' => $request->niveau_id,
+                'filiere_id' => $request->filiere_id,
+                'email_address' => $request->email_address,
+                'numero' => $request->numero,
+                'num_apologie' => $request->num_apologie,
+                'image'=>$request->image,
+            );
+        }
+        Etudiant::findOrfail($request->id)->update($etudiant);
+        return redirect()->route('etudiant.index');
     }
 
     /**
@@ -269,18 +310,18 @@ class EtudiantController extends Controller
     {
         //
 
-        $deleteetudiant = Etudiant::findOrfail($etudiant->etudiant_id);
 
 
         if($etudiant->but=='no'){
-
-
-            $deleteetudiant = Etudiant::findOrfail($etudiant->etudiant_id);
-
+            $delete = $etudiant->all();
+            $deleteetudiant = Etudiant::findOrfail($etudiant->id);
             $deleteetudiant->delete();
-            return redirect()->route('etudiant.index');}
+            return redirect()->route('etudiant.index');
+        }
             if($etudiant->but=='dif'){
-                Etudiant::find($etudiant->etudiant_id)->forceDelete();
+                etudiant::find($etudiant->id)->forceDelete();
+                $npmfil=DB::table('filiere')->where('filiere_id',$etudiant->filiere_id)->get();
+                storage::delete('public/option_image'.$npmfil.'/'.$etudiant->prenom.' '.$etudiant->nom);
                 return redirect()->route('etudiant.index');}
     }
     public function import(Request $request){

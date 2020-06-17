@@ -21,9 +21,6 @@
         href="{{ asset('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i') }}"
         rel="stylesheet">
 
-    <!-- Vendor CSS-->
-
-    <!-- Main CSS-->
     <link href="{{ asset('/passage_test/css/main.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('/passage_test/css/stylecheckbox.css') }}" rel="stylesheet" media="all">
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -35,6 +32,13 @@
         crossorigin="anonymous">
     </script>
     <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/passage_test/css/lightgallery.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="/passage_test/css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="/passage_test/css/style.css"> <!-- Resource style -->
+    <link rel="stylesheet" href="/passage_test/css/demo.css"> <!-- Demo style -->
     <style>
         .ql-editor p{
             background-color: white;
@@ -832,7 +836,61 @@ for ($b = 0; $b < $j; $b++) {
     </ul>
 </header>
 
+<main class="cd-main-content">
+    <a href="#0" class="cd-btn js-cd-panel-trigger" data-panel="main">Accéder aux autre questions</a>
+    <!-- your content here -->
+</main>
 
+<div class="cd-panel cd-panel--from-right js-cd-panel-main " style="z-index: 2000;">
+    <header class="cd-panel__header ">
+        <h1>Les questions</h1>
+        <a href="#0" class="cd-panel__close js-cd-close">Close</a>
+    </header>
+
+    <div class="cd-panel__container">
+        <div class="cd-panel__content">
+            @php $compteur=1; @endphp
+
+            <div id="ziad">
+                @for($b=0;$b<$k;$b++)
+                    @foreach($qcms[$b] as $item)
+                        <button type="button" class="btn btn-link butttext pagenum"  value="{{$compteur}}">
+                            <label  class="labelnum">{{$compteur}})</label>
+                            {{$item->question_text}}</button>
+                        <input type="hidden" name="hiddennum" value="{{$compteur}}">
+                        @php $compteur++; @endphp
+                        <br>
+                    @endforeach
+                @endfor
+                @for($b=0;$b<$i;$b++)
+                    @foreach($binaires[$b] as $item)
+
+                            <button type="button" class="btn btn-link butttext pagenum"  value="{{$compteur}}">
+                                <label class="labelnum">{{$compteur}})</label>
+                                {{$item->question_text}}</button>
+                        <input type="hidden" name="hiddennum" value="{{$compteur}}">
+                        @php $compteur++; @endphp
+                        <br>
+                    @endforeach
+                @endfor
+                @for($b=0;$b<$j;$b++)
+                    @foreach($text_libre[$b] as $item)
+                            <button type="button" class="btn btn-link butttext pagenum"  value="{{$compteur}}">
+                                <label class="labelnum">{{$compteur}})</label>
+                                {{$item->question_text}}</button>
+                        <input type="hidden" name="hiddennum" value="{{$compteur}}">
+                        @php $compteur++; @endphp
+                        <br>
+
+                    @endforeach
+                @endfor
+                <br>
+
+
+            </div>
+        </div> <!-- cd-panel__content -->
+    </div> <!-- cd-panel__container -->
+</div> <!-- cd-panel -->
 <!-- Trigger/Open The Modal -->
 <div id="myModal" class="modal">
 
@@ -950,36 +1008,52 @@ for ($b = 0; $b < $j; $b++) {
                         @endfor
 
                     </ul>
+
                     <div class="tab-content">
                         <div class="tab-content">
-                            <div id="ziad">
-                                @for ($ka=1;$ka<=$nombre;$ka++)
 
-                                    <input type="button" class="pagenum" style="background-color: green" value="{{$ka}}">
-                                    <input type="hidden" name="hiddennum" value="{{$ka}}">
-                                @endfor
-                            </div>
                         <?php $page = 0 ?>
                         @for($n=0;$n<$k ; $n++)
                             @foreach ($qcms[$n]  as $qcm)
-                                <div class="tab-pane " id="tab{{$page+1}}">
+                                <div class="tab-pane "  id="tab{{$page+1}}" >
+                                    <input type="hidden" id="currentt" value="{{$page}}">
                                     <div class="numquestion">question {{$page+1}} sur {{$cou}}</div>
                                     <div class="input-group">
                                         <input type="hidden" name="qcms[{{ $qcm->question_id }}]"
                                                value="{{$qcm->question_id}}">
                                         <div class="answ">Question :</div>
-                                        <label class="label"> {{ $qcm->question_text }}</label>
+                                        <label class="label ques"> {{ $qcm->question_text }}</label>
                                         <div class="answ">Reponse :</div>
                                         <?php $opt = DB::table('option')->where('question_id', $qcm->question_id)->get() ?>
                                         @foreach ($opt  as $option)
                                             <label>
+                                                @if ($option->type=='text')
+
                                                 <input type="checkbox" class="option-input checkbox"
                                                        name="options[{{ $option->option_id }}]"
                                                        id="option-{{$option->option_id}}"
                                                        value="{{$option->option_id}}">
-                                                <label class="opti">{{$option->option_text}}</label>
+                                                <label class="opti ques">{{$option->option_text}}</label>
+
                                                 <br>
+                                                @elseif($option->type=='image')
+                                                    <input  type="checkbox" class="option-input checkbox checkboximg"
+                                                            name="options[{{ $option->option_id }}]"
+                                                            id="option-{{$option->option_id}}"
+                                                            value="{{$option->option_id}}">
+                                                    <ul style="display: inline!important;" class="list-unstyled row lightgallery">
+                                                        <li data-src="/storage/public/option_image/{{$option->option_image}}">
+                                                            <a style="display: inline!important;" href="">
+
+                                                            <img class="qcmimg" src="/storage/public/option_image/{{$option->option_image}}" >
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <br>
+                                                @endif
+
                                             </label>
+
                                         @endforeach
                                     </div>
 
@@ -987,7 +1061,7 @@ for ($b = 0; $b < $j; $b++) {
                                         @if($cou === 1)
                                             <input type="hidden" name="test_id" value="{{$test1}}">
                                             <button class="btn-last" type="button" onclick="getHTML();">Valider</button>
-                                        @elseif ($page === 0)<a class="btn-next">Suivant</a>
+                                        @elseif ($page === 0)<a  class="btn-next">Suivant</a>
                                         @elseif($page === ($cou-1))
                                             <a class="btn-back">Retour</a>
                                             <input type="hidden" name="test_id" value="{{$test1}}">
@@ -995,7 +1069,8 @@ for ($b = 0; $b < $j; $b++) {
 
                                         @else
                                             <a class="btn-back">Retour</a>
-                                            <a class="btn-next">Suivant</a>
+                                            <a  class="btn-next">Suivant</a>
+
                                         @endif
                                     </div>
 
@@ -1011,7 +1086,7 @@ for ($b = 0; $b < $j; $b++) {
                                     <div class="numquestion">question {{$page+1}} sur {{$cou}}</div>
                                     <div class="input-group">
                                         <div class="answ">Question :</div>
-                                        <label class="label">{{ $binaire->question_text }}</label>
+                                        <label class="label ques">{{ $binaire->question_text }}</label>
                                         <div class="answ">Reponse :</div>
                                         <?php $opt1 = DB::table('option')->where('binaire_id', $binaire->binaire_id)->get()?>
                                         @foreach ($opt1  as $option)
@@ -1020,7 +1095,7 @@ for ($b = 0; $b < $j; $b++) {
                                                        name="questions[{{ $binaire->binaire_id}}]"
                                                        id="option-{{$option->option_id}}"
                                                        value="{{$option->option_id}}">
-                                                <label class="opti">{{$option->option_text}}</label>
+                                                <label class="opti ques">{{$option->option_text}}</label>
                                                 <br>
                                             </label>
                                         @endforeach
@@ -1037,7 +1112,7 @@ for ($b = 0; $b < $j; $b++) {
                                             <button class="btn-last" type="button" onclick="getHTML();">Valider</button>
                                         @else
                                             <a class="btn-back">Retour</a>
-                                            <a class="btn-next">Suivant</a>
+                                            <a   class="btn-next">Suivant</a>
                                         @endif
                                     </div>
 
@@ -1057,7 +1132,7 @@ for ($b = 0; $b < $j; $b++) {
                                     <div class="numquestion">question {{$page+1}} sur {{$cou}}</div>
                                     <div class="input-group">
                                         <div class="answ">Question :</div>
-                                        <label class="label"> {{ $text->question_text }}</label>
+                                        <label class="label ques"> {{ $text->question_text }}</label>
                                         <div class="answ" style="margin-bottom: 40px;">Reponse :</div>
                                         <div id="toolbar[{{$i}}]"></div>
                                         <div id="editor[{{$i}}]" style="height: 200px; font-size: 20px;"></div>
@@ -1070,7 +1145,7 @@ for ($b = 0; $b < $j; $b++) {
                                                 <input type="hidden" name="test_id" value="{{$test1}}">
                                                 <button class="btn-last" type="submit" onclick="getHTML()">Valider
                                                 </button>
-                                            @elseif ($page === 0)<a class="btn-next">Suivant</a>
+                                            @elseif ($page === 0)<a  class="btn-next">Suivant</a>
                                             @elseif($page === ($cou-1))
                                                 <a class="btn-back">Retour</a>
                                                 <input type="hidden" name="test_id" value="{{$test1}}">
@@ -1078,7 +1153,7 @@ for ($b = 0; $b < $j; $b++) {
                                                 </button>
                                             @else
                                                 <a class="btn-back">Retour</a>
-                                                <a class="btn-next">Suivant</a>
+                                                <a  class="btn-next">Suivant</a>
                                             @endif
                                         </div>
 
@@ -1124,6 +1199,7 @@ for ($b = 0; $b < $j; $b++) {
 
 
         });
+
 
     });
 
@@ -1245,14 +1321,20 @@ for ($b = 0; $b < $j; $b++) {
 <!-- Vendor JS-->
 <script src="{{ asset('/passage_test/vendor/jquery-validate/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('/passage_test/vendor/bootstrap-wizard/bootstrap.min.js') }}"></script>
-<script src="{{ asset('/passage_test/vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+<script src="{{ asset('/passage_test/vendor/bootstrap-wizard/jquery.bootstrap.wizard.js') }}"></script>
 
 <!-- Main JS-->
+<script src="{{ asset('/passage_test/js/main.js') }}"></script>
+
 <script src="{{ asset('/passage_test/js/global.js') }}"></script>
 <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js') }}"></script>
 <script src="{{ asset('/passage_test/js/jquery.downCount.js') }}"></script>
-<script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')}}"></script>
-
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.lightgallery').lightGallery();
+    });
+</script>
+<script src="/passage_test/js/lightgallery-all.min.js"></script>
 </body>
 
 </html>

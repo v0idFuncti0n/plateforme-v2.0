@@ -159,6 +159,7 @@ $niveau = \App\Niveau::findOrfail($etudiant->niveau_id);
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
 
     </div>
