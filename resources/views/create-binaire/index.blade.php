@@ -515,6 +515,16 @@
                                             <input type="submit" class="btn btn-info" value="valider">
 
                                         </form>
+                                <form action="{{ route('question.validation') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="test_id" value="{{$test->test_id}}">
+                                    <input type="submit" class="btn btn-info" value="valider tout">
+                                </form>
+                                <form action="{{ route('question.discard') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="test_id" value="{{$test->test_id}}">
+                                    <input type="submit" class="btn btn-info" value="rejeter tout">
+                                </form>
                             </div> <!-- cd-panel__content -->
                         </div> <!-- cd-panel__container -->
                     </div> <!-- cd-panel -->

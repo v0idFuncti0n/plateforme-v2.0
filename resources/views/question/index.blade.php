@@ -906,7 +906,7 @@ for ($b = 0; $b < $j; $b++) {
             @for($b=0;$b<$k;$b++)
                 @foreach($qcms[$b] as $item)
 
-                    <a style="background-color: white" ; color:black ; >{{$compteur++}}) {{$item->question_text}}</a>
+                    <a style="background-color: white;color: black;" >{{$compteur++}}) {{$item->question_text}}</a>
                     <br>
                     <br>
 
@@ -916,7 +916,7 @@ for ($b = 0; $b < $j; $b++) {
 
             @for($b=0;$b<$i;$b++)
                 @foreach($binaires[$b] as $item)
-                    <p style="background-color: white"; color:black ;>{{$compteur++}}) {{$item->question_text}}</p>
+                    <p style="background-color: white;color: black ;">{{$compteur++}}) {{$item->question_text}}</p>
                     <br>
                     <br>
 
@@ -924,7 +924,7 @@ for ($b = 0; $b < $j; $b++) {
             @endfor
             @for($b=0;$b<$j;$b++)
                 @foreach($text_libre[$b] as $item)
-                    <p style="background-color: white" ; color:black ;>{{$compteur++}}) {{$item->question_text}}</p>
+                    <p style="background-color: white;color: black;">{{$compteur++}}) {{$item->question_text}}</p>
                     <br>
                     <br>
                 @endforeach
@@ -945,8 +945,6 @@ for ($b = 0; $b < $j; $b++) {
             <div class="card-heading">
                 <h2 class="title"></h2>
             </div>
-
-
             <div class="card-body">
                 <button id="myBtn">Open Modal</button>
 

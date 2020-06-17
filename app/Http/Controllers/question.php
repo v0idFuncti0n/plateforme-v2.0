@@ -411,6 +411,6 @@ class question extends Controller
      */
     public function destroy(binaire $binaire)
     {
-        //
+
     }
 }

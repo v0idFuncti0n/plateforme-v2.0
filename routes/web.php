@@ -156,7 +156,10 @@ Route::get('/getInfos/{filiere_id}/{niveau_id}','AjaxController@nombreDesEtudian
 Route::post('/filiere-module/create','FiliereController@storeFromModule')->name('filiere.storeFromModule');
 
 Route::post('question/validate','QuestionTempController@validation')->name('question.validation');
+Route::post('question/validateOf','QuestionTempController@validationOf')->name('question.validationOf');
 Route::post('question/discardAll','QuestionTempController@discardAll')->name('question.discard');
 
 Route::get('/getMatiere/{module_id}','AjaxController@matiereDansModule');
-
+Route::get('/face',function (){
+    return view('face-reco');
+});

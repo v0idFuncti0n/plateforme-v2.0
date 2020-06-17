@@ -56,7 +56,7 @@ class ProfesseurController extends Controller
     public function restore(Request $request){
 
        Professeur::withTrashed()->whereIn('professeur_id',(array_values($request->input('prof'))) )->restore();
-      return redirect()->back();
+       return redirect()->back();
   }
     public function search(Request $request){
         {
