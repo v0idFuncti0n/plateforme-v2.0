@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>
-        Dashboard
+       Etudiant
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
           name='viewport'/>
@@ -39,8 +38,6 @@
     <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
     <style>
         input[type="file"]{
             height:20px;
@@ -209,6 +206,39 @@
                                         </tr>
                                         <tbody>
 
+                                        @foreach($etudiants as $key=>$etudiant)
+                                            <tr>
+                                                <td>{{++$key}}</td>
+                                                <td>{{$etudiant->cin}}</td>
+                                                <td>{{$etudiant->niveau_id}}</td>
+                                                <td>{{$etudiant->filiere_id}}</td>
+                                                <td>{{$etudiant->cne}}</td>
+                                                <td>{{$etudiant->nom}}</td>
+                                                <td>{{$etudiant->prenom}}</td>
+                                                <td>{{$etudiant->email_address}}</td>
+                                                <td>{{$etudiant->numero}}</td>
+                                                <td>{{$etudiant->num_apologie}}</td>
+                                                <td class="exclude">
+                                                    <a data-etudiant_id="{{$etudiant->etudiant_id}}"
+                                                       data-cin="{{$etudiant->cin}}"
+                                                       data-cne="{{$etudiant->cne}}"
+                                                       data-nom="{{$etudiant->nom}}"
+                                                       data-prenom="{{$etudiant->prenom}}"
+                                                       data-niveau_id="{{$etudiant->niveau_id}}"
+                                                       data-filiere_id="{{$etudiant->filiere_id}}"
+                                                       data-email_address="{{$etudiant->email_address}}"
+                                                       data-numero="{{$etudiant->numero}}"
+                                                       data-num_apologie="{{$etudiant->num_apologie}}"
+                                                       data-toggle="modal"
+                                                       data-target="#exampleModal-edit" type="button"
+                                                       class="btn btn-warning btn-sm" style="width: 100px">modifier</a>
+                                                    <a data-etudiant_id="{{$etudiant->etudiant_id}}"
+                                                       data-toggle="modal"
+                                                       data-target="#exampleModal-delete" style="margin-top: 5px" class="btn btn-danger btn-sm">supprimer</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
                                         </tbody>
                                         </thead>
                                     </table>
@@ -314,21 +344,7 @@
                                                class="form-control"
                                                placeholder="Email" title="XXX111@ests.ac.ma">
                                     </div>
-                                    <div class="form-group">
 
-                                        <label for="username" style="color:#c21db7;">username</label>
-
-                                        <input required type="text" style="color:black;" name="username" class="form-control"
-                                               placeholder="Nom d'utilisateur" pattern="[a-zA-Z0-9]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max" >
-                                    </div>
-                                    <div class="form-group">
-
-                                        <label for="password" style="color:#c21db7;">Mot de passe</label>
-
-                                        <input required type="password" id="eye" style="color:black;" name="password" class="form-control"
-                                               placeholder="Mot de passe" pattern="[a-zA-Z0-9]{4,255}" title="aucun caractère spécial n'est autorisé 4 - 255 max">
-                                        <span toggle="#eye" class="fa fa-fw fa-eye field-icon toggle-password" style="float: right; margin-left: -25px; margin-top: -25px; position: relative; z-index: 2;"></span>
-                                    </div>
                                     <div class="form-group">
 
                                         <label for="numero" style="color:#c21db7;">numero</label>
@@ -371,10 +387,11 @@
                         </div>
                         <div class="modal-body">
 
-                            <form action="{{route('etudiant.update','id')}}" method="POST">
+                            <form action="{{route('etudiant.update','etudiant_id')}}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <input required type="hidden" name="id" id="id">
+
+                                <input  type="hidden" name="etudiant_id" id="etudiant_id">
                                 <div class="form-group">
                                     <label for="cin" style="color:#c21db7;">cin</label>
 
@@ -480,11 +497,11 @@
                         </div>
                         <div class="modal-body">
 
-                            <form action="{{route('etudiant.destroy','id')}}" method="POST">
+                            <form action="{{route('etudiant.destroy','etudiant_id')}}" method="POST">
                                 @csrf
                                 @method('DELETE')
 
-                                <input required type="hidden" name="id" id="id">
+                                <input   type="hidden" name="etudiant_id" id="etudiant_id">
                                 <p class="text-center" width="50px"> vous ete sûre que vous voulez supprimer cet
                                     étudiant</p>
 
@@ -536,7 +553,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
 
-                                    <button type="submit" class="btn btn-success">Réstaurer</button>
+                                    <button type="submit" class="btn btn-success">Restaurer</button>
                                 </div>
                             </form>
                         </div>
@@ -623,15 +640,13 @@
     $('#exampleModal-edit').on('show.bs.modal', function (event) {
 
         var button = $(event.relatedTarget);
-        var id = button.data('id')
+        var etudiant_id = button.data('etudiant_id')
         var cin = button.data('cin')
         var cne = button.data('cne')
         var nom = button.data('nom')
         var prenom = button.data('prenom')
-        var id_niveau = button.data('id_niveau')
+        var niveau_id = button.data('niveau_id')
         var email = button.data('email_address')
-        var username = button.data('username')
-        var password = button.data('password')
         var numero = button.data('numero')
         var num_apologie = button.data('num_apologie')
 
@@ -639,64 +654,31 @@
         var modal = $(this)
 
         modal.find('.modal-title').text('Modifier étudiant');
-        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #etudiant_id').val(etudiant_id);
         modal.find('.modal-body #cin').val(cin);
         modal.find('.modal-body #cne').val(cne);
         modal.find('.modal-body #nom').val(nom);
         modal.find('.modal-body #prenom').val(prenom);
-        modal.find('.modal-body #id_niveau').val(id_niveau);
+        modal.find('.modal-body #niveau_id').val(niveau_id);
         modal.find('.modal-body #email_address').val(email);
-        modal.find('.modal-body #username').val(username);
-        modal.find('.modal-body #password').val(password);
+
         modal.find('.modal-body #numero').val(numero);
         modal.find('.modal-body #num_apologie').val(num_apologie);
 
 
     });
-    $('#exampleModal-edit').on('show.bs.modal', function (event) {
 
-        var button = $(event.relatedTarget);
-        var id = button.data('id')
-        var cin = button.data('cin')
-        var cne = button.data('cne')
-        var nom = button.data('nom')
-        var prenom = button.data('prenom')
-        var id_niveau = button.data('id_niveau')
-        var email = button.data('email_address')
-        var username = button.data('username')
-        var password = button.data('password')
-        var numero = button.data('numero')
-        var num_apologie = button.data('num_apologie')
-
-
-        var modal = $(this)
-
-        modal.find('.modal-title').text('modifier');
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #cin').val(cin);
-        modal.find('.modal-body #cne').val(cne);
-        modal.find('.modal-body #nom').val(nom);
-        modal.find('.modal-body #prenom').val(prenom);
-        modal.find('.modal-body #id_niveau').val(id_niveau);
-        modal.find('.modal-body #email_address').val(email);
-        modal.find('.modal-body #username').val(username);
-        modal.find('.modal-body #password').val(password);
-        modal.find('.modal-body #numero').val(numero);
-        modal.find('.modal-body #num_apologie').val(num_apologie);
-
-
-    });
     $('#exampleModal-delete').on('show.bs.modal', function (event) {
 
         var button = $(event.relatedTarget)
 
-        var id = button.data('id')
+        var etudiant_id = button.data('etudiant_id')
 
         var modal = $(this)
 
         modal.find('.modal-title').text('suprimer étudiant');
 
-        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #etudiant_id').val(etudiant_id);
     });
 
 </script>

@@ -44,8 +44,9 @@ class MatiereController extends Controller
                     {
                         $output .= '  <tr>
                                                     <td>'.$matie->matiere_id.'</td>
-                                                    <td>'.$matie->module_id.'</td>
+
                                                     <td>'.$matie->nom_matiere.'</td>
+                                                     <td>'.\App\Module::query()->find($matiere->module_id)->nom_module.'</td>
                                                     <td>'.$matie->volume_horaire.'</td>
                                                     <td>
                                                         <a data-matiere_id='.$matie->matiere_id.'

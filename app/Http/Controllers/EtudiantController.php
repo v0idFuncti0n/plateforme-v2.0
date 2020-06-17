@@ -107,7 +107,7 @@ class EtudiantController extends Controller
                 {
                     $output .= '<tr>
 
-                                                     <td> </td>
+                                                 <td>'.$etudiant->etudiant_id.'</td>
                                                 <td>'.$etudiant->cin.'</td>
                                                 <td>'.$etudiant->niveau_id.'</td>
                                                 <td>'.$etudiant->filiere_id.'</td>
@@ -240,6 +240,7 @@ class EtudiantController extends Controller
      */
     public function update(Request $request,$id)
     {
+
         //
         $etudiant = array(
             'cin' => $request->cin,
@@ -253,8 +254,9 @@ class EtudiantController extends Controller
             'num_apologie' => $request->num_apologie
         );
 
-        Etudiant::findOrfail($request->id)->update($etudiant);
-        return redirect()->route('etudiant.index');
+
+        Etudiant::find($request->etudiant_id)->update($etudiant);
+        return redirect()->back();
     }
 
     /**
@@ -267,15 +269,18 @@ class EtudiantController extends Controller
     {
         //
 
+        $deleteetudiant = Etudiant::findOrfail($etudiant->etudiant_id);
 
 
         if($etudiant->but=='no'){
-            $delete = $etudiant->all();
-            $deleteetudiant = Etudiant::findOrfail($etudiant->id);
+
+
+            $deleteetudiant = Etudiant::findOrfail($etudiant->etudiant_id);
+
             $deleteetudiant->delete();
             return redirect()->route('etudiant.index');}
             if($etudiant->but=='dif'){
-                etudiant::find($etudiant->id)->forceDelete();
+                Etudiant::find($etudiant->etudiant_id)->forceDelete();
                 return redirect()->route('etudiant.index');}
     }
     public function import(Request $request){

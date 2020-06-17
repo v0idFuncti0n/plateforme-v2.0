@@ -183,14 +183,32 @@
                                             <thead>
                                             <tr>
                                                 <th>Identifiant</th>
-                                                <th>Module id</th>
                                                 <th>Nom matiere</th>
+                                                <th>nom de Module </th>
                                                 <th>Volume horaire</th>
                                                 <th style="width: 215px;" class="exclude">Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-
+                                            @foreach($matieres as $key=>$matiere)
+                                                <tr>
+                                                    <td>{{++$key}}</td>
+                                                    <td>{{$matiere->nom_matiere}}</td>
+                                                    <td>{{\App\Module::query()->find($matiere->module_id)->nom_module}}</td>
+                                                    <td>{{$matiere->volume_horaire}}</td>
+                                                    <td>
+                                                        <a data-matiere_id="{{$matiere->matiere_id}}"
+                                                           data-module_id="{{$matiere->module_id}}"
+                                                           data-nom_matiere="{{$matiere->nom_matiere}}"
+                                                           data-volume_horaire="{{$matiere->volume_horaire}}"
+                                                           data-toggle="modal"
+                                                           data-target="#exampleModal-edit" type="button"
+                                                           class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
+                                                        <a data-matiere_id="{{$matiere->matiere_id}}" data-toggle="modal"
+                                                           data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
 

@@ -350,7 +350,9 @@
                                     <br>
                                     <div class="form-group">
 
-                                        <label for="" style="color:#c21db7;">date de debut </label>
+                                        <label for="" style="color:#c21db7;">date de debut
+
+                                        </label>
 
                                         <input required type="date" style="color:black;" id="date" name="date_cr"
                                                class="form-control"

@@ -183,15 +183,43 @@
                                             <th>cin</th>
                                             <th>nom</th>
                                             <th>prenom</th>
-                                            <th>username</th>
+                                            <th>nom d'utilisateur</th>
                                             <th>email</th>
-                                            <th>password</th>
+                                            <th>mot de passe</th>
                                             <th>grade</th>
-                                            <th>departement_id</th>
+                                            <th>departement</th>
                                             <th class="exclude">Action</th>
                                         </tr>
                                         <tbody>
-
+                                        @foreach($professeurs as $key=>$professeur)
+                                            <tr>
+                                                <td>{{++$key}}</td>
+                                                <td>{{$professeur->cin}}</td>
+                                                <td>{{$professeur->nom}}</td>
+                                                <td>{{$professeur->prenom}}</td>
+                                                <td>{{$professeur->username}}</td>
+                                                <td>{{$professeur->email}}</td>
+                                                <td>{{$professeur->password}}</td>
+                                                <td>{{$professeur->grade}}</td>
+                                                <td>{{$professeur->departement_id}}</td>
+                                                <td class="exclude">
+                                                    <a data-professeur_id="{{$professeur->professeur_id}}"
+                                                       data-cin="{{$professeur->cin}}"
+                                                       data-nom="{{$professeur->nom}}"
+                                                       data-prenom="{{$professeur->prenom}}"
+                                                       data-username="{{$professeur->username}}"
+                                                       data-email="{{$professeur->email}}"
+                                                       data-password="{{$professeur->password}}"
+                                                       data-grade="{{$professeur->grade}}"
+                                                       data-departement_id="{{$professeur->departement_id}}"
+                                                       data-toggle="modal"
+                                                       data-target="#exampleModal-edit" type="button"
+                                                       class="btn btn-warning btn-sm" style="width: 100px;">modifier</a>
+                                                    <a data-professeur_id="{{$professeur->professeur_id}}" data-toggle="modal"
+                                                       data-target="#exampleModal-delete" class="btn btn-danger btn-sm">supprimer</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                         </thead>
                                     </table>

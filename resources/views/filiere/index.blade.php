@@ -189,7 +189,7 @@
                                                 <td class="exclude">
                                                     <a data-filiere_id="{{$filiere->filiere_id}}"
                                                        data-nom="{{$filiere->nom}}"
-                                                       data-coordinateur="{{$filiere->coordinsteur}}"
+                                                       data-coordinateur="{{$filiere->coordinateur}}"
                                                        data-datedebut="{{$filiere->datedebut}}"
                                                        data-datefin="{{$filiere->datefin}}"
                                                        data-departement_id="{{$filiere->departement_id}}"
