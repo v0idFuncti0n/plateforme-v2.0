@@ -43,6 +43,7 @@
         .ql-editor p{
             background-color: white;
         }
+
     </style>
     <style>
         body {font-family: Arial, Helvetica, sans-serif;}
