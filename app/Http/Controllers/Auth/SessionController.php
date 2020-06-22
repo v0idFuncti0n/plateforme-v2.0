@@ -40,8 +40,8 @@ class SessionController extends Controller
                     $request->session()->put('id', $etudiantSessionPass->session_id);
                     $request->session()->put('end', 'false');
                    // return redirect()->action('TestController@loginface', ['s' => $etudiantSessionPass->session_id]);
-                       return view("session.loginface",["s"=>$etudiantSessionPass->session_id]);
-                    //return redirect()->action('TestController@index1', ['s' => $etudiantSessionPass->session_id]);
+                    // return view("session.loginface",["s"=>$etudiantSessionPass->session_id]);
+                   return redirect()->action('TestController@index1', ['s' => $etudiantSessionPass->session_id]);
 
                 }
 
