@@ -11,6 +11,8 @@ use App\Reponse_text;
 use App\Test;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\DB;
+
 use App\QCM;
 
 class QCMController extends Controller
@@ -233,8 +235,13 @@ class QCMController extends Controller
         if (!is_null($question_ids)) {
             foreach ($question_ids as $question_id) {
                 QCM::withTrashed()->find($question_id)->restore();
+                $options['options']=DB::table('option')->where('question_id', $question_id)->get('option_id');
+                foreach ($options['options'] as $option) {
+                    Option::withTrashed()->find($option->option_id)->restore();
 
+                }
             }
+
         }
         return redirect()->back();
     }

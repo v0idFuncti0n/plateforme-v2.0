@@ -35,9 +35,7 @@
         <div class="section__content section__content--p35">
             <div class="header3-wrap">
                 <div class="header__logo">
-                    <a href="#">
-                        <img src="/managetest/images/logo.png" alt="CoolAdmin" />
-                    </a>
+
                 </div>
 
                 <div class="header__tool">

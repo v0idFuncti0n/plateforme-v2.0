@@ -3360,6 +3360,9 @@ section {
     color: #ff3547;
     font-weight: 400;
 }
+.radiolabel{
+    color: #43c4da!important;
+}
 #message{
     font-size: 22px;
     margin-top: 40px;

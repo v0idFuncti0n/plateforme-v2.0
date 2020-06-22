@@ -284,7 +284,6 @@
             <div class="header3-wrap">
                 <div class="header__logo">
                     <a href="#">
-                        <img src="/managetest/images/logo.png" alt="CoolAdmin" />
                     </a>
                 </div>
 
@@ -352,56 +351,7 @@
     </header>
     <!-- END HEADER DESKTOP-->
 
-    <!-- HEADER MOBILE-->
-    <div class="sub-header-mobile-2 d-block d-lg-none" >
-        <div class="header__tool">
 
-            <div class="account-wrap">
-                <div class="account-item account-item--style2 clearfix js-item-menu">
-                    <div class="image">
-                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                    </div>
-                    <div class="content">
-                        <a class="js-acc-btn" href="#">john doe (nom d'etudiant)</a>
-                    </div>
-                    <div class="account-dropdown js-dropdown">
-                        <div class="info clearfix">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h5 class="name">
-                                    <a href="#">john doe</a>
-                                </h5>
-                                <span class="email">johndoe@example.com</span>
-                            </div>
-                        </div>
-                        <div class="account-dropdown__body">
-                            <div class="account-dropdown__item">
-                                <a href="#">
-                                    <i class="zmdi zmdi-account"></i>Account</a>
-                            </div>
-                            <div class="account-dropdown__item">
-                                <a href="#">
-                                    <i class="zmdi zmdi-settings"></i>Setting</a>
-                            </div>
-                            <div class="account-dropdown__item">
-                                <a href="#">
-                                    <i class="zmdi zmdi-money-box"></i>Billing</a>
-                            </div>
-                        </div>
-                        <div class="account-dropdown__footer">
-                            <a href="#">
-                                <i class="zmdi zmdi-power"></i>Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END HEADER MOBILE -->
     <div class="page-content--bgf7">
 
         <!-- BREADCRUMB-->
@@ -432,10 +382,10 @@
 
         <section class="welcome p-t-10">
             <div class="container">
-                <div class="section-header" >
+                <div  class="section-header" >
                     <a href=""><h3 class="section-title">Gérer test</h3></a>
                 <div class="row">
-                    <div  style="margin-left: 20px;margin-right: 20px" >
+                    <div  style="margin-left: 20px;margin-right: 20px;margin-top: -90px" >
                     <div class="table-wrapper" >
                         <table id="myTable" class="table table-bordered"  style="color: black;"  >
 
@@ -555,7 +505,7 @@
 
                                      $question['question']=DB::table('question_temp')->get();
                                      @endphp
-                                     <form action="{{ route('question.validation') }}" method="POST">
+                                     <form action="{{ route('question.validationOf') }}" method="POST">
                                         @csrf
                                      @foreach($question['question'] as $item)
 
@@ -856,7 +806,7 @@
                             @method('DELETE')
                             <input required type="hidden" name="test_id" id="test_id">
                             <p class="text-center textsupp" > vous etes sûre que vous voulez supprimer ce
-                                matiere</p>
+                                test</p>
 
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-success">supprimer</button>
@@ -864,7 +814,7 @@
                         <form action="{{action("TestController@forceDelete",['test_id'=>$test->test_id])}}" method="POST">
                             @csrf
                             <input required type="hidden" name="force_test_id" id="force_test_id">
-                            <button type="submit"  class="btn btn-danger supp2">supprimer définitivement</button>
+                            <button type="submit"  class="btn btn-danger supp">supprimer définitivement</button>
                         </form>
 
                     </div>

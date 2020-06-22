@@ -158,15 +158,14 @@
     </head>
     <body>
 
-<?php $test = \App\Test::find(\App\QCM::find($options['options'][0]->question_id)->test_id) ?>
-<div class="page-wrapper">
+
+    <div class="page-wrapper">
     <!-- HEADER DESKTOP-->
     <header class="header-desktop3 d-none d-lg-block">
         <div class="section__content section__content--p35">
             <div class="header3-wrap">
                 <div class="header__logo">
                     <a href="#">
-                        <img src="/managetest/images/logo.png" alt="CoolAdmin" />
                     </a>
                 </div>
 
@@ -500,15 +499,16 @@
 
 
             <div class="modal-footer">
+                <button type="submit" class="btn btn-success">supprimer</button>
+                </form>
+
                 <form action="{{action("OptionController@forceDelete")}}" method="POST">
                     @csrf
                     <input required type="hidden" name="force_option_id" id="force_option_id">
-                    <button type="submit" class="btn btn-danger">supprimer définitivement</button>
+                    <button type="submit" class="btn btn-danger supp2">supprimer définitivement</button>
                 </form>
-                <button type="submit" class="btn btn-success">supprimer</button>
 
             </div>
-                </form>
 
             </div>
         </div>
@@ -527,7 +527,7 @@
             </div>
             <div class="modal-body">
                 @php
-                    $options = \App\Option::onlyTrashed()->whereNotNull('question_id')->get();
+                    $options = \App\Option::onlyTrashed()->whereNotNull('question_id')->where('question_id',request()->route('question_id'))->get();
                 @endphp
                 <form id="form" action="{{route("option.restore")}}" method="POST">
                     @csrf

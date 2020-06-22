@@ -31,15 +31,20 @@ class SessionController extends Controller
         if(intval($etudiantSession) > 0){
             $etudiantSessionPassArray = Session::query()->where('username','=',$request->username)->where('active','=',true)->get();
             foreach($etudiantSessionPassArray as $etudiantSessionPass) {
+
                 if (strcmp($password, $etudiantSessionPass->password) == 0) {
+                    if ($etudiantSessionPass->deleted == 1) {
+                        return redirect()->route('session.index');
+                    }
                     $request->session()->put('username', $username);
                     $request->session()->put('id', $etudiantSessionPass->session_id);
                     $request->session()->put('end', 'false');
                    // return redirect()->action('TestController@loginface', ['s' => $etudiantSessionPass->session_id]);
-               return view("session.loginface",["s"=>$etudiantSessionPass->session_id]);
-                 //   return redirect()->action('TestController@index1', ['s' => $etudiantSessionPass->session_id]);
+                       return view("session.loginface",["s"=>$etudiantSessionPass->session_id]);
+                    //return redirect()->action('TestController@index1', ['s' => $etudiantSessionPass->session_id]);
 
                 }
+
             }
             $error = "le nom d'utilisateur ou le mot de passe sont incorrects";
             return redirect()->route('session.index')->with('error', $error);

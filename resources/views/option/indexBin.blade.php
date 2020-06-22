@@ -209,7 +209,7 @@
 
 <body>
 
-<?php $test = \App\Test::find(\App\binaire::find($options['options'][0]->binaire_id)->test_id) ?>
+
 <div class="page-wrapper">
     <!-- HEADER DESKTOP-->
     <header class="header-desktop3 d-none d-lg-block">
@@ -217,7 +217,6 @@
             <div class="header3-wrap">
                 <div class="header__logo">
                     <a href="#">
-                        <img src="/managetest/images/logo.png" alt="CoolAdmin" />
                     </a>
                 </div>
 
@@ -559,7 +558,7 @@
             </div>
             <div class="modal-body">
                 @php
-                    $options = \App\Option::onlyTrashed()->whereNotNull('binaire_id')->get();
+                    $options = \App\Option::onlyTrashed()->whereNotNull('binaire_id')->where('binaire_id',request()->route('binaire_id'))->get();
                 @endphp
                 <form id="form" action="{{route("option.restore")}}" method="POST">
                     @csrf

@@ -209,6 +209,9 @@ class ResultatController extends Controller
             $se->save();
             return view('resultat1.index', ['somme' => $somme, 'vrai' => $vrai, 'faux' => $faux, 'session' => $request->session_id]);
         } else {
+            $se->deleted = 1;
+            $se->ip_address = $this->getUserIpAddr();
+            $se->save();
             session()->flush();
             return redirect()->route("session.index");
         }
@@ -282,14 +285,13 @@ class ResultatController extends Controller
             'note_total' => $request->note_final,
         );
         if ($resultat != null) {
-            Resultat::query()->update($r);
+            Resultat::query()->where('session_id',$request->session_id)->update($r);
         } else {
             Resultat::query()->create($r);
         }
 
         return redirect()->back();
     }
-
     /**
      * Remove the specified resource from storage.
      *

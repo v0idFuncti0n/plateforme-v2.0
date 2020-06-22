@@ -7,6 +7,8 @@ use App\Option;
 use App\Session;
 use App\Text_libre;
 use Illuminate\Http\Request;
+use App\QuestionTemp;
+use App\OptionTemp;
 
 
 use App\Test;
@@ -80,6 +82,7 @@ class question extends Controller
                 'note' => $qcm->note,
                 'test_id' => $qcm->test_id,
                 'difficulty' => $qcm->difficulty
+
             );
             $id = qcm::create($qc);
             $options = DB::table('option')->where('question_id', $qcm->question_id)->get();
@@ -91,7 +94,7 @@ class question extends Controller
                     'point' => $option->point,
                     'question_id' => $option->question_id,
                     'option_text' => $option->option_text,
-                    'option_image' => $option->option_text,
+                    'option_image' => $option->option_image,
                     'type' => $option->type
 
                 );
@@ -163,7 +166,7 @@ class question extends Controller
             $i = 0;
             $t = [];
             $shiit['shiit'] = DB::table('qcm')->where('test_id', $request->test_id)->where('difficulty', $difficulty)->get();
-            //return compact('shiit');
+
             foreach ($shiit['shiit'] as $qcm1) {
                 $t[$i] = $qcm1->question_text;
                 $i++;
@@ -180,26 +183,50 @@ class question extends Controller
                 foreach ($qcms as $qcm) {
                     $test1 = test::find($qcm->test_id);
                     if ($test1->matiere_id == $test->matiere_id && $test1->professeur_id == $test->professeur_id) {
+
                         $insert = array(
                             'question_text' => $qcm->question_text,
-                            'test_id' => $request->test_id,
-                            'note' => $qcm->note,
+                            'type' => 'qcm',
                             'difficulty' => $qcm->difficulty,
+                            'test_id' => $request->test_id,
+                            'note' => $qcm->note
                         );
-                        $id = qcm::create($insert);
+                        $id = QuestionTemp::create($insert);
+
+
+
+
                         $options = DB::table('option')->where('question_id', $qcm->question_id)->get();
 
                         foreach ($options as $option) {
                             $option->question_id = $id->question_id;
-                            $opt = array(
 
-                                'point' => $option->point,
-                                'question_id' => $option->question_id,
-                                'option_text' => $option->option_text
 
-                            );
+                            if($option->option_text!=NULL){
 
-                            Option::create($opt);
+                                $opt = array(
+                                    'option_text' =>  $option->option_text,
+                                    'option_image' => Null,
+                                    'question_id' => $option->question_id,
+                                    'point' =>  $option->point,
+                                    'type' => 'text'
+
+                                );
+                                OptionTemp::create($opt);
+
+                            }else {
+
+
+                                $opt = array(
+                                    'option_text' =>  $option->option_text,
+                                    'option_image' => $option->option_image,
+                                    'question_id' => $option->question_id,
+                                    'point' =>  $option->point,
+                                    'type' => 'image'
+
+                                );
+                                OptionTemp::create($opt);}
+
                         }
 
 
@@ -232,28 +259,41 @@ class question extends Controller
 
                         $insert1 = array(
                             'question_text' => $binaire->question_text,
+                            'type' => 'binaire',
+                            'difficulty' => $binaire->difficulty,
                             'test_id' => $request->test_id,
-                            'note' => $binaire->note,
-                            'difficulty' => $binaire->difficulty
+                            'note' => $binaire->note
                         );
+                        $id1 = QuestionTemp::create($insert1);
+                        $WALO = $id1->question_id;
 
 
-                        $id1 = binaire::create($insert1);
+
 
 
                         $options = DB::table('option')->where('binaire_id', $binaire->binaire_id)->get();
 
                         foreach ($options as $option) {
-                            $option->binaire_id = $id1->binaire_id;
-                            $opt = array(
+                            $option->binaire_id = $id1->question_id;
 
-                                'point' => $option->point,
-                                'binaire_id' => $option->binaire_id,
-                                'option_text' => $option->option_text
+
+                            $opt = array(
+                                'option_text' =>  $option->option_text,
+                                'option_image' => Null,
+                                'binaire_id' => $id1->question_id,
+                                'point' =>  $option->point,
+                                'type' => 'text'
 
                             );
+                            OptionTemp::create($opt);
 
-                            Option::create($opt);
+
+
+
+
+
+
+
                         }
 
 
@@ -286,15 +326,18 @@ class question extends Controller
                     if($test1->matiere_id == $test->matiere_id && $test1->professeur_id == $test->professeur_id ){
 
 
-                        $insert2 =array(
+
+
+
+                        $insert2 = array(
                             'question_text' => $text->question_text ,
-                            'test_id' => $request->test_id ,
-                            'note' => $text->note,
-                            'difficulty' => $text->difficulty
+                            'type' => 'text_libre',
+                            'difficulty' => $text->difficulty,
+                            'test_id' => $request->test_id,
+                            'note' => $text->note
                         );
+                        QuestionTemp::create($insert2);
 
-
-                        text_libre::create($insert2);
 
                     }
 
@@ -308,7 +351,6 @@ class question extends Controller
         return  redirect()->back();
 
     }
-
     /**
      * Show the form for creating a new resource.
      *

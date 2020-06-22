@@ -219,7 +219,7 @@
                                 <div class="form-row" style="padding-right: 80px;">
                                     <div class="form-holder form-holder-2">
                                         <label class="form-row-inner">
-                                            <input type="number" style='width: 92%;' name="nei"
+                                            <input type="number" style='width: 92%;margin-top: -3px' name="nei"
                                                    id="nei" class="form-control" required>
                                             <span class="label" style="text-align: center;top:-15px">Nombre des étudiants inscrits </span>
                                             <span class="border"></span>
@@ -229,7 +229,7 @@
                                 <div class="form-row" style="padding-right: 80px;">
                                     <div class="form-holder form-holder-2">
                                         <label class="form-row-inner">
-                                            <select class="form-control" name="type" id="type">
+                                            <select style="width: 245%;margin-top: 1px" class="form-control" name="type" id="type">
                                                 <option value="1">Controle</option>
                                                 <option value="2">Final</option>
                                                 <option value="3">Ratrappage</option>
@@ -394,15 +394,15 @@
                             </div>
                         </section>
                     </div>
-                    <div class="panel" style="margin-left: 18%;">
+                    <div class="panel" style="margin-left: 19%;">
                         <header class="panel__header">
-                            <h2 class="panel__title" style="font-size: 19px;text-align: center">Repartition des
+                            <h2 class="panel__title" style="text-align: center;margin-left: 235px">Repartition des
                                 groupes</h2>
                         </header>
                         <section>
                             <div class="inner" style="display:flex;">
                                 <div class="form-row" style="left: 260px">
-                                    <div class="form-holder form-holder-2">
+                                    <div style="text-align: center;margin-left: -140px" class="form-holder form-holder-2">
                                         <label class="form-row-inner">
                                             Vous avez <span id="nombreDesEtudiant">0</span> etudiants dans filiere <span
                                                 id="nomFiliere">?</span> niveau <span id="nomNiveau">?</span>
@@ -412,7 +412,7 @@
                                         <div class="form-row align-items-center">
                                             <div class="col-auto">
                                                 <label for="inlineFormInput">Le nombre des etudiant par chaque groupe :</label>
-                                                <input type="number" class="form-control mb-2" id="surDiv"
+                                                <input style="width: 205px;margin-bottom: 20px" type="number" class="form-control mb-2" id="surDiv"
                                                        min="1" placeholder="20">
                                                 <button type="button" class="btn btn-success" onclick="divide();">
                                                     Diviser
@@ -434,6 +434,8 @@
                     <button type="button" id="save" class="button next">Suivant</button>
                 </div>
             </form>
+        </div>
+    </div>
         </div>
 
         <h1 class="wizard__congrats-message">

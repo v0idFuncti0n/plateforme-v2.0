@@ -11,6 +11,7 @@ use App\QCM;
 use App\QuestionTemp;
 use App\Test;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BinaireController extends Controller
 {
@@ -171,6 +172,11 @@ class BinaireController extends Controller
         if (!is_null($question_ids)) {
             foreach ($question_ids as $question_id) {
                 binaire::withTrashed()->find($question_id)->restore();
+                $options['options']=DB::table('option')->where('binaire_id', $question_id)->get('option_id');
+                foreach ($options['options'] as $option) {
+                    Option::withTrashed()->find($option->option_id)->restore();
+
+                }
 
             }
         }

@@ -1,11 +1,16 @@
+var sub=false;
  $(document).ready(function() {
+
         setInterval(function(){
             var h=$('#hour').html();
             var m=$('#min').html();
             var s=$('#sec').html();
             if(h==00 && m==00 && s==00){
+                if(!sub){
                 clearInterval();
                 getHTML();
+                sub=true;
+            }
             }
             else{
                 if(s>00){

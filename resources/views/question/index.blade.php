@@ -122,7 +122,6 @@
 <body>
 
 <?php
-
 $test1 = $test->test_id;
 $testObj = \App\Test::query()->find($test1)->first();
 $dif1 = $testObj->d1;
@@ -792,22 +791,16 @@ if ($dif5 < 3) {
 $nombre = 0;
 for ($n = 0; $n < $k; $n++) {
     foreach ($qcms[$n] as $qcm) {
-
         $nombre++;
     }
 }
 for ($m = 0; $m < $i; $m++) {
     foreach ($binaires[$m] as $binaire) {
-
-
         $nombre++;
-
     }
 }
-
 for ($b = 0; $b < $j; $b++) {
     foreach ($text_libre[$b] as $text) {
-
         $nombre++;
     }
 }
@@ -891,53 +884,7 @@ for ($b = 0; $b < $j; $b++) {
         </div> <!-- cd-panel__content -->
     </div> <!-- cd-panel__container -->
 </div> <!-- cd-panel -->
-<!-- Trigger/Open The Modal -->
-<div id="myModal" class="modal">
 
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close">&times;</span>
-            <h2 style="background:none ;">Modal Header</h2>
-        </div>
-        <div class="modal-body">
-            @php $compteur=1; @endphp
-
-            @for($b=0;$b<$k;$b++)
-                @foreach($qcms[$b] as $item)
-
-                    <a style="background-color: white" ; color:black ; >{{$compteur++}}) {{$item->question_text}}</a>
-                    <br>
-                    <br>
-
-                @endforeach
-            @endfor
-
-
-            @for($b=0;$b<$i;$b++)
-                @foreach($binaires[$b] as $item)
-                    <p style="background-color: white"; color:black ;>{{$compteur++}}) {{$item->question_text}}</p>
-                    <br>
-                    <br>
-
-                @endforeach
-            @endfor
-            @for($b=0;$b<$j;$b++)
-                @foreach($text_libre[$b] as $item)
-                    <p style="background-color: white" ; color:black ;>{{$compteur++}}) {{$item->question_text}}</p>
-                    <br>
-                    <br>
-                @endforeach
-            @endfor
-
-
-        </div>
-        <div class="modal-footer">
-            <h3 style="background: none">Modal Footer</h3>
-        </div>
-    </div>
-
-</div>
 
     <div class=" p-t-150 p-b-80">
     <div class="wrapper wrapper--w1070">
@@ -948,7 +895,6 @@ for ($b = 0; $b < $j; $b++) {
 
 
             <div class="card-body">
-                <button id="myBtn">Open Modal</button>
 
             <?php $test1 = $test->test_id;
                 $rqs = request()->segment(count(request()->segments()));
@@ -977,7 +923,7 @@ for ($b = 0; $b < $j; $b++) {
                     <input type="hidden" value="{{$i}}"  name="indice_binaire">
                     @for($w=0;$w<$j;$w++)
                         @foreach($text_libre[$w] as $item)
-                           <input type="hidden" value="{{$item}}" name="question_text_libre[]" >
+                           <input type="hidden" value="{{$item->question_id}}" name="question_text_libre[]" >
                         @endforeach
                     @endfor
                     <input type="hidden" value="{{$j}}"  name="indice_text_libre">

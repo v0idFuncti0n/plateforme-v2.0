@@ -50,7 +50,6 @@ $niveau = \App\Niveau::findOrfail($etudiant->niveau_id);
             <div class="header3-wrap">
                 <div class="header__logo">
                     <a href="#">
-                        <img src="/resultat1/images/logo.png" alt="CoolAdmin"/>
                     </a>
                 </div>
 
@@ -66,7 +65,7 @@ $niveau = \App\Niveau::findOrfail($etudiant->niveau_id);
 
                                     <div class="content" style="margin-left: 10px;">
                                         <h5 class="name">
-                                            <a href="#">j{{$etudiant->nom." ".$etudiant->prenom}}</a>
+                                            <a href="#">{{$etudiant->nom." ".$etudiant->prenom}}</a>
                                         </h5>
                                         <span class="email">{{$etudiant->email_address}}</span>
                                     </div>
