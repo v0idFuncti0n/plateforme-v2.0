@@ -39,7 +39,6 @@
             <div class="header3-wrap">
                 <div class="header__logo">
                     <a href="#">
-                        <img src="/resultat1/images/logo.png" alt="CoolAdmin"/>
                     </a>
                 </div>
 
