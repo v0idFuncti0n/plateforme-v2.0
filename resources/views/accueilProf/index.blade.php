@@ -20,6 +20,8 @@
     <!-- Bootstrap CSS-->
     <!-- Main CSS-->
     <link href="/managetest/css/theme.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="/managetest/css/style.css"> <!-- Resource style -->
+
     <style>
         .d-none{display:none!important}
         .d-lg-block{display:block!important}

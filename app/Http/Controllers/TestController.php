@@ -225,9 +225,10 @@ class TestController extends Controller
     public function note_export_pdf($test_id)
     {
         // Fetch all customers from database
-        $sessions = Session::query()->get()->where('test_id', '=', $test_id);
+        $sessions = Session::query()->where('test_id', '=', $test_id)->get();
+        $test = \App\Test::query()->where('test_id',$sessions[0]->test_id)->first();
         // Send data to the view using loadView function of PDF facade
-        $pdf = PDF::loadView('profauth.note_pdf', compact('sessions'));
+        $pdf = PDF::loadView('profauth.note_pdf', compact('sessions'),compact('test'));
         // If you want to store the generated pdf to the server then you can use the store function
         $pdf->save(storage_path() . '_filename.pdf');
         // Finally, you can download the file using download function

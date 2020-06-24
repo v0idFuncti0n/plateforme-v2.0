@@ -72,6 +72,7 @@
             <br>
             <br>
             <br>
+
             <div class="content-bottom">
                 <form method="POST" action="{{ action('Auth\SessionController@sessionLogin') }}">
                     @csrf
@@ -82,6 +83,7 @@
                         </div>
                     </div>
                     <div class="field-group">
+
                         <span class="fa fa-lock" aria-hidden="true"></span>
                         <div class="wthree-field">
                             <input title="aucun caractère spécial n'est autorisé 4 - 255 max" id="password" type="password" class="form-control @if(!empty(Session::get('error'))) is-invalid @endif" name="password" required autocomplete="off" placeholder="Mot de passe">

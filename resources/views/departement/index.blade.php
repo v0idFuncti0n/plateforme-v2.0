@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>
@@ -137,13 +138,16 @@
                     <ul class="navbar-nav">
 
                         <li class="nav-item">
-                            <a style="left: -5%" class="nav-link" href="{{route('admin.logout')}}">
+                            <form id="lgt" method="POST" action="{{route('admin.logout')}}">
+                                @csrf
+                            <a style="left: -5%" class="nav-link" onclick="document.forms[0].submit()">
                                 <label  style="color: #1ee898;font-weight: bold">Déconnexion</label>
                                 <i style="font-size: 30px;color: #1ee898" class="material-icons">logout</i>
                                 <p class="d-lg-none d-md-block">
                                     Account
                                 </p>
                             </a>
+                            </form>
                         </li>
                     </ul>
                 </div>

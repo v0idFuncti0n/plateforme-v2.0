@@ -454,8 +454,7 @@
                                 <br>
                                 <br>
                                 <input type="submit" name="submit" id="submit" style="width: 20rem; margin-left:7rem; "
-                                       class="btn btn-info" value="Enregistrer et Ajouter"/>
-                                <input  class="btn btn-success" style="width: 20rem" value="Enregistrer et quitter">
+                                       class="btn btn-warning" value="Enregistrer et Ajouter"/>
                                 <a href="#0"  class="btn btn-info js-cd-panel-trigger" class="" style="width: 20rem" data-panel="main">valider</a>
 
                             </form>
@@ -478,7 +477,7 @@
 
                                  $question['question']=DB::table('question_temp')->where('test_id',$test['test_id'])->where('type','=','text_libre')->get();
                                  @endphp
-                                 <form action="{{ route('question.validation') }}" method="POST">
+                                 <form action="{{ route('question.validationOf') }}" method="POST">
                                     @csrf
                                  @foreach($question['question'] as $item)
 

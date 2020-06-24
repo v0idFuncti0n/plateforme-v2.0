@@ -52,17 +52,25 @@ $niveau = \App\Niveau::findOrfail($etudiant->niveau_id);
                     <a href="#">
                     </a>
                 </div>
+                <?php $nomfiliere=DB::table('filiere')->where('filiere_id',$etudiant->filiere_id)->value('nom') ?>
 
                 <div class="header__tool">
                     <div class="account-wrap">
                         <div class="account-item account-item--style2 clearfix js-item-menu">
-
+                            <div class="image">
+                                <img src="/storage/public/option_image/etudiant/{{$nomfiliere}}/{{$etudiant->prenom." ".$etudiant->nom}}/{{$etudiant->image}}" alt="{{$etudiant->prenom." ".$etudiant->nom}}" />
+                            </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#">{{$etudiant->nom." ".$etudiant->prenom}}</a>
                             </div>
                             <div class="account-dropdown js-dropdown">
                                 <div class="info clearfix">
+                                    <div class="image">
+                                        <a href="#">
+                                            <img src="/storage/public/option_image/etudiant/{{$nomfiliere}}/{{$etudiant->prenom." ".$etudiant->nom}}/{{$etudiant->image}}" alt="{{$etudiant->prenom." ".$etudiant->nom}}" />
 
+                                        </a>
+                                    </div>
                                     <div class="content" style="margin-left: 10px;">
                                         <h5 class="name">
                                             <a href="#">{{$etudiant->nom." ".$etudiant->prenom}}</a>

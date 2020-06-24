@@ -28,7 +28,6 @@ Route::get('create-question1/{test_id}', 'question@index2');
 Route::get('create-text-libre/{test_id}', 'Text_libreController@index2')->name('create-text-libre.index');
 Route::resource('create-text-libre', 'Text_libreController');
 
-Route::post('admin/logout', 'Auth\AdminController@adminLogout')->name('admin.logout');
 
 Route::get('/count', 'TestController@count');
 Route::put('/setSession', 'TestController@setSession');
@@ -92,6 +91,8 @@ Route::post('session/login', 'Auth\SessionController@sessionLogin')->name('sessi
 Route::get('session/logout', 'Auth\SessionController@sessionLogout')->name('session.logout');
 Route::get('admin', 'Auth\AdminController@index')->name('admin.index');
 Route::post('admin/login', 'Auth\AdminController@adminLogin')->name('admin.login');
+Route::post('admin/logout', 'Auth\AdminController@adminLogout')->name('admin.logout');
+
 Route::get('profauth/login', 'Auth\ProfauthController@index')->name('profauth.login');
 Route::post('profauth/test', 'Auth\ProfauthController@professeurLogin')->name('profauth.test');
 Route::get('profauth/test', 'Auth\ProfauthController@professeurLogin')->name('profauth.test');

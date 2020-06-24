@@ -139,14 +139,18 @@
                     <ul class="navbar-nav">
 
                         <li class="nav-item">
-                            <a style="left: -5%" class="nav-link" href="{{route('admin.logout')}}">
+                            <form id="lgt" method="POST" action="{{route('admin.logout')}}">
+                                @csrf
+                            <a style="left: -5%" class="nav-link" onclick="document.forms[0].submit()">
                                 <label  style="color: #1ee898;font-weight: bold">Déconnexion</label>
                                 <i style="font-size: 30px;color: #1ee898" class="material-icons">logout</i>
                                 <p class="d-lg-none d-md-block">
                                     Account
                                 </p>
                             </a>
+                            </form>
                         </li>
+
                     </ul>
                 </div>
             </div>
@@ -165,8 +169,6 @@
                             <div class="row justify-content-between card-header">
                                 <a href="" class="btn btn-info" data-toggle="modal"
                                    data-target="#filiereModal">ajouter filiere</a>
-
-                                <a href="{{ route("matiere.index") }}"><button class="btn btn-info float-right">Voir les matieres</button></a>
 
                                 <a href="" class="btn btn-info" data-toggle="modal"
                                    data-target="#exampleModal">ajouter </a>

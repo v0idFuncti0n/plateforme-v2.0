@@ -261,56 +261,7 @@
         </header>
         <!-- END HEADER DESKTOP-->
 
-        <!-- HEADER MOBILE-->
-        <div class="sub-header-mobile-2 d-block d-lg-none" >
-            <div class="header__tool">
 
-                <div class="account-wrap">
-                    <div class="account-item account-item--style2 clearfix js-item-menu">
-                        <div class="image">
-                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                        </div>
-                        <div class="content">
-                            <a class="js-acc-btn" href="#">john doe (nom d'etudiant)</a>
-                        </div>
-                        <div class="account-dropdown js-dropdown">
-                            <div class="info clearfix">
-                                <div class="image">
-                                    <a href="#">
-                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="name">
-                                        <a href="#">john doe</a>
-                                    </h5>
-                                    <span class="email">johndoe@example.com</span>
-                                </div>
-                            </div>
-                            <div class="account-dropdown__body">
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                </div>
-                                <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                </div>
-                            </div>
-                            <div class="account-dropdown__footer">
-                                <a href="#">
-                                    <i class="zmdi zmdi-power"></i>Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END HEADER MOBILE -->
         <div class="container d-flex align-items-stretch" style="margin-left: 0rem;">
             <nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">
                 <div class="p-4">
@@ -459,9 +410,8 @@
                                     <br>
                                     <br>
                                     <input type="submit" id="submit" style="width: 20rem; margin-left:7rem; "
-                                           class="btn btn-info" value="Enregistrer et Ajouter"/>
+                                           class="btn btn-warning" value="Enregistrer et Ajouter"/>
                                     <input type="hidden" name="test_id" value="{{$test['test']->test_id}}">
-                                    <input  class="btn btn-danger" style="width: 20rem" value="Enregistrer et quitter">
                                     <a href="#0"  class="btn btn-info js-cd-panel-trigger" class="" style="width: 20rem" data-panel="main">valider</a>
 
                                 </form>
@@ -483,7 +433,7 @@
 
                                         $question['question']=DB::table('question_temp')->where('test_id',$test['test']->test_id)->where('type','=','qcm')->get();
                                     @endphp
-                                    <form action="{{ route('question.validation') }}" method="POST">
+                                    <form action="{{ route('question.validationOf') }}" method="POST">
                                         @csrf
                                         @foreach($question['question'] as $item)
 

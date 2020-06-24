@@ -115,7 +115,7 @@ class EtudiantController extends Controller
 
                 if($query == '' && $query1=='')
                 {
-                           $etudiants['etudiants'] = Etudiant::OrderBy('etudiant_id', 'asc')->paginate(10);
+                           $etudiants['etudiants'] = Etudiant::OrderBy('etudiant_id', 'asc')->pagination(10);
 
                 }
 
@@ -154,6 +154,7 @@ class EtudiantController extends Controller
                                                 </td>
                                             </tr>';
                 }
+
             }
 
             $etudiants = array(
@@ -254,7 +255,7 @@ class EtudiantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request,$etudiant_id)
     {
         if($request->hasFile('image')){
             // Get filename with the extension
@@ -296,7 +297,7 @@ class EtudiantController extends Controller
                 'image'=>$request->image,
             );
         }
-        Etudiant::findOrfail($request->id)->update($etudiant);
+        Etudiant::findOrfail($request->etudiant_id)->update($etudiant);
         return redirect()->route('etudiant.index');
     }
 
@@ -314,12 +315,12 @@ class EtudiantController extends Controller
 
         if($etudiant->but=='no'){
             $delete = $etudiant->all();
-            $deleteetudiant = Etudiant::findOrfail($etudiant->id);
+            $deleteetudiant = Etudiant::findOrfail($etudiant->etudiant_id);
             $deleteetudiant->delete();
             return redirect()->route('etudiant.index');
         }
             if($etudiant->but=='dif'){
-                etudiant::find($etudiant->id)->forceDelete();
+                etudiant::find($etudiant->etudiant_id)->forceDelete();
                 $npmfil=DB::table('filiere')->where('filiere_id',$etudiant->filiere_id)->get();
                 storage::delete('public/option_image'.$npmfil.'/'.$etudiant->prenom.' '.$etudiant->nom);
                 return redirect()->route('etudiant.index');}

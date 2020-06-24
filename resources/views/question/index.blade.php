@@ -831,7 +831,7 @@ for ($b = 0; $b < $j; $b++) {
 </header>
 
 <main class="cd-main-content">
-    <a href="#0" class="cd-btn js-cd-panel-trigger" data-panel="main">Accéder aux autre questions</a>
+    <a href="#0" class="cd-btn js-cd-panel-trigger" data-panel="main">Accéder aux autres questions</a>
     <!-- your content here -->
 </main>
 

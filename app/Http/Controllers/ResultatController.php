@@ -207,7 +207,8 @@ class ResultatController extends Controller
             $se->deleted = 1;
             $se->ip_address = $this->getUserIpAddr();
             $se->save();
-            return view('resultat1.index', ['somme' => $somme, 'vrai' => $vrai, 'faux' => $faux, 'session' => $request->session_id]);
+            $somm = round($somme, 2);
+            return view('resultat1.index', ['somme' => $somm, 'vrai' => $vrai, 'faux' => $faux, 'session' => $request->session_id]);
         } else {
             $se->deleted = 1;
             $se->ip_address = $this->getUserIpAddr();

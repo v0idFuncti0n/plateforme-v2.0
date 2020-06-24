@@ -137,9 +137,10 @@
                 <div class="collapse navbar-collapse justify-content-end">
 
                     <ul class="navbar-nav">
-
+                        <form id="lgt" method="POST" action="{{route('admin.logout')}}">
+                            @csrf
                         <li class="nav-item">
-                            <a style="left: -5%" class="nav-link" href="{{route('admin.logout')}}">
+                            <a style="left: -5%" class="nav-link" onclick="document.forms[0].submit()">
                                 <label  style="color: #1ee898;font-weight: bold">Déconnexion</label>
                                 <i style="font-size: 30px;color: #1ee898" class="material-icons">logout</i>
                                 <p class="d-lg-none d-md-block">
@@ -147,6 +148,7 @@
                                 </p>
                             </a>
                         </li>
+                        </form>
                     </ul>
                 </div>
             </div>

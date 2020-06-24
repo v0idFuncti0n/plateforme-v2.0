@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="/managetest/css/form.css">
     <link href="/managetest/css/theme.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="{{asset('/managetest/css/sidebar.css')}}">
+    <link rel="stylesheet" href="/managetest/css/style.css"> <!-- Resource style -->
+
     <style>
         $
         green: #2ecc71
@@ -284,56 +286,6 @@
     </header>
     <!-- END HEADER DESKTOP-->
 
-    <!-- HEADER MOBILE-->
-    <div class="sub-header-mobile-2 d-block d-lg-none" >
-        <div class="header__tool">
-
-            <div class="account-wrap">
-                <div class="account-item account-item--style2 clearfix js-item-menu">
-                    <div class="image">
-                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                    </div>
-                    <div class="content">
-                        <a class="js-acc-btn" href="#">john doe (nom d'etudiant)</a>
-                    </div>
-                    <div class="account-dropdown js-dropdown">
-                        <div class="info clearfix">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h5 class="name">
-                                    <a href="#">john doe</a>
-                                </h5>
-                                <span class="email">johndoe@example.com</span>
-                            </div>
-                        </div>
-                        <div class="account-dropdown__body">
-                            <div class="account-dropdown__item">
-                                <a href="#">
-                                    <i class="zmdi zmdi-account"></i>Account</a>
-                            </div>
-                            <div class="account-dropdown__item">
-                                <a href="#">
-                                    <i class="zmdi zmdi-settings"></i>Setting</a>
-                            </div>
-                            <div class="account-dropdown__item">
-                                <a href="#">
-                                    <i class="zmdi zmdi-money-box"></i>Billing</a>
-                            </div>
-                        </div>
-                        <div class="account-dropdown__footer">
-                            <a href="#">
-                                <i class="zmdi zmdi-power"></i>Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END HEADER MOBILE -->
     <div class="page-content--bgf7">
     <div class="container d-flex align-items-stretch" style="margin-left: 0rem;">
         <nav id="sidebar" class="img" style="background-image: url(/images/stu.jpg);">

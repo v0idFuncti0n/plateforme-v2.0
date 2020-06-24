@@ -38,6 +38,7 @@
     <link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
+
     <style>
         input[type="file"]{
             height:20px;
@@ -142,13 +143,16 @@
                     <ul class="navbar-nav">
 
                         <li class="nav-item">
-                            <a style="left: -5%" class="nav-link" href="{{route('admin.logout')}}">
+                            <form id="lgt" method="POST" action="{{route('admin.logout')}}">
+                                @csrf
+                            <a style="left: -5%" class="nav-link" onclick="document.forms[0].submit()">
                                 <label  style="color: #1ee898;font-weight: bold">Déconnexion</label>
                                 <i style="font-size: 30px;color: #1ee898" class="material-icons">logout</i>
                                 <p class="d-lg-none d-md-block">
                                     Account
                                 </p>
                             </a>
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -240,8 +244,10 @@
                                         @endforeach
 
                                         </tbody>
+
                                         </thead>
                                     </table>
+                                    {{$etudiants->links()}}
 
                                 </div>
 
@@ -255,7 +261,7 @@
                                         <input class="btn btn-info" type="submit" name="upload" value="importer">
                                     </form>
                                 </div>
-                                <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-success">Réstaurer</a>
+                                <a data-toggle="modal" data-target="#exampleModal-restore" class="btn btn-success">Restaurer</a>
 
 
                             </div>
@@ -363,7 +369,8 @@
                                     <div class="form-group">
 
                                         <label for="image" style="color:#c21db7;">image</label>
-                                        <input type="file" id="image" name="image" >
+                                        <br>
+                                        <input type="file" id="image" name="image" style="opacity: 14!important; position: initial" >
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
@@ -581,6 +588,7 @@
         function fetch_customer_data(query = '',query1='')
         {
             $.ajax({
+
                 url:"{{ route('etudiant.searchniveau') }}",
                 method:'GET',
                 data:{query:query,
@@ -692,12 +700,13 @@
 <script>
     $(document).ready(function () {
         $('#myTable').DataTable();
+
     });
     $('#myTable').DataTable({
         responsive: true,
         language:{
             url:"//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
-        }
+        },
 
     });
 </script>

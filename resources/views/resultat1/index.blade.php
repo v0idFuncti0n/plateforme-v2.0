@@ -46,20 +46,30 @@
                     <a href="#">
                     </a>
                 </div>
+                <?php $nomfiliere=DB::table('filiere')->where('filiere_id',$etudiant->filiere_id)->value('nom') ?>
 
                 <div class="header__tool">
                     <div class="account-wrap">
                         <div class="account-item account-item--style2 clearfix js-item-menu">
+                            <div class="image">
+                                <img src="/storage/public/option_image/etudiant/{{$nomfiliere}}/{{$etudiant->prenom." ".$etudiant->nom}}/{{$etudiant->image}}" alt="{{$etudiant->prenom." ".$etudiant->nom}}" />
+                            </div>
                             <div class="content">
-                                <a class="js-acc-btn" href="#">{{$etudiant->nom." ".$etudiant->prenom}}</a>
+                                <a style="font-weight: bold" class="js-acc-btn" href="#">{{$etudiant->nom." ".$etudiant->prenom}}</a>
                             </div>
                             <div class="account-dropdown js-dropdown">
                                 <div class="info clearfix">
+                                    <div class="image">
+                                        <a href="#">
+                                            <img src="/storage/public/option_image/etudiant/{{$nomfiliere}}/{{$etudiant->prenom." ".$etudiant->nom}}/{{$etudiant->image}}" alt="{{$etudiant->prenom." ".$etudiant->nom}}" />
+
+                                        </a>
+                                    </div>
                                     <div class="content" style="margin-left: 10px;">
-                                        <h5 class="name">
-                                            <a>{{$etudiant->nom." ".$etudiant->prenom}}</a>
+                                        <h5   class="name">
+                                            <a style="font-weight: bold" >{{$etudiant->nom." ".$etudiant->prenom}}</a>
                                         </h5>
-                                        <span class="email">{{$etudiant->email_address}}</span>
+                                        <span   class="email">{{$etudiant->email_address}}</span>
                                     </div>
                                 </div>
 
@@ -236,7 +246,8 @@
 
                                 <tr>
                                     <td> {{$nomtest." ".$distest}}</td>
-                                    <td style="color: #1ee898">{{$t->note_total}}</td>
+                                    <?php $notefinale=round($t->note_total,2) ?>
+                                    <td style="color: #1ee898">{{$notefinale}}</td>
                                 </tr>
                               @endforeach
                                 </tbody>
